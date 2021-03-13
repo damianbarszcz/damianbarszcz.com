@@ -1,0 +1,256 @@
+/*-----------------------------------------------------
+ * Navigation (https://www.damianbarszcz.com)
+ * Copyright 2020 Damian Barszcz
+ *-----------------------------------------------------*/
+
+/*-----------------------------
+*        Local extends
+*----------------------------*/
+
+   .nav-link-color{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        content: '';
+        width: 100%;
+        height: 4px;
+        opacity: 0;
+        transition: opacity 0.2s, transform 0.2s;
+        transform: translateY(20px);
+    }
+       
+/*-----------------------------
+*           Navigation
+*----------------------------*/
+
+.search-lightbox{
+        display: block;
+        position: fixed;
+        margin:0;
+        padding:0;
+        min-width:100%;
+        height: 100%;
+        background-color:rgba(0,0,0,0.35);
+        z-index:99;
+        overflow: hidden
+}
+
+.nav-dark{
+        background-color:$app-color-dark;
+        border-bottom:1px solid  $app-color-gray;
+
+        .navigation__brand-logo--dark{
+                fill:$app-color-white;
+        }
+
+        .navigation__brand-section{
+                color:$app-color-white;
+
+                &:hover{ color:$app-color-white;  border-bottom:1px solid $app-color-white; }
+
+                &::before{ background-color:$app-color-white; }
+        }
+
+        .navigation__menu-list-link{
+                color:$app-color-white;
+        }
+
+        .material__icon--nav{ color:$app-color-white; }
+
+        .material__icon {
+                color:$app-color-white;
+        }
+
+}
+
+.nav-light{
+        background-color:$app-color-white; 
+        border-bottom: 1px solid  $app-color-lsilver;
+
+        .navigation__brand-section{
+                color:$app-color-gray;
+
+                &:hover{ color:$app-color-gray; border-bottom:1px solid $app-color-gray;}
+
+                &::before{ background-color:$app-color-gray; }
+        }
+
+        .navigation__brand-author-logo--dark{
+                fill:$app-color-gray; 
+        }
+
+        .navigation__menu-list-link{
+                color:$app-color-gray;
+        }
+
+        .material__icon--nav{ color:$app-color-gray; }
+
+        .material__icon {
+                 color:$app-color-gray; 
+        }
+}
+
+.navigation{
+        position: absolute;
+        min-width: 100%;
+        z-index:100;
+
+        // Navigation > Block 
+        &__block{ 
+                @include inlineRepeatColElements(6,1fr,0rem);
+                position: relative;
+                padding:1rem 0 1rem;
+                height: 4.25rem;
+                align-items: center;
+         }
+
+         // Navigation > Block  > Brand
+         @include navBrand;
+
+        // Navigation > Block  > Menu
+        @include navMenu;
+
+        // Navigation > Block  > earch
+        @include navSearch;
+
+        // Navigation > Post title
+        &__post-title{
+                position: absolute;
+                left:50%;
+                top:50%;
+                text-align: center;
+                transform: translate(-50%, -50%);
+
+               &--caption{
+                       font-family:$page-font;
+                       font-weight: $bold-weight;
+                       font-size:$font-size-normal;
+                       color:$app-color-silver;
+               }
+        }
+
+         // Navigation > Sharing
+        &__sharing{
+                position: absolute;
+                right:0;
+                top:50%;
+                transform: translate(0%, -50%);
+
+                &-social{
+                        display:inline-block;
+                        position: relative;
+                        width:2rem;
+                        height:2rem;
+                        border-radius:100%;
+
+                        .social__icon{
+                                position:absolute;
+                                left:50%;
+                                top:50%;
+                                transform:translate(-50%, -50%);
+                        }
+    
+
+                        &--facebook{
+                                margin-right:1rem;
+                                border:0.15rem solid $facebook-color;
+                                color:$facebook-color;
+    
+                                &:hover{  color:$facebook-color; }
+                        }
+
+                        &--twitter{
+                                margin-right:1rem;
+                                border:0.15rem solid $twitter-color;
+                                color:$twitter-color;
+    
+                                &:hover{  color:$twitter-color; }
+                        }
+
+                        &--envelope{
+                                border:0.15rem solid $app-color-red;
+                                color:$app-color-red;
+    
+                                &:hover{  color:$app-color-red; }
+                        }
+                }
+        }
+}
+
+.nav-scroll{
+        position: fixed;
+        box-shadow: 0 .125rem .3125rem rgba(0,0,0,.26);
+        animation:slide-down 0.4s;
+}
+
+.nav-noscroll{
+        animation:slide-up 0.5s;
+}
+
+       
+/*-----------------------------
+*          Preloader
+*----------------------------*/
+        
+        .preloader{
+                position:fixed;
+                padding:0;
+                left:0;
+                right:0;
+                bottom:0;
+                top:0;
+                min-width:100%;
+                min-height: 100%;
+        
+            &--fadeIn{
+                    animation-name:  fadeIn;
+                    animation-duration:0.5s;
+                    animation-fill-mode: forwards;
+            }
+        
+            &--fadeOut{
+                    animation-name:  fadeOut;
+                    animation-duration:0.5s;
+                    animation-fill-mode: forwards;
+            }
+        
+            &_modifier{
+                    background-color:rgba(243, 243, 243, 0.8);
+                    opacity:0;
+                    z-index:2000;
+            }
+        
+            &__progress{
+                    position: absolute;
+                    margin:0;
+                    padding:0;
+                    min-width:100%;
+                    max-height:0.35rem;
+        
+                    &_modifier{
+                            border:0;
+                            background-color:rgba(243, 243, 243, 0.8);
+                    }
+            }
+        }
+        
+        progress[value]::-moz-progress-bar  {
+                 background: $app-color-blue !important;
+        }
+
+/*-----------------------------
+*        Animations
+*----------------------------*/
+
+@keyframes slide-down{
+        0%{ transform:translateY(-100%); }
+
+        100%{ transform:translateY(0); }
+}
+
+@keyframes slide-up{
+        0%{  position: fixed; transform:translateY(0%); }
+
+        100%{  position: absolute; transform:translateY(-100%); }
+}
+

@@ -1,0 +1,109 @@
+
+/*-----------------------------------------------------
+ * Login (https://www.damianbarszcz.com)
+ * Copyright 2020 Damian Barszcz
+ *-----------------------------------------------------*/
+
+/*-----------------------------
+*             Login
+*----------------------------*/
+
+         .login{
+                position: relative;
+                min-width: 100%;
+                min-height:100vh;
+                z-index:1;
+
+                &_theme{  background-color:$app-color-white; }
+
+                //Login >Box
+                &__box{
+                        display: block;
+                        position:absolute;
+                        left:50%;
+                        top:50%;
+                        transform:translate(-50%,-50%);
+                }
+
+                // Login > Inner
+                 &__box &__inner{
+                        padding:4rem 2.5rem;
+                        width:28.125rem;
+                        @include boxStyling;
+                }
+
+                // Login > Brand
+               &__box &__inner   &__brand{
+                        .author-logo__item--yellow{ fill:$app-color-yellow; }
+                        .author-logo__item--blue{ fill:$app-color-blue; }
+                        .author-logo__item--red{ fill:$app-color-red; }
+                        .author-logo__item--green{ fill:$app-color-green; }
+                        .author-logo__item--dark{ fill:$app-color-gray; }
+                }
+
+                // Login > Header
+                &__header{  margin-top:1rem; &--title{@include boxHeading($font-size-normal, $bold-weight, $app-color-gray);  }  }
+
+                //Login > Form 
+                 &__box &__inner   &__form{
+                        @include inlineSpecyficElements;
+                        margin-top:2rem;
+                        grid-row-gap: 2.75rem;
+                        
+                        &-inner{
+                                position:relative;
+
+                                .icon-material{
+                                        display: block;
+                                        position:absolute;
+                                        top:1rem;
+                                        color:$app-color-silver;
+
+                                        &--left{  left:1.25rem; }
+
+                                        &--right{ right:1.25rem;cursor: pointer;  }
+                                }
+
+                                .form__input{
+                                        padding-left: 3.85rem;
+                                        padding-right: 3.85rem;
+                                }
+                        }
+
+                        &-additional{
+                                @include  inlineFlexBetweenElements; 
+
+                                &-forgot{  color:$app-color-blue; }
+                        }
+                }
+        }
+
+
+/*-----------------------------
+*               RWD
+*----------------------------*/
+
+@media (max-width: 1366px) {
+        .login{
+                &_theme{ background-color: $app-color-red;  }
+        }
+}
+
+@media (max-width: 1024px) {
+        .login{
+                &_theme{ background-color: $app-color-green;  }
+        }
+}
+    
+@media (max-width: 768px) {
+        .login{
+                &_theme{ background-color: $app-color-blue;  }
+         }      
+}
+    
+@media (max-width: 414px) {
+        .login{
+                &_theme{ background-color: $app-color-yellow;  }
+         }
+}
+

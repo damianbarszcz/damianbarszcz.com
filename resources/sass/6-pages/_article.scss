@@ -1,0 +1,181 @@
+/*-----------------------------------------------------
+ * Article (https://www.damianbarszcz.com)
+ * Copyright 2020 Damian Barszcz
+ *-----------------------------------------------------*/
+
+/*-----------------------------
+*               Article
+*----------------------------*/
+
+.article{
+        @include sectionDefinition;
+
+        &_theme{   background-color:$app-color-white;  }
+
+        // Article for Reviews
+        &--book{
+                // Article > Block 
+                .article__block{ @include blockPadding(2rem, 0, 6rem)  }
+
+                .article__phero{
+                        &-artwork{  @include backgroundBlockArtwork(100%, 45rem);  margin-bottom:2rem;}
+                }
+        }
+
+        // Article for Projects
+        &--project{
+                // Article > Block 
+                .article__block{ @include blockPadding; }
+
+                .article__phero{
+                        @include inlineRepeatColElements(2, $columnSize: 1fr,$space: 10rem);
+                        margin: 4.5rem 0 9rem;
+                        align-items: center;
+            
+                        &-artwork{  @include backgroundBlockArtwork; margin-left: auto; }
+                }
+        }
+
+        //Article > Block > Project hero
+        &__phero{
+
+                //Article > Block > Project Hero > Header
+                &-header{
+                        &--title{  @include boxHeading($font-size-big, $bold-weight, $app-color-gray);  }
+
+                        &--desc{  @include boxDescContent($font-size-normal, $regular-weight, $app-color-silver);   }
+                }
+         }
+
+        //Article > Block > Component
+        &__component{
+                margin-top:2rem;
+                width:100%;
+
+                &_modifier{ border-bottom: 1px solid $app-color-lsilver; }
+
+                &-inner{
+                        @include inlineFlexBetweenElements;
+
+                        padding-bottom:1rem;
+                }
+
+                &-info{
+                        &--author{ margin-left:1rem; color:$app-color-gray; }
+
+                        &--date{  margin-left:1rem; color:$app-color-blue; }
+
+                         &--image{
+                                display:inline-block;
+                                width:2rem;
+                                height:2rem;
+                                background-image:url('../images/favicons/favicon.png');
+                                transform:translateY(0.7rem);
+                                @include  fullImage;
+                        }
+                }
+
+                &-discussion{
+                        @include  inlineSpecyficElements;
+                        grid-template-columns: 1fr 0.5fr;
+
+                        &-share{
+                                        
+                                &-social{
+                                        display:inline-block;
+                                        position:relative;
+                                        width:2.375rem;
+                                        height:2.375rem;
+                                        border-radius:100%;
+
+                                        .social__icon{
+                                                position:absolute;
+                                                left:50%;
+                                                top:50%;
+                                                transform:translate(-50%, -50%);
+                                        }
+
+                                        @for $i from 1 through length($social-color) {
+                                                &:nth-child(#{$i}) {
+                                                        margin-right:1rem;
+                                                        border:0.15rem solid nth($social-color,$i);
+                                                        color:nth($social-color,$i) ;
+                                                }
+                                        }
+                                }
+                        }
+                                
+                        &-join{ margin-left:3rem; }
+                }
+        }
+
+        // Article > Block > Content
+        &__content{
+                margin:5rem 0 5rem;
+
+                &-inner{ @include boxCenter; text-align: left; }
+
+                &--body{ @include  draftJsModule; }
+        }
+
+        // Article > Block > Holders
+        &__holders{
+                @include boxCenter;
+
+                &-tags { text-align: left;  margin-right:1rem; }
+        }
+
+        // Article > Block > Discussion
+        &__discussion{
+                padding-top:6rem;
+                @include boxCenter;
+         }
+ }
+
+/*-----------------------------
+*              Related
+*----------------------------*/
+
+.related{
+        @include sectionDefinition;
+
+        &_theme{ background-color: $app-color-white; border-top: 1px solid $app-color-lsilver; }
+
+        // Related > Block
+        &__block{ @include blockPadding }
+
+        &--project{ .related__header{ @include sectionArticleHeaderLeft(37rem,$app-color-gray, $app-color-blue);  }}
+
+        &--book{   .related__header{ @include sectionArticleHeaderLeft(37rem,$app-color-gray, $app-color-red);  }  }
+
+        // Related > Block > Articles
+        @include articleItems;
+}
+
+/*-----------------------------
+*               RWD
+*----------------------------*/
+
+@media (max-width: 1366px) {
+        .article{
+                &_theme{ background-color: $app-color-red;  }
+        }
+}
+
+@media (max-width: 1024px) {
+        .article{
+                &_theme{ background-color: $app-color-green;  }
+        }
+}
+    
+@media (max-width: 768px) {
+        .article{
+                &_theme{ background-color: $app-color-blue;  }
+         }      
+}
+    
+@media (max-width: 414px) {
+        .article{
+                &_theme{ background-color: $app-color-yellow;  }
+         }
+}

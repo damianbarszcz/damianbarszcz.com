@@ -1,0 +1,59 @@
+/*-----------------------------------------------------
+ * Statistics (https://www.damianbarszcz.com)
+ * Copyright 2020 Damian Barszcz
+ *-----------------------------------------------------*/
+
+/*-----------------------------
+*          Statistics
+*----------------------------*/
+
+        .statistics{
+                @include sectionDefinition;
+
+                &_theme{ background-color:$app-color-white; }
+
+                // Statistics > Block
+                &__block{ @include accountPadding }
+
+                @include navBrand(100%, 18rem, 3.515625rem);
+
+                // Statistics > Block > Inner
+                &__inner{
+                        padding:4.5rem;
+                        margin:3.5rem auto 0rem auto;
+                        width:67.5rem;
+                        height:43.125rem;
+
+                        @include boxStyling;
+
+                        // Statistics > Block > Inner > Header
+                        &-header{
+                                margin:auto;
+                                text-align: center;
+
+                                &--desc{   @include boxDescContent($font-size-extra-normal, $regular-weight, $app-color-silver);   }
+                        }
+
+                        // Statistics > Block > Inner > Functions
+                        &-functions{
+                                margin-top:3.5rem;
+                                @include inlineRepeatColElements(3, 1fr, 2rem);
+
+                                &-item{
+                                        text-align: center;
+                                        
+                                        &-caption{margin:1rem 2rem;@include boxDescContent($font-size-normal, $regular-weight, $app-color-silver);  }
+                                }
+                        }
+
+                        // Statistics > Block > Inner > Run Functions
+                        &-funrun{
+                                margin-top:3.5rem;
+
+                                &--caption{
+                                        text-align:center;
+                                        color:$app-color-dark;
+                                }
+                        }
+                 }
+        }

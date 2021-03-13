@@ -1,0 +1,102 @@
+/*-----------------------------------------------------
+ * Contact (https://www.damianbarszcz.com)
+ * Copyright 2020 Damian Barszcz
+ *-----------------------------------------------------*/
+
+/*-----------------------------
+*        Contact banner
+*----------------------------*/
+
+        .contact-banner{
+                @include sectionDefinition;
+
+                &_theme{
+                        background-color:darken($app-color-green, 30%);
+                        background-image:url('../images/contact/bg-halftone-black-20p.png');
+                }
+
+                //  Contact Banner > Block
+                &__block{   @include blockPadding(7rem, 0, 12rem, 0);  }
+
+                 // Contact Banner > Block > Header
+                 &__block  &__header{
+                        @include sectionHeaderCenter;
+                        padding-bottom:3rem;
+                }
+        }
+
+/*-----------------------------
+*           Contact me
+*----------------------------*/
+
+        .contact-me{
+                @include sectionDefinition;
+
+                &_theme{  background-color: $app-color-white; }
+
+                //Contact me > Inner
+                &__block &__inner {
+                        @include boxCenter(40rem);
+                        @include boxStyling;
+                        
+                        padding:4rem;
+                        transform:translateY(-12rem);
+                }
+
+                //Contact me > Inner > Success
+                &__block &__inner &__success{
+
+                        //Contact me > Inner > Success > Header
+                        &-header{
+                                @include inlineSpecyficElements;
+                                margin-top:2.5rem;
+
+                                &--title{  @include boxHeading($font-size-big, $bold-weight, $app-color-gray);  }
+
+                                &--desc{  @include boxDescContent($font-size-normal, $regular-weight, $app-color-silver);   }
+                        }
+                }
+
+                //Contact me > Inner > Form
+                &__block &__inner &__form{
+                        @include inlineSpecyficElements;
+                        grid-row-gap: 2.75rem;
+                        text-align: left;
+
+                       &-inline{
+                                display:grid;
+                                grid-template-columns: repeat(2, 1fr);
+                                grid-column-gap: calc(2rem - 1px); 
+                        }
+
+                        .control-buttons{   @include  inlineFlexBetweenElements;  }
+                }
+         }
+
+/*-----------------------------
+*               RWD
+*----------------------------*/
+
+@media (max-width: 1366px) {
+        .contact-banner{
+                &_theme{ background-color: $app-color-red;  }
+        }
+}
+
+@media (max-width: 1024px) {
+        .contact-banner{
+                &_theme{ background-color: $app-color-green;  }
+        }
+}
+    
+@media (max-width: 768px) {
+        .contact-banner{
+                &_theme{ background-color: $app-color-blue;  }
+         }      
+}
+    
+@media (max-width: 414px) {
+        .contact-banner{
+                &_theme{ background-color: $app-color-yellow;  }
+         }
+}

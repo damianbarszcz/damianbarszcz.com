@@ -1,0 +1,275 @@
+
+/*-----------------------------
+*    Account Navigation
+*----------------------------*/
+
+.account-nav{
+        position:fixed;
+        min-height:4.25rem;
+        min-width: 100%;
+
+        &_theme{ 
+                background-color:$app-color-white;
+                border-bottom: 1px solid $app-color-lsilver;
+                z-index:6;
+        }
+
+        // Account nav > Block 
+        &__block{   
+                display:flex;
+                align-items:center;
+                margin:auto;
+                padding: 0rem 2.5rem;
+                max-width:120rem;
+        }
+
+        // Account nav > Block > Brand
+        @include navBrand;
+
+    //Account nav > Block > Search
+    &__block &__search{
+            position:relative;
+            margin-left:10rem;
+
+            &-form{
+
+                    .form__input{
+                            padding: 0.9rem 0.5rem;
+                            width:25rem;
+                            max-width:25rem;
+
+                            &_effect{
+                                    background-color:$app-color-lsilver;
+                                    border:1px solid $app-color-lsilver;
+                                    border-radius:0.35rem;
+                                    text-indent:0.5rem;
+                            }
+
+                            &:focus, &:active{  background-color:$app-color-white;   }
+                    }
+
+                   .form__button{
+                            display:block;
+
+                            &:focus,&:active {
+                                    outline: none !important;
+                                    box-shadow: none;
+                                    border:0 !important;
+                            }
+
+                            .material-icons{
+                                    margin:0;
+                                    padding:0;
+
+                                    &--search{ 
+                                            position:absolute; 
+                                            right:0.75rem; 
+                                            top:0.75rem;
+                                            color:$app-color-gray;
+                                    }
+                            }
+                    }
+            }
+    }
+
+    // Account nav > Block > Fun
+       &__block &__fun{
+               display: flex;
+               margin-left:auto;
+
+               // Account nav > Block > Fun > User
+               &-user{
+                    display: flex;
+                    align-items: center;
+                    position: relative;
+                    padding:0.75rem 1.5rem;
+                    cursor: pointer;
+
+                    &_effect{  border-right: 1px solid $app-color-lsilver; text-decoration:none;  }
+
+                    &:focus,&:active {  outline: none !important;  }
+
+                    &-artwork{
+                            display:inline-block;
+                            margin-right:1rem;
+                            width:2.75rem;
+                            height:2.75rem;
+
+                            &_modifier{
+                                    border-radius:100%;
+                                    background-repeat:no-repeat;
+                                    background-size:contain;
+                                    background-position:center;
+                            }
+                    }
+
+                    &-content{
+                            display:inline-block;
+                            margin-right:2rem;
+
+                            &_modifier{
+                                    text-align: left;
+                                    color:$app-color-gray;
+                            }
+
+                            &--name{
+                                    display:block;
+
+                                    &_effect{   font-size:$font-size-normal * 0.9; }
+                            }
+
+                             &--role{
+                                    display:block;
+                                    margin-top:0.5rem;
+
+                                    &_effect{ font-size:$font-size-small;  }
+                            }
+                    }
+                    
+                    .material-icons{
+
+                            &--arrow{
+                                    position:absolute;
+                                    top:1.5rem;
+                                    right:1rem;
+                            }
+                    }
+            }
+
+            // Account nav > Block > Account dropdown
+            .account-dropdown{
+                    position:absolute;
+                    width:18rem;
+                    min-height: 8rem;
+                    max-height: 22.5rem;
+                    transform:translate(-3.1rem, 4.35rem);
+
+                    &_modifier{
+                            background-color:$app-color-white;
+                            border: 1px solid $app-color-lsilver;
+                    }
+
+                    &__inner{ padding:1.5rem 0rem; }
+
+                     // Account nav > Block > Account dropdown > Profile
+                     &__inner, &__profile{
+                            padding-bottom:2.5rem;
+
+                            &_modifier{  border-bottom: 1px solid $app-color-lsilver;  }
+
+                            &--artwork{
+                                    display:block;
+                                    margin:auto;
+                                    width:4.5rem;
+                                    height:4.5rem;
+        
+                                    &_modifier{
+                                            border-radius:100%;
+                                            background-repeat:no-repeat;
+                                            background-size:contain;
+                                            background-position:center;
+                                    }
+                            }
+
+                            &-info{
+                                    text-align:center;
+                                    font-size:$font-size-normal * 0.85;
+                                    color:$app-color-dark;
+
+                                    &--name{  line-height: 2.5rem;}
+                        
+                                    &--email{ margin-bottom:2rem; }
+
+                                    &--btn{
+                                            padding:0.8rem 1rem;
+                                            border:1px solid $app-color-lsilver;
+                                            font-size:$font-size-small;
+                                    }
+                            }
+                    }
+
+                    // Account nav > Block > Account dropdown > Rules
+                    &__rules{
+                            display: flex;
+                            justify-content: space-between;
+                            padding:1rem 1.5rem;
+
+                            &_modifier{  border-bottom: 1px solid $app-color-lsilver; }
+
+                            &-link{
+                                    display: inline-block;
+                                    font-size:$font-size-normal * 0.8;
+                                    text-decoration:none;
+                                    color:$app-color-dark;
+                            }
+                    }
+
+                    // Account nav > Block > Account dropdown > Actions
+                    &__actions{
+                            margin:2rem auto;
+                            text-align: center;
+
+                            &--btn{
+                                    padding:0.8rem 1rem;
+                                    border:1px solid $app-color-lsilver !important;
+                                    font-size:$font-size-small;
+                            }
+                    }
+            }
+
+            // Account nav > Block > Fun > Mode
+            &-mode{
+                    position:relative;
+                    width:7rem;
+
+                    &-switch{
+                            position: absolute;
+                            left:50%;
+                            top:50%;
+                            width:3.125rem;
+                            height:0.9375rem;
+                            transform:translate(-50%,-50%);
+
+                            &--light{  background-color:$app-color-lsilver;  }
+
+                            &--dark{  background-color:$app-color-dark;  }
+
+                            &_modifier{
+                                    border-radius:10px;
+                                    cursor:pointer;
+                            }
+
+                            &--input{  visibility: hidden;   }
+
+                            &--slider{
+                                    display:block;
+                                    position: absolute;
+                                    left:-0.25rem;
+                                    top:-0.25rem;
+                                    width:1.5rem;
+                                    height: 1.5rem;
+
+                                    &_modifier{
+                                            background-color:$app-color-white;
+                                            background-repeat:no-repeat;
+                                            background-size:70%;
+                                            background-position:center;
+                                            box-shadow: 0 2px 10px rgba(0,0,0,.2);
+                                            border-radius: 100%;
+                                            transition: $FastEaseInOut;
+                                    }
+                            }
+
+                            .dark--mode{  
+                                    transform:translateX(2rem); 
+                                    background-image:url('/images/member/global/moonIcon.svg');
+                             }
+
+                            .light--mode{  
+                                    transform:translateX(0rem); 
+                                    background-image:url('/images/member/global/sunIcon.svg'); 
+                            }
+                    }
+            }
+    }
+}

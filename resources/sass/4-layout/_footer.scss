@@ -1,0 +1,78 @@
+/*-----------------------------------------------------
+ * Footer (https://www.damianbarszcz.com)
+ * Copyright 2020 Damian Barszcz
+ *-----------------------------------------------------*/
+
+/*-----------------------------
+*        Primary footer
+*----------------------------*/
+
+.primary-footer{
+        @include sectionDefinition;
+
+        &_theme{
+                background-color: $app-color-white;
+                box-shadow: 0 -0.1875rem 0.125rem $app-color-lsilver;
+        }
+        
+        // Primary footer > Block
+        &__block{ @include blockPadding(6rem, 0, 3rem); }
+
+        // Primary footer > Inner 
+        &__inner{
+                display:grid;
+                grid-template-columns: 1.4fr 0.8fr 0.8fr;
+                grid-column-gap: 5rem;
+        }
+
+        // Primary footer > Inner > Box
+        &__inner &__box{
+                
+                &:nth-child(4){
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin-top:3.5rem;
+                        grid-column-start: 1;
+                        grid-column-end: 4;
+                }
+
+                &--title{  @include boxHeading($font-size-extra-normal, $light-bold-weight, $app-color-gray);  margin-bottom:2rem; }
+
+                &--desc{   @include boxDescContent($font-size-normal, $regular-weight, $app-color-silver);   }
+
+                &-navigation{
+                        margin-top:1.75rem;
+
+                        .box-navigation__list{
+
+                                &-link{
+                                        @include boxDescContent($font-size-normal, $regular-weight, $app-color-silver);  
+
+                                        &:hover{ color:$app-color-dark; }
+                                }
+                        }
+                }
+
+                &-copyright{ color:$app-color-silver;  }
+
+                &-rules{
+                        padding: 1rem 0rem;
+                        
+                        &__list{
+                                display: inline;
+
+                                &-item{
+                                        display: inline-block;
+                                        margin-left:2rem;
+
+                                        .box-rules__list-link{
+                                                @include boxDescContent($font-size-normal, $regular-weight, $app-color-silver);  
+
+                                                &:hover{  color:$app-color-dark; }
+                                        }
+                                }
+                        }
+                }
+        }
+}

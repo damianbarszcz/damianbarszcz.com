@@ -1,0 +1,82 @@
+
+/*-----------------------------------------------------
+ * Search (https://www.damianbarszcz.com)
+ * Copyright 2020 Damian Barszcz
+ *-----------------------------------------------------*/
+
+/*-----------------------------
+*            GL search
+*----------------------------*/
+
+.gl-search{
+        @include sectionDefinition;
+
+        &_theme{ background-color: $app-color-white; }
+
+         // GL search > Block
+        &__block{ @include blockPadding(8rem, 0, 6rem); }
+
+         // GL search > Block  > Header
+        &__block &__header{
+            @include sectionArticleHeaderLeft(31.5rem, $app-color-gray, $app-color-blue);  
+            min-width: 100%;
+        }
+
+        // / GL search > Block > Inner
+        &__block &__inner{
+                margin-top:2rem;
+                @include  inlineRepeatColElements(3, 1fr, 3rem);
+         }
+
+        // GL search > Block  > Inner > Article
+        @include articleItems;
+
+         // GL search > Block > Inner > Noarticle
+        &__inner &__noarticle{
+                position: relative;
+                grid-column-start: 1; 
+                grid-column-end: 4;  
+                min-height: 18.75rem;
+
+                &-header{
+                        position: absolute;
+                        left:50%;
+                        top:50%;
+                        transform:translate(-50%,-50%);
+
+                        &_modifier{   text-align:center;   }
+
+                        @include boxHeading($font-size-big,$bold-weight, $app-color-gray);  
+
+                        &--desc{margin-top: 2rem;@include boxDescContent; }
+                }
+        }
+}
+
+/*-----------------------------
+*               RWD
+*----------------------------*/
+
+@media (max-width: 1366px) {
+        .gl-search{
+                &_theme{ background-color: $app-color-red;  }
+        }
+}
+
+@media (max-width: 1024px) {
+        .gl-search{
+                &_theme{ background-color: $app-color-green;  }
+        }
+}
+    
+@media (max-width: 768px) {
+        .gl-search{
+                &_theme{ background-color: $app-color-blue;  }
+         }      
+}
+    
+@media (max-width: 414px) {
+        .gl-search{
+                &_theme{ background-color: $app-color-yellow;  }
+         }
+}

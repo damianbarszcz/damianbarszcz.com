@@ -1,0 +1,53 @@
+/*-----------------------------------------------------
+ * Sidenav (https://www.damianbarszcz.com)
+ * Copyright 2020 Damian Barszcz
+ *-----------------------------------------------------*/
+
+/*-----------------------------
+*      Account Sidenav
+*----------------------------*/
+
+    .sidenav{
+        position:fixed;
+        width:15%;
+        max-width: 17.8125rem;
+        min-height: 100%;
+
+        &_theme{
+                background-color:$app-color-white;
+                border-right:1px solid $app-color-lsilver;
+                z-index:5;
+        }
+
+        // Sidenav > Block 
+        &__block{ @include accountPadding(6rem, 0rem, 6rem, 2rem) }
+    
+        // Sidenav > Block > List
+        &__block &__list{
+             @include inlineRepeatRowElements(8,1fr,2rem);
+             margin-bottom:3.5rem;
+
+             // Sidenav > Block > List > Link
+             &-link{
+                    display: flex;
+                    align-items: center;
+                    padding:0rem 0.5rem;
+                    @include boxDescContent;
+
+                    &--active{
+                            border-right:0.35rem solid $app-color-blue;
+                            color:$app-color-blue;
+                    }
+
+                    &-caption{
+                            margin-left:2rem;
+                            font-weight: $bold-weight;
+
+                            &--active{ color:$app-color-dark;   }
+                    }
+             }
+        }
+
+        // Sidenav > Block > Box 
+        &__block &__box{ margin-left:1.5rem; }
+}

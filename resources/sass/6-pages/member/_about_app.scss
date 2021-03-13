@@ -1,0 +1,48 @@
+/*-----------------------------------------------------
+ * About App (https://www.damianbarszcz.com)
+ * Copyright 2020 Damian Barszcz
+ *-----------------------------------------------------*/
+
+/*-----------------------------
+*         About app
+*----------------------------*/
+
+        .about-app{
+                @include sectionDefinition;
+
+                &_theme{ background-color:$app-color-white; }
+
+                // About app  > Block 
+                &__block{ @include accountPadding }
+
+                // About app  > Block > Section header
+                @include sectionAccountHeader;
+            
+                // About app > Block > Inner
+                &__block &__inner{
+                        margin:3.5rem auto 0rem auto;
+                        padding:3rem 4rem;
+                        width:32.8125rem;
+                        height:42.5rem;
+                        text-align: center;
+
+                        @include boxStyling;
+
+                        &-content{
+                                @include boxCenter;
+                                margin-top:3rem;
+
+                                &--title{
+                                        @include boxHeading($font-size-big);
+                                        margin-bottom:1.5rem;
+                                }
+
+                                &-desc{
+                                        @include boxDescContent;
+                                        margin-bottom:1rem;
+
+                                        &:last-child{ line-height:3.4375rem; }
+                                }
+                        }
+                }
+        }

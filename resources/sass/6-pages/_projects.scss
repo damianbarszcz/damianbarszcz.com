@@ -1,0 +1,199 @@
+/*-----------------------------------------------------
+ * Projects (https://www.damianbarszcz.com)
+ * Copyright 2020 Damian Barszcz
+ *-----------------------------------------------------*/
+
+/*-----------------------------
+*        Projects banner
+*----------------------------*/
+
+        .projects-banner{
+                @include sectionDefinition;
+
+                &_theme{ background-color:  $app-color-white; }
+
+                // Project banner > Block 
+                &__block{   @include blockPadding(8rem, 0, 2rem, 0);  }
+
+                // Project banner > Block > Header
+                &__block &__header{ @include sectionArticleHeaderCenter;  }
+        }
+
+/*-----------------------------
+*        New project
+*----------------------------*/
+
+         .new-project{
+                @include sectionDefinition;
+
+                &_theme{ background-color:  $app-color-white; }
+        
+                // New project > Block 
+                &__block{   @include blockPadding(5rem, 0, 5rem) }
+
+                //New Project > Block > Inner > Article
+                &__inner &__article{
+
+                        &-link{
+                                @include inlineRepeatColElements(2, $columnSize: 1fr,$space: 10rem);
+                                align-items: center;
+                        }
+
+                        &-artwork{  @include backgroundBlockArtwork; margin-right: auto; }
+
+                        &-header{
+                                &--title{  @include boxHeading($font-size-big, $bold-weight, $app-color-gray);  }
+
+                                &--desc{  @include boxDescContent($font-size-normal, $regular-weight, $app-color-silver);   }
+                        }
+               }
+        }
+
+/*-----------------------------
+*        Latest projects
+*----------------------------*/
+
+        .latest-projects{
+                @include sectionDefinition;
+
+                &_theme{  background-color:  $app-color-white; }
+        
+                // Latest projects > Block 
+                &__block{ @include blockPadding(4.5rem, 0, 4.5rem, 0); }
+
+                 // Latest projects > Block  > Header
+                 &__block &__header{ 
+                        margin-top:1rem;
+
+                        &--title{  @include boxHeading($font-size-big, $bold-weight, $app-color-blue);  }
+                }
+
+                @include innerProjectDisplay('projects');        
+        }
+
+
+/*-----------------------------
+*        Old projects
+*----------------------------*/
+
+    .old-projects{
+        @include sectionDefinition;
+
+        &_theme{  background-color: $app-color-white;  }
+                
+        // Old projects > Block 
+        &__block{   @include blockPadding(2rem, 0, 2rem) }
+
+        // Old Projects > Block  > Lines
+        &__block  &__lines{
+                @include boxCenter(20rem);
+
+                &-part{
+                        display:block;
+                        text-align:center;
+                        margin-bottom:1rem;
+                        width:100%;
+                        height:0.125rem;
+                        
+                        @for $i from 1 through length($blog-color) {
+                                &:nth-child(#{$i}) {  background-color: nth($blog-color,$i);  }
+                        }
+                }
+        }
+
+        // Old Projects > Block > Inner 
+        &__block  &__inner{  
+                @include boxCenter;
+                margin-top:3.5rem;
+        }
+                   
+        // Old Projects > Block > Inner  > Article
+        &__inner  &__article{
+                margin-bottom:2rem;
+                width: 100%;
+                min-height:3.25rem;
+                padding:1.25rem 1rem;
+
+                &_modifier{
+                        @include boxStyling;
+                        @include transition;
+
+                        &:hover{ box-shadow: 0 1px 6px 0 rgba(0,0,0,0.16); }
+                } 
+
+                &-link{                                
+                        display: grid;
+                        grid-template-columns: 0.5fr 1fr;
+                        align-items: center;
+                        grid-column-gap:2rem;
+                }
+
+                &-header{
+                        text-align: left;
+
+                        &--title{  @include boxHeading($font-size-extra-normal, $bold-weight, $app-color-gray); margin-bottom:-1rem;}
+
+                        &--desc{  @include boxDescContent; white-space: pre-wrap; margin:0; padding:0;}
+                }
+
+                &-artwork{  @include  backgroundBlockArtwork(12rem,10rem) }
+        }
+}
+
+ /*-----------------------------
+ *        Pagination nav
+*----------------------------*/
+
+        .pagination-nav{
+                @include sectionDefinition;
+                
+                &_theme{  background-color: $app-color-white; }
+
+                 // Pagination-nav > Block 
+                &__block{   @include blockPadding(1rem, 0, 6rem) }
+
+                // Pagination-nav > Block > List
+                &__block  &__list{
+                        @include boxCenter;
+
+                        &-link{
+                                display:inline-block;
+                                position:relative;
+                                padding:0.7rem 0.8rem;
+
+                                &_effect{
+                                        font-size:$font-size-normal*1.1;
+                                        border: 0.2rem solid $app-color-gray;
+                                        color:$app-color-gray;
+                                }
+                        }
+                }
+        }
+
+/*-----------------------------
+*               RWD
+*----------------------------*/
+
+@media (max-width: 1366px) {
+        .projects-banner{
+                &_theme{ background-color: $app-color-red;  }
+        }
+}
+
+@media (max-width: 1024px) {
+        .projects-banner{
+                &_theme{ background-color: $app-color-green;  }
+        }
+}
+    
+@media (max-width: 768px) {
+        .projects-banner{
+                &_theme{ background-color: $app-color-blue;  }
+         }      
+}
+    
+@media (max-width: 414px) {
+        .projects-banner{
+                &_theme{ background-color: $app-color-yellow;  }
+         }
+}

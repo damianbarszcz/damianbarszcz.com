@@ -1,0 +1,117 @@
+/*-----------------------------------------------------
+ * Personal (https://www.damianbarszcz.com)
+ * Copyright 2020 Damian Barszcz
+ *-----------------------------------------------------*/
+
+/*-----------------------------
+*        Personal info
+*----------------------------*/
+
+        .personal-info{
+                @include sectionDefinition;
+
+            &_theme{ background-color:$app-color-white;  }
+
+            // Personal info > Block
+            &__block{ @include accountPadding }
+            
+             // Personal info > Block > Section header
+            @include sectionAccountHeader;
+            
+                // Personal info > Block > Inner
+                &__block &__inner{
+                        margin:3.5rem auto 0rem auto;
+                        padding:3rem 4rem;
+                        width:62.8125rem;
+                }
+
+                 // Personal info > Block > Inner > Profile
+                  &__profile{
+                        @include boxStyling;
+                        
+                        // Personal info > Block > Inner > Profile > Head
+                        &-head{
+                                @include inlineFlexBetweenElements;
+                                padding:3rem 2rem;
+                                border-bottom:1px solid $app-color-lsilver;
+
+                                &-header{
+                                        width:50%;
+                
+                                        &--title{ @include boxHeading($font-size-extra-normal,$bold-weight,$app-color-blue);  }
+
+                                        &--desc{ @include boxDescContent;   }
+                                }
+
+                                &-artwork{
+                                        width:50%;
+
+                                        .image--personal-head{
+                                                display: block;
+                                                margin-left:auto;
+                                        }
+                                }
+                        }
+
+                        // Personal info > Block > Inner > Profile > Body
+                        &-body{
+                                display: grid;
+                                grid-template-columns: repeat(3,1fr);
+
+                                [name="personal-biogram"]{
+                                        grid-column-start: 2;
+                                        grid-column-end: 4;
+                                }
+
+                                &-header{
+                                        padding:2rem 1rem;
+                                        grid-column-start: 1;
+                                        grid-column-end: 4;
+
+                                        &_modifier{
+                                                text-align: center;
+                                                border-bottom:1px solid $app-color-lsilver;
+                                        }
+
+                                        &--title{ @include boxHeading($font-size-normal,$bold-weight,$app-color-gray);  }
+                                }
+
+                                &-link{
+                                        display: block;
+                                        padding:2rem 1rem;
+                                        text-align: center;
+
+                                        &_modifier{
+                                                border-right:1px solid $app-color-lsilver;
+                                                border-bottom:1px solid $app-color-lsilver;
+                                        }
+
+                                        &:hover{  background-color:$app-color-lsilver; }
+
+                                        &:nth-child(3){  border-right:none;  }
+
+                                        &:nth-child(6){  border-right:none;  }
+
+                                        &:nth-child(10){  border-right:none;  }
+                                        
+                                        &--icon{
+                                                display: block;
+                                                margin:auto;
+
+                                                .avatar-icon{    border-radius: 100%;  }        
+                                        }
+
+                                        &--caption{
+                                                display: block;
+                                                @include boxDescContent($font-size-normal,$bold-weight,$app-color-gray); 
+                                        }
+
+                                        &--title{
+                                                margin-top:1rem;
+                                                @include boxDescContent; 
+                                        }
+                                 }
+                         }
+                }
+        }
+        

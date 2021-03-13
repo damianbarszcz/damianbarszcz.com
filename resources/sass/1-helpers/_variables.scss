@@ -1,0 +1,65 @@
+
+// -------------------------
+//  Font variables
+// -------------------------
+
+// Primary font using in application
+$page-font: 'Segoe UI', sans-serif;  
+
+// Font size configuration
+$font-size-extra-small: 0.75rem;
+$font-size-small: 0.85rem;
+$font-size-normal: 1rem;
+$font-size-extra-normal: 1.25rem;
+$font-size-big: 1.75rem;
+$font-size-extra-big: 2.75rem;
+$font-size-huge: 4rem;
+
+// Font weight configuration
+$light-weight: 100;
+$semi-light-weight: 200;
+$light-bold-weight: 500;
+$regular-weight: 400;
+$bold-weight: 600;
+$ultra-bold-weight: 700;
+
+// -------------------------
+//  Color variables
+// -------------------------
+
+// Page colors
+$app-color-green: #1ec177;
+$app-color-blue: #2f98f7;
+$app-color-yellow: #ffbf73;
+$app-color-red: #ff3062;
+$app-color-purple: #5705cd;
+$app-color-black: #000000;
+$app-color-dark: #161b20;
+$app-color-gray: #5b5b5b;
+$app-color-silver: #6b6969;
+$app-color-lsilver: #ebebeb;
+$app-color-white: #ffffff;
+$app-no-color: transparent;
+
+// Social media colors
+$facebook-color: #3b5998;
+$twitter-color: #1dcaff;
+$instagram-color: #d9534f;
+$github-color:  #bb2a8d;
+$envelope-color: $app-color-dark;
+
+$social-color:($facebook-color, $twitter-color,$envelope-color);
+$blog-color: ($app-color-blue,$app-color-red,$app-color-green,$app-color-yellow);
+
+
+// -------------------------
+//  Transitions
+// -------------------------
+
+$FastEaseInOut: 0.2s ease-in-out;
+
+// -------------------------
+//  BG transparent
+// -------------------------
+
+$light-transparent: 0.75;

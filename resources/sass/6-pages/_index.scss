@@ -1,0 +1,163 @@
+
+/*-----------------------------------------------------
+ * Index (https://www.damianbarszcz.com)
+ * Copyright 2020 Damian Barszcz
+ *-----------------------------------------------------*/
+
+/*-----------------------------
+*          Main header
+*----------------------------*/
+
+.main-header{
+        @include sectionDefinition;
+
+        &_theme{ background-color: $app-color-dark; }
+
+        // Main header > Block
+        &__block{                 
+                @include inlineRepeatColElements(6,1fr,0rem);
+                padding-bottom:2rem;
+                align-items: center;
+        }
+   
+        // Main header > Block  > Brand
+         @include navBrand(100%, 18rem, 3.515625rem,true);
+
+        // Main header > Block  > Menu
+        @include navMenu("main-header",true);
+
+        // Main header > Block  > earch
+        @include navSearch(true);
+}
+
+/*-----------------------------
+*             New pub
+*----------------------------*/
+
+.new-pub{
+        @include sectionDefinition;
+
+        &_theme{ background-color: $app-color-dark; }
+
+        // New pub  > Block
+        &__block{ @include blockPadding(1rem, 0, 6rem); }
+
+        // New pub  > Block > Article
+        @include articleItems(49.64%, false, true);
+}
+
+
+/*-----------------------------
+*             Projects
+*----------------------------*/
+
+.projects{
+        @include sectionDefinition;
+
+        &_theme{  background-color:  $app-color-white; }
+
+        // Projects > Block 
+        &__block{ @include blockPadding;}
+
+         // Latest projects > Block  > Header
+         &__block &__header{
+                @include inlineFlexBetweenElements;
+                @include sectionArticleHeaderLeft(31.5rem, $app-color-gray, $app-color-blue);  
+                min-width: 100%;
+        }
+
+        // Latest projects > Block  > Inner
+        @include innerProjectDisplay('projects');        
+}
+
+/*-----------------------------
+*              Library
+*----------------------------*/
+
+.library{
+        @include sectionDefinition;
+
+        &_theme{ background-color: $app-color-white; }
+
+        &__block{ @include blockPadding;}
+        
+        // Library > Block > Header
+         &__block &__header{
+                @include inlineFlexBetweenElements;
+                @include sectionArticleHeaderLeft(31.5rem, $app-color-gray, $app-color-red);  
+                min-width: 100%;
+        }
+
+        // Latest projects > Block  > Books
+        &-books{
+                margin-bottom:6.5rem;
+                @include articleItems(66.64%,true);
+
+                &__info{
+                        width:348px;
+
+                        &--desc{   @include boxDescContent; }
+                }
+
+                 // Library > Block > Books > Box > Buttons
+                &__buttons{
+                        display:block;
+                        margin-top:3rem;
+                        min-width:100%;
+                
+                        &-item{
+                                display:block;
+                                position: relative;
+                                width:4rem;
+                                height: 4rem;
+                
+                                &_modifier{
+                                        border-radius:100%;
+                                        background-color:$app-color-white;
+                                        border: 1px solid $app-color-lsilver;
+                                        cursor:pointer;
+                                }
+                            
+                                &:focus{  outline: none;  }
+                            
+                                .material-icons{
+                                        font-size: $font-size-big;
+                                        color:$app-color-gray;
+                                }
+                        }
+                }
+                
+                [data-button="prev-button"]{  margin-right:auto;  }
+                
+                [data-button="next-button"]{ margin-left:auto;  }
+        }
+}
+
+
+/*-----------------------------
+*               RWD
+*----------------------------*/
+
+@media (max-width: 1366px) {
+        .main-header{
+                &_theme{ background-color: $app-color-red;  }
+        }
+}
+
+@media (max-width: 1024px) {
+        .main-header{
+                &_theme{ background-color: $app-color-green;  }
+        }
+}
+    
+@media (max-width: 768px) {
+        .main-header{
+                &_theme{ background-color: $app-color-blue;  }
+         }      
+}
+    
+@media (max-width: 414px) {
+        .main-header{
+                &_theme{ background-color: $app-color-yellow;  }
+         }
+}

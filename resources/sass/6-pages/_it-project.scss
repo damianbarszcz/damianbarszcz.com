@@ -1,0 +1,149 @@
+/*-----------------------------------------------------
+ * Projects (https://www.damianbarszcz.com)
+ * Copyright 2020 Damian Barszcz
+ *-----------------------------------------------------*/
+
+/*-----------------------------
+*        IT project
+*----------------------------*/
+
+        .it-project{
+                position: relative;
+                min-width: 100%;
+                z-index:1;
+
+                &_theme{  background-color:$app-color-white; }
+
+                &__block{ padding:6rem 0 6rem; }
+
+                &__create{
+                        margin-top:3.5rem;
+
+                        &_modifier{
+                                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+                                border-radius:5px;
+                        }
+
+                        &-header{
+                                 padding:1.5rem 3rem;
+
+                                 &_modifier{
+                                        border-bottom:0.15rem solid $app-color-lsilver;
+                                 }
+
+                                 &-title{
+                                         font-family:$page-font;
+                                        font-weight:$light-bold-weight;
+                                        color:$app-color-blue;
+                                 }
+                        }
+
+                        &-form{
+                                display:block;
+                                padding:3rem 3rem;
+
+                                .form-group{
+                                        margin-bottom:1rem;
+
+                                        .project__label {
+                                                display:block;
+                                                padding-top:0rem;
+                                                margin-bottom:1rem;
+
+                                                &_effect{
+                                                        font-size:$font-size-normal;
+                                                        font-weight:$light-bold-weight;
+                                                        color:$app-color-dark;
+                                                }
+
+                                                &-tip{
+                                                        font-weight:$regular-weight;
+                                                        color:$app-color-dark-silver;
+                                                }
+                                        }
+
+                                        .form__input-project{
+                                                padding: 1.5rem 1rem;
+                                                border:0.125rem solid rgb(244, 244, 244);
+                                                background-color:$app-color-white;
+                                                border-radius:5px;
+                                                font-family:$page-font;
+                                                font-size:$font-size-normal * 0.925;
+                                                text-indent: 0px;
+
+                                                &:focus{ border:0.125rem solid $app-color-blue;   }
+
+
+                                                 &--file{
+                                                        display:block;
+                                                        width: 0.1px;
+                                                        height: 0.1px;
+                                                        opacity: 0;
+                                                        overflow: hidden;
+                                                        position: absolute ;
+                                                        z-index: -1;
+                                                }
+                                        }
+
+                                        .post__validation{
+                                                padding-top:1rem;
+
+                                                &-alert{
+                                                        font-family:$page-font;
+                                                        font-size:$font-size-normal * 0.9;
+                                                        color:$app-color-red;
+                                                }
+                                        }
+
+                                        &--submit{ 
+                                                margin-top:3.5rem; 
+
+                                                .form__button-submit{
+                                                        padding: 0.75rem 1rem;
+                                                        font-size:$font-size-normal * 0.85;
+                                                }
+                                        }
+
+                                        &--file{ 
+                                                margin-top:3.5rem; 
+
+                                                .project__label--file {
+                                                        display:block;
+                                                        position:relative;
+                                                        padding:0.8rem 1rem;
+                                                        max-width:220px;
+
+                                                        &_effect{
+                                                                transition:$FastEaseInOut;
+                                                                font-family:$page-font;
+                                                                font-size:$font-size-normal * 0.9;
+                                                                font-weight:$light-bold-weight;
+                                                                cursor:pointer;
+                                                        }
+
+                                                        .post-file-background{
+                                                                display:inline-block;
+                                                                margin-left:1rem;
+                                                                transform:translateY(-0.35rem);
+                                                        }
+                                                }
+                                        }
+
+                                        [data-post-file="no-selected"]{
+                                                border: 2px solid $app-color-red;
+                                                color:$app-color-red;
+
+                                                &:hover{
+                                                       border: 2px solid $app-color-dark;
+                                                        color:$app-color-dark;
+                                                }
+                                        }
+
+                                        [data-post-file="file-selected"]{
+                                                border: 2px solid $app-color-green;
+                                                color:$app-color-green;
+                                        }
+                                }
+                        }
+                }
+        }

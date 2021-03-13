@@ -1,0 +1,1156 @@
+
+/*---------------------------------
+*           Section definitions
+*---------------------------------*/
+
+        @mixin sectionDefinition {
+                position: relative;
+                min-width: 100%;
+                z-index:1;
+        }
+
+        @mixin blockPadding($top:6rem, $left:0rem, $bottom:6rem, $right:0rem){
+                padding: $top $left $bottom $right;
+        }
+
+        @mixin accountPadding($top:6.5rem, $left:2.5rem, $bottom:6.5rem, $right:22.5rem){
+                padding: $top $left $bottom $right;
+        }
+
+/*---------------------------------
+*           Section elements 
+*---------------------------------*/
+
+        @mixin inlineRepeatElements($nr_elem:3, $rowSize: 1fr, $columnSize: 1fr, $vertical:center,$space: 2rem){
+                display: grid;
+                grid-template-columns: repeat($nr_elem,$columnSize);
+                grid-template-rows: repeat($nr_elem,$rowSize);
+                align-items: $vertical;
+                grid-column-gap: $space;
+                grid-row-gap:$space;
+        }
+
+        @mixin inlineRepeatColElements($nr_elem:3, $columnSize: 1fr,$space: 1rem){
+                display: grid;
+                grid-template-columns: repeat($nr_elem,$columnSize);
+                grid-column-gap: $space;
+                grid-row-gap:$space;
+        }
+
+        @mixin inlineRepeatRowElements($nr_elem:3, $rowSize: 1fr,$space: 1rem){
+                display: grid;
+                grid-template-rows: repeat($nr_elem,$rowSize);
+                grid-column-gap: $space;
+                grid-row-gap:$space;
+        }
+
+        @mixin inlineSpecyficElements($vertical:center){
+                display: grid;
+                align-items: $vertical;
+        }
+
+        @mixin inlineFlexSpecyficElements($vertical:center){
+                display: flex;
+                align-items: $vertical;
+        }
+
+        @mixin inlineFlexStartElements{
+                display: flex;
+                align-items: center;
+        }
+
+        @mixin inlineFlexBetweenElements{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+        }
+
+        @mixin inlineFlexCenterElements{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+        }
+
+/*---------------------------------
+*              Box settings
+*---------------------------------*/
+
+        @mixin boxStyling {
+                background-color:$app-color-white;
+                border: 1px solid $app-color-lsilver;
+                border-radius: 0.5rem;
+        }
+
+        @mixin boxStylingDark {
+                background-color:$app-color-dark;
+                border: 1px solid darken($app-color-dark, 30%);
+                border-radius: 0.5rem;
+        }
+
+        @mixin boxCenter($width:45rem){
+                margin:auto;
+                max-width:$width;
+                text-align: center;
+        }
+
+        @mixin boxLeft($width:45rem){
+                margin-right:auto;
+                max-width:$width;
+                text-align: left;
+        }
+
+        @mixin boxRight($width:45rem){
+                margin-left:auto;
+                max-width:$width;
+                text-align: left;
+        }
+
+        @mixin boxInnerLink{
+                display: block;
+                padding:1rem;
+                left:0;
+                top:0;
+                width:100%;
+                height: 100%;
+                text-decoration: none;    
+        }
+
+/*---------------------------------
+*               Headers
+*---------------------------------*/
+
+@mixin sectionHeaderCenter($size:40rem, $color: $app-color-white, $strongColor:$app-color-red){
+        
+        @include boxCenter($size);
+                        
+        &--title{  @include boxHeading($font-size-extra-big, $bold-weight, $app-color-white);  }
+
+        &--desc{   @include boxDescContent($font-size-normal, $regular-weight, $app-color-white);   }
+}
+
+@mixin sectionArticleHeaderCenter($size:31.5rem, $color: $app-color-gray, $strongColor:$app-color-blue){
+        
+        @include boxCenter($size);
+                        
+        &--title{  
+                @include boxHeading($font-size-big, $light-weight, $color);  
+
+                .strong-title{ color: $strongColor;  font-weight: $bold-weight; }
+        }
+}
+
+@mixin sectionArticleHeaderLeft($size:31.5rem, $color: $app-color-white, $strongColor:$app-color-red){
+        
+        @include boxLeft($size);
+                        
+        &--title{  
+                @include boxHeading($font-size-big, $light-weight, $color);  
+
+                .strong-title{ color: $strongColor;  font-weight: $bold-weight; }
+        }
+}
+
+@mixin sectionAccountHeader{
+
+        &__header{
+                @include inlineFlexStartElements;
+
+                &-square{
+                        position: relative;
+                        width:4rem;
+                        height:4rem;
+
+                        &_modifier{
+                                background-color:$app-color-blue;
+                                color:$app-color-white;
+                        }
+
+                        .material-icons{
+                                position: absolute;
+                                left:50%;
+                                top:50%;
+                                transform:translate(-50%,-50%);
+                                font-size:$font-size-extra-big;
+                        }
+                }
+
+                &-content{
+                        margin-left:1.5rem;
+                        
+                        &--title{  @include boxHeading($font-size-extra-normal, $bold-weight, $app-color-gray);  }
+
+                        &--subtitle{   @include boxDescContent($font-size-normal, $regular-weight, $app-color-silver);   }
+                }
+        }
+}
+
+
+/*---------------------------------
+*              Box content
+*---------------------------------*/
+
+        // Box heading
+        @mixin boxHeading($font-size:$font-size-extra-normal,$style-weight:$bold-weight,$text-color:$app-color-gray){
+                $styleHeight:0rem;
+
+                @if $font-size>=$font-size-huge{ $styleHeight: 10rem;  }
+
+                @else if $font-size>=$font-size-extra-big{ $styleHeight: 8rem;  }
+
+                @else if $font-size>=$font-size-big{$styleHeight: 3.25rem; margin-bottom:1.5rem; }
+
+                @else if $font-size>=$font-size-extra-normal{  $styleHeight: 2.35rem;    }
+
+                @else if $font-size>=$font-size-normal{ $styleHeight: 2rem; }
+
+                @else if $font-size>=$font-size-small{ $styleHeight: 1.5rem; }
+
+                @else if $font-size>=$font-size-extra-small{ $styleHeight: 1rem; }
+                
+                line-height: $styleHeight;
+                font-size:$font-size;
+                font-weight:$style-weight;
+                color:$text-color;
+        }
+
+        // Box descryption content
+        @mixin boxDescContent($font-size:$font-size-normal, $style-weight:$regular-weight, $text-color:$app-color-silver){
+                $styleHeight:0rem;
+
+                @if $font-size>=$font-size-extra-normal{  $styleHeight: 2.35rem;    }
+
+                @else if $font-size>=$font-size-normal{  $styleHeight: 2rem;    }
+
+                @else if $font-size>=$font-size-small{ $styleHeight: 1.5rem;    }
+
+                @else if $font-size>=$font-size-extra-small{  $styleHeight: 1rem;    }
+
+                line-height: $styleHeight;
+                font-size:$font-size;
+                font-weight:$style-weight;
+                color:$text-color;
+        }
+              
+/*---------------------------------
+*                 Buttons
+*---------------------------------*/
+
+        @mixin pageButton($btn-width:100px) {
+                @if($btn-width <= 100px){   font-size:$font-size-normal*0.8; padding: $btn-width*0.15 $btn-width*0.2; line-height: 1rem; }
+
+                @else if($btn-width <= 130px){
+                        font-size:$font-size-normal*0.9; padding: $btn-width*0.15 $btn-width*0.2; line-height: 1.5rem;
+                }
+
+                @else{  font-size:$font-size-normal; padding: $btn-width*0.1 $btn-width*0.2;  }
+
+                display: inline-block;
+                position: relative;
+                min-width:$btn-width;
+                height:$btn-width * 0.5;
+                box-shadow: -6px 8px 20px rgba(0, 0, 0, 0.1);
+                border-radius: 0.3125rem;
+                font-family:$page-font;
+                font-weight: $bold-weight;
+                text-transform:uppercase;
+                white-space: nowrap;
+                cursor: pointer;
+                z-index:100;
+                outline: none;
+                text-align: center;
+
+                @include transition(0.2s);
+        }
+
+/*---------------------------------
+*                 Loading
+*---------------------------------*/
+
+       @mixin loading-spinner($activeColor: $app-color-purple, $selector: "&::before", $time: 0.5s) {
+
+        @keyframes spinner {
+                
+                0% { transform: translate3d(-50%, -50%, 0) rotate(0deg);  }
+
+                100% {  transform: translate3d(-50%, -50%, 0) rotate(360deg);  }
+        }
+
+        position: absolute;
+        animation-play-state: running;
+        opacity: 1;
+        
+        &.-paused { 
+                animation-play-state: paused; 
+                opacity: 0.2;
+                transition: opacity linear 0.1s;
+        }
+
+        #{$selector} {
+                        position: absolute;
+                        top:50%;
+                        right:0;
+                        left:50%;
+                        height: 27px;
+                        width: 27px;
+                        content: "";
+                        animation: $time linear infinite spinner;
+                        animation-play-state: inherit;
+                        border: solid 3px $app-color-white;
+                        border-bottom-color: #{$activeColor};
+                        border-radius: 50%;
+                        opacity: inherit;
+                        will-change: transform;
+                        transform:translate(-50%,-50%);
+                }
+        }
+
+/*---------------------------------
+*                 Artwork
+*---------------------------------*/
+
+        @mixin fullImage{
+                background-repeat: no-repeat;
+                background-size:contain;
+                background-position: center;
+        }
+
+        @mixin setItemArtwork($padding: 66.64%){
+                padding-top: $padding;
+                width: 100%;
+                height: 0;
+                background-size: contain;
+                background-repeat: no-repeat;
+        }
+
+        @mixin  backgroundBlockArtwork($wth: 26rem, $hgh:26rem){
+                display:inline-block; 
+                width:$wth;
+                height:$hgh;
+                overflow: hidden;
+        }
+
+/*---------------------------------
+*            Article items
+*---------------------------------*/
+
+@mixin articleItems($padding: 66.64%, $carousel:false, $mainPage:false){
+
+        // Block > Inner
+        &__inner{
+                @if  $mainPage{ margin-top:0rem;  }
+
+                @else{   margin-top:3.5rem;}
+
+                @if $carousel{
+                        display: grid;
+                        grid-auto-flow: column;
+                        grid-gap: 3em;
+                }
+
+                @else if $mainPage{ @include  inlineRepeatColElements(1, 1fr, 0rem);  }
+
+                @else{    @include  inlineRepeatColElements(3, 1fr, 3rem); }
+        }
+                
+        // Block > Inner > Article
+       &__inner &__article{
+                @if $mainPage{ padding:2rem;}
+                @else{ padding:1.25rem 1rem;   }
+
+                @if $carousel{ width:348px; }
+
+                &_modifier{
+                        @if $mainPage{
+                                @include boxStylingDark;
+        
+                                &:hover{  box-shadow: -6px 8px 20px rgba(0, 0, 0, 0.1); }
+                        }
+
+                        @else{
+                                @include boxStyling;
+                                
+                                &:hover{ box-shadow: 0 1px 6px 0 rgba(0,0,0,0.16); }
+                        }
+
+                        @include transition;
+                } 
+
+                &-link{                 
+                        display:flex;
+                        flex-flow: row wrap;
+                        justify-content: space-between;  
+                        align-items: center;
+                        min-height: 100%;
+                }
+
+                &-artwork{  @include setItemArtwork($padding);  }
+
+                &-header{
+                        margin-top:1rem;
+                        @if $mainPage{
+                        max-width:45rem;
+
+                                &--title{  @include boxHeading($font-size-extra-normal, $bold-weight, $app-color-white); }
+
+                                &--desc{  @include boxDescContent($font-size-normal, $regular-weight, $app-color-silver); white-space: pre-wrap; }
+                        }
+
+                        @else{
+                                &--title{  @include boxHeading($font-size-normal, $bold-weight, $app-color-gray); }
+
+                                &--desc{  @include boxDescContent; white-space: pre-wrap; }                              
+                        }
+                }
+
+                &-category{                        
+                        margin-top:1rem;
+                        @include pageButton(90px);
+                }
+
+                $bookCategory: (#{$app-color-red}:"programming", #{$app-color-blue}:"development", #{$app-color-yellow}:"astrophisics", #{app-color-green}:"business");
+
+                @each $color, $category in $bookCategory {
+                        [data-book-category="#{$category}"]{
+                                border:0.15rem solid $color;
+                                color:$color;
+                        }
+                }
+
+                [data-article-category="Book"]{
+                        border:0.15rem solid $app-color-red;
+                        color:$app-color-red;
+                }
+
+                [data-article-category="Project"]{
+                        border:0.15rem solid $app-color-blue;
+                        color:$app-color-blue;
+                }
+        }
+}
+
+
+@mixin  innerProjectDisplay($className){
+        
+         // Latest projects > Block > Inner
+        &__inner{
+                display: grid;
+                grid-template-columns: 0.75fr 1fr;
+                grid-auto-rows: 1fr;
+                grid-column-gap: 7.5rem;
+                margin-top:3.5rem;
+                        
+                &-left{
+
+                        .#{$className}__article{
+                                display:flex;
+                                flex-flow: column wrap;
+                                justify-content: space-between;
+                
+                                &_modifier{
+                                        @include boxStyling;
+                                        @include transition;
+                
+                                        &:hover{ box-shadow: 0 1px 6px 0 rgba(0,0,0,0.16); }
+                                } 
+
+                                &-link{ @include boxInnerLink; }
+
+                                &-header{
+                                        margin-bottom:1rem;
+                                        
+                                        &--title{  @include boxHeading($font-size-extra-normal, $bold-weight, $app-color-gray); margin-bottom:1rem; }
+
+                                        &--desc{  @include boxDescContent; white-space: pre-wrap; }
+                                }
+
+                                &-artwork{  @include setItemArtwork(100%);  }
+                        }
+                }
+                        
+                // Latest projects  > Inner > Right
+                &-right{
+                        display: grid;
+                        grid-auto-rows: 1fr;
+                        grid-row-gap: 3.5rem;
+
+                        .#{$className}__article{
+                
+                                &_modifier{
+                                        @include boxStyling;
+                                        @include transition;
+                
+                                        &:hover{ box-shadow: 0 1px 6px 0 rgba(0,0,0,0.16); }
+                                } 
+
+                                &-link{                                
+                                        display: grid;
+                                        grid-template-columns: 1fr 0.7fr;
+                                        grid-column-gap: 3rem;
+                                        padding: 1.5rem 1rem;
+                                }
+
+                                &-header{
+                                        &--title{  @include boxHeading($font-size-extra-normal, $bold-weight, $app-color-gray); margin-bottom:1rem;}
+
+                                        &--desc{  @include boxDescContent; white-space: pre-wrap; }
+                                }
+
+                                &-artwork{  @include  backgroundBlockArtwork(12.5rem,12.5rem) }
+                        }
+                }
+        }
+}
+
+/*---------------------------------
+*              Navigation
+*---------------------------------*/
+
+@mixin navBrand($bd_wth: 15.3125rem, $lg_wth:10.2rem, $lg_hgh:2rem, $mainHeader:false){
+        
+        &__brand{
+                display: inline-block;
+                max-width: $bd_wth;
+
+                @if $mainHeader{
+                        padding:2rem 0 1rem;
+                        grid-column-start: 1;
+                        grid-column-end: 7;
+                        text-align: center;
+                }
+        
+                &-logo{
+                        width:$lg_wth;
+                        height: $lg_hgh;
+    
+                        &--yellow{ fill:$app-color-yellow; }
+                        &--blue{ fill:$app-color-blue; }
+                        &--red{ fill:$app-color-red; }
+                        &--green{ fill:$app-color-green; }
+
+                        &--dark{
+                                @if $mainHeader{ fill:$app-color-white;  }
+
+                                @else{  fill:$app-color-gray; }
+                        }
+                }
+
+                &-section{
+                        position: absolute;
+                        top:50%;
+                        left:12rem;
+                        transform:translateY(-50%);
+            
+                        &_modifier{
+                                border-bottom:1.5px solid $app-no-color;
+                                text-transform: uppercase;
+                                font-weight: $bold-weight;
+                        }
+
+                        &::before{
+                                position: absolute;
+                                top:50%;
+                                left:-1rem;
+                                width:0.125rem;
+                                height: 1.45rem;
+                                content:'';
+                                transform:translateY(-50%);
+                        }
+                }
+        }
+}
+
+
+@mixin navMenu($menuName:"navigation",$mainHeader:false){
+
+        &__menu{
+                text-align: center;
+
+                @if $mainHeader{
+                        margin-top:1rem;
+                        grid-column-start:1;
+                        grid-column-end:7;
+                }
+
+                @else{
+                        grid-column-start:2;
+                        grid-column-end:6;
+                }
+                
+                &-list{
+                        list-style: none;
+                        padding: 0;
+
+                        &-item{  
+                                display: inline; 
+                                position: relative; 
+                        
+                                @for $i from 1 through length($blog-color) {
+                                &:nth-child(#{$i}) {
+                                        .#{$menuName}__menu-list-link{
+                                                @if $mainHeader{
+                                                        color:$app-color-white;
+                                                }
+                                                &::after{ 
+                                                        @extend .nav-link-color; 
+                                                        background-color:nth($blog-color,$i) 
+                                                }  
+
+                                                &:hover{  
+                                                        color: nth($blog-color,$i);
+                                                        &::after{ opacity: 1; transform: translateY(15px); }
+                
+                                                        &:focus{ opacity: 1; transform: translateY(15px);  }
+                                                }  
+                                        }
+                                }
+                                }
+                        }
+                        
+                        &-link{
+                                padding: 0rem 0.75rem 1rem;
+        
+                                &_effect{
+                                        transition:$FastEaseInOut;
+                                        text-transform: uppercase;
+                                        font-size:$font-size-normal;
+                                        font-weight:$bold-weight;
+                                }
+                        }
+                }
+        }
+}
+
+
+@mixin navSearch($mainHeader:false){
+
+        &__search{
+                position: absolute;
+                left:50%;
+                width: 25.125rem;
+                height:3rem;
+                transform: translateX(-50%);
+                
+
+                &-form{
+                        width:100%;
+
+                        .form__button{
+                                color:$app-color-gray;
+                                
+                               &--search{ position:absolute; top:0.8rem; left:-2rem; }
+
+                               &--close{ position:absolute;   top:0.8rem; right:-2rem; }
+                        }
+
+                        .form__input{                  
+                                height:3rem; 
+                                border:none;  
+                                background-color:$app-no-color;
+                        }
+                }
+        }
+
+        .form__button{
+                @if $mainHeader{ color:$app-color-white;  }
+                @else{ color:$app-color-gray; }
+
+                &--open{ text-align: right; }
+        }
+}
+
+/*---------------------------------
+*        Account article item
+*---------------------------------*/
+
+@mixin accountArticleItem(){
+
+        @include sectionDefinition;
+
+        &_theme{ background-color:$app-color-white; }
+
+                //  accountArticleItem > Block 
+                &__block{ @include accountPadding }
+
+                //  accountArticleItem > Block > Section header
+                @include sectionAccountHeader;
+
+                // accountArticleItems > Block > Inner
+                &__block &__inner{
+                        margin-top:3.5rem;
+                        @include inlineRepeatColElements(4, 1fr, 2rem);
+
+                        // accountArticleItem > Block > Inner > Item
+                        &-item{
+                                @include inlineFlexBetweenElements;
+                                flex-flow: column wrap;
+                                padding:2rem 1.75rem;
+
+                                @include boxStyling;
+
+                                //  accountArticleItem > Block > Inner > Item > Header
+                                &-header{
+                                        &--title{ @include boxHeading($font-size-extra-normal);    }
+
+                                        &--desc{ display:block; padding-top:1rem;  @include boxDescContent; }
+                                }
+
+                                //  accountArticleItem > Block > Inner > Item > Category
+                                &-category{
+                                        margin-top:0.5rem;
+                                        min-width: 100%;
+
+                                        &--desc{ @include boxDescContent; }
+
+                                        $bookCategory: (#{$app-color-red}:"programming", #{$app-color-blue}:"development", #{$app-color-yellow}:"astrophisics", #{app-color-green}:"business");
+
+                                        @each $color, $category in $bookCategory {
+                                                [data-book-category="#{$category}"]{
+                                                        color:$color;
+                                                }
+                                        }
+                                }
+
+                                // accountArticleItem > Block > Inner > Item > Pub
+                                &-pub{
+                                        @include inlineFlexBetweenElements; 
+                                        margin-top:1rem;
+                                        min-width: 100%;
+
+                                        &--author{ @include boxDescContent($font-size-small);  }
+
+                                        &--date{ @include boxDescContent($font-size-small);    }
+
+                                        &--type{ @include boxDescContent($font-size-small);    }
+                                }
+
+                                 // accountArticleItem > Block > Inner > Item > Pub
+                                 &-prop{
+                                        margin-top:1rem;
+                                        margin-right: auto;
+                                
+                                        &--desc{
+                                               @include boxDescContent($font-size-small); 
+                                                margin-bottom:1rem;
+                                        }
+                                 }
+
+                                // accountArticleItem > Block > Inner > Item > Tags
+                                &-tags{
+                                        margin-right:auto;
+                                        margin-top:1.5rem;
+                                
+                                        &-item{
+                                                display: inline-block;
+                                                padding: 0.5rem 0.8rem;
+                                
+                                                &_modifier{
+                                                        font-size:$font-size-normal * 0.9;
+                                                        font-weight:$bold-weight;
+                                                }
+                                        }
+                                        
+                                        @for $i from 4 through length($blog-color) {
+                                                &:nth-child(#{$i}) {
+                                                        border: 2px solid nth($blog-color,$i);
+                                                        color:nth($blog-color,$i);
+                                                }
+                                        }
+                                }
+
+                        // accountArticleItem > Block > Inner > Item > Action
+                        &-action{
+                                margin-top:2.5rem;
+                                min-width:100%; 
+                                
+                                &-buttons{ @include inlineFlexBetweenElements; }
+                         }
+                }
+        }
+}
+
+/*------------------------------------
+*   Create & Update Publication
+*-------------------------------------*/
+
+@mixin pubCreator(){
+        @include sectionDefinition;
+
+        // pubCreator > Block
+        &__block{ @include accountPadding }
+
+        //  pubCreator > Block > Section header
+        @include sectionAccountHeader;
+        
+        // pubCreator > Block > Inner
+        &__block &__inner{  margin-top:2rem; }
+            
+                // pubCreator > Block > Inner > Form
+                &__block &__inner &__form{
+                        @include  inlineRepeatRowElements($nr_elem:2, $rowSize: 1fr,$space: 2.5rem);
+                        grid-template-columns: 1fr 1fr 0.65fr;
+
+                        // pubCreator > Block > Inner > Form > Content
+                        &-content{
+                                grid-column-start: 1;
+                                grid-column-end: 3;
+                                grid-row-start: 1;
+                                grid-row-end: 3;
+
+                                @include smartEdit;
+
+                                &-field{  padding-bottom:2.5rem;   }
+                        }
+
+                        // pubCreator > Block > Inner > Form > Picture
+                        &-picture{
+                                display:flex;
+                                flex-direction: column;
+                                grid-column-start: 3;
+                                grid-column-end: 4;
+                                grid-row-start: 1;
+                                grid-row-end: 2;
+
+                                @include boxStyling;
+
+                                // pubCreator > Block > Inner > Form > Picture > Header
+                                &-header{
+                                        padding: 0.75rem 1.5rem;
+       
+                                        &_modifier{ border-bottom: 1px solid $app-color-lsilver;  }
+                                                
+                                        &--title{ @include boxDescContent;   }
+                                }
+
+                                // pubCreator > Block > Inner > Form > Picture > Inner
+                                &-inner{
+                                        padding:1rem;
+                                        min-width: 100%;
+                                        height: 100%;
+                                        
+                                        &-space{
+                                                @include  inlineFlexStartElements;
+                                                flex-direction: column;
+                                                justify-content: center;
+                                                height: 90%;
+                                                cursor: pointer;
+                                                transition: $FastEaseInOut;
+
+                                                &--desc{
+                                                        margin-top:1rem;
+                                                        text-align: center;
+                                                }
+                                        }
+
+                                        .no-selected{
+                                                border: 2px dashed $app-color-lsilver;
+                                                @include boxDescContent($font-size-normal, $bold-weight, $app-color-silver); 
+                                        }
+
+                                        .pub-selected{
+                                                border: 2px dashed $app-color-green;
+                                                @include boxDescContent($font-size-normal, $bold-weight, $app-color-green);  
+                                        }
+                                }
+                        }
+
+                          // pubCreator > Block > Inner > Form > Categories
+                          &-categories{               
+                                grid-column-start: 1;
+                                grid-column-end: 2;
+                                grid-row-start: 3;
+                                grid-row-end: 3;
+                                max-height: 150px;
+
+                                @include boxStyling;                          
+                            
+                                &-header{
+                                        padding: 0.75rem 1.5rem;
+
+                                        &_modifier{ border-bottom: 1px solid $app-color-lsilver;  }
+                                                
+                                        &--title{ @include boxDescContent;   }
+                                }
+                                
+                                // pubCreator > Block > Inner > Form > Categories > Box
+                                &-box{
+                                        @include inlineRepeatColElements(4,1fr,0.5rem);
+                                        justify-items:center;
+                                        margin:0 0.5rem 1rem;
+                                }
+
+                                &-item{
+                                        @include inlineFlexStartElements;
+                                        position: relative;
+                                        padding:1rem 0rem;
+
+                                        &-label{ 
+                                                display:block;
+                                                cursor:pointer; 
+                
+                                                &-caption{
+                                                        margin-left:0.25rem;
+                                                        @include boxDescContent; 
+                                                }
+                                        }
+
+                                        &-radio{
+                                                display:inline-block;
+                                                position: relative;
+                                                height: 16px;
+                                                width: 16px;
+                
+                                                &::before{
+                                                        display:block;
+                                                        position:absolute;
+                                                        content:'';
+                                                        left:50%;
+                                                        top:50%;
+                                                        transform:translate(-50%,-50%);
+                                                        height: 8px;
+                                                        width: 8px;
+                                                        border-radius: 100%;
+                                                }
+                
+                                                &_modifier{
+                                                        transition: border .25s linear;
+                                                        border-width:0.15rem;
+                                                        border-style:solid;
+                                                        border-radius: 100%;
+                                                        z-index: 5;
+                                                }
+                                        }
+
+                                        .category{
+                                                &--astrophysics{ 
+                                                        border-color: $app-color-blue;        
+                
+                                                        &::before{ background-color:$app-color-blue; }
+                                                }
+                
+                                                &--programming{ 
+                                                        border-color: $app-color-red; 
+                
+                                                        &::before{ background-color:$app-color-red; }
+                                                }
+                
+                                                &--business{ 
+                                                        border-color: $app-color-green; 
+                
+                                                        &::before{ background-color:$app-color-green; }
+                                                }
+                
+                                                &--development{ 
+                                                        border-color: $app-color-yellow; 
+                
+                                                        &::before{ background-color:$app-color-yellow; }
+                                                }
+                                         }
+                
+                                        .no-selected{  border-color: $app-color-gray; }
+                                }
+                                
+                                input[name="review_category"]{
+                                        position:absolute;
+                                        visibility:hidden;
+                                }
+                        }
+
+                        // pubCreator > Block > Inner > Form > Publish
+                        &-publish{
+                                @include boxStylingDark;
+                                grid-column-start: 3;
+                                grid-column-end: 4;
+                                grid-row-start: 2;
+                                grid-row-end: 2;
+
+                                &-header{
+                                        padding: 0.75rem 1.5rem;
+               
+                                        &_modifier{ border-bottom: 1px solid $app-color-gray;  }
+                                        
+                                        &--title{ @include boxDescContent($font-size-normal, $regular-weight, $app-color-white);   }
+                                   }
+
+                                &-status{
+                                        position: relative;
+           
+                                        &-btn{
+                                                @include  inlineFlexStartElements;
+                                                padding: 1rem 1.5rem;
+                                                border-bottom: 1px solid $app-color-gray;  
+                                                cursor:pointer;
+                                                
+                                                @include boxDescContent($font-size-normal, $regular-weight, $app-color-yellow); 
+                                                
+                                                &-caption{
+                                                        padding-right:1rem; 
+                                                        color:$app-color-white;
+                                                }
+           
+                                                .material-icons{
+           
+                                                        &-key{ padding-right:1rem; color:$app-color-white; }
+           
+                                                        &-arrow{
+                                                                position: absolute;
+                                                                right:1rem;
+                                                                color:$app-color-white; 
+                                                        }
+                                                }
+                                        }
+                                }
+
+                                &-run{
+                                        margin:1rem auto 0rem;
+                                        max-width: 90%;
+                                        @include inlineFlexBetweenElements;
+                                }
+                        }
+                }
+}
+
+
+/*------------------------------------*/
+/*               SmartEdit
+/*------------------------------------*/
+
+@mixin smartEdit{
+        .smarteditor {
+                position: relative;
+                min-height: 32.5rem;
+                max-height: 32.5rem;
+                max-width: 69.625rem;
+
+                @include draftJsModule;
+        
+                @include boxStyling;
+                
+                // Smarteditor > Toolbar
+                &__toolbar{
+                        position: relative;
+                        padding:0.25rem 0rem;
+                        
+                        &_modifier{ border-bottom: 1px solid $app-color-lsilver; }
+        
+                        // Smarteditor > Toolbar > Inner
+                        &-inner{    
+                                @include inlineFlexSpecyficElements;
+                                padding: 0 1rem;
+        
+                                &-item{  padding-right:2rem;  }
+                         }
+        
+                        // Smarteditor > Toolbar > Uninner
+                        &-uninner{
+                                @include inlineFlexSpecyficElements;
+                                padding: 0 1rem;
+        
+                                &_modifier{
+                                        transform: translateY(0.5rem);
+                                        background-color:#f5f5f5;
+                                }
+                        }
+        
+                        // Smarteditor > Toolbar > Item
+                        &-item{
+                                display: inline-block;
+                                position: relative;
+                                width:2.5rem;
+                                height: 2.5rem;
+        
+                                &_modifier{
+                                        transition: $FastEaseInOut;
+                                        text-decoration: none;
+                                        border-radius: 0.3125rem;
+                                        cursor: pointer;
+                                }
+        
+                                &:hover{  background-color:$app-color-lsilver;  }
+        
+                                .fr-svg{
+                                        display: block;
+                                        position: absolute;
+                                        left:50%;
+                                        top:50%;
+                                        transform: translate(-50%,-50%);
+                                        width:24px;
+                                        height:24px;
+                                        fill:$app-color-silver;
+                                }
+                        }
+        
+                        .active-tool{  .fr-svg{fill:$app-color-blue !important; } }
+                }
+        
+                // Smarteditor > System
+                &__system{  
+                        display:flex;
+                        flex-direction: column;
+        
+                        &-properties{
+                                position:absolute;
+                                bottom:0;
+                                padding:1rem;
+                                width:100%;
+                                height: 3rem;
+                                border-top:1px solid $app-color-lsilver;
+                                text-align: right;
+                                z-index:10000;
+        
+                                &-counter{
+                                        color:$app-color-gray;
+                                }
+                        }
+                }
+        
+                [data-smarteditor="without-uninner"]{
+                        .DraftEditor-root{
+                                padding:1rem;
+                                height: 26.25rem;
+                                max-height: 26.25rem;
+                                overflow-y: scroll; 
+                        }
+                }
+        
+                [data-smarteditor="with-uninner"]{
+                        .DraftEditor-root{
+                                padding:1rem;
+                                height: 23.25rem;
+                                max-height: 23.25rem;
+                                overflow-y: scroll; 
+                        }
+                }
+            }        
+}
+
+/*---------------------------------
+*            Animations
+*---------------------------------*/
+
+@mixin transition($speed:0.25s){
+        transition:$speed ease-in-out;
+}
+
+@keyframes fadeIn{
+        from{ opacity:0 }
+
+        to{ opacity:1 }
+}
+
+@keyframes fadeOut{
+        from{ opacity:0 }
+
+        to{ opacity:1 }
+}
+
+@keyframes fadeOutSide{
+        0%{ transform:translateX(0%); }
+
+        100%{ transform:translateX(100%); }
+}
+
+@keyframes fadeInSide{
+        0%{ transform:translateX(100%);  }
+
+        100%{ transform:translateX(0%);  }
+}

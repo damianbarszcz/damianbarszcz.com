@@ -1,0 +1,157 @@
+/*-----------------------------------------------------
+ * Calendar (https://www.damianbarszcz.com)
+ * Copyright 2020 Damian Barszcz
+ *-----------------------------------------------------*/
+
+/*-----------------------------
+*            Calendar
+*----------------------------*/
+
+        .calendar{
+            @include sectionDefinition;
+
+                // Calendar > Block
+                &__block{ @include accountPadding }
+
+                // Calendar > Section Account Header
+                @include sectionAccountHeader;
+            
+                // Calendar > Block > Inner
+                &__block &__inner{
+                        margin:3.5rem auto;
+                        max-width:  1300px;
+
+                        // Calendar > Block > Inner > Events
+                        &-events{
+                                padding:1rem 2rem;
+
+                                @include inlineRepeatColElements(5,1fr,1.5rem);
+                                align-items: center;
+
+                                @include boxStyling;
+                                
+                                // Calendar > Block > Inner > Events > News
+                                &-news{
+                                        padding:1.5rem 2rem;
+                                        text-align: center;
+
+                                        @include boxStyling;
+                                        
+                                        [data-event="project-publication"]{
+                                                border:2px solid $app-color-green;
+        
+                                                .material-icons{ color:$app-color-green; }
+                                        }
+        
+                                        [data-event="review-publication"]{
+                                                border:2px solid $app-color-red;
+        
+                                                .material-icons{ color:$app-color-red; }
+                                        }
+        
+                                        [data-event-title="project-publication"]{ color: $app-color-green; }
+        
+                                        [data-event-title="review-publication"]{ color: $app-color-red; }
+        
+                                         // Calendar > Block > Inner > Events > News >Artwork
+                                        &-artwork{
+                                                margin:auto;
+                                                width:3rem;
+                                                height:3rem;
+                                                border-radius: 100%;
+                                        }
+                                        
+                                         // Calendar > Block > Inner > Events > News > Info
+                                        &-info{
+                                                @include boxDescContent($font-size-small);
+                                                margin-top:1rem;
+                                        }
+
+                                        .material-icons{ margin-top:0.5rem;  }
+                                }
+
+                                // Calendar > Block > Inner > Events > Actions
+                                &-actions{
+                                        margin-left:auto;
+                                           
+                                        &-btn{
+                                                margin:auto;
+                                                width:4rem;
+                                                height:4rem;
+
+                                                &_modifier{
+                                                        background-color:$app-color-white;
+                                                        border:1px solid  $app-color-lsilver;
+                                                        border-radius:100%;
+                                                        cursor:pointer;
+                                                }
+                                         }
+                                }
+                        }
+
+                        // Calendar > Block > Inner > Schedule
+                        &-schedule{
+                                padding:2rem 3rem;
+                                margin-top:3.5rem;
+                                min-height:29rem;
+                            
+                                @include boxStyling;
+
+                                // Calendar > Block > Inner > Schedule  > Month
+                                &-month{
+                                        @include  inlineFlexStartElements;
+                                        padding:1.5rem 0rem;
+                                        margin:auto;
+                                        width: 50%;
+
+                                        &--btn{
+                                                @include boxHeading;
+                                                margin:auto;
+                                                text-align: center;
+                                                cursor:pointer;
+                                        }
+                                }
+                            
+                                // Calendar > Block > Inner > Schedule  > Weekdays                
+                                &-weekdays{
+                                        @include inlineRepeatColElements(7,1fr,0rem);
+                                        margin-top:1rem;
+                                        border-bottom: 1px solid $app-color-lsilver;
+                            
+                                        &-item{
+                                                padding: 1rem 0rem;
+                                                text-align: center;
+                            
+                                                &-title{
+                                                        @include boxDescContent($font-size-small, $bold-weight);
+                                                        text-transform: uppercase;
+                                                }
+                                        }
+                                }
+
+                                 // Calendar > Block > Inner > Schedule  > Days 
+                                &-days{
+                                        @include inlineRepeatColElements(7,1fr,0rem);
+                                        border-left: 1px solid $app-color-lsilver;
+                            
+                                        &-item{
+                                                position: relative;
+                                                padding: 2rem 0rem;
+                                                height: 5.75rem;
+                                                border-bottom: 1px solid $app-color-lsilver;
+                                                border-right: 1px solid $app-color-lsilver;
+                            
+                                                &-title{
+                                                        @include boxDescContent($font-size-normal, $bold-weight);
+                                                        position:absolute;
+                                                        right:1rem;
+                                                        bottom: 1rem;
+                                                        text-transform: uppercase;
+                                                }
+                            
+                                                .no--day{ color:#BFBFBF;      }
+                                        }
+                                 }                         
+                        }
+                }
+        }

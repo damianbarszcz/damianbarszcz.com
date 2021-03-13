@@ -1,0 +1,247 @@
+/*-----------------------------------------------------
+ * Overview (https://www.damianbarszcz.com)
+ * Copyright 2020 Damian Barszcz
+ *-----------------------------------------------------*/
+
+/*-----------------------------
+*          Overview 
+*----------------------------*/
+
+        .overview{
+                @include sectionDefinition;
+
+                &_theme{ background-color:$app-color-white; }
+
+                // Overview  > Block 
+                &__block{ @include accountPadding }
+
+                //Overview > Block > Header
+                @include sectionAccountHeader;
+
+                //Overview > Block > Inner
+                &__inner{
+                        display: grid;
+                        margin-top:3rem;
+                        grid-template-columns: 1.1fr 0.5fr 0.5fr;
+                        grid-template-rows: 1fr 1fr;
+                        grid-column-gap: 2rem;
+                        grid-row-gap: 2rem;
+
+                       /*-----------------------------
+                        *     Overview  > Pub
+                        *----------------------------*/
+                        &-pub{
+                                grid-row-start: 1;
+                                grid-row-end: 3;
+
+                                @include boxStyling;
+                        }
+
+                        &-pub &-header{
+                                @include inlineFlexBetweenElements;
+                                padding:2rem 2rem 0rem;
+                                
+                                &--title{ @include boxHeading;  }
+
+                                &--subtitle{    @include boxHeading; }
+                        }
+
+                        &-pub &-content{
+                                margin-top:2rem;
+                                min-width: 100%;
+
+                                &_modifier{  border-top:1px solid $app-color-lsilver;  }
+
+                                &-link{
+                                        @include  inlineSpecyficElements;
+                                        grid-template-columns: 0.1fr 1fr 0.3fr 0.05fr;
+                                        padding:1.2rem 2rem;
+                                        min-width: 100%;
+
+                                        &_modifier{  border-bottom:1px solid $app-color-lsilver;   }
+
+                                        &:last-child{  border-bottom:none; }
+
+                                        @include boxDescContent; 
+                                }
+                        }
+
+                       /*-----------------------------
+                        *     Overview  > About
+                        *----------------------------*/
+                        &-about{
+                                padding:1rem;
+
+                                @include boxStyling
+                        }
+
+                        &-about  &-header{
+                                padding:0.5rem;
+
+                                &--title{ @include boxDescContent;  }
+                        }
+
+                        .overview__inner-stats{
+                                margin-top:1rem;
+                                padding:0rem 0.5rem;
+
+                               &-item{
+                                        @include inlineFlexStartElements;
+
+                                        &-artwork{
+                                                @include inlineFlexCenterElements;
+                                                width:2.5rem;
+                                                height:2.5rem;
+                                                border-radius:100%;        
+                                                
+                                                .material-icons{ font-size:1rem; }
+                                        }
+
+                                        &-counter{
+                                                margin-left:auto;
+                                                font-weight:$bold-weight;
+                                        }
+
+                                        &-caption{
+                                                margin-left:1rem;
+                                                @include boxDescContent;
+                                        }
+                                        
+                                        @for $i from 1 through length($blog-color) {
+                                                &:nth-child(#{$i}) {
+                                                        margin-bottom:1.5rem;
+                                                        
+                                                        .overview__inner-stats-item-artwork{
+                                                                border: 0.15rem solid nth($blog-color,$i);
+                                                                color:nth($blog-color,$i) ;
+                                                        }
+                                        
+                                                        .overview__inner-stats-item-counter{
+                                                                color:nth($blog-color,$i);
+                                                        }
+                                                }
+                                        }
+                                }
+                        }
+                        
+                       /*-----------------------------
+                        *     Overview  > Events
+                        *----------------------------*/
+                        &-events{
+                                padding:1rem;
+
+                                @include boxStyling;
+                        }
+
+                        //Overview Events > Header
+                        &-events  &-header{
+                                padding:0.5rem;
+
+                                &--title{ @include boxDescContent;  }
+                        }
+
+                        .overview__inner-events-box{
+                                padding:1rem 0.5rem;
+                                max-height: 261px;
+                                overflow-y: scroll;
+                                scrollbar-color: $app-color-lsilver;
+                                scrollbar-width: thin;
+                        }
+
+                        //Overview Events > Events news
+                        .overview__inner-events-news{
+                                display: flex;
+                                align-items: center;
+                                margin-bottom:1rem;
+                                padding:1rem 1rem;
+                                text-align: center;
+
+                                @include boxStyling;
+
+                                [data-event="project-publication"]{
+                                        border:2px solid $app-color-green;
+
+                                        .material-icons{ color:$app-color-green; }
+                                }
+
+                                [data-event="review-publication"]{
+                                        border:2px solid $app-color-red;
+
+                                        .material-icons{ color:$app-color-red; }
+                                }
+
+                                [data-event-title="project-publication"]{ color: $app-color-green; }
+
+                                [data-event-title="review-publication"]{ color: $app-color-red; }
+
+                                &-artwork{
+                                        margin:auto;
+                                        width:4.5rem;
+                                        height:3rem;
+                                        border-radius: 100%;
+
+                                        .material-icons{ margin-top:0.5rem;  }
+                                }
+
+                                &-info{  text-align: left; margin-left:1.5rem; @include boxDescContent($font-size-small);   }
+                        }
+
+                       /*-----------------------------
+                        *   Overview  > Schedule
+                        *----------------------------*/
+                        &-schedule{
+                                padding:1rem;
+
+                                @include boxStyling;
+
+                                &-inner{
+                                        max-width:19.375rem;
+                                        max-height:270px;
+
+                                        .react-calendar{
+                                                border:none;
+
+                                                .react-calendar__tile{
+                                                        padding:0.5rem;
+                                                }
+                                        }
+                                }
+                        }
+
+                        &-schedule &-header{
+                                padding:0.5rem;
+
+                                &--title{ @include boxDescContent;  }
+                        }
+
+                       /*-----------------------------
+                        *   Overview  > Statistics
+                        *----------------------------*/
+
+                        &-statistics{
+                                padding: 1rem;
+        
+                                @include boxStyling;
+                        }
+
+                        &-statistics &-header{
+                                padding:0.5rem;
+
+                                &--title{ @include boxDescContent;  }
+                        }
+
+                        &-statistics &-box{
+                                margin-top:1rem;
+                                text-align: center;
+
+                                &--caption{
+                                        margin-top:1rem;
+                                        @include boxDescContent; 
+                                }
+
+                                &-button{  margin-top:1rem; }
+                        }
+                }
+        }
+        
+        

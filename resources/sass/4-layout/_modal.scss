@@ -1,0 +1,89 @@
+/*-----------------------------------------------------
+ * Sidenav (https://www.damianbarszcz.com)
+ * Copyright 2020 Damian Barszcz
+ *-----------------------------------------------------*/
+
+/*-----------------------------
+*         Pub modal
+*----------------------------*/
+
+.pub-modal{
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    
+        &_modifier{
+                outline: 0;
+                background-color:rgba(0,0,0,0.5);
+                z-index: 1050;
+        }
+        
+        // Pub modal > Dialog 
+        &__dialog{
+                display: block;
+                position:absolute;
+                left:50%;
+                top:50%;
+                width:61.25rem;
+                transform: translate(-50%,-50%);
+
+                // Pub modal > Dialog > Close
+                &-close{
+                        display: block;
+                        position: absolute;
+                        width:2rem;
+                        height:2rem;
+                        right:1rem;
+                        top:0.5rem;
+
+                        &_effect{
+                                z-index:500;
+                                cursor:pointer;
+                                color:$app-color-dark;
+                        }
+                
+                        &:focus{ outline: none; }
+                }
+
+                // Pub modal > Dialog > Inner
+                &-inner{
+                        display: grid;
+                        position: relative;
+                        width:100%;
+                        min-height:34.375rem;
+                        grid-template-columns: 1fr 1fr;
+                        grid-template-rows:1fr;
+                }
+                
+                // Pub modal > Dialog > Inner > Rev
+                &-inner &-rev{
+                        padding:2rem;
+                        background-color:$app-color-dark;
+
+                        &-header{
+                                text-align: center;
+
+                                &--title{ @include boxHeading;   }
+
+                                &--desc{  @include boxDescContent;  }
+                        }
+                }
+                
+                // Pub modal > Dialog > Inner > Proj
+                &-inner &-proj{
+                        padding:2rem;
+                        background-color:$app-color-white;
+
+                        &-header{
+                                text-align: center;
+                                
+                                &--title{ @include boxHeading;   }
+
+                                &--desc{  @include boxDescContent;  }
+                        }
+                }
+        }
+}
+  
