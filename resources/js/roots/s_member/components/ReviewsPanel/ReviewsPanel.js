@@ -23,9 +23,9 @@ const ReviewsPanel = (props) => {
                                                 <span className="reviews__header-square reviews__header-square_modifier"><i className="material-icons material-icons-outlined">  library_books  </i> </span>
 
                                                 <div className="reviews__header-content">
-                                                        <h1 className="reviews__header-content--title"> Reviews </h1>
+                                                        <h1 className="reviews__header-content--title"> Recenzje </h1>
 
-                                                        <p className="reviews__header-content--subtitle"> Dashboard | Reviews </p>
+                                                        <p className="reviews__header-content--subtitle"> Pulpit | Recenzje  </p>
                                                 </div>
                                         </header>
 
@@ -41,13 +41,13 @@ const ReviewsPanel = (props) => {
                                                         </header>
 
                                                         <div className="reviews__inner-item-category">
-                                                                <p className="reviews__inner-item-category--desc">Category: <strong data-book-category={ article.pub_category }>{ article.pub_category }</strong></p>
+                                                                <p className="reviews__inner-item-category--desc">Kategoria: <strong data-book-category={ article.pub_category }>{ article.pub_category }</strong></p>
                                                         </div>
 
                                                         <div className="reviews__inner-item-pub">
-                                                                <span className="reviews__inner-item-pub--author">by  <strong>Damian Barszcz</strong></span>
+                                                                <span className="reviews__inner-item-pub--author">Autor:  <strong>Damian Barszcz</strong></span>
 
-                                                                <span className="reviews__inner-item-pub--date">published: <strong><Moment format="DD/MM/YYYY">{article.date_of_publication}</Moment>  </strong></span>
+                                                                <span className="reviews__inner-item-pub--date">Data: <strong><Moment format="DD/MM/YYYY">{article.date_of_publication}</Moment>  </strong></span>
                                                         </div>
 
                                                         { article.pub_tags &&
@@ -57,8 +57,8 @@ const ReviewsPanel = (props) => {
                                                         
                                                         <div className="reviews__inner-item-action">
                                                                 <div className="reviews__inner-item-action-buttons">
-                                                                        <Link to={`/member/reviews/edit/${article.pub_url}`}  className="btn--small app__button--blue" target="_self"> Edit </Link>
-                                                                        <button  className="btn--small app__button--red" onClick={ (e) => this.getModal(e,article.pub_title, article.pub_url) } target="_self"> Delete </button>
+                                                                        <Link to={`/member/reviews/edit/${article.pub_url}`}  className="btn--small app__button--blue" target="_self"> Edytuj </Link>
+                                                                        <button  className="btn--small app__button--red" onClick={ (e) => props.getModal(e,article.pub_title, article.pub_url) } target="_self"> Usuń </button>
                                                                 </div>
                                                         </div>
                                                 </div>) }

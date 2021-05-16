@@ -1,5 +1,6 @@
 import React  from 'react';
 import LinesEllipsis from 'react-lines-ellipsis';
+import Moment from 'react-moment';
 
 /*
 =================================
@@ -18,6 +19,10 @@ export function getNewPublication(props) {
                                                 
                                         <span className="new-pub__article-header--desc">
                                                 <LinesEllipsis text={ article.pub_subtitle } maxLine='2' ellipsis='...' trimRight />
+                                        </span>
+
+                                        <span className="new-pub__article-header--desc">
+                                                <strong><Moment format="DD/MM/YYYY">{ article.date_of_publication }</Moment></strong>
                                         </span>
                                 </header>
         

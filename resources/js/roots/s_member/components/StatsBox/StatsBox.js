@@ -36,7 +36,7 @@ const StatsBox = () => {
                                                      </svg>
                                                 </div>
 
-                                                <p className="statistics__inner-header--desc">Check and manage your account statistics.</p>
+                                                <p className="statistics__inner-header--desc">Sprawdzaj statystyki swojego konta i zarządzaj nim.</p>
                                         </header>
 
                                         {  /*---  Statistics > Inner > Functions   ---*/   }
@@ -44,24 +44,24 @@ const StatsBox = () => {
                                              <div className="statistics__inner-functions-item">
                                                     <img src="../images/member/statistics/optimalize-publication.png" alt="Optimize publication" />
                                                                 
-                                                    <p className="statistics__inner-functions-item-caption">Optimize publication types in terms of display quantity.</p>
+                                                    <p className="statistics__inner-functions-item-caption">Zoptymalizuj typy publikacji pod względem ilości wyświetleń.</p>
                                             </div>
 
                                             <div className="statistics__inner-functions-item">
                                                     <img src="../images/member/statistics/device-session.png" alt="Device session" />
                                                                 
-                                                     <p className="statistics__inner-functions-item-caption">Check users device session.</p>
+                                                     <p className="statistics__inner-functions-item-caption">Sprawdaj sesję urządzeń użytkowników.</p>
                                             </div>
 
                                             <div className="statistics__inner-functions-item">
                                                     <img src="../images/member/statistics/real-time.png" alt="Real time" />
 
-                                                    <p className="statistics__inner-functions-item-caption">Display users real time session per page.</p>
+                                                    <p className="statistics__inner-functions-item-caption">Wyświetlaj sesje użytkowników w czasie rzeczywistym.</p>
                                             </div>
                                         </div>
 
                                         <div className="statistics__inner-funrun">
-                                                <p className="statistics__inner-funrun--caption">The service is not available yet. </p>
+                                                <p className="statistics__inner-funrun--caption">Usługa nie jest jeszcze dostępna. </p>
                                          </div>
                                     </div>
                             </div>

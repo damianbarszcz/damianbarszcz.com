@@ -27,7 +27,7 @@ class Projects extends Component {
         =======================
         */
         componentDidMount() {  
-                document.title = "Dashboard | Projects";
+                document.title = "Pulpit | Projekty";
 
                 axios.get(`/api/member/projects`)
                         .then(response => { 
@@ -92,7 +92,7 @@ class Projects extends Component {
                 const data = { password: this.state.password }
 
                 //Run Laravel method
-                 axios.post(`/api/member/projects/collection/delete/${project_url}`, data)
+                 axios.post(`/api/member/projects/delete/${project_url}`, data)
 
                  .then(response => {
                          if (!response.error) {   
@@ -137,17 +137,17 @@ class Projects extends Component {
 
                 const { collection, project_title, project_url, password, displayDeleteModal, successMessage,msgAnimation, modalAnimation, isLoading } = this.state
 
-                const getDescryption = { messageAnimate: msgAnimation, messageArtwork: '../images/member/global/successIcon.png', messageDescryption: 'The project has been deleted.' }
+                const getDescryption = { messageAnimate: msgAnimation, messageArtwork: '../images/member/global/successIcon.png', messageDescryption: 'Projekt został usunięty.' }
 
                 const getFeatures = { modalAnimateState:modalAnimation,  exitModalFunction: ((e) => this.exitModal(e)), deleteYourPubFunction: ((e) =>this.deleteYourProject(e,project_url)), 
                         getYourPasswordFunction: ( (e) => this.getYourPassword(e) ), hasErrorForFunction: this.hasErrorFor('password'), modalPubTitle: project_title, modalErrors: this.state.errors['password'], 
-                        modalIsLoading: isLoading, modalPassword: password, buttonTitle:"Delete project" }
+                        modalIsLoading: isLoading, modalPassword: password, buttonTitle:"Usuń  projekt" }
 
                 return (
                     <>
                         { successMessage &&   msgSuccess(getDescryption)  }                                 
                         <Sidenav />
-                        <ProjectsPanel collection={ collection } />
+                        <ProjectsPanel collection={ collection } getModal={ this.getModal } />
                         { displayDeleteModal  &&   deleteModal(getFeatures)  }  
                     </>
                 );

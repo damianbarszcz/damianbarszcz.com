@@ -115,7 +115,7 @@
 
                 &-inner{ @include boxCenter; text-align: left; }
 
-                &--body{ @include  draftJsModule; }
+                &--body{ position:relative; @include  draftJsModule; }
         }
 
         // Article > Block > Holders

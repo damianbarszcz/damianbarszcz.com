@@ -95,6 +95,10 @@
         min-width: 100%;
         z-index:100;
 
+        &__m-menu{
+                display: none;
+        }
+
         // Navigation > Block 
         &__block{ 
                 @include inlineRepeatColElements(6,1fr,0rem);
@@ -172,6 +176,109 @@
                                 color:$app-color-red;
     
                                 &:hover{  color:$app-color-red; }
+                        }
+                }
+        }
+
+        &__member{
+                position: absolute;
+                right:3.5rem;
+
+                &-btn{
+                        cursor: pointer;
+
+                        &-artwork{
+                                display:inline-block;
+                                width:2.75rem;
+                                height:2.75rem;
+        
+                                &_modifier{
+                                        border-radius:100%;
+                                        background-repeat:no-repeat;
+                                        background-size:contain;
+                                        background-position:center;
+                                }
+                        }
+                }
+        }
+
+           // Account nav > Block > Account dropdown
+           .account-dropdown{
+                position:absolute;
+                width:18rem;
+                min-height: 8rem;
+                max-height: 22.5rem;
+                transform:translate(-8.1rem, 0.55rem);
+
+                &_modifier{
+                        background-color:$app-color-white;
+                        border: 1px solid $app-color-lsilver;
+                }
+
+                &__inner{ padding:1.5rem 0rem; }
+
+                 // Account nav > Block > Account dropdown > Profile
+                 &__inner, &__profile{
+                        padding-bottom:2.5rem;
+
+                        &_modifier{  border-bottom: 1px solid $app-color-lsilver;  }
+
+                        &--artwork{
+                                display:block;
+                                margin:auto;
+                                width:4.5rem;
+                                height:4.5rem;
+    
+                                &_modifier{
+                                        border-radius:100%;
+                                        background-repeat:no-repeat;
+                                        background-size:contain;
+                                        background-position:center;
+                                }
+                        }
+
+                        &-info{
+                                text-align:center;
+                                font-size:$font-size-normal * 0.85;
+                                color:$app-color-dark;
+
+                                &--name{  line-height: 2.5rem;}
+                    
+                                &--email{ margin-bottom:2rem; }
+
+                                &--btn{
+                                        padding:0.8rem 1rem;
+                                        border:1px solid $app-color-lsilver;
+                                        font-size:$font-size-small;
+                                }
+                        }
+                }
+
+                // Account nav > Block > Account dropdown > Rules
+                &__rules{
+                        display: flex;
+                        justify-content: space-between;
+                        padding:1rem 1.5rem;
+
+                        &_modifier{  border-bottom: 1px solid $app-color-lsilver; }
+
+                        &-link{
+                                display: inline-block;
+                                font-size:$font-size-normal * 0.8;
+                                text-decoration:none;
+                                color:$app-color-dark;
+                        }
+                }
+
+                // Account nav > Block > Account dropdown > Actions
+                &__actions{
+                        margin:2rem auto;
+                        text-align: center;
+
+                        &--btn{
+                                padding:0.8rem 1rem;
+                                border:1px solid $app-color-lsilver !important;
+                                font-size:$font-size-small;
                         }
                 }
         }
@@ -254,3 +361,59 @@
         100%{  position: absolute; transform:translateY(-100%); }
 }
 
+
+/*-----------------------------
+*               RWD
+*----------------------------*/
+
+@media (max-width: 768px) {
+
+        .navigation__menu{
+                display: none;
+        }
+
+        .navigation__m-menu{
+                display: block;
+
+                &-toggle{
+                        display: block;
+                        position: absolute;
+                        left:0;
+                        top:1rem;
+                        width:2.35rem;
+                        height:2.35rem;
+                        cursor: pointer;
+                        background-image:url('../../images/global/menu_black_24dp.svg');
+                        background-position: center;
+                        background-repeat: no-repeat;
+                }
+        }
+
+        .navigation__m-menu-list{
+                position: fixed;
+                top:0;
+                left:0;
+                width:50%;
+                min-height: 100%;
+                background-color:$app-color-white;
+                z-index:10000;
+
+                &-item{
+                        display: block;
+                        width:100%;
+                }
+
+                
+                &-link{
+                        display: block;
+                        padding:1rem 1.5rem;
+                        width:100%;
+                        
+
+                        &_effect{
+
+                        }
+
+                }
+        }
+}

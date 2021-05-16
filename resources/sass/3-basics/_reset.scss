@@ -333,7 +333,7 @@
 
                 //Form > Input + textarea
                 &__input, &__textarea{
-                        padding: 1.15rem 1.5rem;
+                       padding: 1.15rem 1.5rem;
                         width:100%;
                         box-sizing: border-box;
 
@@ -622,6 +622,29 @@
         }
     }
     
+
+    /*-----------------------------
+*               RWD
+*----------------------------*/
+
+@media (max-width: 1200px) {
+        .g-container{
+                max-width: 1050px;
+                margin: 0 2rem;
+        }
+}
+
+@media (max-width: 1024px) {
+        .g-container{
+                max-width: 800px;
+        }
+}
+
+@media (max-width: 768px) {
+        .g-container{
+                max-width: 600px;
+        }
+}
 
 
 

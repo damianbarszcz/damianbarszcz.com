@@ -92,24 +92,30 @@
 
 @media (max-width: 1366px) {
         .about-banner{
-                &_theme{ background-color: $app-color-red;  }
+                 // About banner > Inner > Block 
+                  &__block &__inner{  grid-template-columns: 0.7fr 1fr 0.5fr; }
         }
 }
 
 @media (max-width: 1024px) {
         .about-banner{
-                &_theme{ background-color: $app-color-green;  }
+
+                // About banner > Inner > Block 
+                &__block &__inner{  margin:auto; grid-template-columns: 1fr 1fr;  position: relative;}
+
+                .about-banner__box-timeline{
+                        &-inner{
+                                transform: translateX(50%);
+                                margin-top:1rem;
+                        }
+                }
+
+                .about-banner__artwork--hero{
+                        position: relative;
+                }
         }
 }
     
-@media (max-width: 768px) {
-        .about-banner{
-                &_theme{ background-color: $app-color-blue;  }
-         }      
-}
+@media (max-width: 768px) {}
     
-@media (max-width: 414px) {
-        .about-banner{
-                &_theme{ background-color: $app-color-yellow;  }
-         }
-}
+@media (max-width: 414px) {}

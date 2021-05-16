@@ -19,9 +19,9 @@ const ProjectsPanel = (props) => {
                                         <span className="d_projects__header-square d_projects__header-square_modifier"><i className="material-icons material-icons-outlined"> devices </i> </span>
 
                                         <div className="d_projects__header-content">
-                                                <h1 className="d_projects__header-content--title"> Projects </h1>
+                                                <h1 className="d_projects__header-content--title"> Projekty </h1>
 
-                                                <p className="d_projects__header-content--subtitle"> Dashboard | Projects </p>
+                                                <p className="d_projects__header-content--subtitle"> Pulpit | Projekty </p>
                                          </div>
                                 </header>
 
@@ -37,9 +37,9 @@ const ProjectsPanel = (props) => {
                                                  </header>
 
                                                 <div className="d_projects__inner-item-pub">
-                                                        <span className="d_projects__inner-item-pub--author">by  <strong>Damian Barszcz</strong></span>
+                                                        <span className="d_projects__inner-item-pub--author">Autor: <strong>Damian Barszcz</strong></span>
 
-                                                         <span className="d_projects__inner-item-pub--date">published: <strong><Moment format="DD/MM/YYYY">{article.date_of_publication}</Moment>  </strong></span>
+                                                         <span className="d_projects__inner-item-pub--date">Data: <strong><Moment format="DD/MM/YYYY">{article.date_of_publication}</Moment>  </strong></span>
                                                  </div>
 
                                                 { article.pub_tags &&
@@ -49,8 +49,8 @@ const ProjectsPanel = (props) => {
                                                                 
                                                  <div className="d_projects__inner-item-action">
                                                         <div className="d_projects__inner-item-action-buttons">
-                                                                <Link to={`/member/projects/edit/${article.pub_url}`}  className="btn--small app__button--blue" target="_self"> Edit </Link>
-                                                                        <button  className="btn--small app__button--red" onClick={ (e) => this.getModal(e,article.pub_title, article.pub_url) } target="_self"> Delete </button>
+                                                                <Link to={`/member/projects/edit/${article.pub_url}`}  className="btn--small app__button--blue" target="_self"> Edytuj </Link>
+                                                                <button  className="btn--small app__button--red" onClick={ (e) => props.getModal(e,article.pub_title, article.pub_url) } target="_self"> Usuń </button>
                                                         </div>
                                                 </div>
                                         </div>)  }

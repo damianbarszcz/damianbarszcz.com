@@ -12,6 +12,7 @@ export { default as  ProjectsSection } from './ProjectsSection/ProjectsSection';
 export { default as  NewPublication } from './NewPublication/NewPublication';
 export { default as  NavSection } from './NavSection/NavSection';
 export { default as  LastReviews } from './LastReviews/LastReviews';
+export { default as PrivacySection } from './PrivacySection/PrivacySection';
 export { default as  Popular } from './Popular/Popular';
 export { default as LibraryManager } from './LibraryManager/LibraryManager';
 export { default as SearchResult } from './SearchResult/SearchResult';

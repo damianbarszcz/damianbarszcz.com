@@ -202,35 +202,26 @@ export default class ProjectDraft  extends Component {
                 const { project_title, project_subtitle, project_picture, project_visualCaption, project_visualImage, errors, 
                         isLoadingPub, isLoadingDraft, successMessage, messageDraft, msgAnimation,wordCounter, editorState } = this.state
 
-                const getPubDescryption = { messageAnimate: msgAnimation, messageArtwork: '../../../../images/member/global/successIcon.png', messageDescryption: 'The project has been published.' }
+                const getPubDescryption = { messageAnimate: msgAnimation, messageArtwork: '../../../../images/member/global/successIcon.png', messageDescryption: 'Projekt został opublikowany.' }
 
-                const getDraftDescryption = { messageAnimate: msgAnimation, messageArtwork: '../../../../images/member/global/successIcon.png', messageDescryption: 'The draft has been updated.' }
+                const getDraftDescryption = { messageAnimate: msgAnimation, messageArtwork: '../../../../images/member/global/successIcon.png', messageDescryption: 'Wersja robocza została zaktualizowana.' }
 
-                document.title =  project_title + " | Continue project draft";
+                document.title =  project_title + " |  Szkic projektu";
 
                 return (
 
-                <React.Fragment>
-                        <main  className="main" role="main">
-                                {  /*-----------------------------------*/   }
-                                {  /*--------    Msg success    -------*/    }
-                                {  /*-----------------------------------*/   }
-
+                <>
+                        <main>
                                 { successMessage &&   msgSuccess(getPubDescryption )  }      
 
-                                {  /*-----------------------------------*/   }
-                                {  /*--------      Msg draft      -------*/    }
-                                {  /*-----------------------------------*/   }
 
                                 { messageDraft &&   msgSuccess(getDraftDescryption )  }   
-                                {  /*-----------------------------*/   }
-                                {  /*--------    Sidenav   -------*/    }
-                                {  /*-----------------------------*/   }
+
                                 <Sidenav />
 
-                                {  /*-----------------------------*/   }
+                                {  /*-------------------------------*/   }
                                 {  /*--------  N project   -------*/   }
-                                {  /*-----------------------------*/   }
+                                {  /*-------------------------------*/   }
                                 <section className="n-project n-project_theme">
                                         <div className="n-project__block">
                                                  {  /*--- N project > Block > Header  ---*/   }
@@ -238,9 +229,9 @@ export default class ProjectDraft  extends Component {
                                                         <span className="n-project__header-square n-project__header-square_modifier"><i className="material-icons material-icons-outlined"> devices </i> </span>
 
                                                         <div className="n-project__header-content">
-                                                                <h1 className="n-project__header-content--title"> Project draft </h1>
+                                                                <h1 className="n-project__header-content--title"> Szkic projektu </h1>
 
-                                                                <p className="n-project__header-content--subtitle"> Dashboard | Project draft </p>
+                                                                <p className="n-project__header-content--subtitle"> Pulpit | Szkic projektu  </p>
                                                         </div>
                                                 </header>
 
@@ -251,13 +242,13 @@ export default class ProjectDraft  extends Component {
                                                                 {  /*--- N project > Block > Inner > Form > Content ---*/   }
                                                                 <div className="n-project__form-content">
                                                                         <div className="n-project__form-content-field">
-                                                                                <input name="project_title" type="text"  className={`form__input form__input_effect ${this.getValidationErrors('project_title') ? 'form__input-error' : ''}`}  onChange={ this.getFormData } value={ project_title || ''} placeholder="Project title" maxLength="254" tabIndex="1" disabled=""/>
+                                                                                <input name="project_title" type="text"  className={`form__input form__input_effect ${this.getValidationErrors('project_title') ? 'form__input-error' : ''}`}  onChange={ this.getFormData } value={ project_title || ''} placeholder="Tytuł projektu" maxLength="254" tabIndex="1" disabled=""/>
                                                                                 
                                                                                 { this.getValidationErrors('project_title') &&  <div className="form__alert-error form__alert-error_effect form--text"> { errors['project_title'] } </div> }
                                                                         </div>
 
                                                                         <div className="n-project__form-content-field">
-                                                                                <input name="project_subtitle" type="text"  className={`form__input form__input_effect ${this.getValidationErrors('project_subtitle') ? 'form__input-error' : ''}`} onChange={  this.getFormData } value={ project_subtitle || '' } placeholder="Project subtitle" maxLength="254" tabIndex="2" />
+                                                                                <input name="project_subtitle" type="text"  className={`form__input form__input_effect ${this.getValidationErrors('project_subtitle') ? 'form__input-error' : ''}`} onChange={  this.getFormData } value={ project_subtitle || '' } placeholder="Podtytuł projektu" maxLength="254" tabIndex="2" />
                                                                         
                                                                                 { this.getValidationErrors('project_subtitle') &&  <div className="form__alert-error form__alert-error_effect  form--text"> { errors['project_subtitle'] } </div> }
                                                                         </div>
@@ -269,7 +260,7 @@ export default class ProjectDraft  extends Component {
                                                                                         <div className="smarteditor__system-properties">
                                                                                                 { this.getValidationErrors('project_body') &&  <div className="form__alert-error form__alert-error_effect form--textarea"> { errors['project_body'] } </div> }
                                                                                                 
-                                                                                                <div className="smarteditor__system-properties-counter smarteditor__system-properties-counter_modifier">Words:  <strong> { wordCounter }  </strong> </div>
+                                                                                                <div className="smarteditor__system-properties-counter smarteditor__system-properties-counter_modifier">Liczba znaków:   <strong> { wordCounter }  </strong> </div>
                                                                                         </div>
                                                                                </div>
                                                                         </div>
@@ -278,14 +269,14 @@ export default class ProjectDraft  extends Component {
                                                                 {  /*--- N project > Block > Inner > Form > Picture  ---*/   }
                                                                 <div className="n-project__form-picture n-project__form-picture_modifier">
                                                                         <header className="n-project__form-picture-header n-project__form-picture-header_modifier">
-                                                                                <h2 className="n-project__form-picture-header--title">Project picture </h2>
+                                                                                <h2 className="n-project__form-picture-header--title">Obraz projektu</h2>
                                                                         </header>
 
                                                                         <div className="n-project__form-picture-inner">
                                                                                 <label htmlFor="project_picture" className={`n-project__form-picture-inner-space ${ project_picture ? 'pub-selected' : 'no-selected' }`}>
-                                                                                        <img src={`${ !project_picture  ?  '../../../../images/member/publication/upload-file.png' :  [project_visualImage ?  project_visualImage : project_picture ]  }`} width="85" height="85" alt="Upload project picture" />
+                                                                                        <img src={`${ !project_picture  ?  '../../../../images/member/publication/upload-file.png' :  [project_visualImage ?  project_visualImage : project_picture ]  }`} width="85" height="85" alt="Załaduj obraz projektu" />
  
-                                                                                        <p className="n-project__form-picture-inner-space--desc"> { !project_picture ? 'Enter your project picture' : [project_visualCaption ? 'Picture changed' : 'Picture selected' ] }  </p>
+                                                                                        <p className="n-project__form-picture-inner-space--desc"> { !project_picture ? 'Załaduj obraz projektu' : [project_visualCaption ? 'Zmieniono obraz' : 'Wybrano obraz' ] }  </p>
                                                                                 </label>
 
                                                                                 <div className="n-project__form-bg-box-field">
@@ -299,32 +290,32 @@ export default class ProjectDraft  extends Component {
                                                                 {  /*--- N project > Block > Inner > Publish ---*/   }
                                                                 <div className="n-project__form-publish n-project__form-publish_modifier">
                                                                         <header className="n-project__form-publish-header n-project__form-publish-header_modifier">
-                                                                                <h2 className="n-project__form-publish-header--title">Publish</h2>
+                                                                                <h2 className="n-project__form-publish-header--title">Publikacja</h2>
                                                                         </header>
 
                                                                         <div className="n-project__form-publish-status">
                                                                                 <div className="n-project__form-publish-status-btn" role="button"> 
-                                                                                        <i className="material-icons material-icons-key"> visibility</i> <span className="n-project__form-publish-status-btn-caption"> Visibility:  </span> Public  <i className="material-icons material-icons-arrow">keyboard_arrow_right </i>
+                                                                                        <i className="material-icons material-icons-key"> visibility</i> <span className="n-project__form-publish-status-btn-caption"> Widoczność:  </span> Publiczny  <i className="material-icons material-icons-arrow">keyboard_arrow_right </i>
                                                                                 </div>
 
                                                                                 <div className="n-project__form-publish-status-btn" role="button">
-                                                                                        <i className="material-icons material-icons-key">date_range</i> <span className="n-project__form-publish-status-btn-caption"> Publish:  </span> Now  <i className="material-icons material-icons-arrow">keyboard_arrow_right </i>
+                                                                                        <i className="material-icons material-icons-key">date_range</i> <span className="n-project__form-publish-status-btn-caption"> Czas publikacji:  </span> Teraz  <i className="material-icons material-icons-arrow">keyboard_arrow_right </i>
                                                                                 </div>
                                                                                 
                                                                                 <div className="n-project__form-publish-status-btn" role="button">
-                                                                                        <i className="material-icons material-icons-key">local_offer</i> <span className="n-project__form-publish-status-btn-caption"> Tags:  </span> Not selected  <i className="material-icons material-icons-arrow">keyboard_arrow_right </i>
+                                                                                        <i className="material-icons material-icons-key">local_offer</i> <span className="n-project__form-publish-status-btn-caption"> Tagi:  </span> Nie zaznaczono  <i className="material-icons material-icons-arrow">keyboard_arrow_right </i>
                                                                                 </div>
                                                                         </div>
 
                                                                         <div className="n-project__form-publish-run">
                                                                                 <button type="button" className="btn--small app__button--white" onClick={ this.saveDraft }>
                                                                                 { isLoadingDraft &&  
-                                                                                        <span className="loading__button--spinner" role="status"></span>  || <span className="submit__caption">  Save Draft </span> 
+                                                                                        <span className="loading__button--spinner" role="status"></span>  || <span className="submit__caption">  Zapisz szkic </span> 
                                                                                  } </button>
                                                                                 
                                                                                 <button type="submit" className="btn--small app__button--blue"> 
                                                                                 { isLoadingPub &&  
-                                                                                        <span className="loading__button--spinner" role="status"></span>  || <span className="submit__caption">  Save & Publish </span> 
+                                                                                        <span className="loading__button--spinner" role="status"></span>  || <span className="submit__caption">  Zapisz & Opublikuj </span> 
                                                                                 } </button>
                                                                         </div>
                                                                 </div>
@@ -333,7 +324,7 @@ export default class ProjectDraft  extends Component {
                                         </div>
                                 </section>
                         </main>
-                </React.Fragment>
+                </>
                 );
          }
 }

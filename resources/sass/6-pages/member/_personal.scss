@@ -44,6 +44,7 @@
                                 }
 
                                 &-artwork{
+                                        display: block;
                                         width:50%;
 
                                         .image--personal-head{
@@ -80,6 +81,13 @@
                                         display: block;
                                         padding:2rem 1rem;
                                         text-align: center;
+
+                                        &--icon{
+                                                .avatar-icon{
+                                                        width:6.5rem;
+                                                        height: 6.5rem;
+                                                }
+                                        }
 
                                         &_modifier{
                                                 border-right:1px solid $app-color-lsilver;

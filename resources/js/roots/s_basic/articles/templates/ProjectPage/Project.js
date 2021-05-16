@@ -16,7 +16,7 @@ class ArticleProject extends Component {
 
                 axios.get(`/api/basic/project/${pub_url}`).then(response => { this.setState({ project: response.data }); });
 
-                axios.get(`/api/projects/random/${pub_url}`).then(response => { this.setState({ rand_projects: response.data }); });
+                axios.get(`/api/basic/projects/random/${pub_url}`).then(response => { this.setState({ rand_projects: response.data }); console.log(this.state.rand_projects)});
         }
 
         /*

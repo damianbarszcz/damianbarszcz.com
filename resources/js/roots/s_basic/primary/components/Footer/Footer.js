@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { footerObjOne,footerObjTwo,footerObjThree, footerObjFour} from './Data';
 
 class Footer extends Component {
         render() {
@@ -15,31 +16,31 @@ class Footer extends Component {
                                 <div className="primary-footer__inner">
                                                 {  /*---  Primary footer  > Box  ---*/   }
                                                 <div className="primary-footer__box">
-                                                        <h6 className="primary-footer__box--title">O stronie</h6>
+                                                        <h6 className="primary-footer__box--title">{ footerObjOne.title }</h6>
 
-                                                        <p className="primary-footer__box--desc">To mój blog osobisty, na którym dzielę się stworzonymi projektami, książkami które czytam i oczywiście tego czego się uczę. Mam nadzieję, że zapoznasz się z moimi materiałami i dołączysz do dyskusji.</p>
+                                                        <p className="primary-footer__box--desc"> {footerObjOne.descryption }</p>
                                                 </div>
 
                                                 {  /*---  Primary footer  > Box  ---*/   }
                                                 <div className="primary-footer__box">
-                                                        <h6 className="primary-footer__box--title">Odkrywaj</h6>
+                                                        <h6 className="primary-footer__box--title">{ footerObjTwo.title } </h6>
 
                                                         <div className="primary-footer__box-navigation">
                                                                 <ul className="box-navigation__list">
                                                                         <li className="box-navigation__list-item">
-                                                                                <Link className="box-navigation__list-link" to="/projects" target="_self"> Projekty </Link>
+                                                                                <Link className="box-navigation__list-link" to="/projects" target="_self"> { footerObjTwo.projectCaption }  </Link>
                                                                         </li>
 
                                                                         <li className="box-navigation__list-item">
-                                                                                <Link className="box-navigation__list-link" to="/library" target="_self"> Biblioteka </Link>
+                                                                                <Link className="box-navigation__list-link" to="/library" target="_self"> { footerObjTwo.libraryCaption }  </Link>
                                                                         </li>
 
                                                                         <li className="box-navigation__list-item">
-                                                                                <Link className="box-navigation__list-link" to="/contact" target="_self"> Kontakt </Link>
+                                                                                <Link className="box-navigation__list-link" to="/contact" target="_self"> { footerObjTwo.contactCaption } </Link>
                                                                         </li>
 
                                                                         <li className="box-navigation__list-item">
-                                                                                <Link className="box-navigation__list-link" to="/about" target="_self"> O mnie </Link>
+                                                                                <Link className="box-navigation__list-link" to="/about" target="_self">  { footerObjTwo.aboutCaption }   </Link>
                                                                         </li>
                                                                 </ul>
                                                         </div>
@@ -47,20 +48,20 @@ class Footer extends Component {
 
                                                 {  /*---  Primary footer  > Box  ---*/   }
                                                 <div className="primary-footer__box">
-                                                        <h6 className="primary-footer__box--title"> Obserwuj </h6>
+                                                        <h6 className="primary-footer__box--title"> { footerObjThree.title } </h6>
 
                                                         <div className="primary-footer__box-navigation">
                                                                 <ul className="box-navigation__list">
                                                                         <li className="box-navigation__list-item">
-                                                                                <a className="box-navigation__list-link" href="https://twitter.com/DamianBarszcz" target="_blank"> Twitter  </a>
+                                                                                <a className="box-navigation__list-link" href="https://twitter.com/DamianBarszcz" target="_blank"> { footerObjThree.twitterCaption }   </a>
                                                                         </li>
 
                                                                         <li className="box-navigation__list-item">
-                                                                                <a className="box-navigation__list-link" href="https://www.instagram.com/barszcz.damian" target="_blank"> Instagram </a>
+                                                                                <a className="box-navigation__list-link" href="https://www.instagram.com/barszcz.damian" target="_blank"> { footerObjThree.instagramCaption }  </a>
                                                                         </li>
 
                                                                         <li className="box-navigation__list-item">
-                                                                                <a className="box-navigation__list-link" href="https://github.com/damianbarszcz" target="_blank"> Github </a>
+                                                                                <a className="box-navigation__list-link" href="https://github.com/damianbarszcz" target="_blank"> { footerObjThree.githubCaption }  </a>
                                                                         </li>
                                                                 </ul>
                                                         </div>
@@ -69,21 +70,17 @@ class Footer extends Component {
                                                 {  /*---  Primary footer  > Box  ---*/   }
                                                 <div className="primary-footer__box">
                                                 <div className="primary-footer__box-copyright">
-                                                                <span className="box-copyright__caption box-copyright__caption_effect">2021 © Damian Barszcz </span>
+                                                                <span className="box-copyright__caption box-copyright__caption_effect">{ footerObjFour.copyrightCaption } </span>
                                                         </div>
 
                                                         <div className="primary-footer__box-rules">
                                                                 <ul className="primary-footer__box-rules__list">
                                                                         <li className="primary-footer__box-rules__list-item">
-                                                                                <Link className="box-rules__list-link" to="/" target="_self"> Start </Link>
+                                                                                <Link className="box-rules__list-link" to="/" target="_self"> { footerObjFour.startCaption }  </Link>
                                                                         </li>
 
                                                                         <li className="primary-footer__box-rules__list-item">
-                                                                                <Link className="box-rules__list-link" to="#" target="_blank"> Prywatność </Link>
-                                                                        </li>
-
-                                                                        <li className="primary-footer__box-rules__list-item">
-                                                                                <Link className="box-rules__list-link" to="#" target="_blank"> Regulamin </Link>
+                                                                                <Link className="box-rules__list-link" to="/privacy" target="_blank"> { footerObjFour.privacyCaption }   </Link>
                                                                         </li>
                                                                 </ul>
                                                         </div>

@@ -18,34 +18,34 @@ export function pubModal(props){
                                 {  /*---  Pub modal > Dialog > Rev  ---*/   }
                                 <div className="pub-modal__dialog-rev">
                                         <header className="pub-modal__dialog-rev-header">
-                                                <h1 className="pub-modal__dialog-rev-header--title">New review</h1>
+                                                <h1 className="pub-modal__dialog-rev-header--title">Nowa recenzja</h1>
 
-                                                <p className="pub-modal__dialog-rev-header--desc">Create a review of your favorite book.</p>
+                                                <p className="pub-modal__dialog-rev-header--desc">Utwórz recenzję swojej ulubionej książki.</p>
                                         </header>
 
                                         <div className="pub-modal__dialog-rev-art">
-                                                <img src="/images/member/global/book.png" alt="Create book review" />
+                                                <img src="/images/member/global/reviewbook.png" alt="Create book review" />
                                         </div>
 
                                         <div className="pub-modal__dialog-rev-box">
-                                                <a href="/member/new-review" type="button" className="btn--small  app__button--white">Create review</a>
+                                                <a href="/member/new-review" type="button" className="btn--small  app__button--white">Stwórz recenzje</a>
                                          </div>
                                 </div>
 
                                 {  /*---  Pub modal > Dialog > Proj  ---*/   }
                                 <div className="pub-modal__dialog-proj">
                                         <header className="pub-modal__dialog-proj-header">
-                                                <h1 className="pub-modal__dialog-proj-header--title">New project</h1>
+                                                <h1 className="pub-modal__dialog-proj-header--title">Nowy projekt</h1>
 
-                                                <p className="pub-modal__dialog-proj-header--desc">Create a project in the field of programming.</p>
+                                                <p className="pub-modal__dialog-proj-header--desc">Stwórz projekt z zakresu programowania.</p>
                                         </header>
 
                                         <div className="pub-modal__dialog-proj-art">
-                                                <img src="/images/member/global/project.png"  alt="Create project" />
+                                                <img src="/images/member/global/desktop-computer.png"  alt="Create project" />
                                         </div>
                                                             
                                         <div className="pub-modal__dialog-proj-box">
-                                                <a href="/member/new-project" type="button" className="btn--small app__button--blue">Create project</ a>
+                                                <a href="/member/new-project" type="button" className="btn--small app__button--blue">Stwórz projekt</ a>
                                         </div>
                                 </div>
                         </div>
@@ -54,9 +54,9 @@ export function pubModal(props){
 }
 
 
-{  /*-----------------------------------*/   }
+{  /*--------------------------------------*/   }
 {  /*--------     Form modal    -------*/   }
-{  /*-----------------------------------*/   }
+{  /*--------------------------------------*/   }
 
         export function profileModal(){
         <div className={`form-modal form-modal_modifier ${ modalAnimation ? 'form-modal--fadeIn' : 'form-modal--fadeOut'}`} role="dialog" aria-hidden="true">
@@ -257,9 +257,9 @@ export function pubModal(props){
          </div>  }
 
 
-{  /*-----------------------------------*/   }
-{  /*--------   Delete modal   --------*/   }
-{  /*-----------------------------------*/   }
+{  /*---------------------------------------*/   }
+{  /*--------   Delete modal   ---------*/   }
+{  /*---------------------------------------*/   }
 
  export function deleteModal(props,e){
         return <div className={`delete-modal delete-modal_modifier ${ props.modalAnimateState  ? 'delete-modal--fadeIn' : 'delete-modal--fadeOut'}`} role="dialog" aria-hidden="true">
@@ -273,19 +273,19 @@ export function pubModal(props){
 
                         {  /*---  Delete modal > Dialog > Header ---*/   }
                         <header className="delete-modal__dialog-header delete-modal__dialog-header_modifier">
-                                <h1 className="delete-modal__dialog-header--title">Are your sure ?</h1>
+                                <h1 className="delete-modal__dialog-header--title">Jesteś pewien ?</h1>
 
-                                <p className="delete-modal__dialog-header--desc">Do you really want to delete ? </p> 
+                                <p className="delete-modal__dialog-header--desc">Czy na pewno chcesz usunąć? </p> 
                                 <p className="delete-modal__dialog-header--desc"><strong>{ props.modalPubTitle } </strong></p> 
-                                <p className="delete-modal__dialog-header--desc" style={{ color: '#ff3062'}}> This process cannot be undone.</p>
+                                <p className="delete-modal__dialog-header--desc" style={{ color: '#ff3062'}}> Tego procesu nie można cofnąć.</p>
                         </header>
 
                         {  /*---  Delete modal > Form ---*/   }
                         <form  name="delete-modal__form" className="delete-modal__dialog-form" method="POST" onSubmit={ (e) => props.deleteYourPubFunction(e) }>
                                 <div className="delete-modal__dialog-form-inner">
-                                        <label className="form__label form__label_effect"> Enter your password to confirm: </label>
+                                        <label className="form__label form__label_effect"> Wprowadź swoje hasło, aby potwierdzić:</label>
 
-                                        <input name="password" type="password"  className={`form__input form__input_effect ${ props.hasErrorForFunction ? 'form__input-error' : ''}`}  onChange={ (e) => props.getYourPasswordFunction(e) } value={ props.modalPassword } placeholder="Your password" maxLength="254" tabIndex="1" />
+                                        <input name="password" type="password"  className={`form__input form__input_effect ${ props.hasErrorForFunction ? 'form__input-error' : ''}`}  onChange={ (e) => props.getYourPasswordFunction(e) } value={ props.modalPassword } placeholder="Twoje hasło" maxLength="254" tabIndex="1" />
                                                                         
                                         { props.hasErrorForFunction &&  <div className="form__alert-error form__alert-error_effect"> { props.modalErrors } </div> }
                                 </div>

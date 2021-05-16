@@ -1,0 +1,70 @@
+/*-----------------------------------------------------
+ * Privacy (https://www.damianbarszcz.com)
+ * Copyright 2021 Damian Barszcz
+ *-----------------------------------------------------*/
+
+/*-------------------------------
+*        Projects banner
+*--------------------------------*/
+
+.privacy{
+    @include sectionDefinition;
+
+    &_theme{ background-color:  $app-color-white; }
+
+    // Project banner > Block 
+    &__block{   @include blockPadding(8rem, 0, 2rem, 0);  }
+
+    // Project banner > Block > Inner
+    &__inner{
+            padding: 3rem 0 3rem;
+            margin:auto;
+            width:45vw;
+
+        // Project banner > Block > Inner > Item
+            &-item{
+                    margin-bottom: 3rem;
+
+                    &--title{
+                        @include boxHeading($font-size-extra-normal, $bold-weight, $app-color-gray);
+                    }
+
+                    h1{
+                        @include boxHeading($font-size-big * 1.2, $bold-weight, $app-color-gray);
+                    }
+
+                    &--desc{
+                        @include boxDescContent($font-size-extra-normal * 0.85 , $regular-weight, $app-color-silver);
+                    }
+            }
+    }
+}
+
+
+/*-----------------------------
+*               RWD
+*----------------------------*/
+
+@media (max-width: 1366px) {
+        .privacy{
+                &__inner{  width:60vw; }
+        }
+}
+
+@media (max-width: 1024px) {
+        .privacy{
+                &__inner{  width:75vw;  }
+        }
+}
+
+@media (max-width: 768px) {
+        .privacy{
+                &__inner{
+                    width:90vw;
+
+                    &-item{
+                            h1{  @include boxHeading($font-size-big, $bold-weight, $app-color-gray);      }
+                    }
+            }
+        }      
+}

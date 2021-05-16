@@ -14,6 +14,7 @@ import About from './s_basic/primary/templates/AboutPage/About';
 import SearchPage from  './s_basic/primary/templates/SearchPage/Search';
 import Project from './s_basic/articles/templates/ProjectPage/Project';
 import Review from './s_basic/articles/templates/ReviewPage/Review';
+import Privacy from './s_basic/primary/templates/PrivacyPage/Privacy';
 
 class Basic extends Component {
         
@@ -62,6 +63,9 @@ class Basic extends Component {
 
                                 {  /* About  */}
                                 <Route exact path="/about" component={ About } />
+
+                                {  /* Privacy policy  */}
+                                <Route exact path="/privacy" component={ Privacy  } />
 
                                 {  /*  Project Article */ }
                                 <Route exact  path="/project/:pub_url" component={ Project } />

@@ -13,7 +13,7 @@
 
         img{
                 margin:3rem 0 3rem;
-                width:100%;
+                max-width:100%;
                 overflow: hidden;
         }
 
@@ -24,6 +24,7 @@
             margin-inline-start: 0px;
             margin-inline-end: 0px;
 
+
             @include boxHeading($font-size-huge,$ultra-bold-weight,$app-color-gray);
         }
         
@@ -33,6 +34,8 @@
             margin-block-end: 1rem;
             margin-inline-start: 0px;
             margin-inline-end: 0px;
+            padding-bottom:2rem;
+            border-bottom: 1px solid $app-color-lsilver;
             @include boxHeading($font-size-big,$ultra-bold-weight,$app-color-gray);
         }
         

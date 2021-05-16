@@ -3,6 +3,8 @@ import axios from 'axios';
 
 {  /*  Components */ }
 import { Sidenav,ReviewsPanel  } from '../../components';
+import { msgSuccess } from '../../../global/Msg';
+import { deleteModal } from '../../../global/Modal';
 
 class Reviews extends Component {
 
@@ -25,7 +27,7 @@ class Reviews extends Component {
         */
 
        componentDidMount() {  
-                document.title = "Dashboard |  Reviews";
+                document.title = "Pulpit |  Recenzje";
 
                 axios.get(`/api/member/reviews`)
                         .then(response => { 
@@ -90,7 +92,7 @@ class Reviews extends Component {
                 const data = { password: this.state.password }
 
                 //Run Laravel method
-                axios.post(`/api/member/reviews/collection/delete/${review_url}`, data)
+                axios.post(`/api/member/reviews/delete/${review_url}`, data)
 
                 .then(response => {
                         if (!response.error) {   
@@ -137,17 +139,17 @@ class Reviews extends Component {
 
                 const { collection, review_title, review_url, password, displayDeleteModal, successMessage,modalAnimation, msgAnimation, isLoading } = this.state
 
-                const getDescryption = { messageAnimate: msgAnimation, messageArtwork: '../images/member/global/successIcon.png', messageDescryption: 'The review has been deleted.' }
+                const getDescryption = { messageAnimate: msgAnimation, messageArtwork: '../images/member/global/successIcon.png', messageDescryption: 'Recenzja została usunięta.' }
 
                 const getFeatures = { modalAnimateState:modalAnimation,  exitModalFunction: ((e) => this.exitModal(e)), deleteYourPubFunction: ((e) =>this.deleteYourReview(e,review_url)), 
                 getYourPasswordFunction: ( (e) => this.getYourPassword(e) ), hasErrorForFunction: this.hasErrorFor('password'), modalPubTitle: review_title, modalErrors: this.state.errors['password'], 
-                modalIsLoading: isLoading, modalPassword: password, buttonTitle:"Delete review" }
+                modalIsLoading: isLoading, modalPassword: password, buttonTitle:"Usuń recenzje" }
 
                 return (
                         <>
                                 { successMessage &&   msgSuccess(getDescryption)  }
                                 <Sidenav />
-                                <ReviewsPanel  collection ={ collection } />
+                                <ReviewsPanel  collection ={ collection } getModal={ this.getModal } />
                                 {  displayDeleteModal  &&   deleteModal(getFeatures)  }
                         </>
                 );

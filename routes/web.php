@@ -25,18 +25,19 @@ Route::get('/review/{slug}', [BasicController::class, 'singleReviewView']);
 
 Route::get('/help/{slug}', [BasicController::class, 'searchView']);
 
-
 Auth::routes();
-
-
 
 Route::group(['prefix' => '/member'], function(){
 
         Route::get('/{slug}', [MemberController::class, 'memberView']);
 
-        Route::get('/reviews/edit/:pub_url', [MemberController::class, 'indexView']);
+        Route::get('/projects/edit/{slug}', [MemberController::class, 'projectEditView']);
 
-        Route::get('/drafts/review/continue/:pub_url', [MemberController::class, 'indexView']);
+        Route::get('/reviews/edit/{slug}', [MemberController::class, 'reviewEditView']);
+
+        Route::get('/drafts/project/continue/{slug}', [MemberController::class, 'projectDraftEditView']);
+
+        Route::get('/drafts/review/continue/{slug}', [MemberController::class, 'reviewDraftEditView']);
 });
 
 

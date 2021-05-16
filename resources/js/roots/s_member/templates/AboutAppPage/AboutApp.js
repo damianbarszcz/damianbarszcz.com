@@ -5,7 +5,7 @@ import { Sidenav, AboutBox } from '../../components';
 
 function AboutApp ()  {
         useEffect(() => {
-                document.title = "Dashboard | About application";
+                document.title = "Pulpit | O aplikacji";
             }, []);
 
         /*

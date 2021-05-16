@@ -5,7 +5,7 @@ import { CalendarPanel, Sidenav } from '../../components';
 
 function Calendar() {
         useEffect(() => {
-                document.title = "Dashboard | Calendar";
+                document.title = "Pulpit | Kalendarz";
         }, []);
         
         const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];

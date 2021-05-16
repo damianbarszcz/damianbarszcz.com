@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import Moment from 'react-moment';
 import axios from 'axios'
 
 {  /*  Components */ }
@@ -28,9 +26,9 @@ class Drafts extends Component {
         =========================
         */
          componentDidMount() {  
-                document.title = "Dashboard | Drafts";
+                document.title = "Pulpit | Szkice";
 
-                axios.get(`/api/member/drafts/collection`)
+                axios.get(`/api/member/drafts`)
                         .then(response => { 
                         
                         this.setState({  draftsCollection: response.data   });  
@@ -89,7 +87,7 @@ class Drafts extends Component {
                 const data = { password: this.state.password }
 
                 //Run Laravel method
-                axios.post(`/api/member/drafts/collection/delete/${pub_url}`, data)
+                axios.post(`/api/member/drafts/delete/${pub_url}`, data)
 
                 .then(response => {
                         if (!response.error) {   
@@ -128,18 +126,18 @@ class Drafts extends Component {
 
                 const { draftsCollection, pub_title, pub_url, password, displayDeleteModal, successMessage,modalAnimation, isLoading,no_words } = this.state
 
-                const getDescryption = { messageAnimate: modalAnimation, messageDescryption: 'The draft has been deleted.' }
+                const getDescryption = { messageAnimate: modalAnimation, messageDescryption: 'Wersja robocza została usunięta.' }
 
                 const getFeatures = { modalAnimateState:modalAnimation,  exitModalFunction: ((e) => this.exitModal(e)), deleteYourPubFunction: ((e) =>this.deleteYourDraft(e,pub_url)), 
                         getYourPasswordFunction: ( (e) => this.getYourPassword(e) ), hasErrorForFunction:this.state.errors['password'], modalPubTitle: pub_title, modalErrors: this.state.errors['password'], 
-                        modalIsLoading: isLoading, modalPassword: password, buttonTitle:"Delete draft" }
+                        modalIsLoading: isLoading, modalPassword: password, buttonTitle:"Usuń szkic" }
 
                 return (
                         <>
                                 { successMessage &&   msgSuccess(getDescryption)  }          
                                 <Sidenav />
                                 <main>
-                                        <DraftsPanel draftsCollection={ draftsCollection } />
+                                        <DraftsPanel draftsCollection={ draftsCollection } no_words={ no_words } getModal={ this.getModal }/>
                                 </main>
                                 {  displayDeleteModal  &&   deleteModal(getFeatures)  }
                         </>

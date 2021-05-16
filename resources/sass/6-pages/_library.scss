@@ -90,6 +90,11 @@
                 @include  inlineRepeatColElements(3, 1fr, 3rem);
         }
 
+        &__article-artwork{
+                background-size:contain !important;
+                background-position: center !important;
+        }
+
          // Library manager > Block > Inner > Article
        @include articleItems;
 
@@ -192,25 +197,32 @@
 *----------------------------*/
 
 @media (max-width: 1366px) {
-        .library-manager{
-                &_theme{ background-color: $app-color-red;  }
+        .last-reviews{
+                &__block &__inner{
+                        @include  inlineRepeatColElements(3, 1fr, 1.5rem);
+                }
         }
 }
 
 @media (max-width: 1024px) {
-        .library-manager{
-                &_theme{ background-color: $app-color-green;  }
+
+        .last-reviews{
+                &__block &__inner{
+                        @include  inlineRepeatColElements(2, 1fr, 2rem);
+                }
         }
 }
     
 @media (max-width: 768px) {
-        .library-manager{
-                &_theme{ background-color: $app-color-blue;  }
-         }      
-}
-    
-@media (max-width: 414px) {
-        .library-manager{
-                &_theme{ background-color: $app-color-yellow;  }
-         }
+         .last-reviews{
+                &__block &__inner{
+                        @include  inlineRepeatColElements(1, 1fr, 0rem);
+                }
+        }
+
+        .popular{
+                &__inner{
+                        display: block;
+                }
+        }
 }

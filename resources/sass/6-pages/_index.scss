@@ -11,7 +11,7 @@
 .main-header{
         @include sectionDefinition;
 
-        &_theme{ background-color: $app-color-dark; }
+        &_theme{ background-color: $app-color-white; }
 
         // Main header > Block
         &__block{                 
@@ -37,7 +37,7 @@
 .new-pub{
         @include sectionDefinition;
 
-        &_theme{ background-color: $app-color-dark; }
+        &_theme{ background-color:$app-color-white; }
 
         // New pub  > Block
         &__block{ @include blockPadding(1rem, 0, 6rem); }
@@ -138,26 +138,72 @@
 *               RWD
 *----------------------------*/
 
-@media (max-width: 1366px) {
-        .main-header{
-                &_theme{ background-color: $app-color-red;  }
-        }
-}
-
 @media (max-width: 1024px) {
-        .main-header{
-                &_theme{ background-color: $app-color-green;  }
-        }
+                .new-pub{
+                        // New pub  > Block > Article
+                       @include articleItems(75%, false, true);
+       
+                       .new-pub__article{
+                               padding:1.25rem;
+                       }
+       
+                       .new-pub__article-artwork{
+                               background-size:contain !important;
+                               background-position: center !important;
+                       }
+               }
+        
 }
     
 @media (max-width: 768px) {
         .main-header{
-                &_theme{ background-color: $app-color-blue;  }
-         }      
-}
-    
-@media (max-width: 414px) {
-        .main-header{
-                &_theme{ background-color: $app-color-yellow;  }
+                display: none;
          }
+         
+         .new-pub{
+                 // New pub  > Block > Article
+                @include articleItems(75%, false, true);
+
+                .new-pub__article{
+                        padding:1.25rem;
+                }
+
+                .new-pub__article-artwork{
+                        background-size:contain !important;
+                        background-position: center !important;
+                }
+        }
+
+        .projects{
+
+                 // Latest projects > Block  > Header
+                 &__block &__header{
+                        display: block;
+                }
+
+                &__inner{
+                        display: block !important;           
+                        
+                        &-left{
+                                margin-bottom:2rem;
+                        }
+
+                        &-right{
+                                display: block;
+
+                        }
+                }
+        }
+
+        .library{
+
+                // Latest projects > Block  > Header
+                &__block &__header{
+                       display: block;
+               }
+
+               &__inner{
+                       display: block !important;                     
+               }
+        }
 }

@@ -19,9 +19,9 @@ const AboutBox = () => {
                                         <span className="about-app__header-square about-app__header-square_modifier"><i className="material-icons material-icons-outlined"> info </i> </span>
 
                                         <div className="about-app__header-content">
-                                                <h1 className="about-app__header-content--title"> About application </h1>
+                                                <h1 className="about-app__header-content--title"> O aplikacji</h1>
 
-                                                <p className="about-app__header-content--subtitle"> Dashboard | About application </p>
+                                                <p className="about-app__header-content--subtitle"> Pulpit | O aplikacji </p>
                                          </div>
                                  </header>
 
@@ -32,13 +32,13 @@ const AboutBox = () => {
                                         <div className="about-app__inner-content">     
                                                 <h2 className="about-app__inner-content--title">Barszcz Blog</h2>
 
-                                                <p className="about-app__inner-content-desc">App version : <strong> 1.1 </strong></p>
+                                                <p className="about-app__inner-content-desc">Wersja aplikacji : <strong> 1.1 </strong></p>
 
-                                                <p className="about-app__inner-content-desc">Laravel version :  <strong> 8.0 </strong></p>
+                                                <p className="about-app__inner-content-desc">Wersja Laravela :  <strong> 8.0 </strong></p>
 
-                                                <p className="about-app__inner-content-desc">React version:  <strong> 16.10.1 </strong></p>
+                                                <p className="about-app__inner-content-desc">Wersja Reacta:  <strong> 16.10.1 </strong></p>
 
-                                                <p className="about-app__inner-content-desc">Copyright :  <strong>© 2021 Damian Barszcz </strong></p>
+                                                <p className="about-app__inner-content-desc"><strong>© 2021 Damian Barszcz </strong></p>
                                         </div>
                                 </div>
                         </div>

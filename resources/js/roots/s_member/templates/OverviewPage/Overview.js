@@ -19,7 +19,7 @@ class Overview extends Component {
       //  }
 
         componentDidMount() {  
-                document.title = "Dashboard | Overview";
+                document.title = "Pulpit | Przegląd";
 
                 const requestCollection = axios.get(`/api/member/collection`);
                 const requestCounter  = axios.get(`/api/member/overview/counter`);

@@ -5,7 +5,7 @@ import { Sidenav, StatsBox } from '../../components';
 
 function Statistics(){
         useEffect(() => {
-            document.title = "Dashboard | Statistics";
+            document.title = "Pulpit | Statystyka";
         }, []);
 
         /*

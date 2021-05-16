@@ -112,7 +112,7 @@ export default class Navigation extends Component {
                                                 {   /*--- Account nav > Block > Search ---*/   }
                                                 <div className="account-nav__search">
                                                         <form className="account-nav__search-form" action="#" method="GET" role="search">
-                                                                <input type="text" name="query" className="form__input form__input_effect" aria-label="Search" placeholder="Search" title="Search" />
+                                                                <input type="text" name="query" className="form__input form__input_effect" aria-label="Search" placeholder="Wyszukaj" title="Wyszukaj" />
 
                                                                 <button type="button" className="form__button"> <i className="material-icons material-icons--search"> search </i> </button>
                                                         </form>

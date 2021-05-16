@@ -65,9 +65,19 @@
                         &-header{
                                 text-align: center;
 
-                                &--title{ @include boxHeading;   }
+                                &--title{ @include boxHeading; color:$app-color-white; }
 
-                                &--desc{  @include boxDescContent;  }
+                                &--desc{  @include boxDescContent; color:$app-color-white;}
+                        }
+
+                        &-art{
+                                margin-top:2rem;
+                                text-align: center;
+                        }
+
+                        &-box{
+                                margin-top:3.5rem;
+                                text-align: center;
                         }
                 }
                 
@@ -83,7 +93,91 @@
 
                                 &--desc{  @include boxDescContent;  }
                         }
+
+                        &-art{
+                                margin-top:2rem;
+                                text-align: center;
+                        }
+
+                        &-box{
+                                margin-top:3.5rem;
+                                text-align: center;
+                        }
                 }
+        }
+}
+
+/*-----------------------------
+*      Peronsal Modal
+*----------------------------*/
+
+.personal-modal{
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    
+        &_modifier{
+                outline: 0;
+                background-color:rgba(0,0,0,0.5);
+                z-index: 1050;
+        }
+        
+        // Pub modal > Dialog 
+        &__dialog{
+                display: block;
+                position:absolute;
+                left:50%;
+                top:50%;
+                width:31.25rem;
+                min-height: 20rem;
+                background-color:$app-color-white;
+                transform: translate(-50%,-50%);
+
+                // Pub modal > Dialog > Close
+                &-close{
+                        display: block;
+                        position: absolute;
+                        width:2rem;
+                        height:2rem;
+                        right:1rem;
+                        top:0.5rem;
+
+                        &_effect{
+                                z-index:500;
+                                cursor:pointer;
+                                color:$app-color-dark;
+                        }
+                
+                        &:focus{ outline: none; }
+                }
+
+                // Pub modal > Dialog > Inner
+                &-inner{
+                        position: relative;
+                        padding:2.5rem 2.75rem;
+                        width:100%;
+                        min-height:28rem;
+                }
+
+                &-header{
+                        margin-bottom: 2rem;
+
+                        &--title{ @include boxHeading;   }
+
+                        &--desc{  @include boxDescContent;  }
+                }
+
+                &-content{
+                        margin-top: 3.5rem;
+
+                        &-field{
+                                text-align: right;
+                                margin-bottom: 3rem;
+                        }
+                }
+
         }
 }
   

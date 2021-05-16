@@ -14,9 +14,9 @@ const CalendarPanel = (props) => {
                                 <span className="calendar__header-square calendar__header-square_modifier"><i className="material-icons material-icons-outlined"> date_range </i> </span>
 
                                 <div className="calendar__header-content">
-                                        <h1 className="calendar__header-content--title"> Calendar </h1>
+                                        <h1 className="calendar__header-content--title"> Kalendarz </h1>
 
-                                         <p className="calendar__header-content--subtitle"> Dashboard | Calendar</p>
+                                         <p className="calendar__header-content--subtitle"> Pulpit | Kalendarz </p>
                                 </div>
                         </header>
 

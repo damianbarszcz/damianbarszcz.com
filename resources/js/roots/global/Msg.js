@@ -15,7 +15,7 @@ export function msgSuccess(props){
                         </div>
 
                         <div className="msg-success__inner-info">
-                                <p className="msg-success__inner-info--title"> Success </p>
+                                <p className="msg-success__inner-info--title"> Sukces </p>
 
                                 <p className="msg-success__inner-info--desc"> { props.messageDescryption }</p>
                         </div>

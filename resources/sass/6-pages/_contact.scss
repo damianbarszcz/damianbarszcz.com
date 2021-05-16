@@ -59,14 +59,15 @@
 
                 //Contact me > Inner > Form
                 &__block &__inner &__form{
+                        display: block;
                         @include inlineSpecyficElements;
                         grid-row-gap: 2.75rem;
                         text-align: left;
 
                        &-inline{
                                 display:grid;
-                                grid-template-columns: repeat(2, 1fr);
-                                grid-column-gap: calc(2rem - 1px); 
+                               grid-template-columns: repeat(2, 1fr);
+                               grid-column-gap: calc(2rem - 1px); 
                         }
 
                         .control-buttons{   @include  inlineFlexBetweenElements;  }
@@ -77,26 +78,33 @@
 *               RWD
 *----------------------------*/
 
-@media (max-width: 1366px) {
-        .contact-banner{
-                &_theme{ background-color: $app-color-red;  }
-        }
-}
-
-@media (max-width: 1024px) {
-        .contact-banner{
-                &_theme{ background-color: $app-color-green;  }
-        }
-}
-    
 @media (max-width: 768px) {
         .contact-banner{
-                &_theme{ background-color: $app-color-blue;  }
+                &__block{
+                        margin:0 2rem;
+                }
          }      
-}
-    
-@media (max-width: 414px) {
-        .contact-banner{
-                &_theme{ background-color: $app-color-yellow;  }
+
+         .contact-me{
+                &__block &__inner {
+                        padding:2.5rem;
+                }
+
+                //Contact me > Inner > Form
+                &__block &__inner &__form{
+
+                       &-inline{
+                              display:grid;
+                               grid-template-columns: repeat(1, 1fr);
+                               grid-row-gap: 2rem;
+                        }
+
+                        .control-buttons{   display: block; }
+                }
+
+                .btn--normal{
+                        min-width:100%;
+                        margin-top:2rem;
+                }
          }
 }

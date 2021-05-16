@@ -12,7 +12,7 @@
 
         &_theme{
                 background-color: $app-color-white;
-                box-shadow: 0 -0.1875rem 0.125rem $app-color-lsilver;
+                border-top: 1px solid $app-color-lsilver;
         }
         
         // Primary footer > Block
@@ -21,7 +21,7 @@
         // Primary footer > Inner 
         &__inner{
                 display:grid;
-                grid-template-columns: 1.4fr 0.8fr 0.8fr;
+                grid-template-columns: 1.2fr 0.8fr 0.8fr;
                 grid-column-gap: 5rem;
         }
 
@@ -37,24 +37,28 @@
                         grid-column-end: 4;
                 }
 
-                &--title{  @include boxHeading($font-size-extra-normal, $light-bold-weight, $app-color-gray);  margin-bottom:2rem; }
+                &--title{  @include boxHeading($font-size-normal, $bold-weight, $app-color-gray); text-transform: uppercase ; margin-bottom:2rem; }
 
-                &--desc{   @include boxDescContent($font-size-normal, $regular-weight, $app-color-silver);   }
+                &--desc{   @include boxDescContent($font-size-normal, $regular-weight, $app-color-gray);   }
 
                 &-navigation{
                         margin-top:1.75rem;
 
                         .box-navigation__list{
 
+                                &-item{
+                                        padding-bottom:1rem;
+                                }
+
                                 &-link{
-                                        @include boxDescContent($font-size-normal, $regular-weight, $app-color-silver);  
+                                        @include boxDescContent($font-size-normal, $regular-weight, $app-color-gray);  
 
                                         &:hover{ color:$app-color-dark; }
                                 }
                         }
                 }
 
-                &-copyright{ color:$app-color-silver;  }
+                &-copyright{ color:$app-color-gray;  }
 
                 &-rules{
                         padding: 1rem 0rem;
@@ -67,7 +71,7 @@
                                         margin-left:2rem;
 
                                         .box-rules__list-link{
-                                                @include boxDescContent($font-size-normal, $regular-weight, $app-color-silver);  
+                                                @include boxDescContent($font-size-normal, $regular-weight, $app-color-gray);  
 
                                                 &:hover{  color:$app-color-dark; }
                                         }
@@ -75,4 +79,42 @@
                         }
                 }
         }
+}
+
+/*-----------------------------
+*               RWD
+*----------------------------*/
+
+@media (max-width: 1024px) {
+        .primary-footer{
+
+                 // Primary footer > Inner 
+                &__inner{
+                        grid-template-columns: repeat(3,1fr);
+                        grid-column-gap: 5rem;
+                }
+
+                &__inner &__box{
+                        margin-top: 3rem;
+
+                        &:nth-child(1){
+                                margin-top: 0rem;
+                                grid-column-start: 1;
+                                grid-column-end: 3;
+                        }
+                }
+        }
+}
+
+@media (max-width: 768px) {
+        .primary-footer{
+
+                &__inner &__box{
+
+                        &:nth-child(1){
+                                grid-column-start: 1;
+                                grid-column-end: 4;
+                        }
+                }
+        }  
 }

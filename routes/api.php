@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\Member\NewProjectController;
 use App\Http\Controllers\Api\Member\NewReviewController;
 use App\Http\Controllers\Api\Member\ProjectsController;
 use App\Http\Controllers\Api\Member\ReviewsController;
+use App\Http\Controllers\Api\Member\DraftsController;
 use App\Http\Controllers\Api\Member\OverviewController;
 
 /*
@@ -47,9 +48,13 @@ use App\Http\Controllers\Api\Member\OverviewController;
 
                 Route::get('/project/{pub_url}', [ ProjectsController::class, 'singleProject' ]);
 
+                Route::get('/projects/random/{pub_url}', [ ProjectsController::class, 'randomProjects' ]);
+
                 Route::get('/reviews', [ ReviewsController::class, 'allReviews' ]);
 
                 Route::get('/review/{review_url}', [ ReviewsController::class, 'singleReview' ]);
+
+                Route::get('/reviews/random/{pub_url}', [ ProjectsController::class, 'randomReviews' ]);
         });
 
         /*
@@ -62,11 +67,39 @@ use App\Http\Controllers\Api\Member\OverviewController;
 
                 Route::get('/projects', [ ProjectsController::class, 'userProjects' ]);
 
-                Route::get('/reviews', [ ReviewsController::class, 'userReviews' ]);
-
                 Route::post('/new-project/create-project', [NewProjectController::class, 'createProject']);
+
+                Route::post('/projects/edit/update-project/{slug}', [ProjectsController::class, 'updateProject']);
+
+                Route::get('/reviews', [ ReviewsController::class, 'userReviews' ]);
 
                 Route::post('/new-review/create-review', [NewReviewController::class, 'createReview']);
 
+                Route::post('/reviews/edit/update-review/{slug}', [ReviewsController::class, 'updateReview']);
+
+                Route::get('/drafts', [DraftsController::class, 'userDrafts']);
+
+                Route::get('/drafts/project/continue/{slug}', [ DraftsController::class, 'singleProjectDraft']);
+
+                Route::get('/drafts/review/continue/{slug}', [ DraftsController::class, 'singleReviewDraft']);
+
+
+
+                Route::post('/new-project/draft-project', [NewProjectController::class, 'createProjectDraft']);
+
+                Route::post('/new-review/draft-review', [NewReviewController::class, 'createReviewDraft']);
+
                 Route::get('/overview/counter', [ OverviewController::class, 'getPubCounter']);
+
+                Route::get('/projects/edit/{project_url}', [ProjectsController::class, 'singleProject']);
+
+                Route::get('/reviews/edit/{review_url}', [ReviewsController::class, 'singleReview']);
+
+                Route::post('/projects/delete/{slug}', [ProjectsController::class, 'deleteSingleProject']);
+
+                Route::post('/reviews/delete/{slug}', [ReviewsController::class, 'deleteSingleReview']);
+
+                Route::post('/drafts/delete/{slug}', [DraftsController::class, 'deleteSingleDraft']);
+
         });
+

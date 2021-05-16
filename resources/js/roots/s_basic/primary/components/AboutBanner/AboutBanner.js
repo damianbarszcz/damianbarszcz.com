@@ -49,12 +49,12 @@ const AboutBanner = (props) => {
 
                                         {  /*--- About banner > Block > Inner > Artwork ---*/   }
                                         <div className="about-banner__artwork">
-                                                <img src="../images/about-me/profile.jpg" alt="Zdjęcie profilowe autora blogu" />
+                                                <img  className="about-banner__artwork--hero" src="../images/about-me/profile.jpg" alt="Zdjęcie profilowe autora blogu" />
                                         </div>
 
                                         {  /*--- About banner > Block > Inner > Timeline ---*/   }
                                         <div className="about-banner__box-timeline">
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 424.33 477.95" width="421" height="475">
+                                                <svg className="about-banner__box-timeline-inner" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 424.33 477.95" width="421" height="475">
                                                         <rect className="timeline-vector" x="161.13" y="74.9" width="6.02" height="403.05" />
                                                         <rect className="timeline-vector" x="142.59" y="68.9" width="43.11" height="6" />
                                                         <ellipse className="timeline-vector" cx="163.64" cy="151.91" rx="8.02" ry="8" />

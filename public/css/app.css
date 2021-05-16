@@ -108,6 +108,24 @@
     transform: translateX(0%);
   }
 }
+/*-----------------------------
+*               RWD
+*----------------------------*/
+@media (max-width: 1200px) {
+  .new-pub_theme {
+    background-color: #ff3062;
+  }
+}
+@media (max-width: 1024px) {
+  .new-pub_theme {
+    background-color: #2f98f7;
+  }
+}
+@media (max-width: 768px) {
+  .main-header {
+    display: none;
+  }
+}
 /*-----------------------------------------------------
  * Reset (https://www.damianbarszcz.com)
  * Copyright 2020 Damian Barszcz
@@ -900,6 +918,25 @@ select {
   transform: translateY(3.25rem);
 }
 
+/*-----------------------------
+*               RWD
+*----------------------------*/
+@media (max-width: 1200px) {
+  .g-container {
+    max-width: 1050px;
+    margin: 0 2rem;
+  }
+}
+@media (max-width: 1024px) {
+  .g-container {
+    max-width: 800px;
+  }
+}
+@media (max-width: 768px) {
+  .g-container {
+    max-width: 600px;
+  }
+}
 .d-logout {
   display: none;
 }
@@ -1045,6 +1082,9 @@ select {
   min-width: 100%;
   z-index: 100;
 }
+.navigation__m-menu {
+  display: none;
+}
 .navigation__block {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -1076,7 +1116,7 @@ select {
   fill: #1ec177;
 }
 .navigation__brand-logo--dark {
-  fill: #5b5b5b;
+  fill: #6b6969;
 }
 .navigation__brand-section {
   position: absolute;
@@ -1265,6 +1305,95 @@ select {
 .navigation__sharing-social--envelope:hover {
   color: #ff3062;
 }
+.navigation__member {
+  position: absolute;
+  right: 3.5rem;
+}
+.navigation__member-btn {
+  cursor: pointer;
+}
+.navigation__member-btn-artwork {
+  display: inline-block;
+  width: 2.75rem;
+  height: 2.75rem;
+}
+.navigation__member-btn-artwork_modifier {
+  border-radius: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+.navigation .account-dropdown {
+  position: absolute;
+  width: 18rem;
+  min-height: 8rem;
+  max-height: 22.5rem;
+  transform: translate(-8.1rem, 0.55rem);
+}
+.navigation .account-dropdown_modifier {
+  background-color: #ffffff;
+  border: 1px solid #ebebeb;
+}
+.navigation .account-dropdown__inner {
+  padding: 1.5rem 0rem;
+}
+.navigation .account-dropdown__inner, .navigation .account-dropdown__profile {
+  padding-bottom: 2.5rem;
+}
+.navigation .account-dropdown__inner_modifier, .navigation .account-dropdown__profile_modifier {
+  border-bottom: 1px solid #ebebeb;
+}
+.navigation .account-dropdown__inner--artwork, .navigation .account-dropdown__profile--artwork {
+  display: block;
+  margin: auto;
+  width: 4.5rem;
+  height: 4.5rem;
+}
+.navigation .account-dropdown__inner--artwork_modifier, .navigation .account-dropdown__profile--artwork_modifier {
+  border-radius: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+.navigation .account-dropdown__inner-info, .navigation .account-dropdown__profile-info {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #161b20;
+}
+.navigation .account-dropdown__inner-info--name, .navigation .account-dropdown__profile-info--name {
+  line-height: 2.5rem;
+}
+.navigation .account-dropdown__inner-info--email, .navigation .account-dropdown__profile-info--email {
+  margin-bottom: 2rem;
+}
+.navigation .account-dropdown__inner-info--btn, .navigation .account-dropdown__profile-info--btn {
+  padding: 0.8rem 1rem;
+  border: 1px solid #ebebeb;
+  font-size: 0.85rem;
+}
+.navigation .account-dropdown__rules {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+}
+.navigation .account-dropdown__rules_modifier {
+  border-bottom: 1px solid #ebebeb;
+}
+.navigation .account-dropdown__rules-link {
+  display: inline-block;
+  font-size: 0.8rem;
+  text-decoration: none;
+  color: #161b20;
+}
+.navigation .account-dropdown__actions {
+  margin: 2rem auto;
+  text-align: center;
+}
+.navigation .account-dropdown__actions--btn {
+  padding: 0.8rem 1rem;
+  border: 1px solid #ebebeb !important;
+  font-size: 0.85rem;
+}
 
 .nav-scroll {
   position: fixed;
@@ -1368,6 +1497,49 @@ progress[value]::-moz-progress-bar {
   }
 }
 /*-----------------------------
+*               RWD
+*----------------------------*/
+@media (max-width: 768px) {
+  .navigation__menu {
+    display: none;
+  }
+
+  .navigation__m-menu {
+    display: block;
+  }
+  .navigation__m-menu-toggle {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 1rem;
+    width: 2.35rem;
+    height: 2.35rem;
+    cursor: pointer;
+    background-image: url("../../images/global/menu_black_24dp.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .navigation__m-menu-list {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50%;
+    min-height: 100%;
+    background-color: #ffffff;
+    z-index: 10000;
+  }
+  .navigation__m-menu-list-item {
+    display: block;
+    width: 100%;
+  }
+  .navigation__m-menu-list-link {
+    display: block;
+    padding: 1rem 1.5rem;
+    width: 100%;
+  }
+}
+/*-----------------------------
 *    Account Navigation
 *----------------------------*/
 .account-nav {
@@ -1408,7 +1580,7 @@ progress[value]::-moz-progress-bar {
   fill: #1ec177;
 }
 .account-nav__brand-logo--dark {
-  fill: #5b5b5b;
+  fill: #6b6969;
 }
 .account-nav__brand-section {
   position: absolute;
@@ -1710,14 +1882,14 @@ progress[value]::-moz-progress-bar {
 }
 .primary-footer_theme {
   background-color: #ffffff;
-  box-shadow: 0 -0.1875rem 0.125rem #ebebeb;
+  border-top: 1px solid #ebebeb;
 }
 .primary-footer__block {
   padding: 6rem 0 3rem 0rem;
 }
 .primary-footer__inner {
   display: grid;
-  grid-template-columns: 1.4fr 0.8fr 0.8fr;
+  grid-template-columns: 1.2fr 0.8fr 0.8fr;
   grid-column-gap: 5rem;
 }
 .primary-footer__inner .primary-footer__box:nth-child(4) {
@@ -1729,32 +1901,36 @@ progress[value]::-moz-progress-bar {
   grid-column-end: 4;
 }
 .primary-footer__inner .primary-footer__box--title {
-  line-height: 2.35rem;
-  font-size: 1.25rem;
-  font-weight: 500;
+  line-height: 2rem;
+  font-size: 1rem;
+  font-weight: 600;
   color: #5b5b5b;
+  text-transform: uppercase;
   margin-bottom: 2rem;
 }
 .primary-footer__inner .primary-footer__box--desc {
   line-height: 2rem;
   font-size: 1rem;
   font-weight: 400;
-  color: #6b6969;
+  color: #5b5b5b;
 }
 .primary-footer__inner .primary-footer__box-navigation {
   margin-top: 1.75rem;
+}
+.primary-footer__inner .primary-footer__box-navigation .box-navigation__list-item {
+  padding-bottom: 1rem;
 }
 .primary-footer__inner .primary-footer__box-navigation .box-navigation__list-link {
   line-height: 2rem;
   font-size: 1rem;
   font-weight: 400;
-  color: #6b6969;
+  color: #5b5b5b;
 }
 .primary-footer__inner .primary-footer__box-navigation .box-navigation__list-link:hover {
   color: #161b20;
 }
 .primary-footer__inner .primary-footer__box-copyright {
-  color: #6b6969;
+  color: #5b5b5b;
 }
 .primary-footer__inner .primary-footer__box-rules {
   padding: 1rem 0rem;
@@ -1770,12 +1946,35 @@ progress[value]::-moz-progress-bar {
   line-height: 2rem;
   font-size: 1rem;
   font-weight: 400;
-  color: #6b6969;
+  color: #5b5b5b;
 }
 .primary-footer__inner .primary-footer__box-rules__list-item .box-rules__list-link:hover {
   color: #161b20;
 }
 
+/*-----------------------------
+*               RWD
+*----------------------------*/
+@media (max-width: 1024px) {
+  .primary-footer__inner {
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 5rem;
+  }
+  .primary-footer__inner .primary-footer__box {
+    margin-top: 3rem;
+  }
+  .primary-footer__inner .primary-footer__box:nth-child(1) {
+    margin-top: 0rem;
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+}
+@media (max-width: 768px) {
+  .primary-footer__inner .primary-footer__box:nth-child(1) {
+    grid-column-start: 1;
+    grid-column-end: 4;
+  }
+}
 /*-----------------------------------------------------
  * Sidenav (https://www.damianbarszcz.com)
  * Copyright 2020 Damian Barszcz
@@ -1839,12 +2038,22 @@ progress[value]::-moz-progress-bar {
   font-size: 1.25rem;
   font-weight: 600;
   color: #5b5b5b;
+  color: #ffffff;
 }
 .pub-modal__dialog-inner .pub-modal__dialog-rev-header--desc {
   line-height: 2rem;
   font-size: 1rem;
   font-weight: 400;
   color: #6b6969;
+  color: #ffffff;
+}
+.pub-modal__dialog-inner .pub-modal__dialog-rev-art {
+  margin-top: 2rem;
+  text-align: center;
+}
+.pub-modal__dialog-inner .pub-modal__dialog-rev-box {
+  margin-top: 3.5rem;
+  text-align: center;
 }
 .pub-modal__dialog-inner .pub-modal__dialog-proj {
   padding: 2rem;
@@ -1865,6 +2074,84 @@ progress[value]::-moz-progress-bar {
   font-weight: 400;
   color: #6b6969;
 }
+.pub-modal__dialog-inner .pub-modal__dialog-proj-art {
+  margin-top: 2rem;
+  text-align: center;
+}
+.pub-modal__dialog-inner .pub-modal__dialog-proj-box {
+  margin-top: 3.5rem;
+  text-align: center;
+}
+
+/*-----------------------------
+*      Peronsal Modal
+*----------------------------*/
+.personal-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.personal-modal_modifier {
+  outline: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1050;
+}
+.personal-modal__dialog {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 31.25rem;
+  min-height: 20rem;
+  background-color: #ffffff;
+  transform: translate(-50%, -50%);
+}
+.personal-modal__dialog-close {
+  display: block;
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  right: 1rem;
+  top: 0.5rem;
+}
+.personal-modal__dialog-close_effect {
+  z-index: 500;
+  cursor: pointer;
+  color: #161b20;
+}
+.personal-modal__dialog-close:focus {
+  outline: none;
+}
+.personal-modal__dialog-inner {
+  position: relative;
+  padding: 2.5rem 2.75rem;
+  width: 100%;
+  min-height: 28rem;
+}
+.personal-modal__dialog-header {
+  margin-bottom: 2rem;
+}
+.personal-modal__dialog-header--title {
+  line-height: 2.35rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #5b5b5b;
+}
+.personal-modal__dialog-header--desc {
+  line-height: 2rem;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #6b6969;
+}
+.personal-modal__dialog-content {
+  margin-top: 3.5rem;
+}
+.personal-modal__dialog-content-field {
+  text-align: right;
+  margin-bottom: 3rem;
+}
 
 /*-----------------------------------------------------
  * Index (https://www.damianbarszcz.com)
@@ -1879,7 +2166,7 @@ progress[value]::-moz-progress-bar {
   z-index: 1;
 }
 .main-header_theme {
-  background-color: #161b20;
+  background-color: #ffffff;
 }
 .main-header__block {
   display: grid;
@@ -1914,7 +2201,7 @@ progress[value]::-moz-progress-bar {
   fill: #1ec177;
 }
 .main-header__brand-logo--dark {
-  fill: #ffffff;
+  fill: #6b6969;
 }
 .main-header__brand-section {
   position: absolute;
@@ -1951,7 +2238,7 @@ progress[value]::-moz-progress-bar {
   position: relative;
 }
 .main-header__menu-list-item:nth-child(1) .main-header__menu-list-link {
-  color: #ffffff;
+  color: #5b5b5b;
 }
 .main-header__menu-list-item:nth-child(1) .main-header__menu-list-link::after {
   background-color: #2f98f7;
@@ -1968,7 +2255,7 @@ progress[value]::-moz-progress-bar {
   transform: translateY(15px);
 }
 .main-header__menu-list-item:nth-child(2) .main-header__menu-list-link {
-  color: #ffffff;
+  color: #5b5b5b;
 }
 .main-header__menu-list-item:nth-child(2) .main-header__menu-list-link::after {
   background-color: #ff3062;
@@ -1985,7 +2272,7 @@ progress[value]::-moz-progress-bar {
   transform: translateY(15px);
 }
 .main-header__menu-list-item:nth-child(3) .main-header__menu-list-link {
-  color: #ffffff;
+  color: #5b5b5b;
 }
 .main-header__menu-list-item:nth-child(3) .main-header__menu-list-link::after {
   background-color: #1ec177;
@@ -2002,7 +2289,7 @@ progress[value]::-moz-progress-bar {
   transform: translateY(15px);
 }
 .main-header__menu-list-item:nth-child(4) .main-header__menu-list-link {
-  color: #ffffff;
+  color: #5b5b5b;
 }
 .main-header__menu-list-item:nth-child(4) .main-header__menu-list-link::after {
   background-color: #ffbf73;
@@ -2071,7 +2358,7 @@ progress[value]::-moz-progress-bar {
   z-index: 1;
 }
 .new-pub_theme {
-  background-color: #161b20;
+  background-color: #ffffff;
 }
 .new-pub__block {
   padding: 1rem 0 6rem 0rem;
@@ -2087,8 +2374,8 @@ progress[value]::-moz-progress-bar {
   padding: 2rem;
 }
 .new-pub__inner .new-pub__article_modifier {
-  background-color: #161b20;
-  border: 1px solid black;
+  background-color: #ffffff;
+  border: 1px solid #ebebeb;
   border-radius: 0.5rem;
   transition: 0.25s ease-in-out;
 }
@@ -2111,13 +2398,13 @@ progress[value]::-moz-progress-bar {
 }
 .new-pub__inner .new-pub__article-header {
   margin-top: 1rem;
-  max-width: 45rem;
+  max-width: 50rem;
 }
 .new-pub__inner .new-pub__article-header--title {
   line-height: 2.35rem;
   font-size: 1.25rem;
   font-weight: 600;
-  color: #ffffff;
+  color: #5b5b5b;
 }
 .new-pub__inner .new-pub__article-header--desc {
   line-height: 2rem;
@@ -2125,6 +2412,7 @@ progress[value]::-moz-progress-bar {
   font-weight: 400;
   color: #6b6969;
   white-space: pre-wrap;
+  line-height: 2.5rem;
 }
 .new-pub__inner .new-pub__article-category {
   margin-top: 1rem;
@@ -2475,24 +2763,238 @@ progress[value]::-moz-progress-bar {
 /*-----------------------------
 *               RWD
 *----------------------------*/
-@media (max-width: 1366px) {
-  .main-header_theme {
-    background-color: #ff3062;
-  }
-}
 @media (max-width: 1024px) {
-  .main-header_theme {
-    background-color: #1ec177;
+  .new-pub__inner {
+    margin-top: 0rem;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-column-gap: 0rem;
+    grid-row-gap: 0rem;
+  }
+  .new-pub__inner .new-pub__article {
+    padding: 2rem;
+  }
+  .new-pub__inner .new-pub__article_modifier {
+    background-color: #ffffff;
+    border: 1px solid #ebebeb;
+    border-radius: 0.5rem;
+    transition: 0.25s ease-in-out;
+  }
+  .new-pub__inner .new-pub__article_modifier:hover {
+    box-shadow: -6px 8px 20px rgba(0, 0, 0, 0.1);
+  }
+  .new-pub__inner .new-pub__article-link {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100%;
+  }
+  .new-pub__inner .new-pub__article-artwork {
+    padding-top: 75%;
+    width: 100%;
+    height: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .new-pub__inner .new-pub__article-header {
+    margin-top: 1rem;
+    max-width: 50rem;
+  }
+  .new-pub__inner .new-pub__article-header--title {
+    line-height: 2.35rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #5b5b5b;
+  }
+  .new-pub__inner .new-pub__article-header--desc {
+    line-height: 2rem;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #6b6969;
+    white-space: pre-wrap;
+    line-height: 2.5rem;
+  }
+  .new-pub__inner .new-pub__article-category {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    padding: 13.5px 18px;
+    line-height: 1rem;
+    display: inline-block;
+    position: relative;
+    min-width: 90px;
+    height: 45px;
+    box-shadow: -6px 8px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 0.3125rem;
+    font-family: "Segoe UI", sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    white-space: nowrap;
+    cursor: pointer;
+    z-index: 100;
+    outline: none;
+    text-align: center;
+    transition: 0.2s ease-in-out;
+  }
+  .new-pub__inner .new-pub__article [data-book-category=programming] {
+    border: 0.15rem solid #ff3062;
+    color: #ff3062;
+  }
+  .new-pub__inner .new-pub__article [data-book-category=development] {
+    border: 0.15rem solid #2f98f7;
+    color: #2f98f7;
+  }
+  .new-pub__inner .new-pub__article [data-book-category=astrophisics] {
+    border: 0.15rem solid #ffbf73;
+    color: #ffbf73;
+  }
+  .new-pub__inner .new-pub__article [data-book-category=business] {
+    border: 0.15rem solid app-color-green;
+    color: app-color-green;
+  }
+  .new-pub__inner .new-pub__article [data-article-category=Book] {
+    border: 0.15rem solid #ff3062;
+    color: #ff3062;
+  }
+  .new-pub__inner .new-pub__article [data-article-category=Project] {
+    border: 0.15rem solid #2f98f7;
+    color: #2f98f7;
+  }
+  .new-pub .new-pub__article {
+    padding: 1.25rem;
+  }
+  .new-pub .new-pub__article-artwork {
+    background-size: contain !important;
+    background-position: center !important;
   }
 }
 @media (max-width: 768px) {
-  .main-header_theme {
-    background-color: #2f98f7;
+  .main-header {
+    display: none;
   }
-}
-@media (max-width: 414px) {
-  .main-header_theme {
-    background-color: #ffbf73;
+
+  .new-pub__inner {
+    margin-top: 0rem;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-column-gap: 0rem;
+    grid-row-gap: 0rem;
+  }
+  .new-pub__inner .new-pub__article {
+    padding: 2rem;
+  }
+  .new-pub__inner .new-pub__article_modifier {
+    background-color: #ffffff;
+    border: 1px solid #ebebeb;
+    border-radius: 0.5rem;
+    transition: 0.25s ease-in-out;
+  }
+  .new-pub__inner .new-pub__article_modifier:hover {
+    box-shadow: -6px 8px 20px rgba(0, 0, 0, 0.1);
+  }
+  .new-pub__inner .new-pub__article-link {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100%;
+  }
+  .new-pub__inner .new-pub__article-artwork {
+    padding-top: 75%;
+    width: 100%;
+    height: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .new-pub__inner .new-pub__article-header {
+    margin-top: 1rem;
+    max-width: 50rem;
+  }
+  .new-pub__inner .new-pub__article-header--title {
+    line-height: 2.35rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #5b5b5b;
+  }
+  .new-pub__inner .new-pub__article-header--desc {
+    line-height: 2rem;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #6b6969;
+    white-space: pre-wrap;
+    line-height: 2.5rem;
+  }
+  .new-pub__inner .new-pub__article-category {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    padding: 13.5px 18px;
+    line-height: 1rem;
+    display: inline-block;
+    position: relative;
+    min-width: 90px;
+    height: 45px;
+    box-shadow: -6px 8px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 0.3125rem;
+    font-family: "Segoe UI", sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    white-space: nowrap;
+    cursor: pointer;
+    z-index: 100;
+    outline: none;
+    text-align: center;
+    transition: 0.2s ease-in-out;
+  }
+  .new-pub__inner .new-pub__article [data-book-category=programming] {
+    border: 0.15rem solid #ff3062;
+    color: #ff3062;
+  }
+  .new-pub__inner .new-pub__article [data-book-category=development] {
+    border: 0.15rem solid #2f98f7;
+    color: #2f98f7;
+  }
+  .new-pub__inner .new-pub__article [data-book-category=astrophisics] {
+    border: 0.15rem solid #ffbf73;
+    color: #ffbf73;
+  }
+  .new-pub__inner .new-pub__article [data-book-category=business] {
+    border: 0.15rem solid app-color-green;
+    color: app-color-green;
+  }
+  .new-pub__inner .new-pub__article [data-article-category=Book] {
+    border: 0.15rem solid #ff3062;
+    color: #ff3062;
+  }
+  .new-pub__inner .new-pub__article [data-article-category=Project] {
+    border: 0.15rem solid #2f98f7;
+    color: #2f98f7;
+  }
+  .new-pub .new-pub__article {
+    padding: 1.25rem;
+  }
+  .new-pub .new-pub__article-artwork {
+    background-size: contain !important;
+    background-position: center !important;
+  }
+
+  .projects__block .projects__header {
+    display: block;
+  }
+  .projects__inner {
+    display: block !important;
+  }
+  .projects__inner-left {
+    margin-bottom: 2rem;
+  }
+  .projects__inner-right {
+    display: block;
+  }
+
+  .library__block .library__header {
+    display: block;
+  }
+  .library__inner {
+    display: block !important;
   }
 }
 /*-----------------------------------------------------
@@ -2942,6 +3444,10 @@ progress[value]::-moz-progress-bar {
   grid-column-gap: 3rem;
   grid-row-gap: 3rem;
 }
+.last-reviews__article-artwork {
+  background-size: contain !important;
+  background-position: center !important;
+}
 .last-reviews__inner {
   margin-top: 3.5rem;
   display: grid;
@@ -3189,23 +3695,31 @@ progress[value]::-moz-progress-bar {
 *               RWD
 *----------------------------*/
 @media (max-width: 1366px) {
-  .library-manager_theme {
-    background-color: #ff3062;
+  .last-reviews__block .last-reviews__inner {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 1.5rem;
+    grid-row-gap: 1.5rem;
   }
 }
 @media (max-width: 1024px) {
-  .library-manager_theme {
-    background-color: #1ec177;
+  .last-reviews__block .last-reviews__inner {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 2rem;
+    grid-row-gap: 2rem;
   }
 }
 @media (max-width: 768px) {
-  .library-manager_theme {
-    background-color: #2f98f7;
+  .last-reviews__block .last-reviews__inner {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-column-gap: 0rem;
+    grid-row-gap: 0rem;
   }
-}
-@media (max-width: 414px) {
-  .library-manager_theme {
-    background-color: #ffbf73;
+
+  .popular__inner {
+    display: block;
   }
 }
 /*-----------------------------------------------------
@@ -3286,6 +3800,7 @@ progress[value]::-moz-progress-bar {
   color: #6b6969;
 }
 .contact-me__block .contact-me__inner .contact-me__form {
+  display: block;
   display: grid;
   align-items: center;
   grid-row-gap: 2.75rem;
@@ -3305,24 +3820,25 @@ progress[value]::-moz-progress-bar {
 /*-----------------------------
 *               RWD
 *----------------------------*/
-@media (max-width: 1366px) {
-  .contact-banner_theme {
-    background-color: #ff3062;
-  }
-}
-@media (max-width: 1024px) {
-  .contact-banner_theme {
-    background-color: #1ec177;
-  }
-}
 @media (max-width: 768px) {
-  .contact-banner_theme {
-    background-color: #2f98f7;
+  .contact-banner__block {
+    margin: 0 2rem;
   }
-}
-@media (max-width: 414px) {
-  .contact-banner_theme {
-    background-color: #ffbf73;
+
+  .contact-me__block .contact-me__inner {
+    padding: 2.5rem;
+  }
+  .contact-me__block .contact-me__inner .contact-me__form-inline {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-row-gap: 2rem;
+  }
+  .contact-me__block .contact-me__inner .contact-me__form .control-buttons {
+    display: block;
+  }
+  .contact-me .btn--normal {
+    min-width: 100%;
+    margin-top: 2rem;
   }
 }
 /*-----------------------------------------------------
@@ -3427,23 +3943,93 @@ progress[value]::-moz-progress-bar {
 *               RWD
 *----------------------------*/
 @media (max-width: 1366px) {
-  .about-banner_theme {
-    background-color: #ff3062;
+  .about-banner__block .about-banner__inner {
+    grid-template-columns: 0.7fr 1fr 0.5fr;
   }
 }
 @media (max-width: 1024px) {
-  .about-banner_theme {
-    background-color: #1ec177;
+  .about-banner__block .about-banner__inner {
+    margin: auto;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+  }
+  .about-banner .about-banner__box-timeline-inner {
+    transform: translateX(50%);
+    margin-top: 1rem;
+  }
+  .about-banner .about-banner__artwork--hero {
+    position: relative;
+  }
+}
+/*-----------------------------------------------------
+ * Privacy (https://www.damianbarszcz.com)
+ * Copyright 2021 Damian Barszcz
+ *-----------------------------------------------------*/
+/*-------------------------------
+*        Projects banner
+*--------------------------------*/
+.privacy {
+  position: relative;
+  min-width: 100%;
+  z-index: 1;
+}
+.privacy_theme {
+  background-color: #ffffff;
+}
+.privacy__block {
+  padding: 8rem 0 2rem 0;
+}
+.privacy__inner {
+  padding: 3rem 0 3rem;
+  margin: auto;
+  width: 45vw;
+}
+.privacy__inner-item {
+  margin-bottom: 3rem;
+}
+.privacy__inner-item--title {
+  line-height: 2.35rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #5b5b5b;
+}
+.privacy__inner-item h1 {
+  margin-bottom: 1.5rem;
+  line-height: 3.25rem;
+  font-size: 2.1rem;
+  font-weight: 600;
+  color: #5b5b5b;
+}
+.privacy__inner-item--desc {
+  line-height: 2rem;
+  font-size: 1.0625rem;
+  font-weight: 400;
+  color: #6b6969;
+}
+
+/*-----------------------------
+*               RWD
+*----------------------------*/
+@media (max-width: 1366px) {
+  .privacy__inner {
+    width: 60vw;
+  }
+}
+@media (max-width: 1024px) {
+  .privacy__inner {
+    width: 75vw;
   }
 }
 @media (max-width: 768px) {
-  .about-banner_theme {
-    background-color: #2f98f7;
+  .privacy__inner {
+    width: 90vw;
   }
-}
-@media (max-width: 414px) {
-  .about-banner_theme {
-    background-color: #ffbf73;
+  .privacy__inner-item h1 {
+    margin-bottom: 1.5rem;
+    line-height: 3.25rem;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #5b5b5b;
   }
 }
 /*-----------------------------------------------------
@@ -3578,6 +4164,9 @@ progress[value]::-moz-progress-bar {
   text-align: center;
   text-align: left;
 }
+.article__content--body {
+  position: relative;
+}
 .article__content--body p {
   line-height: 2.35rem;
   font-size: 1.25rem;
@@ -3586,7 +4175,7 @@ progress[value]::-moz-progress-bar {
 }
 .article__content--body img {
   margin: 3rem 0 3rem;
-  width: 100%;
+  max-width: 100%;
   overflow: hidden;
 }
 .article__content--body h1 {
@@ -3614,6 +4203,8 @@ progress[value]::-moz-progress-bar {
           margin-inline-start: 0px;
   -webkit-margin-end: 0px;
           margin-inline-end: 0px;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #ebebeb;
   margin-bottom: 1.5rem;
   line-height: 3.25rem;
   font-size: 1.75rem;
@@ -5193,6 +5784,7 @@ progress[value]::-moz-progress-bar {
   color: #6b6969;
 }
 .personal-info__profile-head-artwork {
+  display: block;
   width: 50%;
 }
 .personal-info__profile-head-artwork .image--personal-head {
@@ -5226,6 +5818,10 @@ progress[value]::-moz-progress-bar {
   display: block;
   padding: 2rem 1rem;
   text-align: center;
+}
+.personal-info__profile-body-link--icon .avatar-icon {
+  width: 6.5rem;
+  height: 6.5rem;
 }
 .personal-info__profile-body-link_modifier {
   border-right: 1px solid #ebebeb;
@@ -5472,7 +6068,7 @@ progress[value]::-moz-progress-bar {
   fill: #1ec177;
 }
 .statistics__brand-logo--dark {
-  fill: #5b5b5b;
+  fill: #6b6969;
 }
 .statistics__brand-section {
   position: absolute;
@@ -5621,7 +6217,7 @@ progress[value]::-moz-progress-bar {
 }
 .n-review__block .n-review__inner .n-review__form-content .smarteditor img {
   margin: 3rem 0 3rem;
-  width: 100%;
+  max-width: 100%;
   overflow: hidden;
 }
 .n-review__block .n-review__inner .n-review__form-content .smarteditor h1 {
@@ -5649,6 +6245,8 @@ progress[value]::-moz-progress-bar {
           margin-inline-start: 0px;
   -webkit-margin-end: 0px;
           margin-inline-end: 0px;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #ebebeb;
   margin-bottom: 1.5rem;
   line-height: 3.25rem;
   font-size: 1.75rem;
@@ -5882,7 +6480,7 @@ progress[value]::-moz-progress-bar {
   grid-column-gap: 0.5rem;
   grid-row-gap: 0.5rem;
   justify-items: center;
-  margin: 0 0.5rem 1rem;
+  margin: 0 0.75rem 1rem;
 }
 .n-review__block .n-review__inner .n-review__form-categories-item {
   display: flex;
@@ -5900,6 +6498,7 @@ progress[value]::-moz-progress-bar {
   font-size: 1rem;
   font-weight: 400;
   color: #6b6969;
+  font-size: 0.905rem;
 }
 .n-review__block .n-review__inner .n-review__form-categories-item-radio {
   display: inline-block;
@@ -6095,7 +6694,7 @@ progress[value]::-moz-progress-bar {
 }
 .n-project__block .n-project__inner .n-project__form-content .smarteditor img {
   margin: 3rem 0 3rem;
-  width: 100%;
+  max-width: 100%;
   overflow: hidden;
 }
 .n-project__block .n-project__inner .n-project__form-content .smarteditor h1 {
@@ -6123,6 +6722,8 @@ progress[value]::-moz-progress-bar {
           margin-inline-start: 0px;
   -webkit-margin-end: 0px;
           margin-inline-end: 0px;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #ebebeb;
   margin-bottom: 1.5rem;
   line-height: 3.25rem;
   font-size: 1.75rem;
@@ -6356,7 +6957,7 @@ progress[value]::-moz-progress-bar {
   grid-column-gap: 0.5rem;
   grid-row-gap: 0.5rem;
   justify-items: center;
-  margin: 0 0.5rem 1rem;
+  margin: 0 0.75rem 1rem;
 }
 .n-project__block .n-project__inner .n-project__form-categories-item {
   display: flex;
@@ -6374,6 +6975,7 @@ progress[value]::-moz-progress-bar {
   font-size: 1rem;
   font-weight: 400;
   color: #6b6969;
+  font-size: 0.905rem;
 }
 .n-project__block .n-project__inner .n-project__form-categories-item-radio {
   display: inline-block;

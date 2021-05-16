@@ -23,9 +23,9 @@ const OverviewPanel = (props) => {
                                                 <span className="overview__header-square overview__header-square_modifier"><i className="material-icons material-icons-outlined"> home </i> </span>
 
                                                 <div className="overview__header-content">
-                                                        <h1 className="overview__header-content--title"> Overview </h1>
+                                                        <h1 className="overview__header-content--title"> Przegląd  </h1>
                                                         
-                                                        <p className="overview__header-content--subtitle"> Dashboard | Overview</p>
+                                                        <p className="overview__header-content--subtitle"> Pulpit | Przegląd </p>
                                                 </div>
                                         </header>
 
@@ -33,9 +33,9 @@ const OverviewPanel = (props) => {
                                                  {  /*---  Overview > Block > Inner > Pub   ---*/   }
                                                 <div className="overview__inner-pub overview__inner-pub_modifier">
                                                         <header className="overview__inner-header overview__inner-header_modifier">
-                                                                <h1 className="overview__inner-header--title"><strong>Publication </strong></h1>
+                                                                <h1 className="overview__inner-header--title"><strong>Publikacje </strong></h1>
 
-                                                                <p className="overview__inner-header--subtitle"><strong>All</strong></p>
+                                                                <p className="overview__inner-header--subtitle"><strong>Wszystkie</strong></p>
                                                         </header>
 
                                                         <div className="overview__inner-content overview__inner-content_modifier">
@@ -52,14 +52,14 @@ const OverviewPanel = (props) => {
                                                 {  /*---  Overview > Block > Inner > About  ---*/   }
                                                 <div className="overview__inner-about overview__inner-about_modifier">
                                                         <header className="overview__inner-header overview__inner-header_modifier">
-                                                                <h2 className="overview__inner-header--title"><strong>Publications stats</strong></h2>
+                                                                <h2 className="overview__inner-header--title"><strong>Statystyki publikacji</strong></h2>
                                                         </header>
 
                                                         <div className="overview__inner-stats">
                                                                 <div className="overview__inner-stats-item">
                                                                         <div className="overview__inner-stats-item-artwork"> <i className="material-icons material-icons-outlined"> turned_in_not </i> </div>
 
-                                                                        <span className="overview__inner-stats-item-caption"> All published </span>
+                                                                        <span className="overview__inner-stats-item-caption"> Wszystkie  </span>
 
                                                                         <span className="overview__inner-stats-item-counter"> { props.projectsPubCounter[0] + props.reviewsPubCounter[1] } </span>
                                                                 </div>
@@ -67,7 +67,7 @@ const OverviewPanel = (props) => {
                                                                 <div className="overview__inner-stats-item">
                                                                         <div className="overview__inner-stats-item-artwork"> <i className="material-icons material-icons-outlined"> library_books </i> </div>
 
-                                                                        <span className="overview__inner-stats-item-caption"> Reviews </span>
+                                                                        <span className="overview__inner-stats-item-caption"> Recenzje </span>
 
                                                                         <span className="overview__inner-stats-item-counter"> {props.reviewsPubCounter[1] } </span>
                                                                 </div>
@@ -75,7 +75,7 @@ const OverviewPanel = (props) => {
                                                                 <div className="overview__inner-stats-item">
                                                                         <div className="overview__inner-stats-item-artwork"> <i className="material-icons material-icons-outlined"> devices </i> </div>
 
-                                                                        <span className="overview__inner-stats-item-caption"> Projects</span>
+                                                                        <span className="overview__inner-stats-item-caption"> Projekty </span>
 
                                                                         <span className="overview__inner-stats-item-counter"> { props.projectsPubCounter[0] }  </span>
                                                                 </div>
@@ -83,7 +83,7 @@ const OverviewPanel = (props) => {
                                                                 <div className="overview__inner-stats-item">
                                                                         <div className="overview__inner-stats-item-artwork"> <i className="material-icons material-icons-outlined"> file_copy </i> </div>
                                                                         
-                                                                        <span className="overview__inner-stats-item-caption"> Drafts </span>
+                                                                        <span className="overview__inner-stats-item-caption"> Szkice </span>
 
                                                                         <span className="overview__inner-stats-item-counter">{  props.draftsPubCounter[2] }</span>
                                                                 </div>
@@ -93,7 +93,7 @@ const OverviewPanel = (props) => {
                                                 {  /*---  Overview > Inner > Events   ---*/   }
                                                 <div className="overview__inner-events overview__inner-events_modifier">
                                                         <header className="overview__inner-header overview__inner-header_modifier">
-                                                                <h2 className="overview__inner-header--title"><strong>Events</strong></h2>
+                                                                <h2 className="overview__inner-header--title"><strong>Wydarzenia</strong></h2>
                                                         </header>
 
                                                         <div className="overview__inner-events-box">
@@ -138,7 +138,7 @@ const OverviewPanel = (props) => {
                                                 {  /*---  Overview > Inner > Schedule  ---*/   }
                                                 <div className="overview__inner-schedule overview__inner-schedule_modifier">
                                                         <header className="overview__inner-header overview__inner-header_modifier">
-                                                                <h2 className="overview__inner-header--title"><strong>Publication schedule</strong></h2>
+                                                                <h2 className="overview__inner-header--title"><strong>Harmonogram publikacji</strong></h2>
                                                         </header>
                                                         
                                                         <div className="overview__inner-schedule-inner">
@@ -149,7 +149,7 @@ const OverviewPanel = (props) => {
                                                 {  /*---  Overview > Inner > Statistics   ---*/   }
                                                 <div className="overview__inner-statistics overview__inner-statistics_modifier">
                                                         <header className="overview__inner-header overview__inner-header_modifier">
-                                                                <h2 className="overview__inner-header--title"><strong>Statistics</strong></h2>
+                                                                <h2 className="overview__inner-header--title"><strong>Statystyka</strong></h2>
                                                         </header>
 
                                                         <div className="overview__inner-box">
@@ -157,10 +157,10 @@ const OverviewPanel = (props) => {
                                                                         <img src="../images/member/overview/statistics.png"alt="Barszcz statistics"/>
                                                                 </div>
 
-                                                                <p className="overview__inner-box--caption">Statistics function not activated.</p>
+                                                                <p className="overview__inner-box--caption">Funkcja statystyka jest wyłączona.</p>
                                                                 
                                                                 <div className="overview__inner-box-button">
-                                                                        <a href="/member/statistics" type="button" className="btn--small app__button--blue" target="_self">Active Statistics</a>
+                                                                        <a href="/member/statistics" type="button" className="btn--small app__button--blue" target="_self">Aktywuj  Statystykę </a>
                                                                 </div>
                                                         </div>
                                                 </div>

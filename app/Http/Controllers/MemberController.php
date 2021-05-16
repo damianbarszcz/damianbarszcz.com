@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Models\Project;
+use App\Models\Review;
+use App\Models\DraftProject;
+use App\Models\DraftReview;
 
 class MemberController extends Controller{
 
@@ -24,7 +28,7 @@ class MemberController extends Controller{
                         $canPageUrl = 'https://account.damianbarszcz.com/overview';
                         $altPageUrlPL = 'https://account.damianbarszcz.com/pl/overview';
                         $pageAuthor = 'Damian Barszcz';
-                        $pageTitle = 'Dashboard | Overview';
+                        $pageTitle = 'Pulpit | Przegląd';
                         $pageDescryption = 'To mój blog osobisty, na którym dzielę się stworzonymi projektami, książkami które czytam i oczywiście tego czego się uczę. Mam nadzieję, że dołączysz do dyskusji.';
                         $pageImage = "obrazek";
                 
@@ -36,7 +40,7 @@ class MemberController extends Controller{
                         $canPageUrl = 'https://account.damianbarszcz.com/new-project';
                         $altPageUrlPL = 'https://account.damianbarszcz.com/pl/new-project';
                         $pageAuthor = 'Damian Barszcz';
-                        $pageTitle = 'Dashboard | New project';
+                        $pageTitle = 'Pulpit | Nowy projekt';
                         $pageDescryption = 'To mój blog osobisty, na którym dzielę się stworzonymi projektami, książkami które czytam i oczywiście tego czego się uczę. Mam nadzieję, że dołączysz do dyskusji.';
                         $pageImage = "obrazek";
                         
@@ -48,7 +52,7 @@ class MemberController extends Controller{
                         $canPageUrl = 'https://account.damianbarszcz.com/new-review';
                         $altPageUrlPL = 'https://account.damianbarszcz.com/pl/new-review';
                         $pageAuthor = 'Damian Barszcz';
-                        $pageTitle = 'Dashboard | New review';
+                        $pageTitle = 'Pulpit | Nowa recenzja';
                         $pageDescryption = 'To mój blog osobisty, na którym dzielę się stworzonymi projektami, książkami które czytam i oczywiście tego czego się uczę. Mam nadzieję, że dołączysz do dyskusji.';
                         $pageImage = "obrazek";
                                 
@@ -60,7 +64,7 @@ class MemberController extends Controller{
                         $canPageUrl = 'https://account.damianbarszcz.com/reviews';
                         $altPageUrlPL = 'https://account.damianbarszcz.com/pl/reviews';
                         $pageAuthor = 'Damian Barszcz';
-                        $pageTitle = 'Dashboard | Reviews';
+                        $pageTitle = 'Pulpit | Recenzje';
                         $pageDescryption = 'To mój blog osobisty, na którym dzielę się stworzonymi projektami, książkami które czytam i oczywiście tego czego się uczę. Mam nadzieję, że dołączysz do dyskusji.';
                         $pageImage = "obrazek";
                                         
@@ -72,7 +76,7 @@ class MemberController extends Controller{
                         $canPageUrl = 'https://account.damianbarszcz.com/projects';
                         $altPageUrlPL = 'https://account.damianbarszcz.com/pl/projects';
                         $pageAuthor = 'Damian Barszcz';
-                        $pageTitle = 'Dashboard | Projects';
+                        $pageTitle = 'Pulpit| Projekty';
                         $pageDescryption = 'To mój blog osobisty, na którym dzielę się stworzonymi projektami, książkami które czytam i oczywiście tego czego się uczę. Mam nadzieję, że dołączysz do dyskusji.';
                         $pageImage = "obrazek";
                                                 
@@ -84,7 +88,7 @@ class MemberController extends Controller{
                         $canPageUrl = 'https://account.damianbarszcz.com/drafts';
                         $altPageUrlPL = 'https://account.damianbarszcz.com/pl/drafts';
                         $pageAuthor = 'Damian Barszcz';
-                        $pageTitle = 'Dashboard | Drafts';
+                        $pageTitle = 'Pulpit | Szkice';
                         $pageDescryption = 'To mój blog osobisty, na którym dzielę się stworzonymi projektami, książkami które czytam i oczywiście tego czego się uczę. Mam nadzieję, że dołączysz do dyskusji.';
                         $pageImage = "obrazek";
                                                         
@@ -96,7 +100,7 @@ class MemberController extends Controller{
                         $canPageUrl = 'https://account.damianbarszcz.com/personal-info';
                         $altPageUrlPL = 'https://account.damianbarszcz.com/pl/personal-info';
                         $pageAuthor = 'Damian Barszcz';
-                        $pageTitle = 'Dashboard | Personal info';
+                        $pageTitle = 'Pulpit | Dane personalne';
                         $pageDescryption = 'To mój blog osobisty, na którym dzielę się stworzonymi projektami, książkami które czytam i oczywiście tego czego się uczę. Mam nadzieję, że dołączysz do dyskusji.';
                         $pageImage = "obrazek";
         
@@ -108,7 +112,7 @@ class MemberController extends Controller{
                         $canPageUrl = 'https://account.damianbarszcz.com/statistics';
                         $altPageUrlPL = 'https://account.damianbarszcz.com/pl/statistics';
                         $pageAuthor = 'Damian Barszcz';
-                        $pageTitle = 'Dashboard | Statistics';
+                        $pageTitle = 'Pulpit | Statystyka';
                         $pageDescryption = 'To mój blog osobisty, na którym dzielę się stworzonymi projektami, książkami które czytam i oczywiście tego czego się uczę. Mam nadzieję, że dołączysz do dyskusji.';
                         $pageImage = "obrazek";
         
@@ -120,7 +124,7 @@ class MemberController extends Controller{
                         $canPageUrl = 'https://account.damianbarszcz.com/calendar';
                         $altPageUrlPL = 'https://account.damianbarszcz.com/pl/calendar';
                         $pageAuthor = 'Damian Barszcz';
-                        $pageTitle = 'Dashboard | Calendar';
+                        $pageTitle = 'Pulpit | Kalendarz';
                         $pageDescryption = 'To mój blog osobisty, na którym dzielę się stworzonymi projektami, książkami które czytam i oczywiście tego czego się uczę. Mam nadzieję, że dołączysz do dyskusji.';
                         $pageImage = "obrazek";
                 
@@ -132,7 +136,7 @@ class MemberController extends Controller{
                         $canPageUrl = 'https://account.damianbarszcz.com/about-application';
                         $altPageUrlPL = 'https://account.damianbarszcz.com/pl/about-application';
                         $pageAuthor = 'Damian Barszcz';
-                        $pageTitle = 'Dashboard | About application';
+                        $pageTitle = 'Pulpit | O aplikacji';
                         $pageDescryption = 'To mój blog osobisty, na którym dzielę się stworzonymi projektami, książkami które czytam i oczywiście tego czego się uczę. Mam nadzieję, że dołączysz do dyskusji.';
                         $pageImage = "obrazek";
 
@@ -140,4 +144,93 @@ class MemberController extends Controller{
                         break;
                 }
         }
+
+         /*
+        ==============================
+         Display single project in edit mode
+        ==============================
+        */
+        public function  projectEditView($slug){
+               $pub_url = basename($slug);
+    
+                $project_record = Project::where('pub_url', $pub_url)->firstOrFail();
+    
+                $p_title = $project_record['pub_title'];  $p_subtitle = $project_record['pub_subtitle']; $p_url= $project_record['pub_url']; $p_background= $project_record['pub_picture'];
+    
+                $canPageUrl = 'https://account.damianbarszcz.com/member/projects/edit/'. $p_url;
+                $altPageUrlPL = 'https://account.damianbarszcz.com/pl/member/projects/edit/'. $p_url;
+                $pageAuthor = 'Damian Barszcz';
+                $pageTitle = $p_title . " | Edytuj projekt";
+                $pageDescryption = $p_subtitle;
+                $pageImage = $p_background;
+    
+                return view('pages.member',['canPageUrl' => $canPageUrl, 'altPageUrlPL' => $altPageUrlPL, 'pageAuthor' => $pageAuthor, 'pageTitle' => $pageTitle, 'pageDescryption' => $pageDescryption, 'pageImage' => $pageImage]);
+         }
+
+        /*
+        ==============================
+         Display single review in edit mode
+        ==============================
+        */
+        public function  reviewEditView($slug){
+                $pub_url = basename($slug);
+     
+                 $project_record = Review::where('pub_url', $pub_url)->firstOrFail();
+     
+                 $p_title = $project_record['pub_title'];  $p_subtitle = $project_record['pub_subtitle']; $p_url= $project_record['pub_url']; $p_background= $project_record['pub_picture'];
+     
+                 $canPageUrl = 'https://account.damianbarszcz.com/member/reviews/edit/'. $p_url;
+                 $altPageUrlPL = 'https://account.damianbarszcz.com/pl/member/reviews/edit/'. $p_url;
+                 $pageAuthor = 'Damian Barszcz';
+                 $pageTitle = $p_title . " | Edytuj recenzje";
+                 $pageDescryption = $p_subtitle;
+                 $pageImage = $p_background;
+     
+                 return view('pages.member',['canPageUrl' => $canPageUrl, 'altPageUrlPL' => $altPageUrlPL, 'pageAuthor' => $pageAuthor, 'pageTitle' => $pageTitle, 'pageDescryption' => $pageDescryption, 'pageImage' => $pageImage]);
+          }
+
+        /*
+        ==============================
+         Display a edit project publication
+        ==============================
+        */
+        public function  projectDraftEditView($slug){
+                $pub_url = basename($slug);
+     
+                 $project_record = DraftProject::where('pub_url', $pub_url)->firstOrFail();
+     
+                 $p_title = $project_record['pub_title'];  $p_subtitle = $project_record['pub_subtitle']; $p_url= $project_record['pub_url']; $p_background= $project_record['pub_picture'];
+     
+                 $canPageUrl = 'https://account.damianbarszcz.com/member/projects/edit/'. $p_url;
+                 $altPageUrlPL = 'https://account.damianbarszcz.com/pl/member/projects/edit/'. $p_url;
+                 $pageAuthor = 'Damian Barszcz';
+                 $pageTitle = $p_title . " | Szkic projektu";
+                 $pageDescryption = $p_subtitle;
+                 $pageImage = $p_background;
+     
+                 return view('pages.member',['canPageUrl' => $canPageUrl, 'altPageUrlPL' => $altPageUrlPL, 'pageAuthor' => $pageAuthor, 'pageTitle' => $pageTitle, 'pageDescryption' => $pageDescryption, 'pageImage' => $pageImage]);
+          }
+
+        /*
+        ==============================
+         Display a edit review publication
+        ==============================
+        */
+        public function  reviewDraftEditView($slug){
+
+                $pub_url = basename($slug);
+
+                $project_record = DraftReview::where('pub_url', $pub_url)->firstOrFail();
+     
+                $p_title = $project_record['pub_title'];  $p_subtitle = $project_record['pub_subtitle']; $p_url = $project_record['pub_url']; $p_background= $project_record['pub_picture'];
+
+                $canPageUrl = 'https://account.damianbarszcz.com/member/projects/edit/' .  $p_url ;
+                $altPageUrlPL = 'https://account.damianbarszcz.com/pl/member/projects/edit/' .  $p_url ;
+                $pageAuthor = 'Damian Barszcz';
+                $pageTitle = $p_title . " | Szkic recenzji";
+                $pageDescryption =  " | Szkic recenzji";
+                $pageImage =  " | Szkic recenzji";
+
+                 return view('pages.member',['canPageUrl' => $canPageUrl, 'altPageUrlPL' => $altPageUrlPL, 'pageAuthor' => $pageAuthor, 'pageTitle' => $pageTitle, 'pageDescryption' => $pageDescryption, 'pageImage' => $pageImage]);
+          }
 }
