@@ -1,6 +1,6 @@
 /*-----------------------------------------------------
  * Contact (https://www.damianbarszcz.com)
- * Copyright 2020 Damian Barszcz
+ * Copyright 2021 Damian Barszcz
  *-----------------------------------------------------*/
 
 /*-----------------------------
@@ -73,38 +73,7 @@
                         .control-buttons{   @include  inlineFlexBetweenElements;  }
                 }
          }
-
+         
 /*-----------------------------
-*               RWD
+*        RWD System
 *----------------------------*/
-
-@media (max-width: 768px) {
-        .contact-banner{
-                &__block{
-                        margin:0 2rem;
-                }
-         }      
-
-         .contact-me{
-                &__block &__inner {
-                        padding:2.5rem;
-                }
-
-                //Contact me > Inner > Form
-                &__block &__inner &__form{
-
-                       &-inline{
-                              display:grid;
-                               grid-template-columns: repeat(1, 1fr);
-                               grid-row-gap: 2rem;
-                        }
-
-                        .control-buttons{   display: block; }
-                }
-
-                .btn--normal{
-                        min-width:100%;
-                        margin-top:2rem;
-                }
-         }
-}

@@ -42,29 +42,38 @@
 
 
 /*-----------------------------
-*               RWD
+*        RWD System
 *----------------------------*/
 
-@media (max-width: 1366px) {
-        .privacy{
-                &__inner{  width:60vw; }
+@media (max-width: 1200px) {
+        .privacy{  
+                &__inner{    width:65vw;   }
         }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 960px) {
         .privacy{
-                &__inner{  width:75vw;  }
+                &__inner{   width:80vw;  }    
         }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 720px) {
         .privacy{
-                &__inner{
-                    width:90vw;
-
-                    &-item{
-                            h1{  @include boxHeading($font-size-big, $bold-weight, $app-color-gray);      }
-                    }
+                &__inner{ width:89vw;
+                   
+                &-item{ h1{  @include boxHeading($font-size-big, $bold-weight, $app-color-gray);      }   }
             }
         }      
+}
+
+@media (max-width: 576px) {
+        .privacy{
+                &__inner{ width:89.5vw;  }
+        } 
+}
+
+@media (max-width: 480px) {
+        .privacy{
+                &__inner{   width:90vw;  }
+        }
 }

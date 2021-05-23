@@ -161,6 +161,7 @@ class PrimaryNav extends Component {
 
                 return (
                 <>
+                          { searchBox && <div className="search-lightbox"></div> } 
                         <nav className={`navigation navigation_theme ${ this.props.styleComponent } ${ navScrollBottom ? 'nav-scroll' : ( navScrollTop ? 'nav-noscroll' : '') } `}  aria-label="Primary Navigation">
                                 <div className="navigation__block g-container">
                                         { headerNav && <NavMobile /> }
@@ -168,6 +169,23 @@ class PrimaryNav extends Component {
                                         <NavBrand linkComponent ={ this.props.linkComponent }  />
         
                                         { headerNav && <NavMenu /> }
+
+                                        {  /*---  Navigation > Search ---*/   }
+                                        { searchBox && 
+                                        <div className="navigation__search">
+                                                <form className="navigation__search-form"onSubmit={ this.searchInformation } method="GET">
+                                                        <button type="button" className="form__button form__button--search"> <i className="material__icon material-icons"> search </i> </button>
+
+                                                        <input name="search_tag" type="text" className="form__input form__input_effect" value={ search_tag } onChange={ this.handleSearchData }  aria-label="Wyszukaj" placeholder="Wyszukaj" />
+
+                                                        <button type="button" className="form__button form__button--close" onClick={ this.closeSearchBox }> <i className="material__icon material-icons"> close </i> </button>
+                                                </form>
+                                        </div> }
+
+                                        { /*---  Navigation > Sh-box  ---*/   }
+                                         { (!searchBox && headerNav)?
+                                                <button type="button" className="form__button form__button--open" onClick={ this.getSearch }> <i className="material-icons material__icon"> search </i> </button> : ''
+                                         }
                                 </div>
                         </nav>
                 </>

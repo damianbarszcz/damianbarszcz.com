@@ -24,7 +24,7 @@ const NavBrand = (props) => {
                                 </svg>
                         </Link>
 
-                            {  props.linkComponent  &&  <a href={`${props.linkComponent }`}   className="navigation__brand-section navigation__brand-section_modifier" aria-label="Section  name"> { this.props.nameComponent } </a> }
+                            {  props.linkComponent  &&  <a href={`${props.linkComponent }`}   className="navigation__brand-section navigation__brand-section_modifier" aria-label="Section  name"> { props.nameComponent } </a> }
                 </div>
         )
 }

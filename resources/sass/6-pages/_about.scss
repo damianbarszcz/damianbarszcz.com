@@ -1,6 +1,6 @@
 /*-----------------------------------------------------
  * About (https://www.damianbarszcz.com)
- * Copyright 2020 Damian Barszcz
+ * Copyright 2021 Damian Barszcz
  *-----------------------------------------------------*/
 
 /*-----------------------------
@@ -44,7 +44,13 @@
 
                 //About Banner > Block > Box Timeline
                 &__block &__box-timeline{
+                        text-align: center;
                         .timeline-vector{ fill:$app-color-lsilver; }
+
+                        &-inner{
+                                width:421px; 
+                                height:475px;
+                        }
 
                         .timeline-start-title{
                                 font-size:$font-size-normal * 1.5;
@@ -63,6 +69,10 @@
                                         fill:$app-color-silver; 
                                 }
                         }
+                }
+
+                &__block &__artwork{
+                        text-align: center;
                 }
         }
 
@@ -87,35 +97,60 @@
         }
 
 /*-----------------------------
-*               RWD
+*        RWD System
 *----------------------------*/
 
-@media (max-width: 1366px) {
-        .about-banner{
-                 // About banner > Inner > Block 
-                  &__block &__inner{  grid-template-columns: 0.7fr 1fr 0.5fr; }
-        }
-}
-
-@media (max-width: 1024px) {
+//Desktops, large screens
+@media (max-width: 1200px) {
         .about-banner{
 
-                // About banner > Inner > Block 
-                &__block &__inner{  margin:auto; grid-template-columns: 1fr 1fr;  position: relative;}
+                &__block &__inner{
+                        grid-template-columns: repeat(3,1fr);
+                }
 
-                .about-banner__box-timeline{
+                &__block &__box-timeline{
+
                         &-inner{
-                                transform: translateX(50%);
-                                margin-top:1rem;
+                                width:421px * 0.8;
+                                height:475px * 0.8;
                         }
                 }
 
-                .about-banner__artwork--hero{
-                        position: relative;
+                &__artwork{
+
+                        &--hero{
+                                width:355px * 0.8;
+                                height: 532px * 0.8;
+                        }
                 }
         }
 }
-    
-@media (max-width: 768px) {}
-    
-@media (max-width: 414px) {}
+//Small screens, laptops
+@media (max-width: 960px) {
+        .about-banner{
+                &__block &__inner{  
+                        grid-template-columns: repeat(2,1fr);
+                }
+
+                &__block &__box-timeline{
+                        grid-column-start: 1;
+                        grid-column-end: 3;
+                }
+        }
+}
+
+@media (max-width: 576px) {
+        .about-banner{
+
+                &__block &__inner  &__header{
+                        grid-column-start: 1;
+                        grid-column-end: 3;
+                        text-align: center;
+                }
+
+                &__artwork{
+                        grid-column-start: 1;
+                        grid-column-end: 3;
+                }
+        }
+}

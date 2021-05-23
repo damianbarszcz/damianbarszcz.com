@@ -346,27 +346,18 @@
         }
 
 /*-----------------------------
-*        Animations
-*----------------------------*/
-
-@keyframes slide-down{
-        0%{ transform:translateY(-100%); }
-
-        100%{ transform:translateY(0); }
-}
-
-@keyframes slide-up{
-        0%{  position: fixed; transform:translateY(0%); }
-
-        100%{  position: absolute; transform:translateY(-100%); }
-}
-
-
-/*-----------------------------
 *               RWD
 *----------------------------*/
 
 @media (max-width: 768px) {
+
+        .navigation{
+
+                // Navigation > Block 
+                &__block{ 
+                        @include inlineRepeatColElements(3,1fr,0rem);
+                 }
+        }
 
         .navigation__menu{
                 display: none;
@@ -391,29 +382,79 @@
 
         .navigation__m-menu-list{
                 position: fixed;
+                padding:1rem 1.5rem 1rem;
                 top:0;
                 left:0;
                 width:50%;
                 min-height: 100%;
                 background-color:$app-color-white;
+                border-right: 1px solid $app-color-lsilver;
                 z-index:10000;
 
                 &-item{
                         display: block;
+                        position: relative;
                         width:100%;
-                }
 
+                        &-brand{
+                                margin-bottom: 2rem;
+                        }
+                }
                 
                 &-link{
                         display: block;
-                        padding:1rem 1.5rem;
+                        padding:1rem 0rem;
+                        margin-bottom: 0.75rem;
                         width:100%;
-                        
 
                         &_effect{
-
+                                transition:$FastEaseInOut;
+                                text-transform: uppercase;
+                                font-size:$font-size-normal;
+                                font-weight:$bold-weight;
+                                color:$app-color-gray;
                         }
 
                 }
         }
+
+        .menuActive{
+                animation-name:  slide-left;
+                animation-duration:0.5s;
+                animation-fill-mode: forwards;
+        }
+
+        .noActive{
+                animation-name:  slide-right;
+                animation-duration:0.5s;
+                animation-fill-mode: forwards;
+        }
+}
+
+/*-----------------------------
+*        Animations
+*----------------------------*/
+
+@keyframes slide-down{
+        0%{ transform:translateY(-100%); }
+
+        100%{ transform:translateY(0); }
+}
+
+@keyframes slide-up{
+        0%{  position: fixed; transform:translateY(0%); }
+
+        100%{  position: absolute; transform:translateY(-100%); }
+}
+
+@keyframes slide-left{
+        0%{   transform:translateX(-100%); }
+
+        100%{  transform:translateX(0%); }
+}
+
+@keyframes slide-right{
+        0%{   transform:translateX(0%); }
+
+        100%{  transform:translateX(-100%); }
 }

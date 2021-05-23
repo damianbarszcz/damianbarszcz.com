@@ -919,22 +919,31 @@ select {
 }
 
 /*-----------------------------
-*               RWD
+*        RWD System
 *----------------------------*/
 @media (max-width: 1200px) {
   .g-container {
-    max-width: 1050px;
-    margin: 0 2rem;
+    width: 88vw;
   }
 }
-@media (max-width: 1024px) {
+@media (max-width: 960px) {
   .g-container {
-    max-width: 800px;
+    width: 88.5vw;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 720px) {
   .g-container {
-    max-width: 600px;
+    width: 89vw;
+  }
+}
+@media (max-width: 576px) {
+  .g-container {
+    width: 89.5vw;
+  }
+}
+@media (max-width: 480px) {
+  .g-container {
+    width: 90vw;
   }
 }
 .d-logout {
@@ -1458,6 +1467,88 @@ progress[value]::-moz-progress-bar {
 }
 
 /*-----------------------------
+*               RWD
+*----------------------------*/
+@media (max-width: 768px) {
+  .navigation__block {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 0rem;
+    grid-row-gap: 0rem;
+  }
+
+  .navigation__menu {
+    display: none;
+  }
+
+  .navigation__m-menu {
+    display: block;
+  }
+  .navigation__m-menu-toggle {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 1rem;
+    width: 2.35rem;
+    height: 2.35rem;
+    cursor: pointer;
+    background-image: url("../../images/global/menu_black_24dp.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .navigation__m-menu-list {
+    position: fixed;
+    padding: 1rem 1.5rem 1rem;
+    top: 0;
+    left: 0;
+    width: 50%;
+    min-height: 100%;
+    background-color: #ffffff;
+    border-right: 1px solid #ebebeb;
+    z-index: 10000;
+  }
+  .navigation__m-menu-list-item {
+    display: block;
+    position: relative;
+    width: 100%;
+  }
+  .navigation__m-menu-list-item-brand {
+    margin-bottom: 2rem;
+  }
+  .navigation__m-menu-list-link {
+    display: block;
+    padding: 1rem 0rem;
+    margin-bottom: 0.75rem;
+    width: 100%;
+  }
+  .navigation__m-menu-list-link_effect {
+    transition: 0.2s ease-in-out;
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #5b5b5b;
+  }
+
+  .menuActive {
+    -webkit-animation-name: slide-left;
+            animation-name: slide-left;
+    -webkit-animation-duration: 0.5s;
+            animation-duration: 0.5s;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+  }
+
+  .noActive {
+    -webkit-animation-name: slide-right;
+            animation-name: slide-right;
+    -webkit-animation-duration: 0.5s;
+            animation-duration: 0.5s;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+  }
+}
+/*-----------------------------
 *        Animations
 *----------------------------*/
 @-webkit-keyframes slide-down {
@@ -1496,47 +1587,36 @@ progress[value]::-moz-progress-bar {
     transform: translateY(-100%);
   }
 }
-/*-----------------------------
-*               RWD
-*----------------------------*/
-@media (max-width: 768px) {
-  .navigation__menu {
-    display: none;
+@-webkit-keyframes slide-left {
+  0% {
+    transform: translateX(-100%);
   }
-
-  .navigation__m-menu {
-    display: block;
+  100% {
+    transform: translateX(0%);
   }
-  .navigation__m-menu-toggle {
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 1rem;
-    width: 2.35rem;
-    height: 2.35rem;
-    cursor: pointer;
-    background-image: url("../../images/global/menu_black_24dp.svg");
-    background-position: center;
-    background-repeat: no-repeat;
+}
+@keyframes slide-left {
+  0% {
+    transform: translateX(-100%);
   }
-
-  .navigation__m-menu-list {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 50%;
-    min-height: 100%;
-    background-color: #ffffff;
-    z-index: 10000;
+  100% {
+    transform: translateX(0%);
   }
-  .navigation__m-menu-list-item {
-    display: block;
-    width: 100%;
+}
+@-webkit-keyframes slide-right {
+  0% {
+    transform: translateX(0%);
   }
-  .navigation__m-menu-list-link {
-    display: block;
-    padding: 1rem 1.5rem;
-    width: 100%;
+  100% {
+    transform: translateX(-100%);
+  }
+}
+@keyframes slide-right {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
   }
 }
 /*-----------------------------
@@ -3724,7 +3804,7 @@ progress[value]::-moz-progress-bar {
 }
 /*-----------------------------------------------------
  * Contact (https://www.damianbarszcz.com)
- * Copyright 2020 Damian Barszcz
+ * Copyright 2021 Damian Barszcz
  *-----------------------------------------------------*/
 /*-----------------------------
 *        Contact banner
@@ -3818,32 +3898,11 @@ progress[value]::-moz-progress-bar {
 }
 
 /*-----------------------------
-*               RWD
+*        RWD System
 *----------------------------*/
-@media (max-width: 768px) {
-  .contact-banner__block {
-    margin: 0 2rem;
-  }
-
-  .contact-me__block .contact-me__inner {
-    padding: 2.5rem;
-  }
-  .contact-me__block .contact-me__inner .contact-me__form-inline {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-row-gap: 2rem;
-  }
-  .contact-me__block .contact-me__inner .contact-me__form .control-buttons {
-    display: block;
-  }
-  .contact-me .btn--normal {
-    min-width: 100%;
-    margin-top: 2rem;
-  }
-}
 /*-----------------------------------------------------
  * About (https://www.damianbarszcz.com)
- * Copyright 2020 Damian Barszcz
+ * Copyright 2021 Damian Barszcz
  *-----------------------------------------------------*/
 /*-----------------------------
 *           About us
@@ -3889,8 +3948,15 @@ progress[value]::-moz-progress-bar {
   margin-left: 1rem;
   font-weight: 600;
 }
+.about-banner__block .about-banner__box-timeline {
+  text-align: center;
+}
 .about-banner__block .about-banner__box-timeline .timeline-vector {
   fill: #ebebeb;
+}
+.about-banner__block .about-banner__box-timeline-inner {
+  width: 421px;
+  height: 475px;
 }
 .about-banner__block .about-banner__box-timeline .timeline-start-title {
   font-size: 1.5rem;
@@ -3910,6 +3976,9 @@ progress[value]::-moz-progress-bar {
 .about-banner__block .about-banner__box-timeline .timeline__step--desc {
   font-weight: 500;
   fill: #6b6969;
+}
+.about-banner__block .about-banner__artwork {
+  text-align: center;
 }
 
 /*-----------------------------
@@ -3940,25 +4009,39 @@ progress[value]::-moz-progress-bar {
 }
 
 /*-----------------------------
-*               RWD
+*        RWD System
 *----------------------------*/
-@media (max-width: 1366px) {
+@media (max-width: 1200px) {
   .about-banner__block .about-banner__inner {
-    grid-template-columns: 0.7fr 1fr 0.5fr;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .about-banner__block .about-banner__box-timeline-inner {
+    width: 336.8px;
+    height: 380px;
+  }
+  .about-banner__artwork--hero {
+    width: 284px;
+    height: 425.6px;
   }
 }
-@media (max-width: 1024px) {
+@media (max-width: 960px) {
   .about-banner__block .about-banner__inner {
-    margin: auto;
-    grid-template-columns: 1fr 1fr;
-    position: relative;
+    grid-template-columns: repeat(2, 1fr);
   }
-  .about-banner .about-banner__box-timeline-inner {
-    transform: translateX(50%);
-    margin-top: 1rem;
+  .about-banner__block .about-banner__box-timeline {
+    grid-column-start: 1;
+    grid-column-end: 3;
   }
-  .about-banner .about-banner__artwork--hero {
-    position: relative;
+}
+@media (max-width: 576px) {
+  .about-banner__block .about-banner__inner .about-banner__header {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    text-align: center;
+  }
+  .about-banner__artwork {
+    grid-column-start: 1;
+    grid-column-end: 3;
   }
 }
 /*-----------------------------------------------------
@@ -4008,21 +4091,21 @@ progress[value]::-moz-progress-bar {
 }
 
 /*-----------------------------
-*               RWD
+*        RWD System
 *----------------------------*/
-@media (max-width: 1366px) {
+@media (max-width: 1200px) {
   .privacy__inner {
-    width: 60vw;
+    width: 65vw;
   }
 }
-@media (max-width: 1024px) {
+@media (max-width: 960px) {
   .privacy__inner {
-    width: 75vw;
+    width: 80vw;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 720px) {
   .privacy__inner {
-    width: 90vw;
+    width: 89vw;
   }
   .privacy__inner-item h1 {
     margin-bottom: 1.5rem;
@@ -4030,6 +4113,16 @@ progress[value]::-moz-progress-bar {
     font-size: 1.75rem;
     font-weight: 600;
     color: #5b5b5b;
+  }
+}
+@media (max-width: 576px) {
+  .privacy__inner {
+    width: 89.5vw;
+  }
+}
+@media (max-width: 480px) {
+  .privacy__inner {
+    width: 90vw;
   }
 }
 /*-----------------------------------------------------
