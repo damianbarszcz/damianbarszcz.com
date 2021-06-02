@@ -160,7 +160,7 @@ Display popular reviews (Reviews Component)
 */
 export function popularReviews(props){
         return props.reviewsCollection.slice(0,4).map(article =>
-        <article key={ article.id }  className="popular__article"  style={{ background:  `url( ${article.pub_picture })` }}>
+        <article key={ article.id }  className="popular__article popular__article_modifier"  style={{ background:  `url( ${article.pub_picture })` }}>
                 <a href={ `/review/${article.pub_url }`}  className="popular__article-link popular__article-link_modifier" target="_self">
                         <header className="popular__article-header">
                                 <h3 className="popular__article-header--title">{ article.pub_title }</h3>
@@ -203,8 +203,8 @@ Display last reviews
 =======================
 */
 
-export function lastReviewsDisplay(array){
-        return array.slice(0,6).map(article =>
+export function lastReviewsDisplay(props){
+        return props.reviewsCollection.slice(1,7).map(article =>
         <article key={ article.id } className="last-reviews__article  last-reviews__article_modifier">
                 <a  href={ `/review/${article.pub_url }`}  className="last-reviews__article-link last-reviews__article-link_modifier" target="_self">
                         <div className="last-reviews__article-artwork" style={{ background: `url( ${ article.pub_picture } )` }}></div>
@@ -220,5 +220,37 @@ export function lastReviewsDisplay(array){
         </article> );
 }
 
-export default {getNewPublication, getLeftSideProjects,   getRightSideProjects, getReviewsCarousel, newProjectDisplay,popularReviews, relatedDisplay,lastReviewsDisplay }
+/*
+=======================
+Top review
+=======================
+*/
+
+export function topReviewDisplay(props){
+        return props.reviewsCollection.slice(0,1).map(article =>
+        <article key={ article.id } className="top-review__article  top-review__article_modifier">
+                <a  href={ `/review/${article.pub_url }`}  className="top-review__article-link top-review__article-link_modifier" target="_self">
+                        <div className="top-review__article-media">
+                                <div className="top-review__article-media--artwork" style={{ background: `url( ${ article.pub_picture } )` }}></div>
+                        </div>
+
+                        <div className="top-review__article-content">
+                                 <div className="top-review__article-category top-review__article-category_modifier" data-book-category={ article.pub_category }>{ article.pub_category }</div>
+
+                                <header className="top-review__article-header top-review__article-header_modifier">
+                                        <h3 className="top-review__article-header--title">{ article.pub_title } </h3>
+
+                                        <span className="top-review__article-header--desc"><LinesEllipsis text={ article.pub_subtitle} maxLine='2' ellipsis='...' trimRight /></span>
+                                </header>
+
+                                <span className="top-review__article-header--desc">
+                                        <br/>
+                                        <strong><Moment format="DD/MM/YYYY">{ article.date_of_publication }</Moment></strong>
+                                </span>
+                        </div>
+                </a>
+        </article> );
+}
+
+export default { getNewPublication, getLeftSideProjects,   getRightSideProjects, getReviewsCarousel, newProjectDisplay,popularReviews, relatedDisplay,lastReviewsDisplay, topReviewDisplay }
 

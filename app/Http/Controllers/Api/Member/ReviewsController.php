@@ -44,7 +44,7 @@ class ReviewsController extends Controller{
          Display random related reviews
         ============================
         */
-        public function randomBooks($pub_url){
+        public function randomReviews($pub_url){
                 $pub_id =  Review::where('pub_url',$pub_url)->pluck('id');
 
                 return  Review::whereNotIn('id', $pub_id)->inRandomOrder()->get();

@@ -1,9 +1,16 @@
 import  React, { useEffect } from 'react';
-import { popularReviews, lastReviewsDisplay }  from '../../../../global/Publications';
 
 {  /*  Components */ }
-import { LibraryManager, LastReviews, Popular,Navigation,Footer  } from '../../components';
+import { LibraryManager, LastReviews, Popular,Navigation,Footer, TopReview,SearchReviews  } from '../../components';
+import { popularReviews, lastReviewsDisplay, topReviewDisplay }  from '../../../../global/Publications';
+import { libraryObjOne, libraryObjTwo, libraryObjThree,libraryObjFour  } from './Data';
 
+/*
+=======================
+Display all components for
+Library route
+=======================
+*/
 function Library(props) {
 
         useEffect(() => {
@@ -14,11 +21,6 @@ function Library(props) {
 
         const getReviews = { reviewsCollection: props.setReviews }
 
-        let searchResults = props.setReviews.filter(article =>  
-                article.pub_title.toLowerCase().includes(searchTerm.toLowerCase()) 
-                || article.pub_subtitle.toLowerCase().includes(searchTerm.toLowerCase()) 
-                || article.pub_category.toLowerCase().includes(searchTerm.toLowerCase()) 
-        );
 
         /*
          =======================
@@ -27,11 +29,13 @@ function Library(props) {
         */
         return (
                 <>
-                        <Navigation  linkComponent={'library'} styleComponent={ 'nav-dark' } nameComponent= {'Books'} />
-                        <LibraryManager  searchTerm = { searchTerm }  getTerm={getTerm}/>
-                        <LastReviews searchTerm = { searchTerm } searchResults = {searchResults}  lastReviewsDisplay = { lastReviewsDisplay(props.setReviews) }   lastReviewsDisplays = 
-                        { lastReviewsDisplay(searchResults) } />
-                        <Popular  popularReviews = { popularReviews(getReviews) } />
+                        <Navigation />
+                        <main>
+                                <LibraryManager  libraryObjOne={ libraryObjOne } searchTerm = { searchTerm }  getTerm={getTerm} />
+                                <TopReview libraryObjTwo={ libraryObjTwo} topReviewDisplay={ topReviewDisplay(getReviews) }  />
+                                <LastReviews  libraryObjThree ={ libraryObjThree } lastReviewsDisplay = { lastReviewsDisplay(getReviews) } />
+                                <Popular  libraryObjFour ={ libraryObjFour  } popularReviews = { popularReviews(getReviews) } />
+                        </main>
                         <Footer />
                 </>
         );

@@ -1,19 +1,19 @@
 
 /*-----------------------------------------------------
  * Library (https://www.damianbarszcz.com)
- * Copyright 2020 Damian Barszcz
+ * Copyright 2021 Damian Barszcz
  *-----------------------------------------------------*/
 
- @mixin localLibraryHeader{
+ @mixin localLibraryHeader($color:$app-color-gray){
 
         &__header{
                 display: inline-block;
                 padding-bottom:0.25rem;
     
-                &_modifier{ border-bottom: 2px  solid $app-color-gray; }
+                &_modifier{ border-bottom: 2px  solid $color; }
 
                 &--title{
-                        @include boxHeading($font-size-normal,$bold-weight, $app-color-gray);
+                        @include boxHeading($font-size-normal,$bold-weight, $color);
                         text-transform: uppercase;
                 }
         }
@@ -26,13 +26,18 @@
         .library-manager{
                 @include sectionDefinition;
 
-                &_theme{  background-color:$app-color-dark; }
+                &_theme{  
+                        background-color:$app-color-purple;
+                        background-image:url('../../images/library/library-banner.png');
+                        background-size: cover;
+                        background-position: center;
+                 }
 
                 // Library manager > Block
-                &__block{  @include blockPadding(8rem, 0, 2rem, 0);}
+                &__block{  @include blockPadding(8rem, 0, 8rem, 0);}
 
                 // Library manager > Block > Header
-                &__block &__header{ @include sectionArticleHeaderLeft;  }
+                &__block &__header{ @include sectionArticleHeaderCenter(31.5rem,$app-color-white,$app-color-white);  }
 
                 // Library manager > Block > Inner
                 &__block &__inner{  margin-top:2rem; }
@@ -41,17 +46,17 @@
 
                         &-form{
                                 position: relative;
-                                @include boxLeft(31.5rem);
+                                @include boxCenter(40.5rem);
                                 
                                 .form__search{
+                                        padding:1.35rem;
                                         width:100%;
-                                        background-color:transparent;
-                                        border-bottom: 2px solid $app-color-white !important;
-                                        border:0;
-                                        padding-right:3.5rem;
-                                        padding-left:0rem;
+                                        background-color:$app-color-white;
+                                        border-radius: 5px;
+                                        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                                        border: 1px solid $app-color-lsilver;
                                         font-size:$font-size-normal;
-                                        color: $app-color-white;
+                                        color: $app-color-dark;
 
                                         &::placeholder { 
                                                 color: $app-color-silver;
@@ -61,13 +66,98 @@
 
                                 .form__button--search{
                                         position: absolute;
-                                        right:0;
-                                        top:1rem;
-                                        color:$app-color-white;
+                                        right:1rem;
+                                        top:1.25rem;
+                                        color:$app-color-gray;
                                 }
                         }
                 }
         }
+
+
+        
+/*-----------------------------
+*          Top review
+*----------------------------*/
+
+.top-review{
+        @include sectionDefinition;
+
+        &_theme{  background-color:$app-color-white; }
+
+        // Top review > Block
+        &__block{  @include blockPadding(4rem, 0, 4rem);  }
+
+        // Top review > Block > Header
+        @include localLibraryHeader;
+
+        // Top review > Block > Inner
+        &__block &__inner{
+                margin-top:2rem;
+        }
+
+        &__inner &__article{
+                padding:1.25rem 1rem;   
+    
+                &_modifier{
+                        @include boxStyling;
+                        
+                        @include transition;
+
+                        &:hover{ box-shadow: 0 1px 6px 0 rgba(0,0,0,0.16); }
+                } 
+
+                &-link{   
+                        display:grid;
+                        grid-template-columns:  1fr 0.5fr;
+                        align-items: center;
+                        grid-gap: 2rem;
+                }
+
+                &-media{
+    
+                       &--artwork{
+                                @include setItemArtwork(60%);  
+
+                                background-size: cover !important;
+                                background-repeat: no-repeat !important;
+                        }
+                }
+
+                &-header{
+                        margin-top:1rem;
+                       
+                        &--title{  @include boxHeading($font-size-big, $bold-weight, $app-color-gray); }
+    
+                        &--desc{  @include boxDescContent; white-space: pre-wrap; }                              
+                }
+    
+                &-category{                        
+                        margin-top:1rem;
+                        @include pageButton(90px);
+                }
+    
+                $bookCategory: (#{$app-color-red}:"programming", #{$app-color-blue}:"development", #{$app-color-yellow}:"astrophysics", #{$app-color-green}:"business");
+    
+                @each $color, $category in $bookCategory {
+                        [data-book-category="#{$category}"]{
+                                border:0.15rem solid $color;
+                                color:$color;
+                        }
+                }
+    
+                [data-article-category="Book"]{
+                        border:0.15rem solid $app-color-red;
+                        color:$app-color-red;
+                }
+    
+                [data-article-category="Project"]{
+                        border:0.15rem solid $app-color-blue;
+                        color:$app-color-blue;
+                }
+        }
+}
+
 
 /*-----------------------------
 *          Last reviews
@@ -90,34 +180,13 @@
                 @include  inlineRepeatColElements(3, 1fr, 3rem);
         }
 
-        &__article-artwork{
-                background-size:contain !important;
-                background-position: center !important;
-        }
-
          // Library manager > Block > Inner > Article
        @include articleItems;
 
-       // Library manager > Block > Inner > Noarticle
-       &__inner &__noarticle{
-               position: relative;
-               grid-column-start: 1; 
-               grid-column-end: 4;  
-               min-height: 18.75rem;
-
-               &-header{
-                       position: absolute;
-                       left:50%;
-                       top:50%;
-                       transform:translate(-50%,-50%);
-
-                       &_modifier{   text-align:center;   }
-
-                       @include boxHeading($font-size-normal,$bold-weight, $app-color-gray);  
-
-                       &--caption{ @include boxDescContent; }
-               }
-       }
+       &__article-artwork{
+                background-size: cover !important;
+                background-repeat: no-repeat !important;
+        }
 }
 
 /*-----------------------------
@@ -127,13 +196,13 @@
 .popular{
         @include sectionDefinition;
 
-        &_theme{  background-color:$app-color-white; }
+        &_theme{  background-color:$app-color-dark; }
 
         // Library manager > Block
         &__block{  @include blockPadding(4rem, 0, 4rem);  }
         
         // Popular > Block > Header
-        @include localLibraryHeader;
+        @include localLibraryHeader($app-color-white);
 
         // Popular > Block > Inner
         &__inner{
@@ -146,6 +215,11 @@
                 position: relative;
                 min-height: 20rem;
 
+                &_modifier{
+                        background-size: cover !important;
+                        background-repeat: no-repeat !important;
+                }
+
                 $brand-color: (rgba($app-color-red, 0.75), rgba($app-color-blue, 0.75), rgba($app-color-yellow, 0.75), rgba($app-color-green, 0.75));
 
                 @for $i from 1 through length($brand-color) {
@@ -155,7 +229,8 @@
                                 }
                         }
                 }
-                
+
+                 // Popular > Block > Inner > Article > Single item
                 &:nth-child(1){  grid-column-start: 1; grid-column-end: 4;   grid-row-start:1;  grid-row-end: 3;  }
             
                 &:nth-child(2){  grid-column-start: 4; grid-column-end: 6;   grid-row-start:1;  grid-row-end: 2;  }
@@ -178,7 +253,9 @@
                 // Popular > Block > Inner > Article > Link > Header
                 &-header{
                         position: absolute;
-                        bottom:2rem;
+                        bottom:1rem;
+                        left:1rem;
+                        right:1rem;
         
                         &--title{ @include boxHeading($font-size-extra-normal, $bold-weight, $app-color-white);   }
         
@@ -193,36 +270,102 @@
     }
     
 /*-----------------------------
-*               RWD
+*          RWD System
 *----------------------------*/
 
-@media (max-width: 1366px) {
-        .last-reviews{
-                &__block &__inner{
-                        @include  inlineRepeatColElements(3, 1fr, 1.5rem);
-                }
-        }
-}
-
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
 
         .last-reviews{
-                &__block &__inner{
-                        @include  inlineRepeatColElements(2, 1fr, 2rem);
-                }
-        }
-}
-    
-@media (max-width: 768px) {
-         .last-reviews{
-                &__block &__inner{
-                        @include  inlineRepeatColElements(1, 1fr, 0rem);
-                }
+                &__block &__inner{ @include  inlineRepeatColElements(3, 1fr, 1.5rem);  }
         }
 
         .popular{
-                &__inner{
-                        display: block;
+                &__inner  &__article{
+                        
+                        &:nth-child(1){  grid-column-start: 1; grid-column-end: 4;   grid-row-start:1;  grid-row-end: 3;  }
+            
+                        &:nth-child(2){  grid-column-start: 4; grid-column-end: 6;   grid-row-start:1;  grid-row-end: 2;  }
+                    
+                        &:nth-child(3){  grid-column-start: 4; grid-column-end: 6; }
+                    
+                        &:nth-child(4){  grid-column-start: 1;   grid-column-end: 6;  }
+                }
+        }
+}
+//Small screens, laptops
+@media (max-width: 960px) {
+        .last-reviews{
+                &__block &__inner{ @include  inlineRepeatColElements(2, 1fr, 1.5rem);  }
+        }
+
+        .popular{
+
+                &__inner{  @include inlineRepeatColElements($nr_elem:6, $columnSize: 1fr,$space: 1rem);    }
+
+                &__inner  &__article{
+                        
+                        &:nth-child(1){  grid-column-start: 1; grid-column-end: 4;   grid-row-start:1;  grid-row-end: 3;  }
+                    
+                        &:nth-child(2){  grid-column-start: 4; grid-column-end: 7;   grid-row-start:1;  grid-row-end: 3;  }
+                    
+                        &:nth-child(3){  grid-column-start: 1; grid-column-end: 4; grid-row-start:3;  grid-row-end: 5;  }
+                    
+                        &:nth-child(4){  grid-column-start: 4;   grid-column-end: 7; grid-row-start:3;  grid-row-end: 5;  }
+                }
+        }
+}
+
+//iPads, Tablets
+@media (max-width: 720px) {
+        .last-reviews{
+                &__block &__inner{    @include  inlineRepeatColElements(2, 1fr, 1rem);   }
+        }
+
+        .top-review{
+
+                &__inner &__article{
+            
+                        &-link{   
+                                grid-template-columns:  1fr;
+                                grid-gap: 1rem;
+                        }
+        
+                        &-media{
+                               &--artwork{
+                                        @include setItemArtwork(80%);  
+                                }
+                        }
+
+                        &-header{
+                                &--title{  @include boxHeading($font-size-extra-normal, $bold-weight, $app-color-gray); }              
+                        }
+                }
+        }
+}
+
+@media (max-width: 576px) {
+
+        .library-manager{
+                &_theme{    background-size:auto; }
+
+                &__block &__header{ @include sectionArticleHeaderCenter(31.5rem,$app-color-white,$app-color-white);  text-align: left; }
+        }
+        
+        .last-reviews{
+                &__block &__inner{    @include  inlineRepeatColElements(1, 1fr, 1.5rem);      }
+        }
+
+        .popular{
+
+                &__inner  &__article{
+                        
+                        &:nth-child(1){  grid-column-start: 1; grid-column-end: 7;   grid-row-start:1;  grid-row-end: 3;  }
+                    
+                        &:nth-child(2){  grid-column-start: 1; grid-column-end: 7;   grid-row-start:3;  grid-row-end: 5;  }
+                    
+                        &:nth-child(3){  grid-column-start: 1; grid-column-end: 7; grid-row-start:5;  grid-row-end: 7;  }
+                    
+                        &:nth-child(4){  grid-column-start: 1;   grid-column-end: 7; grid-row-start:7;  grid-row-end: 9; }
                 }
         }
 }

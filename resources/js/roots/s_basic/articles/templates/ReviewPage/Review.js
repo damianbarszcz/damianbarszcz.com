@@ -14,7 +14,10 @@ class ArticleBook extends Component {
 
                 axios.get(`/api/basic/review/${pub_url}`).then(response => { this.setState({ review: response.data }); });
 
-                axios.get(`/api/basic/reviews/random/${pub_url}`).then(response => { this.setState({ rand_reviews: response.data }); });
+                axios.get(`/api/basic/reviews/random/${pub_url}`).then(response => { 
+                        this.setState({  rand_reviews: response.data  });
+                        console.log(this.state.rand_reviews)
+                 });
         }
 
         /*

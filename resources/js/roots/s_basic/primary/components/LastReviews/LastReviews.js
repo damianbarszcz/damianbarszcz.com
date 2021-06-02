@@ -17,22 +17,11 @@ const LastReviews = (props) => {
                             <div className="last-reviews__block g-container">
                                     {  /*--- Last reviews > Block > Header ---*/   }
                                     <header className="last-reviews__header last-reviews__header_modifier">
-                                            <h2 className="last-reviews__header--title">Ostatnie recezje</h2>
+                                            <h2 className="last-reviews__header--title"> { props.libraryObjThree.headerTitle } </h2>
                                     </header>
 
                                     {  /*--- Last reviews > Block > Inner ---*/   }
-                                    <div className="last-reviews__inner">
-                                             { props.searchTerm=="" &&  props.lastReviewsDisplay ||  props.lastReviewsDisplays }
-
-                                            { (props.searchResults.length == 0 && !props.searchTerm=="" )  ?
-                                                    <div className="last-reviews__noarticle last-reviews__noarticle_modifier">
-                                                         <header className="last-reviews__noarticle-header last-reviews__noarticle-header_modifier">
-                                                                <h2 className="last-reviews__noarticle-header--title">Upps :(</h2>
-     
-                                                                <p className="last-reviews__noarticle-header--caption">Nie odnaleziono książek z tej kategorii.</p>
-                                                        </header>
-                                                </div> : '' }
-                                     </div>
+                                    <div className="last-reviews__inner">    {  props.lastReviewsDisplay }   </div>
                             </div>
                     </section>
             </>

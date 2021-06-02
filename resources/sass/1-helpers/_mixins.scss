@@ -139,7 +139,7 @@
         }
 }
 
-@mixin sectionArticleHeaderLeft($size:31.5rem, $color: $app-color-white, $strongColor:$app-color-red){
+@mixin sectionArticleHeaderLeft($size:31.5rem, $color: $app-color-gray, $strongColor:$app-color-red){
         
         @include boxLeft($size);
                         
@@ -383,7 +383,16 @@
                         min-height: 100%;
                 }
 
-                &-artwork{  @include setItemArtwork($padding);  }
+                &-artwork{                                  
+                        @include setItemArtwork(60%);  
+                        background-size: cover !important;
+                        background-repeat: no-repeat !important;
+                }
+
+                &-media--artwork{
+                        background-size: cover !important;
+                        background-repeat: no-repeat !important;
+                }
 
                 &-header{
                         margin-top:1rem;
@@ -407,7 +416,7 @@
                         @include pageButton(90px);
                 }
 
-                $bookCategory: (#{$app-color-red}:"programming", #{$app-color-blue}:"development", #{$app-color-yellow}:"astrophisics", #{app-color-green}:"business");
+                $bookCategory: (#{$app-color-red}:"programming", #{$app-color-blue}:"development", #{$app-color-yellow}:"astrophysics", #{$app-color-green}:"business");
 
                 @each $color, $category in $bookCategory {
                         [data-book-category="#{$category}"]{
@@ -1153,24 +1162,7 @@
 }
 
 /*-----------------------------
-*               RWD
+*          RWD System
 *----------------------------*/
 
-@media (max-width: 1200px) {
-        .new-pub{
-                &_theme{ background-color:$app-color-red; }
-        }
-}
-
-@media (max-width: 1024px) {
-        .new-pub{
-                &_theme{ background-color:$app-color-blue; }
-        }
-}
-    
-@media (max-width: 768px) {
-        .main-header{
-                display: none;
-         }
-}
 

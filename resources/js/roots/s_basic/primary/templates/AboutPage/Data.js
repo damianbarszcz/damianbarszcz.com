@@ -6,7 +6,24 @@ export const aboutObjOne = {
   study_title:'Alma Mater:',
   study_caption: 'Politechnika Śląska',
   occupation_title: 'Zawód',
-  occupation_caption:'Programista'
+  occupation_caption:'Programista',
+  letter:{
+      first:'O',
+      second:'m',
+      third:'n',
+      fourth:'i',
+      fifth:'e'
+  },
+
+  timeline:{
+      get_knowledge:'Zdobywanie wiedzy',
+      knowledge_with:'z zasad działania ',
+      knowledge_computer:'komputera.',
+      study_start:'Rozpoczecie nauki na',
+      study_place:'Politechnice Śląskiej.',
+      learn_start:'Start z nauką ',
+      learn_programming:'programowania.'
+  }
 };
 
 export const aboutObjTwo= {

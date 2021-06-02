@@ -3,8 +3,14 @@ import axios from 'axios';
 
 {  /*  Components */ }
 import { ContactBanner, ContactPanel,Footer,Navigation  } from '../../components';
-import { aboutObjOne } from './Data';
+import { contactObjOne,contactObjTwo,contactObjThree } from './Data';
 
+/*
+=======================
+Display all components for
+Contact route
+=======================
+*/
 function Contact () {
         useEffect(() => {
                 document.title = "Kontakt | Damian Barszcz";
@@ -20,6 +26,7 @@ function Contact () {
         const [success, successPage] = React.useState(false);
         const [recaptcha, setRecaptcha] = React.useState('');
 
+        // Submit message to Autor blog
         const handleForm = (e) => {
                 e.preventDefault();
 
@@ -47,23 +54,27 @@ function Contact () {
                 } );
         }
 
+        // Get value for Captcha
         const getRecaptcha = (recaptchaValue) => {
                 setRecaptcha(recaptchaValue)
-                console.log("Captcha value:", recaptchaValue);
         }
 
+       /*
+        =======================
+         Render component
+        =======================
+        */
         return (
                 <>
-                        <Navigation styleComponent={ 'nav-light' } />
+                        <Navigation />
                         <main>
-                                <ContactBanner  aboutObjOne = { aboutObjOne } />
-                                <ContactPanel handleForm ={ handleForm }  getRecaptcha={ getRecaptcha } setName={ setName } setSurename ={ setSurename } 
+                                <ContactBanner  contactObjOne = { contactObjOne } />
+                                <ContactPanel  contactObjTwo={contactObjTwo} contactObjThree = { contactObjThree } handleForm ={ handleForm }  getRecaptcha={ getRecaptcha } setName={ setName } setSurename ={ setSurename } 
                                 setEmail={ setEmail } setSubject={ setSubject } setMessage={ setMessage } errors={ errors } loader={ loader } success={ success } setRecaptcha={ setRecaptcha }  />
                         </main>
                         <Footer />
                 </>
-                );
-        }
-
+        );
+}
 
 export default  Contact;

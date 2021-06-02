@@ -41,7 +41,7 @@ class Search extends Component {
 
                 return (
                 <>   
-                        <Navigation />
+                        <Navigation styleComponent={ 'nav-light' } />
                         <main>
                                 <SearchResult  searchResults = { searchResults } searchTerm={ searchTerm } />
                         </main>

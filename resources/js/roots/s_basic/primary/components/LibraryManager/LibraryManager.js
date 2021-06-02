@@ -17,7 +17,7 @@ const LibraryManager = (props) => {
                             <div className="library-manager__block g-container">
                                     {  /*--- Library manager > Block > Header  ---*/   }
                                     <header className="library-manager__header">
-                                            <h1 className="library-manager__header--title"><strong className="strong-title">Biblioteka: </strong> Dowiedz się więcej o książkach</h1>
+                                            <h1 className="library-manager__header--title"><strong className="strong-title"> {props.libraryObjOne.headerStrongTitle }: </strong> {props.libraryObjOne.headerTitle }</h1>
                                     </header>
 
                                     {  /*--- Library manager > Block > Inner  ---*/   }
@@ -26,7 +26,7 @@ const LibraryManager = (props) => {
                                                     <form className="library-manager__search-form"  method="GET">
                                                             <button type="button" className="form__button form__button--search"> <i className="material__icon--nav material-icons"> search </i> </button>
 
-                                                            <input type="text" className="form__input form__search form__search_effect" aria-label="Wyszukaj recezje" value={ props.searchTerm }  onChange={ e => props.getTerm(e.target.value) } placeholder="Wyszukaj recenzje"  />
+                                                            <input type="text" className="form__input form__search form__search_effect" aria-label={props.libraryObjOne.searchReviews } value={ props.searchTerm }  onChange={ e => props.getTerm(e.target.value) } placeholder={props.libraryObjOne.searchReviews }  />
                                                     </form>
                                                 </div>
                                      </div>

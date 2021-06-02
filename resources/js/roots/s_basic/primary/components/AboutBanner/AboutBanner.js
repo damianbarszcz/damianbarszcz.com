@@ -2,7 +2,6 @@ import  React from 'react';
 
 const AboutBanner = (props) => {
     
-
    /*
     =======================
      Render component
@@ -19,11 +18,11 @@ const AboutBanner = (props) => {
                                         {  /*--- About banner > Block > Inner > Header ---*/   }
                                         <header className="about-banner__header">
                                                 <h1 className="about-banner__header--title"> 
-                                                        <span style={{color:'rgb(200, 200, 200'}}>O</span> 
-                                                        <span style={{color:'rgb(255, 191, 115)'}}>m</span>
-                                                        <span style={{color:'rgb(47, 152, 247)'}}>n</span>
-                                                        <span style={{color:'rgb(30, 193, 119)'}}>i</span>
-                                                        <span style={{color:'rgb(255, 48, 98)'}}>e</span> 
+                                                        <span style={{color:'rgb(200, 200, 200'}}>{ props.aboutObjOne.letter.first }</span> 
+                                                        <span style={{color:'rgb(255, 191, 115)'}}>{ props.aboutObjOne.letter.second  }</span>
+                                                        <span style={{color:'rgb(47, 152, 247)'}}>{ props.aboutObjOne.letter.third  }</span>
+                                                        <span style={{color:'rgb(30, 193, 119)'}}>{ props.aboutObjOne.letter.fourth }</span>
+                                                        <span style={{color:'rgb(255, 48, 98)'}}>{ props.aboutObjOne.letter.fifth }</span> 
                                                 </h1>
                                                 
                                                 <div className="about-banner__header-data">
@@ -86,22 +85,22 @@ const AboutBanner = (props) => {
                                                         <rect className="timeline-vector" x="216.78" y="382.94" width="5.01" height="5" />
                                                           <text className="timeline-start-title" transform="translate(124.42 23.95)"> 
                                                                 1996 - <tspan className="timeline-start-title">  
-                                                                 <tspan x="-11.75" y="33.6"> Zamość </tspan> </tspan>  
+                                                                 <tspan x="-11.75" y="33.6"> { props.aboutObjOne.timeline.born } </tspan> </tspan>  
                                                         </text>
 
                                                         <text className="timeline__step  timeline__step--date" transform="translate(266.37 139.04)">2010 </text> 
 
                                                         <text className="timeline__step  timeline__step--desc" transform="translate(266.08 164.45)">
-                                                                <tspan>Zdobywanie wiedzy </tspan> 
-                                                                <tspan x="0" y="28">z zasad działania </tspan>
-                                                                <tspan x="0" y="56">komputera.</tspan>
+                                                                <tspan>{ props.aboutObjOne.timeline.get_knowledge } </tspan> 
+                                                                <tspan x="0" y="28">{ props.aboutObjOne.timeline.knowledge_with } </tspan>
+                                                                <tspan x="0" y="56">{ props.aboutObjOne.timeline.knowledge_computer } </tspan>
                                                         </text>
 
                                                             <text className="timeline__step  timeline__step--date" transform="translate(266.37 384.04)">2016 </text>
 
                                                             <text className="timeline__step  timeline__step--desc" transform="translate(266.08 409.45)">
-                                                                <tspan x="0" y="0">Rozpoczecie nauki na</tspan>
-                                                                <tspan x="0" y="28">Politechnice Śląskiej.</tspan>
+                                                                <tspan x="0" y="0">{ props.aboutObjOne.timeline.study_start } </tspan>
+                                                                <tspan x="0" y="28">{ props.aboutObjOne.timeline.study_place} </tspan>
                                                             </text>
 
                                                             <rect className="timeline-vector" x="77.41" y="275.93" width="5.01" height="5" />
@@ -110,8 +109,8 @@ const AboutBanner = (props) => {
                                                             <text className="timeline__step  timeline__step--date" transform="translate(20 311.04)">2014 </text>
 
                                                             <text className="timeline__step  timeline__step--desc" transform="translate(0.41 336.45)">
-                                                                    <tspan x="20" y="0">Start z nauką </tspan>
-                                                                    <tspan x="20" y="28">programowania.</tspan>
+                                                                    <tspan x="20" y="0">{ props.aboutObjOne.timeline.learn_start } </tspan>
+                                                                    <tspan x="20" y="28">{ props.aboutObjOne.timeline.learn_programming }</tspan>
                                                             </text>
                                                     </svg>
                                             </div>

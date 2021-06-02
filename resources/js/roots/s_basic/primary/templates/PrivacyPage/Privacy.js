@@ -2,8 +2,15 @@ import  React, { useEffect } from 'react';
 
 {  /*  Components */ }
 import { PrivacySection,Navigation,Footer  } from '../../components';
+import { privacyObjOne  } from './Data';
 
-function Privacy(props) {
+/*
+=======================
+Display all components for
+Privacy me route
+=======================
+*/
+function Privacy() {
 
         useEffect(() => {
                 document.title = "Polityka prywatności | Damian Barszcz"; 
@@ -16,8 +23,10 @@ function Privacy(props) {
         */
         return (
                 <>
-                        <Navigation   styleComponent={ 'nav-light' } />
-                        <PrivacySection />
+                        <Navigation />
+                        <main>
+                                <PrivacySection privacyObjOne ={privacyObjOne} />
+                        </main>
                         <Footer />
                 </>
         );

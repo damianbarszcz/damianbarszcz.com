@@ -17,7 +17,7 @@ const Popular = (props) => {
                         <div className="popular__block g-container">
                                 {  /*--- Popular  > Block > Header  ---*/   }
                                 <header className="popular__header popular__header_modifier">
-                                        <h2 className="popular__header--title">Popularne</h2>
+                                        <h2 className="popular__header--title"> { props.libraryObjFour.headerTitle } </h2>
                                  </header>
                                                 
                                 {  /*--- Last reviews > Block >  Inner  ---*/   }

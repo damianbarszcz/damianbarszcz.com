@@ -4,6 +4,12 @@ import  React, { useEffect } from 'react';
 import { Navigation, Footer,Biography, AboutBanner } from '../../components';
 import { aboutObjOne, aboutObjTwo } from './Data';
 
+/*
+=======================
+Display all components for
+About me route
+=======================
+*/
 function About () {
         useEffect(() => {
                 document.title = "O mnie | Damian Barszcz";
@@ -16,9 +22,11 @@ function About () {
         */
         return (
                 <>
-                        <Navigation styleComponent={ 'nav-light' } />
-                        <AboutBanner aboutObjOne = { aboutObjOne }   />
-                        <Biography aboutObjTwo = { aboutObjTwo }  />
+                        <Navigation />
+                        <main>
+                                <AboutBanner aboutObjOne = { aboutObjOne }   />
+                                <Biography aboutObjTwo = { aboutObjTwo }  />
+                        </main>
                         <Footer />
                 </>
         );

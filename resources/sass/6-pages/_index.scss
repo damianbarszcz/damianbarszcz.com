@@ -1,7 +1,7 @@
 
 /*-----------------------------------------------------
  * Index (https://www.damianbarszcz.com)
- * Copyright 2020 Damian Barszcz
+ * Copyright 2021 Damian Barszcz
  *-----------------------------------------------------*/
 
 /*-----------------------------
@@ -27,7 +27,41 @@
         @include navMenu("main-header",true);
 
         // Main header > Block  > earch
-        @include navSearch(true);
+        //@include navSearch(true);
+
+        &__search{
+                position: absolute;
+                left:50%;
+                width: 25.125rem;
+                height:3rem;
+                transform: translateX(-50%);
+                
+
+                &-form{
+                        width:100%;
+
+                        .form__button{
+                                color:$app-color-gray;
+                                
+                               &--search{ position:absolute; top:0.8rem; left:-2rem; }
+
+                               &--close{ position:absolute;   top:0.8rem; right:-2rem; }
+                        }
+
+                        .form__input{                  
+                                height:3rem; 
+                                border:none;  
+                                background-color:$app-no-color;
+                        }
+                }
+        }
+
+        .form__button{
+                display: block;
+                 color:$app-color-gray; 
+
+                //&--open{ text-align: right; }
+        }
 }
 
 /*-----------------------------
@@ -43,7 +77,14 @@
         &__block{ @include blockPadding(1rem, 0, 6rem); }
 
         // New pub  > Block > Article
-        @include articleItems(49.64%, false, true);
+        @include articleItems(50%, false, true);
+
+        &__article{
+                &-artwork{
+                        background-size: cover !important;
+                        background-repeat: no-repeat !important;
+                }
+        }
 }
 
 
@@ -67,7 +108,14 @@
         }
 
         // Latest projects > Block  > Inner
-        @include innerProjectDisplay('projects');        
+        @include innerProjectDisplay('projects');   
+        
+        &__article{
+                &-artwork{
+                        background-size: cover !important;
+                        background-repeat: no-repeat !important;
+                }
+        }
 }
 
 /*-----------------------------
@@ -135,75 +183,143 @@
 
 
 /*-----------------------------
-*               RWD
+*          RWD System
 *----------------------------*/
 
-@media (max-width: 1024px) {
-                .new-pub{
-                        // New pub  > Block > Article
-                       @include articleItems(75%, false, true);
-       
-                       .new-pub__article{
-                               padding:1.25rem;
-                       }
-       
-                       .new-pub__article-artwork{
-                               background-size:contain !important;
-                               background-position: center !important;
-                       }
-               }
-        
+@media (max-width: 1200px) {
+        .new-pub{
+                @include articleItems(55%, false, true);
+        }
 }
-    
-@media (max-width: 768px) {
+
+@media (max-width: 960px) {
+        .new-pub{          
+                @include articleItems(60%, false, true);
+        }
+}
+
+@media (max-width: 720px) {
         .main-header{
-                display: none;
-         }
-         
-         .new-pub{
-                 // New pub  > Block > Article
-                @include articleItems(75%, false, true);
+                border-bottom: 1px solid  $app-color-lsilver;
 
-                .new-pub__article{
-                        padding:1.25rem;
+                &__block{                 
+                        display: grid;
+                        grid-template-columns: repeat(3, 1fr);
+                        align-items: center;
+                        padding: 1rem 0 1rem;
+                        height: 4.25rem;
                 }
 
-                .new-pub__article-artwork{
-                        background-size:contain !important;
-                        background-position: center !important;
+                .main-header__brand{
+                        grid-column-start:2;
+                        grid-column-end:3;
+                        padding: 0rem 0 0rem;
                 }
+
+                &__menu{
+                       display: none;
+                }
+
+                &__toggle{
+                        display: block;
+                        left:0;
+                        top:1rem;
+                        width:2.35rem;
+                        height:2.35rem;
+                        cursor: pointer;
+                        background-image:url('../../images/global/menu_black_24dp.svg');
+                        background-position: center;
+                        background-repeat: no-repeat;
+                }
+
+                .form__button--open{
+                        position: absolute;
+                        right:0;
+                        top:1.5rem;
+                        grid-column-start: 3;
+                }
+
+                // Main header > Block  > Brand
+                @include navBrand(100%, 10.2rem, 2rem,true);
+        }
+
+        .new-pub{
+                @include articleItems(65%, false, true);
+
+                &__block{ @include blockPadding(1rem, 0, 0rem); }
         }
 
         .projects{
 
-                 // Latest projects > Block  > Header
-                 &__block &__header{
-                        display: block;
-                }
+                &__block &__header{ display: block;  }
 
                 &__inner{
-                        display: block !important;           
+                        grid-template-columns: 1fr;
+                        grid-gap: 1.5rem;
                         
                         &-left{
-                                margin-bottom:2rem;
+
+                                .projects__article{
+                                        display:flex;
+                                        flex-flow: column wrap;
+                                        justify-content: space-between;
+                        
+                                        &_modifier{
+                                                @include boxStyling;
+                                                @include transition;
+                        
+                                                &:hover{ box-shadow: 0 1px 6px 0 rgba(0,0,0,0.16); }
+                                        } 
+
+                                        &-link{ @include boxInnerLink; }
+
+                                        &-header{
+                                                margin-bottom:1rem;
+                                                
+                                                &--title{  @include boxHeading($font-size-extra-normal, $bold-weight, $app-color-gray); margin-bottom:1rem; }
+
+                                                &--desc{  @include boxDescContent; white-space: pre-wrap; }
+                                        }
+
+                                        &-artwork{  @include setItemArtwork(100%);  }
+                                }
                         }
-
+                                
+                        // Latest projects  > Inner > Right
                         &-right{
-                                display: block;
+                                display: grid;
 
+                                .projects__article{
+                        
+                                        &_modifier{
+                                                @include boxStyling;
+                                                @include transition;
+                        
+                                                &:hover{ box-shadow: 0 1px 6px 0 rgba(0,0,0,0.16); }
+                                        } 
+
+                                        &-link{                                
+                                                display: grid;
+                                                grid-template-columns: 1fr;
+                                                grid-column-gap: 3rem;
+                                                padding: 1.5rem 1rem;
+                                        }
+
+                                        &-header{
+                                                &--title{  @include boxHeading($font-size-extra-normal, $bold-weight, $app-color-gray); margin-bottom:1rem;}
+
+                                                &--desc{  @include boxDescContent; white-space: pre-wrap; }
+                                        }
+
+                                        &-artwork{  margin-top:2rem; @include  backgroundBlockArtwork(100%,30.5rem) }
+                                }
                         }
                 }
         }
+}
 
-        .library{
-
-                // Latest projects > Block  > Header
-                &__block &__header{
-                       display: block;
-               }
-
-               &__inner{
-                       display: block !important;                     
-               }
+@media (max-width: 576px) {
+        .new-pub{
+                @include articleItems(80%, false, true);
         }
 }

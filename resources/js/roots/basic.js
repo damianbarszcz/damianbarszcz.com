@@ -34,7 +34,7 @@ class Basic extends Component {
 
                 axios.get('/api/basic/reviews').then(response => {  this.setState({ reviews: response.data }); }).catch(errors => { console.log(errors); })
 
-                axios.get('/api/basic/projects').then(response => { this.setState({ projects: response.data });  console.log(this.state.projects)  }).catch(errors => { console.log(errors); })
+                axios.get('/api/basic/projects').then(response => { this.setState({ projects: response.data });  }).catch(errors => { console.log(errors); })
         }
 
        /*

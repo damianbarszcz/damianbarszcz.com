@@ -3,9 +3,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { footerObjOne,footerObjTwo,footerObjThree, footerObjFour} from './Data';
 
-class Footer extends Component {
-        render() {
-                return (
+const Footer = (props) => {
+        return (
                 
                 <>
                 {  /*--------------------------------------*/    }
@@ -88,9 +87,8 @@ class Footer extends Component {
                                         </div>
                                 </div>
                         </footer>
-                        </>
-                );
-        }
+                </>
+         );
 }
 
 export default Footer;

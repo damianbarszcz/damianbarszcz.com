@@ -54,7 +54,7 @@ use App\Http\Controllers\Api\Member\OverviewController;
 
                 Route::get('/review/{review_url}', [ ReviewsController::class, 'singleReview' ]);
 
-                Route::get('/reviews/random/{pub_url}', [ ProjectsController::class, 'randomReviews' ]);
+                Route::get('/reviews/random/{pub_url}', [ ReviewsController::class, 'randomReviews' ]);
         });
 
         /*

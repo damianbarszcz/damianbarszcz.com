@@ -11,6 +11,8 @@ export { default as  LibrarySection } from './LibrarySection/LibrarySection';
 export { default as  ProjectsSection } from './ProjectsSection/ProjectsSection';
 export { default as  NewPublication } from './NewPublication/NewPublication';
 export { default as  NavSection } from './NavSection/NavSection';
+export { default as  TopReview } from './TopReview/TopReview';
+export { default as  SearchReviews } from './SearchReviews/SearchReviews';
 export { default as  LastReviews } from './LastReviews/LastReviews';
 export { default as PrivacySection } from './PrivacySection/PrivacySection';
 export { default as  Popular } from './Popular/Popular';

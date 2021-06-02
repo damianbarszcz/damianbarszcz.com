@@ -1,6 +1,5 @@
 
 import React, { Component } from 'react';
-import ReadingProgress from 'react-snakke';
 import disableScroll from 'disable-scroll';
 import axios from 'axios';
 import { Link,withRouter } from 'react-router-dom';
@@ -162,7 +161,7 @@ class PrimaryNav extends Component {
                 return (
                 <>
                           { searchBox && <div className="search-lightbox"></div> } 
-                        <nav className={`navigation navigation_theme ${ this.props.styleComponent } ${ navScrollBottom ? 'nav-scroll' : ( navScrollTop ? 'nav-noscroll' : '') } `}  aria-label="Primary Navigation">
+                        <nav className={`navigation navigation_theme nav-light ${ navScrollBottom ? 'nav-scroll' : ( navScrollTop ? 'nav-noscroll' : '') } `}  aria-label="Primary Navigation">
                                 <div className="navigation__block g-container">
                                         { headerNav && <NavMobile /> }
 
@@ -186,6 +185,23 @@ class PrimaryNav extends Component {
                                          { (!searchBox && headerNav)?
                                                 <button type="button" className="form__button form__button--open" onClick={ this.getSearch }> <i className="material-icons material__icon"> search </i> </button> : ''
                                          }
+
+                                        { this.props.articleTitle  && (
+                                        articleRead &&  
+                                        <div className="navigation__post-title">
+                                                <span className="navigation__post-title--caption">  { this.props.articleTitle } </span>
+                                        </div>)
+                                         }
+
+                                        { /*---  Navigation > Sharing ---*/   }
+                                        { this.props.articleTitle  && (
+                                        articleRead  &&
+                                        <div className="navigation__sharing">
+                                                <a href="https://www.facebook.com/sharer/sharer.php?u=damianbarszcz.com" className="navigation__sharing-social navigation__sharing-social--facebook" target="_blank"> <i className="social__icon social__icon--facebook fab fa-facebook-square"></i> </a>
+                                                <a href="https://twitter.com/intent/tweet" className="navigation__sharing-social navigation__sharing-social--twitter" target="_blank"> <i className="social__icon social__icon--twitter fab fa-twitter"></i> </a>
+                                                <a href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site http://www.damianbarszcz.com." className="navigation__sharing-social navigation__sharing-social--envelope" target="_blank"> <i className="social__icon social__icon--envelope fab fas fa-envelope"></i> </a>
+                                        </div> )
+                                        }
                                 </div>
                         </nav>
                 </>

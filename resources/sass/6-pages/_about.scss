@@ -103,10 +103,7 @@
 //Desktops, large screens
 @media (max-width: 1200px) {
         .about-banner{
-
-                &__block &__inner{
-                        grid-template-columns: repeat(3,1fr);
-                }
+                &__block &__inner{   grid-template-columns: repeat(3,1fr);   }
 
                 &__block &__box-timeline{
 
@@ -125,12 +122,11 @@
                 }
         }
 }
+
 //Small screens, laptops
 @media (max-width: 960px) {
         .about-banner{
-                &__block &__inner{  
-                        grid-template-columns: repeat(2,1fr);
-                }
+                &__block &__inner{    grid-template-columns: repeat(2,1fr);    }
 
                 &__block &__box-timeline{
                         grid-column-start: 1;
@@ -139,6 +135,7 @@
         }
 }
 
+//Mobile devices ( horizontal)
 @media (max-width: 576px) {
         .about-banner{
 

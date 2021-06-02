@@ -18,7 +18,11 @@
                 .article__block{ @include blockPadding(2rem, 0, 6rem)  }
 
                 .article__phero{
-                        &-artwork{  @include backgroundBlockArtwork(100%, 45rem);  margin-bottom:2rem;}
+                        &-artwork{  @include backgroundBlockArtwork(100%, 45rem);                        
+                                background-size: cover !important;
+                                background-repeat: no-repeat !important;  
+                                margin-bottom:2rem;
+                        }
                 }
         }
 
@@ -56,7 +60,6 @@
 
                 &-inner{
                         @include inlineFlexBetweenElements;
-
                         padding-bottom:1rem;
                 }
 
@@ -156,26 +159,65 @@
 *               RWD
 *----------------------------*/
 
-@media (max-width: 1366px) {
-        .article{
-                &_theme{ background-color: $app-color-red;  }
+@media (max-width: 1200px) {
+        .related{
+                &__block &__inner{ @include  inlineRepeatColElements(3, 1fr, 1.5rem);  }
         }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 960px) {
         .article{
-                &_theme{ background-color: $app-color-green;  }
+                &--book{
+                        .article__phero{
+                                &-artwork{  @include backgroundBlockArtwork(100%, 40rem);   }
+                        }
+                } 
         }
+
+        .related{       &__block &__inner{ @include  inlineRepeatColElements(2, 1fr, 1.5rem);  }  }
 }
     
-@media (max-width: 768px) {
+@media (max-width: 720px) {
         .article{
-                &_theme{ background-color: $app-color-blue;  }
-         }      
+                &--book{
+                        .article__phero{
+                                &-artwork{  @include backgroundBlockArtwork(100%, 30rem);   }
+                        }
+                } 
+
+                &--project{
+                        .article__phero{
+                                @include inlineRepeatColElements(1, $columnSize: 1fr,$space: 10rem);
+                        }
+                }
+                
+                &__phero{
+
+                        &-header{
+                                &--title{  @include boxHeading($font-size-extra-normal, $bold-weight, $app-color-gray);  }
+                        }
+                }
+        }
+
+        .related{    &__block  &__inner{    @include  inlineRepeatColElements(2, 1fr, 1rem);   } }
 }
     
-@media (max-width: 414px) {
+@media (max-width: 576px) {
         .article{
-                &_theme{ background-color: $app-color-yellow;  }
-         }
+                &--book{
+                        .article__phero{
+                                &-artwork{  @include backgroundBlockArtwork(100%, 25rem);   }
+                        }
+                }
+
+                &__component{
+                        &-inner{
+                                display: grid;
+                                grid-template-columns: (2,1fr);
+                                grid-row-gap:2rem;
+                        }
+                }
+        }
+
+        .related{  &__block &__inner{    @include  inlineRepeatColElements(1, 1fr, 1.5rem);  }     }
 }
