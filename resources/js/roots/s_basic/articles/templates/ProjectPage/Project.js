@@ -1,50 +1,53 @@
-import React, { Component } from 'react';
+import  React, { useEffect,useState } from 'react';
 import axios from 'axios';
 
 {  /*  Components */ }
 import { Footer, Navigation } from '../../../primary/components';
-import { ProjectBody,ProjectRelated } from '../../components';
+import { ArticleBody,ArticleRelated } from '../../components';
+import { relatedDisplay } from '../../../../global/Publications';
+import { ArticleObjOne } from '../ProjectPage/Data';
 
-class ArticleProject extends Component {
+/*
+=======================
+Get single project article
+with available actions
+ =======================
+*/
+function Project(props){
+        const [project, getProject] = useState({});
+        const [randProjects, getRandProjects] = useState([]);
 
-        constructor(props) { 
-                super(props); this.state = { project: [], rand_projects: [] } 
-        }
+        useEffect(() => {
+                const pub_url = props.match.params.pub_url;
+                
+                axios.get(`/api/basic/project/${pub_url}`).then(response => {
+                        getProject(response.data); 
+                });
 
-        componentDidMount() {
-                const pub_url = this.props.match.params.pub_url;
+                axios.get(`/api/basic/projects/random/${pub_url}`).then(response => { 
+                        getRandProjects(response.data);
+                });
+        }, []);
 
-                axios.get(`/api/basic/project/${pub_url}`).then(response => { this.setState({ project: response.data }); });
-
-                axios.get(`/api/basic/projects/random/${pub_url}`).then(response => { this.setState({ rand_projects: response.data }); console.log(this.state.rand_projects)});
-        }
-
+        const setRandProjects = { randCollection: randProjects }
+        
         /*
         =======================
          Render components
         =======================
         */
-       
-        render() {
-                const { project } = this.state;
-
-                const getRandArticle = { randArticle: this.state.rand_projects }
-
-                document.title = project.pub_title;
-
-                return (
-
+        return (
                 <>
-                        <Navigation articleTitle={ project.pub_title}  styleComponent={ 'nav-light' } linkComponent={'projects'}   nameComponent= {'Projects'} />
-
+                        <Navigation articleTitle={ project.pub_title}  typeSection={'navigation'}  pub_url = {project.pub_url} />
                         <main>
-                                <ProjectBody  project = { project } getRandArticle={ getRandArticle } /> 
-                                <ProjectRelated getRandArticle= { getRandArticle} />
-                        </main>
+                                <ArticleBody  typeSection={'article'}  typeArticle ={ 'article--project' } pub_title = { project.pub_title } pub_subtitle = { project.pub_subtitle } pub_body = { project.pub_body }  
+                                pub_picture = { project.pub_picture}  date_of_publication ={ project.date_of_publication } pub_tags = {project.pub_tags}  pub_url = {project.pub_url}  /> 
 
+                                <ArticleRelated relatedHeaderTitle={ ArticleObjOne.related_title}  sectionType={'related--project'}randArticles= { relatedDisplay(setRandProjects) } />
+                        </main>
                         <Footer />
                 </>
-                )
-        }
+        );
 }
-export default ArticleProject ;
+
+export default  Project;

@@ -11,7 +11,7 @@
                 @include sectionDefinition;
 
                 &_theme{
-                        background-color:darken($app-color-green, 30%);
+                        background-color: darken($app-color-green,30%);
                         background-image:url('../images/contact/bg-halftone-black-20p.png');
                 }
 
@@ -20,7 +20,7 @@
 
                  // Contact Banner > Block > Header
                  &__block  &__header{
-                        @include sectionHeaderCenter;
+                        @include sectionHeaderCenter(40rem, $app-color-white);
                         padding-bottom:3rem;
                 }
         }
@@ -78,7 +78,7 @@
 *        RWD System
 *----------------------------*/
 
-@media (max-width: 720px) {
+@media (max-width: 768px) {
      
         .contact-me{
                 &__block &__inner {

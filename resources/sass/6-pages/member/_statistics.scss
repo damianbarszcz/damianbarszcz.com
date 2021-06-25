@@ -15,7 +15,7 @@
                 // Statistics > Block
                 &__block{ @include accountPadding }
 
-                @include navBrand(100%, 18rem, 3.515625rem);
+                @include blogBrand(100%, 18rem, 3.515625rem);
 
                 // Statistics > Block > Inner
                 &__inner{

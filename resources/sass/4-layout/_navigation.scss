@@ -1,468 +1,69 @@
 /*-----------------------------------------------------
  * Navigation (https://www.damianbarszcz.com)
- * Copyright 2020 Damian Barszcz
+ * Copyright 2021 Damian Barszcz
  *-----------------------------------------------------*/
 
-/*-----------------------------
-*        Local extends
-*----------------------------*/
-
-   .nav-link-color{
-        position: absolute;
-        top: 100%;
-        left: 0;
-        content: '';
-        width: 100%;
-        height: 4px;
-        opacity: 0;
-        transition: opacity 0.2s, transform 0.2s;
-        transform: translateY(20px);
-    }
-       
 /*-----------------------------
 *           Navigation
 *----------------------------*/
 
-.search-lightbox{
-        display: block;
-        position: fixed;
-        margin:0;
-        padding:0;
-        min-width:100%;
-        height: 100%;
-        background-color:rgba(0,0,0,0.35);
-        z-index:99;
-        overflow: hidden
-}
-
-.nav-dark{
-        background-color:$app-color-dark;
-        border-bottom:1px solid  $app-color-gray;
-
-        .navigation__brand-logo--dark{
-                fill:$app-color-white;
-        }
-
-        .navigation__brand-section{
-                color:$app-color-white;
-
-                &:hover{ color:$app-color-white;  border-bottom:1px solid $app-color-white; }
-
-                &::before{ background-color:$app-color-white; }
-        }
-
-        .navigation__menu-list-link{
-                color:$app-color-white;
-        }
-
-        .material__icon--nav{ color:$app-color-white; }
-
-        .material__icon {
-                color:$app-color-white;
-        }
-
-}
-
-.nav-light{
-        background-color:$app-color-white; 
-        border-bottom: 1px solid  $app-color-lsilver;
-
-        .navigation__brand-section{
-                color:$app-color-gray;
-
-                &:hover{ color:$app-color-gray; border-bottom:1px solid $app-color-gray;}
-
-                &::before{ background-color:$app-color-gray; }
-        }
-
-        .navigation__brand-author-logo--dark{
-                fill:$app-color-gray; 
-        }
-
-        .navigation__menu-list-link{
-                color:$app-color-gray;
-        }
-
-        .material__icon--nav{ color:$app-color-gray; }
-
-        .material__icon {
-                 color:$app-color-gray; 
-        }
-}
-
 .navigation{
         position: absolute;
         min-width: 100%;
-        z-index:100;
 
-        &__m-menu{
-                display: none;
+        &_theme{ 
+                background-color:$app-color-white;  
+                border-bottom: 1px solid  $app-color-lsilver;
+                z-index:100;
         }
 
-        // Navigation > Block 
-        &__block{ 
-                @include inlineRepeatColElements(6,1fr,0rem);
-                position: relative;
-                padding:1rem 0 1rem;
-                height: 4.25rem;
+        // Navigation > Block  
+        &__block{
+                display: grid;
+                grid-template-columns: 0.2fr 1fr 0.2fr;
                 align-items: center;
-         }
+                height: 4.25rem;
+        }
 
-         // Navigation > Block  > Brand
-         @include navBrand;
+        // Navigation > ...when scroll down
+        &--scroll{
+                position: fixed;
+                box-shadow: 0 .125rem .3125rem rgba(0,0,0,.26);
+                animation:slide-down 0.4s;
+        }
 
-        // Navigation > Block  > Menu
-        @include navMenu;
+        // Navigation > ...when scroll up
+        &--noscroll{   animation:slide-up 0.4s;  }
 
-        // Navigation > Block  > earch
-        @include navSearch;
-
-        // Navigation > Post title
+        // Navigation >  Block > Post title
         &__post-title{
                 position: absolute;
                 left:50%;
                 top:50%;
-                text-align: center;
                 transform: translate(-50%, -50%);
 
                &--caption{
-                       font-family:$page-font;
-                       font-weight: $bold-weight;
-                       font-size:$font-size-normal;
-                       color:$app-color-silver;
+                        @include boxDescContent($font-size-normal, $bold-weight, $app-color-gray);
                }
         }
 
-         // Navigation > Sharing
-        &__sharing{
-                position: absolute;
-                right:0;
-                top:50%;
-                transform: translate(0%, -50%);
+        @include blogBrand;
 
-                &-social{
-                        display:inline-block;
-                        position: relative;
-                        width:2rem;
-                        height:2rem;
-                        border-radius:100%;
+        @include navMenu;
 
-                        .social__icon{
-                                position:absolute;
-                                left:50%;
-                                top:50%;
-                                transform:translate(-50%, -50%);
-                        }
-    
+        @include navSearch;
 
-                        &--facebook{
-                                margin-right:1rem;
-                                border:0.15rem solid $facebook-color;
-                                color:$facebook-color;
-    
-                                &:hover{  color:$facebook-color; }
-                        }
-
-                        &--twitter{
-                                margin-right:1rem;
-                                border:0.15rem solid $twitter-color;
-                                color:$twitter-color;
-    
-                                &:hover{  color:$twitter-color; }
-                        }
-
-                        &--envelope{
-                                border:0.15rem solid $app-color-red;
-                                color:$app-color-red;
-    
-                                &:hover{  color:$app-color-red; }
-                        }
-                }
-        }
-
-        &__member{
-                position: absolute;
-                right:3.5rem;
-
-                &-btn{
-                        cursor: pointer;
-
-                        &-artwork{
-                                display:inline-block;
-                                width:2.75rem;
-                                height:2.75rem;
-        
-                                &_modifier{
-                                        border-radius:100%;
-                                        background-repeat:no-repeat;
-                                        background-size:contain;
-                                        background-position:center;
-                                }
-                        }
-                }
-        }
-
-           // Account nav > Block > Account dropdown
-           .account-dropdown{
-                position:absolute;
-                width:18rem;
-                min-height: 8rem;
-                max-height: 22.5rem;
-                transform:translate(-8.1rem, 0.55rem);
-
-                &_modifier{
-                        background-color:$app-color-white;
-                        border: 1px solid $app-color-lsilver;
-                }
-
-                &__inner{ padding:1.5rem 0rem; }
-
-                 // Account nav > Block > Account dropdown > Profile
-                 &__inner, &__profile{
-                        padding-bottom:2.5rem;
-
-                        &_modifier{  border-bottom: 1px solid $app-color-lsilver;  }
-
-                        &--artwork{
-                                display:block;
-                                margin:auto;
-                                width:4.5rem;
-                                height:4.5rem;
-    
-                                &_modifier{
-                                        border-radius:100%;
-                                        background-repeat:no-repeat;
-                                        background-size:contain;
-                                        background-position:center;
-                                }
-                        }
-
-                        &-info{
-                                text-align:center;
-                                font-size:$font-size-normal * 0.85;
-                                color:$app-color-dark;
-
-                                &--name{  line-height: 2.5rem;}
-                    
-                                &--email{ margin-bottom:2rem; }
-
-                                &--btn{
-                                        padding:0.8rem 1rem;
-                                        border:1px solid $app-color-lsilver;
-                                        font-size:$font-size-small;
-                                }
-                        }
-                }
-
-                // Account nav > Block > Account dropdown > Rules
-                &__rules{
-                        display: flex;
-                        justify-content: space-between;
-                        padding:1rem 1.5rem;
-
-                        &_modifier{  border-bottom: 1px solid $app-color-lsilver; }
-
-                        &-link{
-                                display: inline-block;
-                                font-size:$font-size-normal * 0.8;
-                                text-decoration:none;
-                                color:$app-color-dark;
-                        }
-                }
-
-                // Account nav > Block > Account dropdown > Actions
-                &__actions{
-                        margin:2rem auto;
-                        text-align: center;
-
-                        &--btn{
-                                padding:0.8rem 1rem;
-                                border:1px solid $app-color-lsilver !important;
-                                font-size:$font-size-small;
-                        }
-                }
-        }
+        @include articleShare('navigation');
 }
-
-.nav-scroll{
-        position: fixed;
-        box-shadow: 0 .125rem .3125rem rgba(0,0,0,.26);
-        animation:slide-down 0.4s;
-}
-
-.nav-noscroll{
-        animation:slide-up 0.5s;
-}
-
-       
-/*-----------------------------
-*          Preloader
-*----------------------------*/
-        
-        .preloader{
-                position:fixed;
-                padding:0;
-                left:0;
-                right:0;
-                bottom:0;
-                top:0;
-                min-width:100%;
-                min-height: 100%;
-        
-            &--fadeIn{
-                    animation-name:  fadeIn;
-                    animation-duration:0.5s;
-                    animation-fill-mode: forwards;
-            }
-        
-            &--fadeOut{
-                    animation-name:  fadeOut;
-                    animation-duration:0.5s;
-                    animation-fill-mode: forwards;
-            }
-        
-            &_modifier{
-                    background-color:rgba(243, 243, 243, 0.8);
-                    opacity:0;
-                    z-index:2000;
-            }
-        
-            &__progress{
-                    position: absolute;
-                    margin:0;
-                    padding:0;
-                    min-width:100%;
-                    max-height:0.35rem;
-        
-                    &_modifier{
-                            border:0;
-                            background-color:rgba(243, 243, 243, 0.8);
-                    }
-            }
-        }
-        
-        progress[value]::-moz-progress-bar  {
-                 background: $app-color-blue !important;
-        }
 
 /*-----------------------------
-*               RWD
+*        RWD System
 *----------------------------*/
 
+// iPads, Tablets
 @media (max-width: 768px) {
-
         .navigation{
-
-                // Navigation > Block 
-                &__block{ 
-                        @include inlineRepeatColElements(3,1fr,0rem);
-                 }
+                // Navigation > Block  
+                &__block{  grid-template-columns: repeat(6,1fr);  }
         }
-
-        .navigation__menu{
-                display: none;
-        }
-
-        .navigation__m-menu{
-                display: block;
-
-                &-toggle{
-                        display: block;
-                        position: absolute;
-                        left:0;
-                        top:1rem;
-                        width:2.35rem;
-                        height:2.35rem;
-                        cursor: pointer;
-                        background-image:url('../../images/global/menu_black_24dp.svg');
-                        background-position: center;
-                        background-repeat: no-repeat;
-                }
-        }
-
-        .navigation__m-menu-list{
-                position: fixed;
-                padding:1rem 1.5rem 1rem;
-                top:0;
-                left:0;
-                width:50%;
-                min-height: 100%;
-                background-color:$app-color-white;
-                border-right: 1px solid $app-color-lsilver;
-                z-index:10000;
-
-                &-item{
-                        display: block;
-                        position: relative;
-                        width:100%;
-
-                        &-brand{
-                                margin-bottom: 2rem;
-                        }
-                }
-                
-                &-link{
-                        display: block;
-                        padding:1rem 0rem;
-                        margin-bottom: 0.75rem;
-                        width:100%;
-
-                        &_effect{
-                                transition:$FastEaseInOut;
-                                text-transform: uppercase;
-                                font-size:$font-size-normal;
-                                font-weight:$bold-weight;
-                                color:$app-color-gray;
-                        }
-
-                }
-        }
-
-        .menuActive{
-                animation-name:  slide-left;
-                animation-duration:0.5s;
-                animation-fill-mode: forwards;
-        }
-
-        .noActive{
-                animation-name:  slide-right;
-                animation-duration:0.5s;
-                animation-fill-mode: forwards;
-        }
-}
-
-@media (max-width: 576px) {
-
-        .navigation__m-menu-list{
-                width:60%;
-        }
-}
-
-
-/*-----------------------------
-*        Animations
-*----------------------------*/
-
-@keyframes slide-down{
-        0%{ transform:translateY(-100%); }
-
-        100%{ transform:translateY(0); }
-}
-
-@keyframes slide-up{
-        0%{  position: fixed; transform:translateY(0%); }
-
-        100%{  position: absolute; transform:translateY(-100%); }
-}
-
-@keyframes slide-left{
-        0%{   transform:translateX(-100%); }
-
-        100%{  transform:translateX(0%); }
-}
-
-@keyframes slide-right{
-        0%{   transform:translateX(0%); }
-
-        100%{  transform:translateX(-100%); }
 }

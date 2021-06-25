@@ -23,7 +23,7 @@ function Privacy() {
         */
         return (
                 <>
-                        <Navigation />
+                        <Navigation typeSection={'navigation'} />
                         <main>
                                 <PrivacySection privacyObjOne ={privacyObjOne} />
                         </main>

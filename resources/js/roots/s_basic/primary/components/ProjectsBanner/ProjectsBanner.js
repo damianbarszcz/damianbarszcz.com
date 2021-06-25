@@ -1,6 +1,6 @@
 import  React from 'react';
 
-const ProjectsBanner = () => {
+const ProjectsBanner = (props) => {
     
 
    /*
@@ -13,14 +13,12 @@ const ProjectsBanner = () => {
                 {  /*------------------------------------------*/   }
                 {  /*--------    Projects banner    -------*/   }
                 {  /*------------------------------------------*/   }    
-                <section className="projects-banner projects-banner_theme" role="banner">
+                <section className="projects-banner projects-banner_theme">
                         <div className="projects-banner__block g-container">
-                                 {  /*--- Projects banner > Block > Header  ---*/   }
-                                <header className="projects-banner__header projects-banner__header_modifier">
-                                        <h1 className="projects-banner__header--title">
-                                                 <strong className="strong-title"> Projekty: </strong> Strefa najlepszych rozwiązań
-                                        </h1>
-                                </header>
+                            {  /*---  Projects banner > Header ---*/   }
+                            <header className="projects-banner__header projects-banner__header_modifier">
+                                    <h1 className="projects-banner__header--title"> <strong>{ props.projectsObjOne.headerStrongTitle } </strong> { props.projectsObjOne.headerTitle } </h1>
+                             </header>
                          </div>
                 </section>
             </>

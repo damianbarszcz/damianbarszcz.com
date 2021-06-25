@@ -1,77 +1,76 @@
 
 import React, { Component } from 'react';
 import disableScroll from 'disable-scroll';
-import axios from 'axios';
-import { Link,withRouter } from 'react-router-dom';
-import NavBrand from '../NavBrand/NavBrand';
-import NavMenu from '../NavMenu/NavMenu';
-import  NavMobile  from '../NavMobile/NavMobile';
-import {
-        BrowserView,
-        MobileView,
-        isBrowser,
-        isMobile
-      } from "react-device-detect";
+import { withRouter } from 'react-router-dom';
 
-class PrimaryNav extends Component {
+{  /*  Components */ }
+import { Menu,NavBrand, ShareButtons,NavSearch  } from '../../components';
+
+class Navigation extends Component {
 
         constructor(props) {  
                 super(props); 
  
-                this.state = { user: [], searchBox:false,  headerNav:true, navScrollBottom:false, navScrollTop:false, articleRead:false, memberView:true, search_tag:''  }
+                this.state = { searchBox:false,  menu:true, scrollBottom:false, scrollTop:false, articleRead:false, search_tag:'',width: 0  }
  
                 this.getSearch = this.getSearch.bind(this);
-                this.closeSearchBox = this.closeSearchBox.bind(this);
+                this.closeSearchForm = this.closeSearchForm.bind(this);
                 this.handleNavigation = this.handleNavigation.bind(this);
-                this.searchInformation = this.searchInformation.bind(this);
-                this.handleInput = this.handleInput.bind(this);
-                this.onLogout = this.onLogout.bind(this);
-                this.getAccountDropdown = this.getAccountDropdown.bind(this);
-                this.closeAccountDropdown = this.closeAccountDropdown.bind(this);
+                this.searchPublication = this.searchPublication.bind(this);
+                this.handleSearchData = this. handleSearchData.bind(this);
+                this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
          }  
 
-         componentDidMount() {
-                axios.get(`/api/account`)
-                .then(response => { 
-                        this.setState({     user: response.data   });  
-
-                        console.log(this.state.user);
-
-                }).catch(errors => { console.log(errors); })
-
-                window.addEventListener("scroll", this. handleNavigation);
-        }
-
-        /*
+         /*
         =======================
-         Logout with application
+         Listen actions in methods
         =======================
         */
-        onLogout(e){
-                e.preventDefault();
+         componentDidMount() {
+                this.updateWindowDimensions();
 
-                axios.post(`/logout`)
-                .then(response => {
-                        if (!response.error) {   
-                                if(window.location.reload(false)){
-                                        this.props.history.push(`/`)             
-                                }                            
-                        }
-                 })
-                .catch(error => {  this.setState({ errors: error.response.data.errors}) })
+                window.addEventListener("scroll", this.handleNavigation);
+                window.addEventListener('resize', this.updateWindowDimensions);
         }
 
-        /*
+        componentWillUnmount() {
+                window.removeEventListener("scroll", this.handleNavigation);
+                window.removeEventListener('resize', this.updateWindowDimensions);
+        }
+
+
+         /*
+        =======================
+         Run action when resizing
+         window page
+        =======================
+        */
+        updateWindowDimensions() {
+                this.setState({ width: window.innerWidth  });
+
+                if(this.props.articleTitle){
+                        if(this.state.width > 768 && window.pageYOffset > 500){
+                                this.setState({  menu:false, articleRead:true,searchBox:false  });
+                        }
+        
+                        else{  this.setState({  menu:true, articleRead:false,searchBox:false}); }
+                }
+        }
+
+         /*
         =======================
          Navigation search
         =======================
         */
+       
+        // Open  search form
+        getSearch(){ disableScroll.on();  this.setState({  menu:false, searchBox:true  });  }
 
-        getSearch(){ disableScroll.on();  this.setState({  headerNav:false, searchBox:true, memberView:false  });  }
+        // Close  search form
+        closeSearchForm(){ disableScroll.off();  this.setState({  menu:true, searchBox:false  }); }
 
-        closeSearchBox(){ disableScroll.off();   this.setState({  headerNav:true, searchBox:false, memberView:true  }); }
-
-        handleInput(e){
+        // Get data from search input
+        handleSearchData(e){
                 e.preventDefault();
 
                 const name = e.target.name
@@ -80,127 +79,85 @@ class PrimaryNav extends Component {
                 this.setState({  [name]: value  })
         }
 
-        searchInformation(){
+        // Find articles 
+        searchPublication(){
                 this.props.history.push(`/help/search=${this.state.search_tag.replace(/\s+/g, '-').toLowerCase()}`); 
                 
                 disableScroll.off(); 
         }
                 
-
-       /*
+         /*
         =======================
-         Detect scrolling page
+         Detect scroll page for
+         navigation
         =======================
         */
-       
         handleNavigation(e) {
                 const window = e.currentTarget;
 
-                if(window.pageYOffset === 0) {  this.setState({  navScrollBottom: false, navScrollTop:false });  }
+                // No scroll
+                if(window.pageYOffset === 0) {  this.setState({  scrollBottom: false, scrollTop:false });  }
 
+                //Scroll Up
                 if (this.prev > window.scrollY) {
 
-                        if(window.pageYOffset < 500) {   this.setState({  navScrollBottom: false, navScrollTop:true }); }
+                        if(window.pageYOffset < 500) {   this.setState({  scrollBottom: false, scrollTop:true }); }
 
-                        this.setState({  headerNav:true, articleRead:false,memberView:true });
-                
+                        this.setState({  menu:true, articleRead:false });
                 } 
                 
+                //Scroll Down
                 else if (this.prev < window.scrollY) {
 
-                        if(window.pageYOffset > 500) {    this.setState({  navScrollBottom: true, navScrollTop:false });   }
+                        if(window.pageYOffset > 500) {    this.setState({  scrollBottom: true, scrollTop:false });   }
                         
-                        if(this.props.articleTitle){
-                                this.setState({  headerNav:false, articleRead:true,searchBox:false, memberView:false  });
+                        if(this.props.articleTitle && this.state.width > 768){
+                                this.setState({  menu:false, articleRead:true,searchBox:false  });
                         }
 
                         else{
-                                this.setState({  headerNav:true, articleRead:false,searchBox:false, memberView:true });
+                                this.setState({  menu:true, articleRead:false,searchBox:false});
                         }
                 }
 
                 this.prev = window.scrollY;
         };
 
-        /*
-        =======================
-         get Account window
-        =======================
-        */
-        getAccountDropdown(){
-                if (!this.state.accountDropdown) {
-                        document.addEventListener('click', this.closeAccountDropdown, false);
-                } else {
-                        document.removeEventListener('click', this.closeAccountDropdown, false);
-                }
-                  
-                this.setState(prevState => ({ accountDropdown: !prevState.accountDropdown }));
-        }
-
-        
-        /*
-        ============================
-         Close window after click outside
-        ============================
-        */
-        closeAccountDropdown(e) {
-                if (this.node.contains(e.target)) { return;   }
-                
-                this.getAccountDropdown();
-        }
-
        /*
         =======================
          Render components
         =======================
         */
-
         render() {
-                const {  user,headerNav, searchBox, navScrollBottom, navScrollTop,articleRead,search_tag,accountDropdown, memberView  } = this.state;
+                const {menu, searchBox, scrollBottom, scrollTop,articleRead,search_tag} = this.state;
 
                 return (
-                <>
-                          { searchBox && <div className="search-lightbox"></div> } 
-                        <nav className={`navigation navigation_theme nav-light ${ navScrollBottom ? 'nav-scroll' : ( navScrollTop ? 'nav-noscroll' : '') } `}  aria-label="Primary Navigation">
-                                <div className="navigation__block g-container">
-                                        { headerNav && <NavMobile /> }
+                <>      
+                        { searchBox && <div className="search-lightbox"></div> } 
+                        <nav className={`${this.props.typeSection} ${this.props.typeSection}_theme  ${this.props.typeSection == 'navigation' ? (scrollBottom ?  'navigation--scroll' : ( scrollTop ? 'navigation--noscroll' : '')) : '' }` }>
+                                
+                                <div className={`${this.props.typeSection}__block g-container`}>
+                                        { !searchBox && <NavBrand typeSection={this.props.typeSection} /> }
+                                                
+                                        { (!searchBox  &&  menu) &&  <Menu typeSection={this.props.typeSection} />  }
+                                                
+                                        { searchBox  &&   <NavSearch typeSection={this.props.typeSection} search_tag= { search_tag}  searchPublication={this.searchPublication}  handleSearchData ={this.handleSearchData} closeSearchForm={this.closeSearchForm} /> }
 
-                                        <NavBrand linkComponent ={ this.props.linkComponent }  />
-        
-                                        { headerNav && <NavMenu /> }
-
-                                        {  /*---  Navigation > Search ---*/   }
-                                        { searchBox && 
-                                        <div className="navigation__search">
-                                                <form className="navigation__search-form"onSubmit={ this.searchInformation } method="GET">
-                                                        <button type="button" className="form__button form__button--search"> <i className="material__icon material-icons"> search </i> </button>
-
-                                                        <input name="search_tag" type="text" className="form__input form__input_effect" value={ search_tag } onChange={ this.handleSearchData }  aria-label="Wyszukaj" placeholder="Wyszukaj" />
-
-                                                        <button type="button" className="form__button form__button--close" onClick={ this.closeSearchBox }> <i className="material__icon material-icons"> close </i> </button>
-                                                </form>
-                                        </div> }
-
-                                        { /*---  Navigation > Sh-box  ---*/   }
-                                         { (!searchBox && headerNav)?
-                                                <button type="button" className="form__button form__button--open" onClick={ this.getSearch }> <i className="material-icons material__icon"> search </i> </button> : ''
-                                         }
-
+                                        { (!searchBox  &&  menu) ?
+                                        <div className={`${this.props.typeSection}__trigger`}>
+                                                <button type="button" className={`${this.props.typeSection}__trigger--open`} onClick={ this.getSearch }> <i className="material-icons material__icon"> search </i> </button>    
+                                        </div> : ''}
+                                        
                                         { this.props.articleTitle  && (
                                         articleRead &&  
-                                        <div className="navigation__post-title">
-                                                <span className="navigation__post-title--caption">  { this.props.articleTitle } </span>
-                                        </div>)
+                                        <div className={`${this.props.typeSection}__post-title`}>
+                                                <span className={`${this.props.typeSection}__post-title--caption`}>  { this.props.articleTitle } </span>
+                                        </div> )
                                          }
 
-                                        { /*---  Navigation > Sharing ---*/   }
                                         { this.props.articleTitle  && (
                                         articleRead  &&
-                                        <div className="navigation__sharing">
-                                                <a href="https://www.facebook.com/sharer/sharer.php?u=damianbarszcz.com" className="navigation__sharing-social navigation__sharing-social--facebook" target="_blank"> <i className="social__icon social__icon--facebook fab fa-facebook-square"></i> </a>
-                                                <a href="https://twitter.com/intent/tweet" className="navigation__sharing-social navigation__sharing-social--twitter" target="_blank"> <i className="social__icon social__icon--twitter fab fa-twitter"></i> </a>
-                                                <a href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site http://www.damianbarszcz.com." className="navigation__sharing-social navigation__sharing-social--envelope" target="_blank"> <i className="social__icon social__icon--envelope fab fas fa-envelope"></i> </a>
-                                        </div> )
+                                                <ShareButtons typeSection = {this.props.typeSection} pubType={  this.props.pub_category ? 'review' : 'project'  } pubUrl={this.props.pub_url}   />   )
                                         }
                                 </div>
                         </nav>
@@ -209,4 +166,4 @@ class PrimaryNav extends Component {
         }
 }
 
-export default withRouter(PrimaryNav); 
+export default withRouter(Navigation); 

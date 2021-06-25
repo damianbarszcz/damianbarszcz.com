@@ -1,6 +1,433 @@
+/*-----------------------------------------------------
+ * Mixins (https://www.damianbarszcz.com)
+ * Copyright 2021 Damian Barszcz
+ *-----------------------------------------------------*/
 
 /*---------------------------------
-*           Section definitions
+*               Headers
+*---------------------------------*/
+
+@mixin sectionHeaderCenter(
+        $size:40rem, 
+        $textColor:$app-color-black,
+        $subColor:$app-color-white, 
+        $titleSize:$font-size-extra-big, 
+        $descSize:$font-size-extra-normal,
+        $subtitleSize:$font-size-small
+        ){
+        
+        @include boxCenter($size);
+
+        &--subtitle{  @include boxHeading($subtitleSize, $ultra-bold-weight, $subColor);   margin-bottom:0.5rem; text-transform: uppercase; }
+                        
+        &--title{  @include boxHeading($titleSize, $ultra-bold-weight, $textColor);   margin-bottom:0.5rem; }
+
+        &--desc{   @include boxDescContent($descSize, $regular-weight, $textColor);   }
+
+        &--button{ margin-top:2rem; }
+}
+
+@mixin sectionHeaderLeft(
+        $size:40rem, 
+        $textColor:$app-color-black,
+        $subColor:$app-color-white,
+        $titleSize:$font-size-extra-big, 
+        $descSize:$font-size-extra-normal,
+        $subtitleSize:$font-size-small
+         ){
+        
+        @include boxLeft($size);
+
+        &--subtitle{  @include boxHeading($subtitleSize, $ultra-bold-weight, $subColor);   margin-bottom:0.5rem; text-transform: uppercase; }
+                        
+        &--title{  @include boxHeading($titleSize, $ultra-bold-weight, $textColor);   margin-bottom:0.5rem; }
+
+        &--desc{   @include boxDescContent($descSize, $regular-weight, $textColor);   }
+
+        &--button{ margin-top:2rem; }
+}
+
+@mixin sectionHeaderLeftV2($size:40rem, $titleColor:$app-color-gray, $titleStrongColor:$app-color-gray){
+        
+        @include boxLeft($size);
+                        
+        &--title{  @include boxHeading($font-size-big, $light-weight, $titleColor); }
+
+        strong{  color:$titleStrongColor;  }
+}
+
+@mixin sectionHeaderCenterV2($size:40rem, $titleColor:$app-color-gray, $titleStrongColor:$app-color-gray){
+        
+        @include boxCenter($size);
+                        
+        &--title{  @include boxHeading($font-size-big, $light-weight, $titleColor); }
+
+        strong{  color:$titleStrongColor;  }
+}
+
+
+
+@mixin  articleHeaderLeft($size:100%, $color: $app-color-white, $titleSize:$font-size-normal){
+        
+        @include boxLeft($size);
+                        
+        &--title{   @include boxHeading( $titleSize, $ultra-bold-weight, $color);   }
+
+        &--subtitle{  
+                @include boxHeading($font-size-normal, $ultra-bold-weight, $color);  
+
+                margin-top:1.5rem;
+        }
+
+        &--date{  
+                @include boxHeading($font-size-normal, $ultra-bold-weight, $color);  
+
+                margin-top: 0.5rem;
+        }
+
+        &--tags{  
+                margin-bottom: 0.5rem;
+                padding: 0.35rem 0.85rem;
+                width: fit-content;
+                background-color:$app-color-blue;
+
+                @include boxHeading($font-size-small, $ultra-bold-weight, $color);  
+        }
+}
+
+/*---------------------------------
+*              Blog brand
+*---------------------------------*/
+
+@mixin blogBrand($lg_wth:10.2rem, $lg_hgh:2rem, $mainHeader:false){
+        
+        &__brand{
+                @if $mainHeader{  text-align: center; }
+                
+                // Brand > Logo
+                &-logo{
+                        width:$lg_wth;
+                        height: $lg_hgh;
+    
+                        &--yellow{ fill:$app-color-yellow; }
+                        &--blue{ fill:$app-color-blue; }
+                        &--red{ fill:$app-color-red; }
+                        &--green{ fill:$app-color-green; }
+                        &--dark{fill:$app-color-silver;    }
+                }
+        }
+
+        //iPads, Tablets
+        @media (max-width: 768px) {
+
+                &__brand{
+                        grid-column-start:2;
+                        grid-column-end:6;
+                        text-align: center;
+
+                        @if $mainHeader{
+                                padding:0rem 0 0rem;
+                                text-align: center;
+                        }
+                }
+        }
+}
+
+/*---------------------------------
+*        Navigation menu
+*---------------------------------*/
+
+@mixin navMenu($menuName:"navigation",$mainHeader:false){
+
+        &__menu{
+                text-align: center;
+
+                @if $mainHeader{  margin-top:2rem; }
+
+                &-toggle{ display: none; }
+                
+                &-list{
+                        list-style: none;
+                        padding: 0;
+
+                        &--mobile{ display: none; text-align: left; }
+
+                        &--desktop{ display: inline-block; }
+
+                        &-item{  
+                                display: inline; 
+                                position: relative; 
+                        
+                                @for $i from 1 through length($blog-color) {
+                                        &:nth-child(#{$i}) {
+                                                .#{$menuName}__menu-list-link{
+
+                                                        &--desktop{
+
+                                                                &::after{ 
+                                                                        @extend .nav-link-color; 
+                                                                        background-color:nth($blog-color,$i) 
+                                                                }  
+        
+                                                                &:hover{  
+                                                                        color: nth($blog-color,$i);
+                                                                        &::after{ opacity: 1; transform: translateY(15px); }
+                                
+                                                                        &:focus{ opacity: 1; transform: translateY(15px);  }
+                                                                }  
+                                                        }
+                                                }
+                                        }
+                                }
+                        }
+                        
+                        &-link{
+                                padding: 0rem 0.75rem 1rem;
+        
+                                &_effect{
+                                        transition:$FastEaseInOut;
+                                        text-transform: uppercase;
+                                        font-size:$font-size-normal;
+                                        font-weight:$bold-weight;
+                                        color:$app-color-gray;
+                                }
+                        }
+                }
+        }
+
+        //iPads, Tablets
+        @media (max-width: 768px) {
+                &__menu{
+                        position: absolute;
+                        left:0;
+                        top:1rem;
+                        grid-column-start: 1;
+                        grid-column-end:2;
+
+                        @if $mainHeader{  top:-1rem; }
+
+                        &-toggle{
+                                display: block;
+                                position: absolute;
+                                width:2.35rem;
+                                height:2.35rem;
+                                cursor: pointer;
+                        }
+
+                        &-list{
+                                position: fixed;
+                                padding:1rem 1.5rem 1rem;
+                                top:0;
+                                left:0;
+                                width:45%;
+                                min-height: 100%;
+                                overflow-y: scroll;
+
+                                &-item{
+                                        display: block;
+                                        position: relative;
+                                        width:100%;
+                                }
+
+                                &-brand{ margin-bottom:2rem; }
+                                
+                                &-link{
+                                        display: block;
+                                        padding:1rem 0rem;
+                                        margin-bottom: 0.75rem;
+                                        width:100%;
+
+                                        &_effect{ font-size: $font-size-normal * 1.1;}
+                                }
+
+                                &_modifier{
+                                        background-color:$app-color-white;
+                                        border-right: 1px solid $app-color-lsilver;
+                                        z-index:10000;
+                                }
+
+                                &--desktop{ display: none;}
+
+                                &--mobile{ display: block; }
+
+                                &--open{
+                                        animation-name:  slide-left;
+                                        animation-duration:0.5s;
+                                        animation-fill-mode: forwards;
+                                }
+
+                                &--close{
+                                        animation-name:  slide-right;
+                                        animation-duration:0.5s;
+                                        animation-fill-mode: forwards;
+                                }
+                        }
+                }
+        }
+
+        //Mobile devices (horizonal)
+        @media (max-width: 576px) {
+                &__menu{ &-list{    width:60%;  }}
+        }
+}
+
+/*---------------------------------
+*       Navigation search
+*---------------------------------*/
+
+@mixin navSearch($menuName:"main-header",$mainHeader:false){
+
+        &__trigger{  
+                text-align: right; 
+
+                @if $mainHeader{
+                        position: absolute;
+                        right:0;
+                        bottom:2.5rem;
+                }
+
+                &--open{  color:$app-color-gray;   }
+        }
+
+        &__search{
+                grid-column-start: 1;
+                grid-column-end: 4;
+                
+                &-form{
+                        display: flex;
+                        margin: auto;
+                        width: 25.125rem;
+                        height:3rem;
+
+                        .form__input{                  
+                                height:3rem; 
+                                border:none;  
+                                background-color:$app-no-color;
+                        }
+
+                        .form__button{    
+                                &--search, &--close{
+                                        color:$app-color-gray;
+                                }
+                        }
+                }
+        }
+
+        //iPads, Tablets
+        @media (max-width: 768px) {
+                &__trigger{
+                        grid-column-start:6;
+                        grid-column-end:7;
+
+                        @if $mainHeader{
+                                top:1.35rem;
+                                grid-column-start:6;
+                                grid-column-end:7;
+                        }
+                }
+
+                &__search{
+                        grid-column-start: 1;
+                        grid-column-end: 7;
+                }
+        }
+
+        //Mobile devices
+        @media (max-width: 480px) {
+                &__search{
+                        &-form{
+                                max-width: 100%;
+                        }
+                }
+        }
+}
+
+/*---------------------------------
+*         Article sharing
+*---------------------------------*/
+
+@mixin articleShare($typeSection:'navigation'){
+        
+         // Navigation > Sharing
+         &__sharing{
+                @if $typeSection == 'navigation' {
+                        position: absolute;
+                        right:0;
+                        top:50%;
+                        transform: translate(0%, -50%);
+                }
+
+                @else{   position:relative;     }
+
+                // Navigation > Sharing > Social buttons
+                &-social{
+                        display:inline-block;
+                        position: relative;
+                        margin-right:1rem;
+                        width:2rem;
+                        height:2rem;
+                        border-radius:100%;
+
+                        &_modifier{ border-radius:100%; }
+
+                        &:nth-child(3){    margin-right:0rem;  }
+
+                        // Facebook button
+                        &--facebook{
+                                border:0.15rem solid $facebook-color;
+                                color:$facebook-color;
+                        }
+                        // Twitter button
+                        &--twitter{
+                                border:0.15rem solid $twitter-color;
+                                color:$twitter-color;
+                        }
+
+                        // Envelope button
+                        &--envelope{
+                                border:0.15rem solid $app-color-purple;
+                                color:$app-color-purple;
+                        }
+
+                         // Navigation > Sharing > Social buttons > Social icons
+                          .social__icon{
+                                position:absolute;
+                                left:50%;
+                                top:50%;
+                                transform:translate(-50%, -50%);
+                          }
+                            
+                }
+        }
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+/*---------------------------------
+*        Section header
+*---------------------------------*/
+
+@mixin localHeader($color:$app-color-gray){
+
+        &__header{
+                display: inline-block;
+                padding-bottom:0.25rem;
+    
+                &_modifier{ border-bottom: 2px  solid $color; }
+
+                &--title{
+                        @include boxHeading($font-size-normal,$bold-weight, $color);
+                        text-transform: uppercase;
+                }
+        }
+ }
+
+/*---------------------------------
+*     Section definitions
 *---------------------------------*/
 
         @mixin sectionDefinition {
@@ -107,6 +534,7 @@
 
         @mixin boxInnerLink{
                 display: block;
+                position:absolute;
                 padding:1rem;
                 left:0;
                 top:0;
@@ -115,27 +543,18 @@
                 text-decoration: none;    
         }
 
-/*---------------------------------
-*               Headers
-*---------------------------------*/
-
-@mixin sectionHeaderCenter($size:40rem, $color: $app-color-white, $strongColor:$app-color-red){
-        
-        @include boxCenter($size);
-                        
-        &--title{  @include boxHeading($font-size-extra-big, $bold-weight, $app-color-white);  }
-
-        &--desc{   @include boxDescContent($font-size-normal, $regular-weight, $app-color-white);   }
-}
 
 @mixin sectionArticleHeaderCenter($size:31.5rem, $color: $app-color-gray, $strongColor:$app-color-blue){
         
         @include boxCenter($size);
                         
         &--title{  
-                @include boxHeading($font-size-big, $light-weight, $color);  
+                @include boxHeading($font-size-extra-big, $ultra-bold-weight, $color);  
+        }
 
-                .strong-title{ color: $strongColor;  font-weight: $bold-weight; }
+        &--subtitle{  
+                margin-top:1.5rem;
+                @include boxHeading($font-size-extra-normal, $light-bold-weight, $color);  
         }
 }
 
@@ -144,9 +563,12 @@
         @include boxLeft($size);
                         
         &--title{  
-                @include boxHeading($font-size-big, $light-weight, $color);  
+                @include boxHeading($font-size-extra-big, $ultra-bold-weight, $color);  
+        }
 
-                .strong-title{ color: $strongColor;  font-weight: $bold-weight; }
+        &--subtitle{  
+                margin-top:1.5rem;
+                @include boxHeading($font-size-extra-normal, $light-bold-weight, $color);  
         }
 }
 
@@ -195,7 +617,7 @@
 
                 @if $font-size>=$font-size-huge{ $styleHeight: 10rem;  }
 
-                @else if $font-size>=$font-size-extra-big{ $styleHeight: 8rem;  }
+                @else if $font-size>=$font-size-extra-big{ $styleHeight: 4.5rem;  }
 
                 @else if $font-size>=$font-size-big{$styleHeight: 3.25rem; margin-bottom:1.5rem; }
 
@@ -251,7 +673,7 @@
                 box-shadow: -6px 8px 20px rgba(0, 0, 0, 0.1);
                 border-radius: 0.3125rem;
                 font-family:$page-font;
-                font-weight: $bold-weight;
+                font-weight: $ultra-bold-weight;
                 text-transform:uppercase;
                 white-space: nowrap;
                 cursor: pointer;
@@ -308,6 +730,11 @@
 *                 Artwork
 *---------------------------------*/
 
+        @mixin articleImage{
+                background-size: cover !important;
+                background-repeat: no-repeat !important;
+        }
+
         @mixin fullImage{
                 background-repeat: no-repeat;
                 background-size:contain;
@@ -327,6 +754,8 @@
                 width:$wth;
                 height:$hgh;
                 overflow: hidden;
+                background-size: cover !important;
+                background-repeat: no-repeat !important;
         }
 
 /*---------------------------------
@@ -510,158 +939,12 @@
         }
 }
 
-/*---------------------------------
-*              Navigation
-*---------------------------------*/
-
-@mixin navBrand($bd_wth: 15.3125rem, $lg_wth:10.2rem, $lg_hgh:2rem, $mainHeader:false){
-        
-        &__brand{
-                display: inline-block;
-                max-width: $bd_wth;
-
-                @if $mainHeader{
-                        padding:2rem 0 1rem;
-                        grid-column-start: 1;
-                        grid-column-end: 7;
-                        text-align: center;
-                }
-        
-                &-logo{
-                        width:$lg_wth;
-                        height: $lg_hgh;
-    
-                        &--yellow{ fill:$app-color-yellow; }
-                        &--blue{ fill:$app-color-blue; }
-                        &--red{ fill:$app-color-red; }
-                        &--green{ fill:$app-color-green; }
-
-                        &--dark{fill:$app-color-silver;    }
-                }
-
-                &-section{
-                        position: absolute;
-                        top:50%;
-                        left:12rem;
-                        transform:translateY(-50%);
-            
-                        &_modifier{
-                                border-bottom:1.5px solid $app-no-color;
-                                text-transform: uppercase;
-                                font-weight: $bold-weight;
-                        }
-
-                        &::before{
-                                position: absolute;
-                                top:50%;
-                                left:-1rem;
-                                width:0.125rem;
-                                height: 1.45rem;
-                                content:'';
-                                transform:translateY(-50%);
-                        }
-                }
-        }
-}
 
 
-@mixin navMenu($menuName:"navigation",$mainHeader:false){
-
-        &__menu{
-                text-align: center;
-
-                @if $mainHeader{
-                        margin-top:1rem;
-                        grid-column-start:1;
-                        grid-column-end:7;
-                }
-
-                @else{
-                        grid-column-start:2;
-                        grid-column-end:6;
-                }
-                
-                &-list{
-                        list-style: none;
-                        padding: 0;
-
-                        &-item{  
-                                display: inline; 
-                                position: relative; 
-                        
-                                @for $i from 1 through length($blog-color) {
-                                &:nth-child(#{$i}) {
-                                        .#{$menuName}__menu-list-link{
-                                                @if $mainHeader{
-                                                        color:$app-color-gray;
-                                                }
-                                                &::after{ 
-                                                        @extend .nav-link-color; 
-                                                        background-color:nth($blog-color,$i) 
-                                                }  
-
-                                                &:hover{  
-                                                        color: nth($blog-color,$i);
-                                                        &::after{ opacity: 1; transform: translateY(15px); }
-                
-                                                        &:focus{ opacity: 1; transform: translateY(15px);  }
-                                                }  
-                                        }
-                                }
-                                }
-                        }
-                        
-                        &-link{
-                                padding: 0rem 0.75rem 1rem;
-        
-                                &_effect{
-                                        transition:$FastEaseInOut;
-                                        text-transform: uppercase;
-                                        font-size:$font-size-normal;
-                                        font-weight:$bold-weight;
-                                }
-                        }
-                }
-        }
-}
 
 
-@mixin navSearch($mainHeader:false){
 
-        &__search{
-                position: absolute;
-                left:50%;
-                width: 25.125rem;
-                height:3rem;
-                transform: translateX(-50%);
-                
 
-                &-form{
-                        width:100%;
-
-                        .form__button{
-                                color:$app-color-gray;
-                                
-                               &--search{ position:absolute; top:0.8rem; left:-2rem; }
-
-                               &--close{ position:absolute;   top:0.8rem; right:-2rem; }
-                        }
-
-                        .form__input{                  
-                                height:3rem; 
-                                border:none;  
-                                background-color:$app-no-color;
-                        }
-                }
-        }
-
-        .form__button{
-                @if $mainHeader{ color:$app-color-white;  }
-                @else{ color:$app-color-gray; }
-
-                &--open{ text-align: right; }
-        }
-}
 
 /*---------------------------------
 *        Account article item
@@ -1026,8 +1309,6 @@
                 min-height: 32.5rem;
                 max-height: 32.5rem;
                 max-width: 69.625rem;
-
-                @include draftJsModule;
         
                 @include boxStyling;
                 

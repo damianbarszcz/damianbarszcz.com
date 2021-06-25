@@ -68,7 +68,7 @@ const Footer = (props) => {
 
                                                 {  /*---  Primary footer  > Box  ---*/   }
                                                 <div className="primary-footer__box">
-                                                <div className="primary-footer__box-copyright">
+                                                        <div className="primary-footer__box-copyright">
                                                                 <span className="box-copyright__caption box-copyright__caption_effect">{ footerObjFour.copyrightCaption } </span>
                                                         </div>
 

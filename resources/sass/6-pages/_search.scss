@@ -1,8 +1,54 @@
 
 /*-----------------------------------------------------
  * Search (https://www.damianbarszcz.com)
- * Copyright 2020 Damian Barszcz
+ * Copyright 2021 Damian Barszcz
  *-----------------------------------------------------*/
+
+ /*-----------------------------
+*      Search manager
+*----------------------------*/
+
+.search-manager{
+        @include sectionDefinition;
+
+        &_theme{ background-color: $app-color-purple; }
+
+        // Search manager > Block
+        &__block{ @include blockPadding(8rem, 0, 4rem); }
+
+        // Search manager > Block > Inner
+        &__block &__inner{
+                @include sectionHeaderCenter(30rem);  
+        }       
+
+        &__block &__inner &__header{
+                @include sectionHeaderCenter(30rem, $app-color-white);  
+        }       
+        
+        // Search manager > Block > Inner > Form
+        &__block &__inner &__form{
+                position: relative;
+                margin-top: 2rem;
+                
+                &--input{
+                        padding-right:4rem;
+                        background-color:$app-color-white;
+                        border-radius: 5px;
+                        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                        border: 1px solid $app-color-lsilver;
+                        font-size:$font-size-normal;
+                        color: $app-color-gray;
+                }
+
+                &--button{
+                        position: absolute;
+                        top:1rem;
+                        right:1rem;
+                        cursor: pointer;
+                        color: $app-color-gray;
+                }
+        }
+}
 
 /*-----------------------------
 *            GL search
@@ -14,12 +60,11 @@
         &_theme{ background-color: $app-color-white; }
 
          // GL search > Block
-        &__block{ @include blockPadding(8rem, 0, 6rem); }
+        &__block{ @include blockPadding(6rem, 0, 6rem); }
 
          // GL search > Block  > Header
         &__block &__header{
-            @include sectionArticleHeaderLeft(31.5rem, $app-color-gray, $app-color-blue);  
-            min-width: 100%;
+            @include sectionHeaderLeft( 40rem, $app-color-gray, $app-color-white, $font-size-extra-normal)
         }
 
         // / GL search > Block > Inner
@@ -54,29 +99,34 @@
 }
 
 /*-----------------------------
-*               RWD
+*          RWD System
 *----------------------------*/
 
-@media (max-width: 1366px) {
+//Desktops, large screens
+@media (max-width: 1200px) {
+
         .gl-search{
-                &_theme{ background-color: $app-color-red;  }
+                &__block &__inner{ @include  inlineRepeatColElements(3, 1fr, 1.5rem);  }
+        }
+}
+//Small screens, laptops
+@media (max-width: 960px) {
+        .gl-search{
+                &__block &__inner{ @include  inlineRepeatColElements(2, 1fr, 1.5rem);  }
         }
 }
 
-@media (max-width: 1024px) {
-        .gl-search{
-                &_theme{ background-color: $app-color-green;  }
-        }
-}
-    
+//iPads, Tablets
 @media (max-width: 768px) {
         .gl-search{
-                &_theme{ background-color: $app-color-blue;  }
-         }      
+                &__block &__inner{    @include  inlineRepeatColElements(2, 1fr, 1rem);   }
+        }
 }
-    
-@media (max-width: 414px) {
+
+//Mobile devices ( horizontal)
+@media (max-width: 576px) {
+
         .gl-search{
-                &_theme{ background-color: $app-color-yellow;  }
-         }
+                &__block &__inner{    @include  inlineRepeatColElements(1, 1fr, 1.5rem);      }
+        }
 }

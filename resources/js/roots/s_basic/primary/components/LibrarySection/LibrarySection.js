@@ -18,9 +18,13 @@ const LibrarySection = (props) => {
                         <div className="library__block g-container">
                             {  /*---  Library > Header ---*/   }
                             <header className="library__header library__header_modifier">
-                                    <h2 className="library__header--title"> <strong className="strong-title">Biblioteka: </strong> Dowiedz się wiecej o książkach </h2>
+                                   <h2 className="library__header--subtitle">{props.indexObjTwo.subTitle} </h2>
 
-                                    <Link to="/library" type="button" className="btn--normal app__button--red" target="_self"> Zobacz więcej  </Link>
+                                    <h1 className="library__header--title"> {props.indexObjTwo.title} </h1>
+
+                                    <p className="library__header--desc"> {props.indexObjTwo.descryption} </p>
+
+                                    <Link to="/library" type="button" className="btn--normal app__button--red library__header--button" target="_self"> Zobacz więcej  </Link>
                              </header>
 
                             {  /*---  Library > Books ---*/   }

@@ -22,7 +22,7 @@ function About () {
         */
         return (
                 <>
-                        <Navigation />
+                        <Navigation typeSection={'navigation'} />
                         <main>
                                 <AboutBanner aboutObjOne = { aboutObjOne }   />
                                 <Biography aboutObjTwo = { aboutObjTwo }  />

@@ -16,6 +16,7 @@ export const aboutObjOne = {
   },
 
   timeline:{
+      born:"Zamość",
       get_knowledge:'Zdobywanie wiedzy',
       knowledge_with:'z zasad działania ',
       knowledge_computer:'komputera.',

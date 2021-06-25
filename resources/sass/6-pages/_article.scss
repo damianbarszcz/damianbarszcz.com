@@ -1,6 +1,6 @@
 /*-----------------------------------------------------
  * Article (https://www.damianbarszcz.com)
- * Copyright 2020 Damian Barszcz
+ * Copyright 2021 Damian Barszcz
  *-----------------------------------------------------*/
 
 /*-----------------------------
@@ -18,9 +18,8 @@
                 .article__block{ @include blockPadding(2rem, 0, 6rem)  }
 
                 .article__phero{
-                        &-artwork{  @include backgroundBlockArtwork(100%, 45rem);                        
-                                background-size: cover !important;
-                                background-repeat: no-repeat !important;  
+                        &-artwork{  
+                                @include backgroundBlockArtwork(100%, 45rem);                        
                                 margin-bottom:2rem;
                         }
                 }
@@ -32,11 +31,11 @@
                 .article__block{ @include blockPadding; }
 
                 .article__phero{
-                        @include inlineRepeatColElements(2, $columnSize: 1fr,$space: 10rem);
+                        @include inlineRepeatColElements(2, $columnSize: 1fr,$space: 8rem);
                         margin: 4.5rem 0 9rem;
                         align-items: center;
             
-                        &-artwork{  @include backgroundBlockArtwork; margin-left: auto; }
+                        &-artwork{  @include backgroundBlockArtwork; }
                 }
         }
 
@@ -47,70 +46,44 @@
                 &-header{
                         &--title{  @include boxHeading($font-size-big, $bold-weight, $app-color-gray);  }
 
-                        &--desc{  @include boxDescContent($font-size-normal, $regular-weight, $app-color-silver);   }
+                        &--desc{  @include boxDescContent($font-size-extra-normal, $regular-weight, $app-color-silver);   }
                 }
          }
 
         //Article > Block > Component
         &__component{
-                margin-top:2rem;
-                width:100%;
+                 margin-top:2rem;
+                 width:100%;
 
                 &_modifier{ border-bottom: 1px solid $app-color-lsilver; }
 
                 &-inner{
-                        @include inlineFlexBetweenElements;
+                        display: grid;
+                        grid-template-columns: 0.75fr 0.5fr;
+                        align-items: center;
                         padding-bottom:1rem;
-                }
+                 }
 
                 &-info{
-                        &--author{ margin-left:1rem; color:$app-color-gray; }
-
+                        transform: translateY(-0.25rem);
+                        &--author{ margin-left:1rem; color:$app-color-gray; line-height:3rem ;}
+            
                         &--date{  margin-left:1rem; color:$app-color-blue; }
-
-                         &--image{
+            
+                        &--image{
                                 display:inline-block;
                                 width:2rem;
                                 height:2rem;
                                 background-image:url('../images/favicons/favicon.png');
-                                transform:translateY(0.7rem);
+                                transform:translateY(0.5rem);
                                 @include  fullImage;
                         }
                 }
 
-                &-discussion{
-                        @include  inlineSpecyficElements;
-                        grid-template-columns: 1fr 0.5fr;
-
-                        &-share{
-                                        
-                                &-social{
-                                        display:inline-block;
-                                        position:relative;
-                                        width:2.375rem;
-                                        height:2.375rem;
-                                        border-radius:100%;
-
-                                        .social__icon{
-                                                position:absolute;
-                                                left:50%;
-                                                top:50%;
-                                                transform:translate(-50%, -50%);
-                                        }
-
-                                        @for $i from 1 through length($social-color) {
-                                                &:nth-child(#{$i}) {
-                                                        margin-right:1rem;
-                                                        border:0.15rem solid nth($social-color,$i);
-                                                        color:nth($social-color,$i) ;
-                                                }
-                                        }
-                                }
-                        }
-                                
-                        &-join{ margin-left:3rem; }
-                }
+                &-discussion{ text-align: right;  }
         }
+
+        @include articleShare('article-body');
 
         // Article > Block > Content
         &__content{
@@ -118,14 +91,26 @@
 
                 &-inner{ @include boxCenter; text-align: left; }
 
-                &--body{ position:relative; @include  draftJsModule; }
+                &--body{ position:relative;  }
         }
 
         // Article > Block > Holders
         &__holders{
                 @include boxCenter;
+                text-align: left;  
 
-                &-tags { text-align: left;  margin-right:1rem; }
+                &-tag { 
+                        padding: 1rem 2.5rem;
+                        margin-right:1rem;
+
+                        &_modifier{
+                                background-color:$app-color-lsilver;
+                                border-radius: 25px;
+                                font-size:$font-size-normal;
+                                font-weight: $bold-weight;
+                                color:$app-color-gray;
+                        }
+                 }
         }
 
         // Article > Block > Discussion
@@ -147,68 +132,115 @@
         // Related > Block
         &__block{ @include blockPadding }
 
-        &--project{ .related__header{ @include sectionArticleHeaderLeft(37rem,$app-color-gray, $app-color-blue);  }}
-
-        &--book{   .related__header{ @include sectionArticleHeaderLeft(37rem,$app-color-gray, $app-color-red);  }  }
+        &__block &__header{ @include sectionHeaderLeftV2  }
 
         // Related > Block > Articles
         @include articleItems;
 }
 
 /*-----------------------------
-*               RWD
+*        RWD System
 *----------------------------*/
 
+//Desktops, large screens
 @media (max-width: 1200px) {
-        .related{
+
+         // Article
+        .article{
+                 // Article .... article project
+                &--project{
+                        // Article > Block > Phero
+                        .article__phero{
+                                @include inlineRepeatColElements(2, $columnSize: 1fr,$space: 4rem);
+                        }
+                } 
+        }
+
+        // Related
+        .related{           
+                // Related > Block > Inner
                 &__block &__inner{ @include  inlineRepeatColElements(3, 1fr, 1.5rem);  }
         }
 }
 
+//Small screens, laptops
 @media (max-width: 960px) {
+
+        // Article
         .article{
+                
+                // Article .... article book
                 &--book{
+                        // Article > Block > Phero
                         .article__phero{
                                 &-artwork{  @include backgroundBlockArtwork(100%, 40rem);   }
                         }
                 } 
-        }
 
-        .related{       &__block &__inner{ @include  inlineRepeatColElements(2, 1fr, 1.5rem);  }  }
-}
-    
-@media (max-width: 720px) {
-        .article{
-                &--book{
+                // Article .... article project
+                &--project{
+                        // Article > Block > Phero
                         .article__phero{
-                                &-artwork{  @include backgroundBlockArtwork(100%, 30rem);   }
+                                @include inlineRepeatColElements(2, $columnSize: 1fr,$space: 2rem);
                         }
                 } 
+        }
 
-                &--project{
-                        .article__phero{
-                                @include inlineRepeatColElements(1, $columnSize: 1fr,$space: 10rem);
-                        }
-                }
+        // Related
+        .related{       
+                // Related  > Block > Inner > Articles
+                &__block &__inner{ @include  inlineRepeatColElements(2, 1fr, 1.5rem);  }  
+                // Related  > Block > Article
+                &__article{
+                        &:nth-child(3){ display: none;  }
+                } 
+        }
+}
+
+//iPads, Tablets
+@media (max-width: 768px) {
+
+        // Article
+        .article{
+                 // Article > Block 
+                .article__block{ @include blockPadding(2rem, 0, 6rem)  }
+
+                // Article > Phero
+                .article__phero{
+                        @include inlineRepeatColElements(1, 1fr,1rem);
+                        margin-bottom:1rem;
                 
-                &__phero{
+                        // Article > Phero > Artwork
+                        &-artwork{  @include backgroundBlockArtwork(100%, 30rem);   }
 
+                        // Article > Phero > Header
                         &-header{
                                 &--title{  @include boxHeading($font-size-extra-normal, $bold-weight, $app-color-gray);  }
+
+                                &--desc{  @include boxDescContent($font-size-normal, $regular-weight, $app-color-silver);   }
                         }
+                }
+
+                &__content{
+                        margin:2.5rem 0 2.5rem;
                 }
         }
 
-        .related{    &__block  &__inner{    @include  inlineRepeatColElements(2, 1fr, 1rem);   } }
+        // Related
+        .related{    
+              // Related  > Block > Articles
+                &__block  &__inner{    @include  inlineRepeatColElements(2, 1fr, 1rem);   }
+        } 
 }
-    
+
+//Mobile devices (horizonal)
 @media (max-width: 576px) {
         .article{
-                &--book{
-                        .article__phero{
-                                &-artwork{  @include backgroundBlockArtwork(100%, 25rem);   }
-                        }
-                }
+               // Article > Phero
+               .article__phero{
+                       // Article > Phero > Artwork
+                       &-artwork{  @include backgroundBlockArtwork(100%, 25rem);   }
+               }
 
                 &__component{
                         &-inner{
@@ -219,5 +251,9 @@
                 }
         }
 
-        .related{  &__block &__inner{    @include  inlineRepeatColElements(1, 1fr, 1.5rem);  }     }
+        // Related
+        .related{    
+                // Related  > Block > Articles
+                  &__block  &__inner{    @include  inlineRepeatColElements(1, 1fr, 1.5rem);   }
+          } 
 }

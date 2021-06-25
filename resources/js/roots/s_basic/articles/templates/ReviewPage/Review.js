@@ -1,49 +1,53 @@
-import React, { Component } from 'react';
+import  React, { useEffect,useState } from 'react';
 import axios from 'axios';
 
 {  /*  Components */ }
 import { Footer, Navigation } from '../../../primary/components';
-import { ReviewBody,ReviewRelated } from '../../components';
+import { ArticleBody, ArticleRelated } from '../../components';
+import { relatedDisplay } from '../../../../global/Publications';
+import { ArticleObjOne } from './Data';
 
-class ArticleBook extends Component {
+/*
+=======================
+Get single review article
+with available actions
+ =======================
+*/
+function Review(props) {
+        const [review, getReview] = useState({});
+        const [randReviews, getRandReviews] = useState([]);
 
-        constructor(props) {  super(props); this.state = { review: [], rand_reviews: [] } }
-
-        componentDidMount() {
-                const pub_url = this.props.match.params.pub_url;
-
-                axios.get(`/api/basic/review/${pub_url}`).then(response => { this.setState({ review: response.data }); });
+        useEffect(() => {
+                const pub_url = props.match.params.pub_url;
+                
+                axios.get(`/api/basic/review/${pub_url}`).then(response => {
+                        getReview(response.data); 
+                });
 
                 axios.get(`/api/basic/reviews/random/${pub_url}`).then(response => { 
-                        this.setState({  rand_reviews: response.data  });
-                        console.log(this.state.rand_reviews)
-                 });
-        }
+                        getRandReviews(response.data);
+                });
+        }, []);
 
+        const setRandReviews = { randCollection: randReviews }
+        
         /*
         =======================
          Render components
         =======================
         */
-        render() {
-                const { review } = this.state;
-
-                const getRandArticle = { randArticle: this.state.rand_reviews }
-
-                document.title = review.pub_title;
-
-                return (
-
+        return(
                 <>
-                        <Navigation articleTitle={ review.pub_title}  styleComponent={ 'nav-light' }  articleTitle={ review.pub_title}  styleComponent={ 'nav-light' } linkComponent={'review'}   nameComponent= {'Books'}/>
+                        <Navigation articleTitle={ review.pub_title}  typeSection={'navigation'}  pub_url = {review.pub_url}  pub_category= {review.pub_category} />
                         <main>
-                                <ReviewBody  review = { review } getRandArticle={ getRandArticle } /> 
-                                <ReviewRelated getRandArticle= { getRandArticle} />
+                                <ArticleBody  typeSection={'article'} typeArticle={ 'article--book' } pub_title = { review.pub_title } pub_subtitle = { review.pub_subtitle } pub_body = { review.pub_body }  
+                                pub_picture = { review.pub_picture}  date_of_publication ={ review.date_of_publication } pub_tags = { review.pub_tags} pub_url = {review.pub_url}  pub_category= {review.pub_category}  /> 
+
+                                <ArticleRelated  sectionType={'related--book' } relatedHeaderTitle={ ArticleObjOne.related_title} randArticles = {relatedDisplay(setRandReviews)} />
                         </main>
                          <Footer />
-            </>
-        )
-    }
+                </>
+        );
 }
 
-export default   ArticleBook;
+export default  Review;

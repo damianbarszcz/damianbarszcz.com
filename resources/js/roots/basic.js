@@ -50,10 +50,10 @@ class Basic extends Component {
                 <Router>
                         <ScrollToTop>
                                 {  /*  Index */ }
-                                <Route exact  path="/"  render= { () => <Index setCollection= { collection } setProjects = { projects }  setReviews = { reviews }  /> } />
+                                <Route exact  path="/"  render= { () => <Index setCollection= { collection } projects = { projects }  setReviews = { reviews }  /> } />
 
                                 {  /*  Projects */ }
-                                <Route exact  path="/projects" component={ () => <Projects setProjects = { projects } /> } />
+                                <Route exact  path="/projects" component={ () => <Projects projects = { projects } /> } />
 
                                 {  /*  Library */}
                                 <Route exact  path="/library" component={ () => <Library setReviews = { reviews } /> } />

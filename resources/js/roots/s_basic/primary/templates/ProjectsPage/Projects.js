@@ -1,16 +1,20 @@
 import  React, { useEffect } from 'react';
 
 {  /*  Components */ }
-import {ProjectsBanner,NewProject,LatestProjects,OldProjects,PaginationNav,Navigation,Footer } from '../../components';
-import { newProjectDisplay, getLeftSideProjects,  getRightSideProjects, oldProjectsDisplay}  from '../../../../global/Publications';
+import {ProjectsBanner,LatestProjects,PopularProjects,Navigation,Footer,Archives,PaginationNav } from '../../components';
+import { projectsObjOne  } from './Data';
 
+/*
+=======================
+Display all components for
+Projects me route
+=======================
+*/
 function Projects (props) {
 
         useEffect(() => {
                 document.title = "Projekty | Strefa najlepszych rozwiązań"; 
         }, []);
-
-        const getProjects = { projectsCollection: props.setProjects }
         
        /*
         =======================
@@ -19,13 +23,13 @@ function Projects (props) {
         */
         return (
          <>      
-                <Navigation linkComponent={'projects'}  styleComponent={ 'nav-light' } nameComponent= {'Projects'} />
+                <Navigation typeSection={'navigation'} />
 
                 <main>
-                        <ProjectsBanner />
-                        <NewProject  newProjectDisplay = { newProjectDisplay(getProjects ) } />
-                        <LatestProjects getLeftSideProjects = { getLeftSideProjects(getProjects,1,2)} getRightSideProjects = { getRightSideProjects(getProjects,2,4)} />
-                        <OldProjects  oldProjectsDisplay = { oldProjectsDisplay(getProjects) }  />
+                        <ProjectsBanner projectsObjOne={ projectsObjOne }  />
+                        <LatestProjects latestProjects = {props.projects} />
+                        <PopularProjects latestProjects = {props.projects} />
+                        <Archives latestProjects = {props.projects} />
                         <PaginationNav />
                  </main>
 

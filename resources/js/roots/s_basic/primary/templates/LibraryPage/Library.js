@@ -1,7 +1,7 @@
 import  React, { useEffect } from 'react';
 
 {  /*  Components */ }
-import { LibraryManager, LastReviews, Popular,Navigation,Footer, TopReview,SearchReviews  } from '../../components';
+import { LibraryBanner, LastReviews, Popular,Navigation,Footer, TopReview } from '../../components';
 import { popularReviews, lastReviewsDisplay, topReviewDisplay }  from '../../../../global/Publications';
 import { libraryObjOne, libraryObjTwo, libraryObjThree,libraryObjFour  } from './Data';
 
@@ -17,10 +17,7 @@ function Library(props) {
                 document.title = "Biblioteka | Dowiedz się więcej o książkach"; 
         }, []);
 
-        const [searchTerm, getTerm] = React.useState('');
-
         const getReviews = { reviewsCollection: props.setReviews }
-
 
         /*
          =======================
@@ -29,9 +26,9 @@ function Library(props) {
         */
         return (
                 <>
-                        <Navigation />
+                        <Navigation typeSection={'navigation'} />
                         <main>
-                                <LibraryManager  libraryObjOne={ libraryObjOne } searchTerm = { searchTerm }  getTerm={getTerm} />
+                                <LibraryBanner libraryObjOne={libraryObjOne} />
                                 <TopReview libraryObjTwo={ libraryObjTwo} topReviewDisplay={ topReviewDisplay(getReviews) }  />
                                 <LastReviews  libraryObjThree ={ libraryObjThree } lastReviewsDisplay = { lastReviewsDisplay(getReviews) } />
                                 <Popular  libraryObjFour ={ libraryObjFour  } popularReviews = { popularReviews(getReviews) } />

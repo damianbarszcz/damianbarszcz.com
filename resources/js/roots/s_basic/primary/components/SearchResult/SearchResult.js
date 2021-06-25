@@ -18,7 +18,7 @@ const SearchResult  = (props) => {
                         <div className="gl-search__block g-container">
                                 {  /*--- Gl search > Block > Header ---*/   }
                                 <header className="gl-search__header">
-                                        <h1 className="gl-search__header--title">Wyniki dla frazy "{ props.searchTerm }" </h1>
+                                        <h1 className="gl-search__header--title">Wyniki wyszukiwania frazy "{ props.searchTerm }" </h1>
                                 </header>
                                                 
                                 <div className="gl-search__inner">    
@@ -28,7 +28,7 @@ const SearchResult  = (props) => {
                                                         <div className="gl-search__article-artwork" style={{ background: `url( ${ article.pub_picture } )` }}></div>
 
                                                         <header className="gl-search__article-header last-reviews__article-header_modifier">
-                                                                 <h3 className="gl-search__article-header--title">{ article.pub_title } </h3>
+                                                                 <h3 className="gl-search__article-header--title">{ article.pub_title }   </h3>
 
                                                                 <div className="gl-search__article-header--desc"><LinesEllipsis text={ article.pub_subtitle} maxLine='2' ellipsis='...' trimRight /></div>
                                                         </header>

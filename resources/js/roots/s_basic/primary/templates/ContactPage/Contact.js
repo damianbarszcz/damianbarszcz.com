@@ -1,4 +1,4 @@
-import  React, { useEffect } from 'react';
+import  React, { useEffect,useState } from 'react';
 import axios from 'axios';
 
 {  /*  Components */ }
@@ -16,15 +16,15 @@ function Contact () {
                 document.title = "Kontakt | Damian Barszcz";
         }, []);
 
-        const [first_name, setName] = React.useState('');
-        const [last_name, setSurename] = React.useState('');
-        const [email_address, setEmail] = React.useState('');
-        const [subject , setSubject ] = React.useState('');
-        const [message , setMessage ] = React.useState('');
-        const [errors, setError] = React.useState([]);
-        const [loader, isLoading] = React.useState(false);
-        const [success, successPage] = React.useState(false);
-        const [recaptcha, setRecaptcha] = React.useState('');
+        const [first_name, setName] = useState('');
+        const [last_name, setSurename] = useState('');
+        const [email_address, setEmail] = useState('');
+        const [subject , setSubject ] = useState('');
+        const [message , setMessage ] = useState('');
+        const [errors, setError] = useState([]);
+        const [loader, isLoading] = useState(false);
+        const [success, successPage] = useState(false);
+        const [recaptcha, setRecaptcha] = useState('');
 
         // Submit message to Autor blog
         const handleForm = (e) => {
@@ -66,7 +66,7 @@ function Contact () {
         */
         return (
                 <>
-                        <Navigation />
+                        <Navigation typeSection={'navigation'} />
                         <main>
                                 <ContactBanner  contactObjOne = { contactObjOne } />
                                 <ContactPanel  contactObjTwo={contactObjTwo} contactObjThree = { contactObjThree } handleForm ={ handleForm }  getRecaptcha={ getRecaptcha } setName={ setName } setSurename ={ setSurename } 

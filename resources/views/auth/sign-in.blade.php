@@ -12,5 +12,5 @@
 @endsection
 
 @section('auth-root')
-<div id="auth-root"></div>
+    <div id="auth-root"></div>
 @endsection

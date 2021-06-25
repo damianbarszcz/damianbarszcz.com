@@ -1,85 +1,71 @@
 
-{  /*  React Packages */  }
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
+
 {  /*  Components */  }
-import { LibrarySection, ProjectsSection, NewPublication, NavSection,Footer, Navigation } from '../../components';
-import { 
-getNewPublication,getRightSideProjects,getLeftSideProjects, getReviewsCarousel }  from '../../../../global/Publications';
+import { LibrarySection, ProjectsSection, NewPublication, Footer, Navigation } from '../../components';
+import { getNewPublication,getReviewsCarousel }  from '../../../../global/Publications';
+import { indexObjOne, indexObjTwo  } from './Data';
 
-class Index extends Component  {
-        
-        constructor(props) {  
-                super(props); 
- 
-                this.state = { isNavigation:false, prevButton:false, nextButton:true, position:0 }
-
-                this.handleNavigation= this.handleNavigation.bind(this);
-                this.chooseLeft = this.chooseLeft.bind(this);
-                this.chooseRight= this.chooseRight.bind(this);
-         }  
-
-         componentDidMount() {
+/*
+=======================
+Display all components for
+Index route
+=======================
+*/
+function Index(props)  {
+        const [position,getPosition] = useState(0);
+        const [prevButton,getPrevButton] = useState(false);
+        const [nextButton,getNextButton] = useState(true);
+    
+        useEffect(() =>{
                 document.title = "Damian Barszcz | Blog Personalny";
-
-                window.addEventListener("scroll", this.handleNavigation);
-        }
-
-        /*
-        =======================
-         Detect scrolling page
-        =======================
-        */
-       
-       handleNavigation(e) {
-                const window = e.currentTarget;
-
-                if(window.pageYOffset === 0) {  this.setState({  isNavigation:false });  }
-                
-                else if (this.prev < window.scrollY) {
-                        if(window.pageYOffset > 500) {    this.setState({  isNavigation:true });   }
-                }
-
-                this.prev = window.scrollY;
-        };
+        });
 
         /*
         =======================
          Change carousel position
+         (W remoncie)
         =======================
         */
+        const chooseLeft = () =>{
+                getPosition(position+190);
+                getNextButton(true);
+                console.log(props.setReviews.length);
+        }
 
-       chooseLeft(){ this.setState({ prevButton:false, nextButton:true,position:100 });   }
-
-       chooseRight(){ this.setState({ prevButton:true, nextButton:false,position:-100  });   }
+        const chooseRight = (old_index, new_index) =>{
+                if (new_index >=props.setReviews.length) {
+                        var k = new_index - props.setReviews.length + 1;
+                        while (k--) {
+                                props.setReviews.push(undefined);
+                        }
+                    }
+                    props.setReviews.splice(new_index, 0, props.setReviews.splice(old_index, 1)[0]);
+                    return props.setReviews; 
+        }
 
         /*
         =======================
          Reder component
         =======================
         */
-        render(){
-                const newPublicationDisplay = { newPubCollection: this.props.setCollection }
+        const newPublicationDisplay = { newPubCollection: props.setCollection }
 
-                const getReviews = { reviewsCollection: this.props.setReviews, position:this.state.position }
+        const getReviews = { reviewsCollection: props.setReviews, position:position }
 
-                const getProjects = { projectsCollection: this.props.setProjects }
-
-                const { isNavigation,  prevButton, nextButton } = this.state;
-
-                return(
-                        <>                   
-                               { isNavigation &&  <Navigation  styleComponent={ 'nav-light' } />  }
-                                <NavSection />
-                                <main>
-                                        <NewPublication  getNewPublication = {  getNewPublication(newPublicationDisplay) } />
-                                        <ProjectsSection getLeftSideProjects= { getLeftSideProjects(getProjects,1,2) } getRightSideProjects= { getRightSideProjects(getProjects,2,4) } />
-                                        <LibrarySection  prevButton = { prevButton } nextButton= { nextButton } getReviewsCarousel = {  getReviewsCarousel(getReviews) } 
-                                        chooseLeft = { this.chooseLeft } chooseRight = { this.chooseRight }  />                     
-                                </main>
-                                <Footer />
-                        </>
-                );
-        }
+        return(
+                <>
+                        <Navigation typeSection={'navigation'} />  
+                        <Navigation typeSection={'main-header'} />
+                        <main>
+                                <NewPublication  getNewPublication = {  getNewPublication(newPublicationDisplay) } />
+                                <ProjectsSection projects = { props.projects } indexObjOne = { indexObjOne } />
+                                <LibrarySection  prevButton = { prevButton } nextButton= { nextButton } getReviewsCarousel = {  getReviewsCarousel(getReviews) } 
+                                chooseLeft = { chooseLeft } chooseRight = { chooseRight } indexObjTwo = { indexObjTwo }  />                     
+                        </main>
+                        <Footer />
+                </>
+        );
  }
 
  export default  Index;

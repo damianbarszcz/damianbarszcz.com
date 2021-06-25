@@ -1,6 +1,6 @@
 
 export const contactObjOne = {
-    descryption: 'Istnieje możliwość kontaktu ze mna za pomocą  formularza kontaktowego.  Z racji tego że jestem aktualnie zaangażowany w moje obecne projekty, i inne obowiązki mam możliwość odpowiadania wyłącznie na wiadomości czysto biznesowe.',
+    descryption: 'Jeśli interesuje Cię współpraca biznesowa ze mną, to masz możliwość skorzystania z formularza kontaktowego.',
     title:' Skontaktuj się'
   };
 

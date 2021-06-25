@@ -127,14 +127,7 @@ export function oldProjectsDisplay(props) {
 
 export function getReviewsCarousel(props){
         return ( 
-         <React.Fragment>
-                 <div className="library-books__info" style={{ transform: `translateX(${ props.position }%)`}}>
-                         <p className="library-books__info--desc">
-                                 Recezje książek które przeczytałem i które polecam z zakresu programowania, biznesu, astronomii oraz rozwoju osobistego. 
-                                 Pubikacje te stanowią dla mnie zarówno obowiązek jak I przyjemność.
-                         </p>
-                 </div>
-
+         <>
                  { props.reviewsCollection.map(article =>
                  <article key={ article.id } className="library-books__article library-books__article_modifier"  style={{ transform: `translateX(${ props.position }%)`}}>
                          <a href={ `/review/${article.pub_url }`}  className="library-books__article-link library-books__article-link_modifier" target="_self">
@@ -149,7 +142,7 @@ export function getReviewsCarousel(props){
                                  <div className="library-books__article-category library-books__article-category_modifier" data-book-category={ article.pub_category }>{ article.pub_category }</div>
                          </a>
                  </article>) }
-         </React.Fragment>
+         </>
          );
  }
 
@@ -178,7 +171,7 @@ Display related article
 */
 
 export function relatedDisplay(props) {
-        return props.randArticle.slice(0,3).map(article =>
+        return props.randCollection.slice(0,3).map(article =>
 
         <article key={ article.id } className="related__article related__article_modifier">
                 <a href={`/${ article.pub_category ? 'review' : 'project' }/${article.pub_url}`}  className="related__article-link related__article-link_modifier" target="_self">

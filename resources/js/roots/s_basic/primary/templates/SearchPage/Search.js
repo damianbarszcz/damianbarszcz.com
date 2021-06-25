@@ -1,54 +1,49 @@
-import React, { Component } from 'react';
+import React, { useState,useEffect} from 'react';
 import axios from 'axios';
 
 {  /*  Components */ }
-import { Navigation, Footer,SearchResult }  from '../../components';
+import { Navigation, Footer,SearchResult, SearchManager }  from '../../components';
 
-class Search extends Component {
+/*
+=======================
+Display all components for
+Search route
+=======================
+*/
+function Search(props){
+        const [resultsCollection,getResultsCollection] =  useState([]);
+        const [searchTerm, getSearchTerm] = useState('');
 
-        constructor(props){   
-                super(props);    
-                
-                this.state = { resultsCollection:[], searchTerm:'' } 
-        }
-
-        componentDidMount() { 
+        useEffect(() => {
                 document.title = "Wyszukiwanie | Damian Barszcz"; 
 
-                const pub_url = this.props.match.params.slug;
+                const pub_url = props.match.params.slug;
 
-                this.setState({searchTerm: pub_url.slice(7, 1000).replace(/-/g, " ")  }); 
+                getSearchTerm(pub_url.slice(7, 1000).replace(/-/g, " ")); 
 
                 axios.get(`/api/basic/collection`).then(response => { 
-                        this.setState({resultsCollection: response.data }); 
-                        console.log(response.data)
+                        getResultsCollection(response.data); 
                 });
-        }
-        
-       /*
-        =======================
-         Render components
-        =======================
-        */
-        render() {
-                const { searchTerm,resultsCollection  } = this.state
+        }, []);
 
-                let searchResults =  resultsCollection.filter(article =>  
-                           article.pub_title.toLowerCase().includes(searchTerm.toLowerCase()) 
-                        || article.pub_subtitle.toLowerCase().includes(searchTerm.toLowerCase()) 
-                        || article.pub_category &&  article.pub_category.toLowerCase().includes(searchTerm.toLowerCase())     
-                );
+        let searchResults =  resultsCollection.filter(article =>  
+                 article.pub_title.toLowerCase().includes(searchTerm.toLowerCase()) 
+             || article.pub_subtitle.toLowerCase().includes(searchTerm.toLowerCase()) 
+             || article.pub_tags.toLowerCase().includes(searchTerm.toLowerCase()) 
+             || article.pub_category &&  article.pub_category.toLowerCase().includes(searchTerm.toLowerCase())     
+         );
 
-                return (
+        return (
                 <>   
-                        <Navigation />
+                        <Navigation  typeSection={'navigation'}/>
                         <main>
+                                <SearchManager searchTerm={ searchTerm } getSearchTerm={getSearchTerm} />
                                 <SearchResult  searchResults = { searchResults } searchTerm={ searchTerm } />
                         </main>
                         <Footer />
                 </>
-                );
-        }
+        );
 }
+
 
 export default Search;

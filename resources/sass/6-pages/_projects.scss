@@ -1,199 +1,389 @@
 /*-----------------------------------------------------
  * Projects (https://www.damianbarszcz.com)
- * Copyright 2020 Damian Barszcz
+ * Copyright 2021 Damian Barszcz
  *-----------------------------------------------------*/
 
 /*-----------------------------
-*        Projects banner
+*      Projects banner
 *----------------------------*/
 
-        .projects-banner{
-                @include sectionDefinition;
+.projects-banner{
+        @include sectionDefinition;
 
-                &_theme{ background-color:  $app-color-white; }
-
-                // Project banner > Block 
-                &__block{   @include blockPadding(8rem, 0, 2rem, 0);  }
-
-                // Project banner > Block > Header
-                &__block &__header{ @include sectionArticleHeaderCenter;  }
-        }
-
-/*-----------------------------
-*        New project
-*----------------------------*/
-
-         .new-project{
-                @include sectionDefinition;
-
-                &_theme{ background-color:  $app-color-white; }
+        &_theme{  background-color:$app-color-dark; }
         
-                // New project > Block 
-                &__block{   @include blockPadding(5rem, 0, 5rem) }
+        // Projects banner > Block
+        &__block{  @include blockPadding(8rem, 0, 1rem);  }
 
-                //New Project > Block > Inner > Article
-                &__inner &__article{
-
-                        &-link{
-                                @include inlineRepeatColElements(2, $columnSize: 1fr,$space: 10rem);
-                                align-items: center;
-                        }
-
-                        &-artwork{  @include backgroundBlockArtwork; margin-right: auto; }
-
-                        &-header{
-                                &--title{  @include boxHeading($font-size-big, $bold-weight, $app-color-gray);  }
-
-                                &--desc{  @include boxDescContent($font-size-normal, $regular-weight, $app-color-silver);   }
-                        }
-               }
+        // Projects banner > Block > Header
+        &__block &__header{   
+                @include sectionHeaderCenterV2(40rem, $app-color-white, $app-color-blue);
         }
+}
 
 /*-----------------------------
-*        Latest projects
+*       Latest projects
 *----------------------------*/
 
         .latest-projects{
                 @include sectionDefinition;
 
-                &_theme{  background-color:  $app-color-white; }
+                &_theme{  background-color:  $app-color-dark; }
         
                 // Latest projects > Block 
-                &__block{ @include blockPadding(4.5rem, 0, 4.5rem, 0); }
+                &__block{ @include blockPadding(1rem, 0, 4rem, 0); }
 
-                 // Latest projects > Block  > Header
-                 &__block &__header{ 
-                        margin-top:1rem;
+                // Latest Projects > Block > Hero
+                &__block  &__inner{
+                        display: grid;
+                        margin-top:2rem;
+                        grid-template-columns: repeat(4,1fr);
+                        grid-template-rows: repeat(2,1fr);
+                        grid-gap:1.5rem;
+                        min-width: 100%;
+               }
 
-                        &--title{  @include boxHeading($font-size-big, $bold-weight, $app-color-blue);  }
-                }
+                // Latest Projects > Block > Article
+               &__block  &__article{
+                        position: relative;
+                        min-height: 20rem;
 
-                @include innerProjectDisplay('projects');        
-        }
+                        &:nth-child(1){
+                                grid-column-start: 1;
+                                grid-column-end: 3;
+                                grid-row-start: 1;
+                                grid-row-end: 3;
+                        }
 
+                        &_modifier{ @include articleImage;   }
 
-/*-----------------------------
-*        Old projects
-*----------------------------*/
+                        &-link{
+                                @include boxInnerLink;  
 
-    .old-projects{
-        @include sectionDefinition;
+                                &_effect{  background-color: rgba(0, 0, 0, 0.5); }
+                        }
 
-        &_theme{  background-color: $app-color-white;  }
-                
-        // Old projects > Block 
-        &__block{   @include blockPadding(2rem, 0, 2rem) }
-
-        // Old Projects > Block  > Lines
-        &__block  &__lines{
-                @include boxCenter(20rem);
-
-                &-part{
-                        display:block;
-                        text-align:center;
-                        margin-bottom:1rem;
-                        width:100%;
-                        height:0.125rem;
-                        
-                        @for $i from 1 through length($blog-color) {
-                                &:nth-child(#{$i}) {  background-color: nth($blog-color,$i);  }
+                        &-header{
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: flex-end;
+                                height:100%;
+            
+                                @include articleHeaderLeft(75%);
                         }
                 }
         }
 
-        // Old Projects > Block > Inner 
-        &__block  &__inner{  
-                @include boxCenter;
-                margin-top:3.5rem;
-        }
-                   
-        // Old Projects > Block > Inner  > Article
-        &__inner  &__article{
-                margin-bottom:2rem;
-                width: 100%;
-                min-height:3.25rem;
-                padding:1.25rem 1rem;
+/*-----------------------------
+*      Popular projects
+*----------------------------*/
 
-                &_modifier{
-                        @include boxStyling;
-                        @include transition;
+.popular-projects{
+        @include sectionDefinition;
 
-                        &:hover{ box-shadow: 0 1px 6px 0 rgba(0,0,0,0.16); }
-                } 
+        &_theme{  background-color:  $app-color-white;}
 
-                &-link{                                
+        // Latest projects > Block 
+        &__block{ @include blockPadding; }
+
+        // Latest projects > Block > Header
+        &__block &__header{   @include sectionHeaderLeft(40rem, $app-color-gray,$app-color-red);  }
+
+        // Latest Projects > Block > Hero
+        &__block  &__inner{
+                display: grid;
+                margin-top:2rem;
+                grid-auto-flow: column;
+                grid-auto-rows: 1fr;
+                grid-gap:1.5rem;
+       }
+
+        // Latest Projects > Block > Article
+       &__block  &__article{
+                position: relative;
+                width: 348px;
+
+                &_modifier{  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; }
+
+                &-link{
                         display: grid;
-                        grid-template-columns: 0.5fr 1fr;
-                        align-items: center;
-                        grid-column-gap:2rem;
+                        grid-template-columns: 1fr;
+                        grid-template-rows: 1fr;
+                        height: 100%;
                 }
 
                 &-header{
-                        text-align: left;
+                        padding:1rem;
 
-                        &--title{  @include boxHeading($font-size-extra-normal, $bold-weight, $app-color-gray); margin-bottom:-1rem;}
+                        &--title{
+                                margin-top: 1rem;
+                                font-size: $font-size-extra-normal;
+                                line-height: 2rem;
+                        }
 
-                        &--desc{  @include boxDescContent; white-space: pre-wrap; margin:0; padding:0;}
+                        &--desc{
+                                margin-top: 1rem;
+                                font-size: $font-size-normal;
+                                line-height: 1.75rem;
+                        }
+
+                        &--date{  margin-top: 1rem; }
+
+                        &--tags{
+                                display: block;
+                                margin-top: 1rem;
+                        }
+
+                        .text-dark{ color:$app-color-dark; }
+
+                        .text-light{ color:$app-color-white;  }
                 }
 
-                &-artwork{  @include  backgroundBlockArtwork(12rem,10rem) }
-        }
-}
+                &-artwork{
+                        position: relative;
 
- /*-----------------------------
- *        Pagination nav
-*----------------------------*/
-
-        .pagination-nav{
-                @include sectionDefinition;
-                
-                &_theme{  background-color: $app-color-white; }
-
-                 // Pagination-nav > Block 
-                &__block{   @include blockPadding(1rem, 0, 6rem) }
-
-                // Pagination-nav > Block > List
-                &__block  &__list{
-                        @include boxCenter;
-
-                        &-link{
-                                display:inline-block;
-                                position:relative;
-                                padding:0.7rem 0.8rem;
-
-                                &_effect{
-                                        font-size:$font-size-normal*1.1;
-                                        border: 0.2rem solid $app-color-gray;
-                                        color:$app-color-gray;
-                                }
+                        &--image{
+                                width:100%;
+                                height: auto;
+                                transform:translateY(2px);
                         }
                 }
         }
+}
 
 /*-----------------------------
-*               RWD
+*            Archives
 *----------------------------*/
 
-@media (max-width: 1366px) {
-        .projects-banner{
-                &_theme{ background-color: $app-color-red;  }
+.archives{
+        @include sectionDefinition;
+
+        &_theme{  background-color:  $app-color-white; }
+
+        // Archives > Block 
+        &__block{ @include blockPadding; }
+
+        // Archives > Block > Header
+        &__block &__header{   @include sectionHeaderLeft(40rem, $app-color-gray);  }
+
+        // Archives > Block > Inner
+        &__block  &__inner{
+                display: grid;
+                margin-top:2rem;
+                grid-template-columns: repeat(3,1fr);
+                grid-gap:3.5rem;
+       }
+
+        // Archives > Block > Inner > Article
+       &__block  &__article{
+               position: relative;
+               min-height:12rem;
+
+                &_modifier{ 
+                        @include boxStyling;
+                        @include transition;
+                }
+                
+               &:hover{ box-shadow: 0 1px 6px 0 rgba(0,0,0,0.16); }
+
+                &-link{
+                        display: block;
+                        position: absolute;
+                        margin:0;
+                        width:100%;
+                        height: 100%;
+
+                        &_effect{  border-radius: 0.5rem;   }
+                }
+
+                &-wrapper{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        position: relative;
+                        padding:1rem;
+                        height: 100%;
+                }
+
+                &-header{
+                        margin: 0rem 1rem;
+
+                        &--title{
+                                margin-top: 0.5rem;
+                                line-height: 1.75rem;
+                                color:$app-color-gray;
+                        }
+
+                        &--desc{
+                                margin-top:0.5rem;
+                                line-height: 1.5rem;
+                                color:$app-color-silver;
+                        }
+
+                        &--date{     color:$app-color-silver;  }
+                }
+
+                &-artwork{
+                        position: relative;
+
+                        &--image{
+                                display: block;
+                                width: 7.5rem;
+                                height:7.5rem;
+                        }
+                }
         }
 }
 
-@media (max-width: 1024px) {
-        .projects-banner{
-                &_theme{ background-color: $app-color-green;  }
+/*-----------------------------
+*      PaginationNav
+*----------------------------*/
+
+.pagination-nav{
+        @include sectionDefinition;
+        
+        &_theme{  background-color: $app-color-white; }
+
+         // Pagination-nav > Block 
+        &__block{   @include blockPadding(1rem, 0, 6rem) }
+
+        // Pagination-nav > Block > List
+        &__block  &__list{
+                @include boxCenter;
+
+                &-link{
+                        display:inline-block;
+                        position:relative;
+                        padding:0.7rem 0.8rem;
+
+                        &_effect{
+                                font-size:$font-size-extra-normal;
+                                border: 2px solid $app-color-gray;
+                                color:$app-color-gray;
+                        }
+                }
         }
 }
-    
-@media (max-width: 768px) {
-        .projects-banner{
-                &_theme{ background-color: $app-color-blue;  }
-         }      
+
+/*-----------------------------
+*        RWD System
+*----------------------------*/
+
+//Very large screen
+@media (max-width: 1366px) {
+        // Latest Projects 
+        .latest-projects{
+                // Latest Projects > Block > Inner > Article
+                &__block  &__article{   min-height: 18rem;     }
+        }
+
+        .archives{
+                &__block  &__inner{
+                        grid-template-columns: repeat(2,1fr);
+               }
+        }
 }
-    
-@media (max-width: 414px) {
-        .projects-banner{
-                &_theme{ background-color: $app-color-yellow;  }
-         }
+
+//Desktops, large screens
+@media (max-width: 1200px) {
+        // Latest Projects 
+        .latest-projects{
+
+                // Latest Projects > Block > Inner
+                &__block  &__inner{
+                        grid-template-columns: repeat(3,1fr);
+                        grid-template-rows: repeat(2,1fr);
+                }
+
+                // Latest Projects > Block > Inner > Article
+                &__block &__article{   
+        
+                        &:nth-child(1){
+                                grid-column-start: 1;
+                                grid-column-end: 2;
+                                grid-row-start: 1;
+                                grid-row-end: 2;
+                        }
+                }
+        }
+}
+
+
+//Small screens, laptops
+@media (max-width: 960px) {
+
+        // Project hero 
+        .project-hero{
+                // Project hero > Block >  Article
+                &__block &__article{   min-height: 35rem; }
+       }
+
+        // Latest Projects 
+        .latest-projects{
+
+                // Latest Projects > Block > Inner
+                &__block  &__inner{
+                        grid-template-columns: repeat(2,1fr);
+                }
+
+                // Latest Projects > Block > Inner > Article
+                &__block &__article{   min-height: 20rem;  }
+        }
+
+        .archives{
+                &__block  &__inner{
+                        grid-template-columns: repeat(2,1fr);
+               }
+        }
+}
+
+//iPads, Tablets
+@media (max-width: 768px) {
+
+        // Project hero 
+        .project-hero{
+                // Project hero > Block >  Article
+                &__block &__article{     min-height: 30rem;  }
+       }
+
+        // Latest Projects 
+        .latest-projects{
+
+                // Latest Projects > Block > Inner
+                &__block  &__inner{
+                        grid-template-rows: repeat(1,1fr);
+                        grid-template-columns: repeat(1,1fr);
+                }
+
+                // Latest Projects > Block > Inner > Article
+                &__block &__article{    min-height: 25rem;  }
+        }
+
+        .archives{
+                &__block  &__inner{
+                        grid-template-columns: repeat(1,1fr);
+               }
+        }
+}
+
+//Mobile devices (horizonal)
+@media (max-width: 576px) {
+
+        // Project hero 
+        .project-hero{
+                // Project hero > Block >  Article
+                &__block &__article{     min-height: 25rem;   }
+       }
+
+        // Latest Projects 
+       .latest-projects{
+                // Latest Projects > Block > Inner > Article
+                &__block &__article{    min-height: 17.5rem;  }
+        }
+
+        .archives{
+                &__block  &__inner{
+                        grid-template-columns: repeat(1,1fr);
+               }
+        }
 }
