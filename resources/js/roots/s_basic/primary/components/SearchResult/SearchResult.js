@@ -25,7 +25,7 @@ const SearchResult  = (props) => {
                                         { props.searchResults.map((article,i) => 
                                         <article key={ i + 1 } className="gl-search__article  gl-search__article_modifier">
                                                 <a  href={ `/${article.pub_category ? 'review' :  'project'}/${article.pub_url }`}   className="gl-search__article-link gl-search__article-link_modifier" target="_self">
-                                                        <div className="gl-search__article-artwork" style={{ background: `url( ${ article.pub_picture } )` }}></div>
+                                                        <div className="gl-search__article-media" style={{ background: `url( ${ article.pub_picture } )` }}></div>
 
                                                         <header className="gl-search__article-header last-reviews__article-header_modifier">
                                                                  <h3 className="gl-search__article-header--title">{ article.pub_title }   </h3>

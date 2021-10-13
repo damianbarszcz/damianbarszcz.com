@@ -11,7 +11,6 @@ import Member from './roots/Member';
 const result = App();
 
 function App() {
-
         if (document.getElementById('basic-root')) {
             return [<Basic />, "basic-root"];
         }

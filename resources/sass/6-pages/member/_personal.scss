@@ -1,7 +1,7 @@
-/*-----------------------------------------------------
+/*------------------------------------------------------------------
  * Personal (https://www.damianbarszcz.com)
- * Copyright 2020 Damian Barszcz
- *-----------------------------------------------------*/
+ * Copyright 2021 Damian Barszcz
+/*------------------------------------------------------------------
 
 /*-----------------------------
 *        Personal info
@@ -15,12 +15,9 @@
             // Personal info > Block
             &__block{ @include accountPadding }
             
-             // Personal info > Block > Section header
-            @include sectionAccountHeader;
-            
                 // Personal info > Block > Inner
                 &__block &__inner{
-                        margin:3.5rem auto 0rem auto;
+                        margin:0rem auto;
                         padding:3rem 4rem;
                         width:62.8125rem;
                 }
@@ -38,7 +35,7 @@
                                 &-header{
                                         width:50%;
                 
-                                        &--title{ @include boxHeading($font-size-extra-normal,$bold-weight,$app-color-blue);  }
+                                        &--title{ @include boxHeading($font-size-extra-normal,$app-color-blue);  }
 
                                         &--desc{ @include boxDescContent;   }
                                 }
@@ -74,7 +71,7 @@
                                                 border-bottom:1px solid $app-color-lsilver;
                                         }
 
-                                        &--title{ @include boxHeading($font-size-normal,$bold-weight,$app-color-gray);  }
+                                        &--title{ @include boxHeading($font-size-normal,$app-color-gray);  }
                                 }
 
                                 &-link{
@@ -111,7 +108,7 @@
 
                                         &--caption{
                                                 display: block;
-                                                @include boxDescContent($font-size-normal,$bold-weight,$app-color-gray); 
+                                                @include boxDescContent($font-size-normal,$app-color-gray); 
                                         }
 
                                         &--title{

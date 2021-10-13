@@ -9,17 +9,6 @@ const CalendarPanel = (props) => {
             {  /*-------------------------------*/   }
             <section className="calendar calendar_theme">
                      <div className="calendar__block">
-                        {  /*---  Calendar > Block > Header  ---*/   } 
-                        <header className="calendar__header calendar__header_modifier">
-                                <span className="calendar__header-square calendar__header-square_modifier"><i className="material-icons material-icons-outlined"> date_range </i> </span>
-
-                                <div className="calendar__header-content">
-                                        <h1 className="calendar__header-content--title"> Kalendarz </h1>
-
-                                         <p className="calendar__header-content--subtitle"> Pulpit | Kalendarz </p>
-                                </div>
-                        </header>
-
                         {  /*---  Calendar > Block > Inner  ---*/   } 
                         <div className="calendar__inner">
                                 <div className="calendar__inner-events">

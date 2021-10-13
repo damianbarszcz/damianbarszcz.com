@@ -1,7 +1,7 @@
-/*-----------------------------------------------------
+/*------------------------------------------------------------------
  * Overview (https://www.damianbarszcz.com)
- * Copyright 2020 Damian Barszcz
- *-----------------------------------------------------*/
+ * Copyright 2021 Damian Barszcz
+/*------------------------------------------------------------------
 
 /*-----------------------------
 *          Overview 
@@ -15,13 +15,9 @@
                 // Overview  > Block 
                 &__block{ @include accountPadding }
 
-                //Overview > Block > Header
-                @include sectionAccountHeader;
-
                 //Overview > Block > Inner
                 &__inner{
                         display: grid;
-                        margin-top:3rem;
                         grid-template-columns: 1.1fr 0.5fr 0.5fr;
                         grid-template-rows: 1fr 1fr;
                         grid-column-gap: 2rem;

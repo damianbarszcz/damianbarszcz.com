@@ -10,7 +10,7 @@ class DraftReview extends Model{
 
     protected $table = "review_drafts";
 
-    protected $fillable = ['user_id', 'pub_title', 'pub_subtitle', 'pub_body', 'pub_picture',  'pub_url', 'pub_tags', 'pub_category'];
+    protected $fillable = ['user_id', 'pub_title', 'pub_subtitle', 'pub_body', 'pub_picture',  'pub_url', 'pub_tags', 'pub_category','pub_color'];
 
     public function user(){   return $this->belongsTo(User::class);  }
 }

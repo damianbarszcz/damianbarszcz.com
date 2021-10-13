@@ -17,7 +17,7 @@ class IndexController extends Controller{
 
             $pubCollection = $projectArticles->concat($reviewArticles);
 
-            $sorted = collect($pubCollection)->sortByDesc('date_of_publication')->values();
+            $sorted = collect($pubCollection)->sortByDesc('created_at')->values();
 
             return response()->json($sorted);
         }

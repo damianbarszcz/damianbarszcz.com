@@ -3,6 +3,40 @@
  * Copyright 2021 Damian Barszcz
  *-----------------------------------------------------*/
 
+ /*-----------------------------
+*         No projects
+*----------------------------*/
+
+.no-projects{
+        @include sectionDefinition;
+
+        &_theme{  background-color:$app-color-white; }
+        
+        // No projects > Block
+        &__block{  
+                @include blockPadding(12rem, 0, 12rem); 
+        }
+
+        // No projects > Block > Inner
+        &__block &__inner{
+                &-box{  text-align: center;   }
+        }
+
+        // No projects > Block > Header
+        &__block &__header{ 
+                margin-top:3.5rem;
+                text-align: center;
+
+                &--title{  @include boxHeading($font-size-big, $app-color-gray);  }
+                
+                &--caption{  
+                        margin-top:1rem;
+
+                        @include boxDescContent; white-space: pre-wrap; 
+                }                      
+        }
+}
+
 /*-----------------------------
 *      Projects banner
 *----------------------------*/
@@ -10,14 +44,14 @@
 .projects-banner{
         @include sectionDefinition;
 
-        &_theme{  background-color:$app-color-dark; }
+        &_theme{  background-color:$app-color-white; }
         
         // Projects banner > Block
         &__block{  @include blockPadding(8rem, 0, 1rem);  }
 
         // Projects banner > Block > Header
         &__block &__header{   
-                @include sectionHeaderCenterV2(40rem, $app-color-white, $app-color-blue);
+                @include sectionHeaderCenterV2(40rem, $app-color-gray, $app-color-blue);
         }
 }
 
@@ -28,10 +62,12 @@
         .latest-projects{
                 @include sectionDefinition;
 
-                &_theme{  background-color:  $app-color-dark; }
+                &_theme{  background-color:  $app-color-white; }
         
                 // Latest projects > Block 
-                &__block{ @include blockPadding(1rem, 0, 4rem, 0); }
+                &__block{ @include blockPadding(1rem, 0, 6rem, 0); }
+
+                @include localHeader($app-color-gray);
 
                 // Latest Projects > Block > Hero
                 &__block  &__inner{
@@ -47,6 +83,7 @@
                &__block  &__article{
                         position: relative;
                         min-height: 20rem;
+                        cursor: move;
 
                         &:nth-child(1){
                                 grid-column-start: 1;
@@ -60,7 +97,7 @@
                         &-link{
                                 @include boxInnerLink;  
 
-                                &_effect{  background-color: rgba(0, 0, 0, 0.5); }
+                                &_effect{  background-color: rgba(0, 0, 0, 0.25); }
                         }
 
                         &-header{
@@ -81,29 +118,49 @@
 .popular-projects{
         @include sectionDefinition;
 
-        &_theme{  background-color:  $app-color-white;}
+        &_theme{  background-color:  $app-color-dark;}
 
-        // Latest projects > Block 
+        // Popular projects > Block 
         &__block{ @include blockPadding; }
 
-        // Latest projects > Block > Header
-        &__block &__header{   @include sectionHeaderLeft(40rem, $app-color-gray,$app-color-red);  }
+        // Popular projects > Block > Header
+        @include localHeader($app-color-white);
 
-        // Latest Projects > Block > Hero
+        // Popular projects > Block > Inner
         &__block  &__inner{
                 display: grid;
                 margin-top:2rem;
                 grid-auto-flow: column;
-                grid-auto-rows: 1fr;
-                grid-gap:1.5rem;
        }
 
-        // Latest Projects > Block > Article
+        // Popular projects > Block > Switchers
+        &__block  &__switchers{
+                display: flex;
+                width:100%;
+                justify-content: flex-end;
+
+                &-button{
+                        display:block;
+                        position: relative;
+                        width:4rem;
+                        height: 4rem;
+
+                        &:nth-child(1){ margin-right: 1rem;  }
+        
+                        &_effect{
+                                border-radius:100%;
+                                background-color:$app-color-white;
+                                border: 1px solid $app-color-lsilver;
+                                cursor:pointer;
+                        }
+                }     
+        }
+
+        // Popular projects > Block > Article
        &__block  &__article{
                 position: relative;
-                width: 348px;
-
-                &_modifier{  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; }
+                max-width: 350px !important;
+                height: 568px;
 
                 &-link{
                         display: grid;
@@ -164,7 +221,8 @@
         &__block{ @include blockPadding; }
 
         // Archives > Block > Header
-        &__block &__header{   @include sectionHeaderLeft(40rem, $app-color-gray);  }
+        // Latest projects > Block > Header
+        @include localHeader($app-color-gray);
 
         // Archives > Block > Inner
         &__block  &__inner{
@@ -369,6 +427,13 @@
 //Mobile devices (horizonal)
 @media (max-width: 576px) {
 
+        .projects-banner{
+                // Projects banner > Block > Header
+                &__block &__header{   
+                        @include sectionHeaderLeftV2(40rem, $app-color-gray, $app-color-blue);
+                }
+        }
+
         // Project hero 
         .project-hero{
                 // Project hero > Block >  Article
@@ -378,7 +443,17 @@
         // Latest Projects 
        .latest-projects{
                 // Latest Projects > Block > Inner > Article
-                &__block &__article{    min-height: 17.5rem;  }
+                &__block &__article{    min-height: 17.5rem;   }
+        }
+
+        // Popular Projects 
+        .popular-projects{
+
+                // Latest Projects > Block > Inner > Article
+                &__block &__article{  
+                        min-height: 665px !important;
+                        max-height: 665px !important;
+                        min-width:100% !important; overflow: hidden;  }
         }
 
         .archives{

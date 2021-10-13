@@ -49,7 +49,7 @@ function Login() {
         }
 
         return (
-                <main role="main">
+                <main>
                         <LoginPanel handleForm= { handleForm }  setEmail = { setEmail } setPassword={ setPassword } email={ email } password= { password }
                          errors={errors} loader={loader} isLoading={isLoading}  passwordVisibility={passwordVisibility} isPasswordOn={isPasswordOn} />
                  </main>

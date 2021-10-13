@@ -1,7 +1,7 @@
 {
-    "/js/app.js": "/js/app.js?id=b9ca6371dbd80ff5e3ce",
-    "/css/app.css": "/css/app.css?id=0e0a9ef0c65b808b0b1a",
-    "/images/favicons/favicon.png": "/images/favicons/favicon.png?id=bcae8ba9358e7e254003",
+    "/js/app.js": "/js/app.js?id=82fd6da6943d26571a9a",
+    "/css/app.css": "/css/app.css?id=e2448feff719dede47ec",
+    "/images/favicons/favicon.png": "/images/favicons/favicon.png?id=6ca8501ec7e3fd07588c",
     "/images/index/GD_AtapSoli_2X1Tile_012020.max-4000x2000.jpegquality-90.jpg": "/images/index/GD_AtapSoli_2X1Tile_012020.max-4000x2000.jpegquality-90.jpg?id=d6527d53778c366775de",
     "/images/index/reimagining_google_fonts_3x2.max-1200x800.jpg": "/images/index/reimagining_google_fonts_3x2.max-1200x800.jpg?id=2cfc51a714e0708534be",
     "/images/books/2019-09_Pickard_DarkMode_Hero.jpg": "/images/books/2019-09_Pickard_DarkMode_Hero.jpg?id=51ae041640014a0b1617",
@@ -10,10 +10,12 @@
     "/images/about-me/profile.jpg": "/images/about-me/profile.jpg?id=35b4282cead88a6a5a96",
     "/images/contact/bg-halftone-black-20p.png": "/images/contact/bg-halftone-black-20p.png?id=98ee7d93e636e082b590",
     "/images/contact/goal.png": "/images/contact/goal.png?id=870e185c66f093e93dfd",
+    "/images/global/cookie-dialog.png": "/images/global/cookie-dialog.png?id=03c262c3df8ad9fa1337",
     "/images/global/menu_black_24dp.svg": "/images/global/menu_black_24dp.svg?id=8684d03db8552562c50b",
     "/images/global/meta_page-image.png": "/images/global/meta_page-image.png?id=b8d07669417b5d55d5db",
+    "/images/global/site-warning.png": "/images/global/site-warning.png?id=6fb71efc389a646539bb",
     "/images/member/statistics/device-session.png": "/images/member/statistics/device-session.png?id=58585d1b35931e979515",
     "/images/member/statistics/optimalize-publication.png": "/images/member/statistics/optimalize-publication.png?id=a7dcaa8492494bdc51cd",
     "/images/member/statistics/real-time.png": "/images/member/statistics/real-time.png?id=b1dba10d9de48b6a0901",
-    "/images/member/about_app/about_art.png": "/images/member/about_app/about_art.png?id=a3f0df5a7f843e34ce4d"
+    "/images/member/about_app/about_art.png": "/images/member/about_app/about_art.png?id=d008f0c7ac43c50ac0c3"
 }

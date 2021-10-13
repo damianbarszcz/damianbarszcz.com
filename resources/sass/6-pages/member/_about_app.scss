@@ -1,7 +1,7 @@
-/*-----------------------------------------------------
+/*---------------------------------------------------------------
  * About App (https://www.damianbarszcz.com)
- * Copyright 2020 Damian Barszcz
- *-----------------------------------------------------*/
+ * Copyright 2021 Damian Barszcz
+ *------------------------------------------------------------*/
 
 /*-----------------------------
 *         About app
@@ -15,12 +15,9 @@
                 // About app  > Block 
                 &__block{ @include accountPadding }
 
-                // About app  > Block > Section header
-                @include sectionAccountHeader;
-            
                 // About app > Block > Inner
                 &__block &__inner{
-                        margin:3.5rem auto 0rem auto;
+                        margin:0 auto;
                         padding:3rem 4rem;
                         width:32.8125rem;
                         height:42.5rem;

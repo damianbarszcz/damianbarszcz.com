@@ -14,17 +14,6 @@ const ProjectsPanel = (props) => {
             <>
                 <section className="d_projects d_projects_theme">
                         <div className="d_projects__block">
-                                {  /*---  D projects > Block > Header  ---*/   } 
-                                <header className="d_projects__header d_projects__header_modifier">
-                                        <span className="d_projects__header-square d_projects__header-square_modifier"><i className="material-icons material-icons-outlined"> devices </i> </span>
-
-                                        <div className="d_projects__header-content">
-                                                <h1 className="d_projects__header-content--title"> Projekty </h1>
-
-                                                <p className="d_projects__header-content--subtitle"> Pulpit | Projekty </p>
-                                         </div>
-                                </header>
-
                                 {  /*---  D projects > Block > Inner  ---*/   } 
                                 <div className="d_projects__inner">
                                         {  /*---  D projects > Block > Inner > Item   ---*/   }

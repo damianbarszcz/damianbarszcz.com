@@ -2,6 +2,7 @@ import  React, { useEffect } from 'react';
 
 {  /*  Components */ }
 import { Sidenav, StatsBox } from '../../components';
+import { StatsBoxObjOne,StatsBoxObjTwo,StatsBoxObjThree } from './Data';
 
 function Statistics(){
         useEffect(() => {
@@ -14,13 +15,10 @@ function Statistics(){
         =======================
         */
         return (
-
-                <>
-                    <Sidenav />
-                    <main>
-                        <StatsBox />
-                    </main>
-                </>
+                <main>
+                        <Sidenav />
+                        <StatsBox StatsBoxObjOne={ StatsBoxObjOne }  StatsBoxObjTwo={ StatsBoxObjTwo } StatsBoxObjThree={ StatsBoxObjThree } />
+                </main>
             );
         }
         

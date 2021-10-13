@@ -8,4 +8,6 @@ export { default as AboutBox } from './AboutBox/AboutBox';
 export { default as PersonalInfo } from './PersonalInfo/PersonalInfo';
 export { default as CalendarPanel } from './CalendarPanel/CalendarPanel';
 export { default as DraftsPanel } from './DraftsPanel/DraftsPanel';
-export { default as ProjectForm } from './ProjectForm/ProjectForm';
+export { default as PubForm } from './PubForm/PubForm';
+export { default as AccountHeader } from './AccountHeader/AccountHeader';
+export { default as NoCollection } from './NoCollection/NoCollection';

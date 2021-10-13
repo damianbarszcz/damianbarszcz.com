@@ -191,45 +191,45 @@ class MemberController extends Controller{
 
         /*
         ==============================
-         Display a edit project publication
+         Display a project draft
         ==============================
         */
-        public function  projectDraftEditView($slug){
+        public function  projectDraftView($slug){
                 $pub_url = basename($slug);
-     
-                 $project_record = DraftProject::where('pub_url', $pub_url)->firstOrFail();
-     
-                 $p_title = $project_record['pub_title'];  $p_subtitle = $project_record['pub_subtitle']; $p_url= $project_record['pub_url']; $p_background= $project_record['pub_picture'];
-     
-                 $canPageUrl = 'https://account.damianbarszcz.com/member/projects/edit/'. $p_url;
-                 $altPageUrlPL = 'https://account.damianbarszcz.com/pl/member/projects/edit/'. $p_url;
-                 $pageAuthor = 'Damian Barszcz';
-                 $pageTitle = $p_title . " | Szkic projektu";
-                 $pageDescryption = $p_subtitle;
-                 $pageImage = $p_background;
-     
-                 return view('pages.member',['canPageUrl' => $canPageUrl, 'altPageUrlPL' => $altPageUrlPL, 'pageAuthor' => $pageAuthor, 'pageTitle' => $pageTitle, 'pageDescryption' => $pageDescryption, 'pageImage' => $pageImage]);
-          }
+    
+                $project_record = DraftProject::where('pub_url', $pub_url)->firstOrFail();
+
+                $p_title = $project_record['pub_title'];  $p_subtitle = $project_record['pub_subtitle']; $p_url= $project_record['pub_url']; $p_background= $project_record['pub_picture'];
+
+                $canPageUrl = 'https://account.damianbarszcz.com/member/projects/draft/'. $p_url;
+                $altPageUrlPL = 'https://account.damianbarszcz.com/pl/member/projects/draft/'. $p_url;
+                $pageAuthor = 'Damian Barszcz';
+                $pageTitle = $p_title . " | Szkic projektu";
+                $pageDescryption = $p_subtitle;
+                $pageImage = $p_background;
+    
+                return view('pages.member', [  'canPageUrl' => $canPageUrl, 'altPageUrlPL' => $altPageUrlPL,  'pageAuthor' => $pageAuthor, 'pageTitle' => $pageTitle, 'pageDescryption' => $pageDescryption,  'pageImage' => $pageImage  ]);
+        }
 
         /*
         ==============================
-         Display a edit review publication
+         Display a review draft
         ==============================
         */
-        public function  reviewDraftEditView($slug){
+        public function  reviewDraftView($slug){
 
                 $pub_url = basename($slug);
 
-                $project_record = DraftReview::where('pub_url', $pub_url)->firstOrFail();
+                $review_record = DraftReview::where('pub_url', $pub_url)->firstOrFail();
      
-                $p_title = $project_record['pub_title'];  $p_subtitle = $project_record['pub_subtitle']; $p_url = $project_record['pub_url']; $p_background= $project_record['pub_picture'];
+                $r_title = $review_record['pub_title'];  $r_subtitle = $review_record['pub_subtitle']; $r_url = $review_record['pub_url']; $r_background= $review_record['pub_picture'];
 
-                $canPageUrl = 'https://account.damianbarszcz.com/member/projects/edit/' .  $p_url ;
-                $altPageUrlPL = 'https://account.damianbarszcz.com/pl/member/projects/edit/' .  $p_url ;
+                $canPageUrl = 'https://account.damianbarszcz.com/member/reviews/draft/' .  $r_url ;
+                $altPageUrlPL = 'https://account.damianbarszcz.com/pl/member/reviews/draft/' .  $r_url ;
                 $pageAuthor = 'Damian Barszcz';
-                $pageTitle = $p_title . " | Szkic recenzji";
-                $pageDescryption =  " | Szkic recenzji";
-                $pageImage =  " | Szkic recenzji";
+                $pageTitle = $r_title . " | Szkic recenzji";
+                $pageDescryption = $r_subtitle;
+                $pageImage = $r_background;
 
                  return view('pages.member',['canPageUrl' => $canPageUrl, 'altPageUrlPL' => $altPageUrlPL, 'pageAuthor' => $pageAuthor, 'pageTitle' => $pageTitle, 'pageDescryption' => $pageDescryption, 'pageImage' => $pageImage]);
           }

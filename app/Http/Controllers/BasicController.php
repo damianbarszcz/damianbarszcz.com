@@ -141,14 +141,14 @@ class BasicController extends Controller{
         Display searched results
         ===============================
         */
-        public function searchView(){
-                $canPageUrl = 'https://www.damianbarszcz.com/help/';
-                $altPageUrlPL = 'https://www.damianbarszcz.com/pl/help/';
+        public function searchView($slug){
+                $canPageUrl = 'https://www.damianbarszcz.com/help/search='.$slug;
+                $altPageUrlPL = 'https://www.damianbarszcz.com/pl/help/search='.$slug;
                 $pageAuthor = 'Damian Barszcz';
                 $pageTitle = 'Wyszukiwanie | Damian Barszcz';
                 $pageDescryption = 'To mój blog osobisty, na którym dzielę się stworzonymi projektami, książkami które czytam i oczywiście tego czego się uczę. Mam nadzieję, że dołączysz do dyskusji.';
                 $pageImage = "obrazek";
 
-                return view('pages.search',['canPageUrl' => $canPageUrl, 'altPageUrlPL' => $altPageUrlPL, 'pageAuthor' => $pageAuthor, 'pageTitle' => $pageTitle, 'pageDescryption' => $pageDescryption, 'pageImage' => $pageImage]);
+                return view('pages.index',['canPageUrl' => $canPageUrl, 'altPageUrlPL' => $altPageUrlPL, 'pageAuthor' => $pageAuthor, 'pageTitle' => $pageTitle, 'pageDescryption' => $pageDescryption, 'pageImage' => $pageImage]);
         }
 }

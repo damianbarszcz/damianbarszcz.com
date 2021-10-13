@@ -1,7 +1,7 @@
-/*-----------------------------------------------------
+/*---------------------------------------------------------------
  * Statistics (https://www.damianbarszcz.com)
- * Copyright 2020 Damian Barszcz
- *-----------------------------------------------------*/
+ * Copyright 2021 Damian Barszcz
+/*---------------------------------------------------------------
 
 /*-----------------------------
 *          Statistics
@@ -15,12 +15,12 @@
                 // Statistics > Block
                 &__block{ @include accountPadding }
 
-                @include blogBrand(100%, 18rem, 3.515625rem);
+                @include blogBrand(40%, 5rem, 1rem);
 
                 // Statistics > Block > Inner
                 &__inner{
                         padding:4.5rem;
-                        margin:3.5rem auto 0rem auto;
+                        margin:8.5rem auto 0rem auto;
                         width:67.5rem;
                         height:43.125rem;
 
@@ -48,7 +48,7 @@
 
                         // Statistics > Block > Inner > Run Functions
                         &-funrun{
-                                margin-top:3.5rem;
+                                margin-top:1.5rem;
 
                                 &--caption{
                                         text-align:center;

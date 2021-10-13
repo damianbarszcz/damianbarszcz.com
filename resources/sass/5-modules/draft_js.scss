@@ -1,0 +1,301 @@
+/*-----------------------------------------------------------------
+ * Smarteditor (https://www.damianbarszcz.com)
+ * Copyright 2021 Damian Barszcz
+ *-----------------------------------------------------------------*/
+
+/*-----------------------------
+*          pubSystem
+*----------------------------*/
+
+@mixin pubSystem($isArticle:false){
+      h1,h2,h3,h4,h5,h6{
+            &:after{
+                  display: block;
+                  content: '';
+                  margin-top: 1rem;
+                  width: 100%;
+                  height: 1px;
+                  background: $app-color-lsilver;
+            }
+      }
+
+      h1{   margin-top:5rem;  @include boxHeading($font-size-extra-big)  }
+        
+      h2{   margin-top:4rem;  @include boxHeading($font-size-big); }
+        
+      h3{   margin-top:3rem; @include boxHeading($font-size-extra-normal) }
+        
+      h4{   margin-top:2rem; @include boxHeading($font-size-normal) }
+        
+      h5{   margin-top:1rem; @include boxHeading($font-size-small) }
+        
+      h6{ @include boxHeading($font-size-extra-small) }
+        
+      p{    
+            margin-bottom:1rem; 
+            font-size:$font-size-normal * 1.1;
+            line-height: 2rem;
+      }
+        
+      a{
+            cursor: pointer;
+            text-decoration: none;
+            border-bottom: 1px solid $app-color-blue;
+            word-break: break-word;
+      }
+        
+      ul{ 
+            @if $isArticle{
+                  margin:1.5rem 2rem 0rem; 
+            }
+
+            li {
+                  &:before{
+                        display: inline-block;
+                        position: absolute;
+                        transform: translateY(0.65rem);
+                        left:0;
+                        content: '';
+                        width:0.65rem;
+                        height: 0.65rem;
+                        background-color:$app-color-silver;
+
+                        @if $isArticle{
+                              margin-right:1.5rem; 
+                        }
+                  }
+
+                  font-size:$font-size-normal * 1.1;
+                  line-height: 2rem;
+            }
+      }
+
+      ol{  
+            margin:1.5rem 0.75rem 0rem; 
+
+            li {
+                  font-size:$font-size-normal * 1.1;
+                  line-height: 2rem;
+            }
+      }
+        
+      li{   &::before{ color:$app-color-silver;   }  }
+
+      code{
+            display: inline-block; 
+            max-width: 720px;
+            padding: 0.625rem;
+            background-color: rgba(0, 0, 0, 0.05);
+            font-size: 16px;
+            font-family: monospace;
+            line-height: 2.5rem;
+      }
+
+      pre{
+            white-space: pre-wrap;
+      }
+
+      blockquote{
+            margin: 2.5rem 0;
+            padding: 10px 20px;
+            border-left: 5px solid $app-color-lsilver;
+            color: $app-color-gray;
+            font-size: $font-size-extra-normal;
+            line-height: 35px;
+            font-style: italic;
+      }
+
+      img{
+            position: relative;
+            max-width: 100%;
+      }
+}
+
+ /*-----------------------------
+*          Smarteditor
+*----------------------------*/
+
+ .n-project__smarteditor{
+        position: relative;
+        margin-bottom:1.5rem;
+        max-height: 30rem;
+        height: 30rem;
+        
+        &_modifier{   @include boxStyling;  }
+
+        &-fun{
+                display: flex;
+                padding:1rem;
+
+                &-group{
+                      display: flex;
+                      margin-right: 2rem;
+                }
+
+                &-more-tools{
+                        position: absolute;
+                        left:0;
+                        padding:0.75rem 1rem;
+                        top:3.5rem;
+                        height: 54px;
+                        min-width: 100%;
+                        background-color:#f5f5f5;
+                        z-index:1000;
+                }
+
+                &-dropdown{
+                        position: absolute;
+                        top:3.95rem;
+                        background-color:$app-color-white;
+                        box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+                        text-align: center;
+                        z-index:9999;
+
+                        &-btn{   
+                              position: relative;
+                              margin:0;
+                              padding:0;
+                              outline: 1px solid transparent;
+                              outline-offset: -1px;
+                              cursor:pointer; 
+
+                              &:hover{ outline: 1px solid $app-color-black; }
+
+                              svg{
+                                    display: block;
+                                    margin:0;
+                                    padding:0;
+                                    min-width: 100%;
+                                    height: 100%;
+                              }
+                         }
+
+                         &-list-item{
+                              padding: 0.5rem 2rem;
+                              cursor:pointer; 
+
+                              &:hover{ background-color: $app-color-lsilver; }
+                         }
+
+                        &--colors{
+                              display: grid; 
+                              grid-template-columns: repeat(7,1fr); 
+                              grid-gap:0rem;
+                              left:13.1rem; 
+                              padding:1rem;
+                        }
+
+                        &--heading{
+                              left:15.5rem;
+                              padding:0.75rem 0rem;                        
+                        }
+
+                        &--artwork{
+                              width:20.75rem;
+                              min-height:10rem;
+                              left:29rem;
+                              padding:0;
+                        }
+
+                        &-header{
+                              padding:0.5rem;
+                              width:100%;
+                              background-color:#f5f5f5;
+                      }
+
+                      &-body{
+
+                            .form__input { padding:1rem 0.5rem; }
+
+                            &-box{  text-align: right;      }
+
+                            &--btn{
+                                  margin-top:1.5rem;
+                                  padding:0.75rem 1rem;
+                                  border-radius: 4px;
+                                  transition: $FastEaseInOut;
+                                  cursor: pointer;
+                                  font-size:$font-size-normal;
+                                  color:$app-color-blue;
+
+                                  &:hover{
+                                        background-color:$app-color-lsilver;
+                                  }
+                            }
+                      }
+                }
+
+                &-button{
+                        display: block;
+                        margin-right: 1rem;
+                        padding: 2px 0;
+
+                        &_effect{
+                              fill:$app-color-silver;
+                              color:$app-color-silver;
+                              cursor: pointer;
+                        }
+
+                        &--active{ fill:$app-color-blue; color:$app-color-blue; }
+
+                        &--select{
+                              padding-right: 1rem;
+
+                              &:after{
+                                    display: inline-block;
+                                    position: absolute;
+                                    content: '\25bc';
+                              }
+                        }
+                }
+
+                &_modifier{   border-bottom:1px solid $app-color-lsilver;   }
+        }
+
+      &-body{
+            display: flex;
+            flex-direction: column;
+            height:77.5%; 
+            padding:1.5rem 1rem;
+
+             .DraftEditor-root{
+                  padding:0.5rem 0 0.5rem;
+                  line-height: 27.5px;
+                  overflow-x: hidden;  
+            }
+
+            @include pubSystem;
+
+            .RichEditor-blockquote{
+                  margin: 2.5rem 0;
+                  padding: 10px 20px;
+                  border-left: 5px solid $app-color-lsilver;
+                  color: $app-color-gray;
+                  font-size: $font-size-extra-normal;
+                  line-height: 35px;
+                  font-style: italic;
+            }
+
+            .public-DraftStyleDefault-pre {
+                  background-color: rgba(0, 0, 0, 0.05);
+                  font-size: 16px;
+                  padding: 20px;
+            }
+                
+            &-pre{
+                  padding: 20px;
+                  background-color: $app-color-dark;
+                  font-size: $font-size-normal;
+                  color:$app-color-white;
+            }
+      }
+
+      &-toolbar{
+            display: block;
+            padding: 0.75rem 1rem;
+            width:100%;
+            border-top:1px solid $app-color-lsilver;
+                  
+            &--counter{  color:$app-color-gray;  }
+      }
+  }

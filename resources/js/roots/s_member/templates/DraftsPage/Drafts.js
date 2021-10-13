@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 
 {  /*  Components */ }
-import { Sidenav,DraftsPanel } from '../../components';
+import { Sidenav,DraftsPanel,AccountHeader,NoCollection  } from '../../components';
 import { msgSuccess } from '../../../global/Msg';
 import { deleteModal } from '../../../global/Modal';
 
@@ -32,6 +32,7 @@ class Drafts extends Component {
                         .then(response => { 
                         
                         this.setState({  draftsCollection: response.data   });  
+                        console.log(response.data);
 
                 }).catch(errors => { console.log(errors); })
         }
@@ -133,14 +134,19 @@ class Drafts extends Component {
                         modalIsLoading: isLoading, modalPassword: password, buttonTitle:"Usuń szkic" }
 
                 return (
-                        <>
+                        <main>
                                 { successMessage &&   msgSuccess(getDescryption)  }          
                                 <Sidenav />
-                                <main>
-                                        <DraftsPanel draftsCollection={ draftsCollection } no_words={ no_words } getModal={ this.getModal }/>
-                                </main>
+                                <AccountHeader  functionTitle="Szkice" typeFunction="file_copy" />
+                                { draftsCollection.length != 0 ?
+                                <DraftsPanel draftsCollection={ draftsCollection } no_words={ no_words } getModal={ this.getModal } />
+                                :
+                                <NoCollection type="draft" noCollectionTitle="Brak szkiców" noCollectionDesc="Akutalnie nie masz żadnych stworzonych szkiców publikacji." 
+                                        noCollectionHref="new-review" noCollectionBtnCaption="Stwórz recenzje" />
+                                }
                                 {  displayDeleteModal  &&   deleteModal(getFeatures)  }
-                        </>
+                                
+                         </main>
                 );
         }
 }

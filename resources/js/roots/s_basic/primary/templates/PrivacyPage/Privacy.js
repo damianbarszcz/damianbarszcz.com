@@ -10,7 +10,7 @@ Display all components for
 Privacy me route
 =======================
 */
-function Privacy() {
+function Privacy(props) {
 
         useEffect(() => {
                 document.title = "Polityka prywatności | Damian Barszcz"; 
@@ -23,7 +23,7 @@ function Privacy() {
         */
         return (
                 <>
-                        <Navigation typeSection={'navigation'} />
+                        <Navigation typeSection={'navigation'} projects = { props.projects  }  reviews = { props.reviews } />
                         <main>
                                 <PrivacySection privacyObjOne ={privacyObjOne} />
                         </main>

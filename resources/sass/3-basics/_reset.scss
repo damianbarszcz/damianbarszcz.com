@@ -648,40 +648,145 @@
 }
 
 /*-----------------------------
+*        Cookie Modal
+*----------------------------*/
+
+.cookie-modal{
+        display: block;
+        position: fixed;
+        top:0;
+        left:0;
+        min-width:100%;
+        min-height: 100%;
+
+        &_modifier{
+                background-color:rgba(0,0,0,0.5);
+                z-index:9000;
+        }
+
+        &__dialog{
+                display: block;
+                position: absolute;
+                padding:2rem;
+                top:50%;
+                left:50%;
+                width:30rem;
+                min-height: 25rem;
+
+                &_modifier{
+                        background-color:$app-color-white;
+                        border-radius: 10px;
+                        transform:translate(-50%, -50%);
+                        z-index:9999;
+                }
+        }
+
+        &__artwork{
+                width:100%;
+                text-align: center;
+        }
+
+        &__header{
+                margin-top:1.5rem;
+                padding:1rem;
+
+                &_modifier{  text-align: center;  }
+
+                &--title{    @include boxDescContent;     }
+
+                &--desc{
+                        margin-top:1rem;
+                        @include boxDescContent;
+                }
+        }
+
+        &__box{
+                margin-top:1rem;
+                width:100%;
+                text-align: center;
+
+                &--btn{
+                        @include pageButton(90px);
+                }
+        }
+}
+
+/*-----------------------------
+*        Site message
+*----------------------------*/
+
+.site-message{
+        position: fixed;
+        bottom:0;
+        min-width: 100%;
+
+        &_modifier{
+                background-color:$app-color-white;
+                border-top:1px solid $app-color-lsilver;
+                z-index:9999;
+        }
+
+        &__inner{
+                display: grid;
+                grid-template-columns: 0.2fr 1fr;
+                align-items: center;
+                margin:auto;
+                padding: 2em 1.5rem;
+                max-width: 56.25rem;
+        }
+
+        &__artwork{  text-align:center; }
+
+        &__header{
+                &--title{  @include boxHeading($font-size-normal) }
+
+                &--desc{  @include boxDescContent;  }
+        }
+}
+
+/*-----------------------------
 *        RWD System
 *----------------------------*/
 
 //Very large screen
 @media (max-width: 1366px) {
-        .wide-container{  max-width: 1140px;  }
+        .wide-container{  max-width: 1140px; }
 }
 
 //Desktops, large screens
 @media (max-width: 1200px) {
         .g-container{  width:88vw; }
 
-        .wide-container{ width:88vw;   }
+        .wide-container{ width:88vw; }
 }
 
 //Small screens, laptops
 @media (max-width: 960px) {
         .g-container{ width:88.5vw;  }
 
-        .wide-container{ width:88.5vw;   }
+        .wide-container{ width:88.5vw; }
 }
 
 //iPads, Tablets
 @media (max-width: 768px) {
         .g-container{  width:89vw; }
 
-        .wide-container{ width:89vw;  }
+        .wide-container{ width:89vw;}
+
+        .site-message{
+                &__inner{ grid-template-columns: 0.5fr 1fr;  }
+        }
 }
 
 //Mobile devices (horizonal)
 @media (max-width: 576px) {
         .g-container{ width:89.5vw; }
 
-        .wide-container{ width:89.5vw;  }
+        .wide-container{ width:89.5vw; }
+
+        .site-message{
+                &__inner{ grid-template-columns: 1fr;  }
+        }
 }
 
 //Mobile devices

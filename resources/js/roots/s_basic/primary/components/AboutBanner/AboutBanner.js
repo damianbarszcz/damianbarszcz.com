@@ -37,7 +37,11 @@ const AboutBanner = (props) => {
 
                                                 <div className="about-banner__header-data">
                                                         <span className="about-banner__header-data-caption"> { props.aboutObjOne.study_title }   </span> 	 
-                                                        <span className="about-banner__header-data-caption"> { props.aboutObjOne.study_caption }  </span>
+                                                        <span className="about-banner__header-data-caption"> 
+                                                                { props.aboutObjOne.study_caption_one }  <br/>
+                                                                { props.aboutObjOne.study_caption_two } 
+                                                        </span>
+
                                                 </div>
 
                                                 <div className="about-banner__header-data">
@@ -53,67 +57,71 @@ const AboutBanner = (props) => {
 
                                         {  /*--- About banner > Block > Inner > Timeline ---*/   }
                                         <div className="about-banner__box-timeline">
-                                                <svg className="about-banner__box-timeline-inner" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 424.33 477.95" >
-                                                        <rect className="timeline-vector" x="161.13" y="74.9" width="6.02" height="403.05" />
-                                                        <rect className="timeline-vector" x="142.59" y="68.9" width="43.11" height="6" />
-                                                        <ellipse className="timeline-vector" cx="163.64" cy="151.91" rx="8.02" ry="8" />
-                                                        <ellipse className="timeline-vector" cx="163.64" cy="269.93" rx="8.02" ry="8" />
-                                                        <ellipse className="timeline-vector" cx="163.64" cy="384.94" rx="8.02" ry="8" />
-                                                        <rect className="timeline-vector" x="207.76" y="149.91" width="5.01" height="5" />
-                                                        <rect className="timeline-vector" x="198.73" y="149.91" width="5.01" height="5" />
-                                                        <rect className="timeline-vector" x="189.71" y="149.91" width="5.01" height="5" />
-                                                        <rect className="timeline-vector" x="180.69" y="149.91" width="5.01" height="5" />
-                                                        <rect className="timeline-vector" x="234.83" y="149.91" width="5.01" height="5" />
-                                                        <rect className="timeline-vector" x="243.85" y="149.91" width="5.01" height="5" />
-                                                        <rect className="timeline-vector" x="225.81" y="149.91" width="5.01" height="5" />
-                                                        <rect className="timeline-vector" x="216.78" y="149.91" width="5.01" height="5" />
-                                                       <rect className="timeline-vector" x="104.48" y="266.93" width="5.01" height="5" />
-                                                       <rect className="timeline-vector" x="95.46" y="266.93" width="5.01" height="5" />
-                                                        <rect className="timeline-vector" x="86.44" y="266.93" width="5.01" height="5" />
-                                                        <rect className="timeline-vector" x="77.41" y="266.93" width="5.01" height="5" />
-                                                        <rect className="timeline-vector" x="131.56" y="266.93" width="5.01" height="5" />
-                                                        <rect className="timeline-vector" x="140.58" y="266.93" width="5.01" height="5" />
-                                                        <rect className="timeline-vector" x="122.53" y="266.93" width="5.01" height="5" />
-                                                        <rect className="timeline-vector" x="113.51" y="266.93" width="5.01" height="5" />
-                                                        <rect className="timeline-vector" x="207.76" y="382.94" width="5.01" height="5" />
-                                                        <rect className="timeline-vector" x="198.73" y="382.94" width="5.01" height="5" />
-                                                        <rect className="timeline-vector" x="189.71" y="382.94" width="5.01" height="5" />
-                                                        <rect className="timeline-vector" x="180.69" y="382.94" width="5.01" height="5" />
-                                                        <rect className="timeline-vector" x="234.83" y="382.94" width="5.01" height="5" />
-                                                        <rect className="timeline-vector" x="243.85" y="382.94" width="5.01" height="5" />
-                                                        <rect className="timeline-vector" x="225.81" y="382.94" width="5.01" height="5" />
-                                                        <rect className="timeline-vector" x="216.78" y="382.94" width="5.01" height="5" />
-                                                          <text className="timeline-start-title" transform="translate(124.42 23.95)"> 
-                                                                1996 - <tspan className="timeline-start-title">  
-                                                                 <tspan x="-11.75" y="33.6"> { props.aboutObjOne.timeline.born } </tspan> </tspan>  
+                                                <svg className="about-banner__box-timeline-inner" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 379.7 507.85">
+                                                        <text className="timeline__step  timeline__step--date" transform="translate(232 170)">2010</text>
+                                                        <text className="timeline__step  timeline__step--date" transform="translate(-30  225)">2014</text>
+                                                        <text className="timeline__step  timeline__step--date"transform="translate(233 354)">2016</text>
+                                                        <text className="timeline__step  timeline__step--date" transform="translate(-30 403)">2021</text>
+                                                        <text className="timeline-start-title" transform="translate(119.36 19.55)">1996 -
+                                                                <tspan className="cls-3" x="65.09" y="0"></tspan>
+                                                                <tspan className="cls-3"><tspan x="0" y="27.6">Zamość</tspan></tspan>
                                                         </text>
 
-                                                        <text className="timeline__step  timeline__step--date" transform="translate(266.37 139.04)">2010 </text> 
-
-                                                        <text className="timeline__step  timeline__step--desc" transform="translate(266.08 164.45)">
-                                                                <tspan>{ props.aboutObjOne.timeline.get_knowledge } </tspan> 
-                                                                <tspan x="0" y="28">{ props.aboutObjOne.timeline.knowledge_with } </tspan>
-                                                                <tspan x="0" y="56">{ props.aboutObjOne.timeline.knowledge_computer } </tspan>
+                                                        <text  className="timeline__step  timeline__step--desc" transform="translate(232 200)">
+                                                                { props.aboutObjOne.timeline.step_2010 }
                                                         </text>
-
-                                                            <text className="timeline__step  timeline__step--date" transform="translate(266.37 384.04)">2016 </text>
-
-                                                            <text className="timeline__step  timeline__step--desc" transform="translate(266.08 409.45)">
-                                                                <tspan x="0" y="0">{ props.aboutObjOne.timeline.study_start } </tspan>
-                                                                <tspan x="0" y="28">{ props.aboutObjOne.timeline.study_place} </tspan>
-                                                            </text>
-
-                                                            <rect className="timeline-vector" x="77.41" y="275.93" width="5.01" height="5" />
-                                                            <rect className="timeline-vector" x="77.41" y="284.93" width="5.01" height="5" />
-
-                                                            <text className="timeline__step  timeline__step--date" transform="translate(20 311.04)">2014 </text>
-
-                                                            <text className="timeline__step  timeline__step--desc" transform="translate(0.41 336.45)">
-                                                                    <tspan x="20" y="0">{ props.aboutObjOne.timeline.learn_start } </tspan>
-                                                                    <tspan x="20" y="28">{ props.aboutObjOne.timeline.learn_programming }</tspan>
-                                                            </text>
-                                                    </svg>
-                                            </div>
+                                                        
+                                                        <text  className="timeline__step  timeline__step--desc"transform="translate(-30 255)">
+                                                                { props.aboutObjOne.timeline.step_2014 }
+                                                        </text>
+                                                        
+                                                        <text  className="timeline__step  timeline__step--desc" transform="translate(233 384)">
+                                                                { props.aboutObjOne.timeline.step_2016 }
+                                                        </text>
+                                                        
+                                                        <text  className="timeline__step  timeline__step--desc" transform="translate(-30 433)">
+                                                                 { props.aboutObjOne.timeline.step_2021 }
+                                                        </text>
+                                                        <rect className="timeline-vector" x="160.7" y="79.85" width="7" height="425"/>
+                                                        <rect className="timeline-vector" x="136.7" y="72.85" width="55" height="7"/>
+                                                        <rect className="timeline-vector" x="177.7" y="128.85" width="5" height="5"/>
+                                                        <rect className="timeline-vector" x="188.7" y="128.85" width="5" height="5"/>
+                                                        <rect className="timeline-vector" x="199.7" y="128.85" width="5" height="5"/>
+                                                        <rect className="timeline-vector" x="210.7" y="128.85" width="5" height="5"/>
+                                                        <rect className="timeline-vector"  x="220.7" y="128.85" width="5" height="5"/>
+                                                        <rect className="timeline-vector" x="231.7" y="128.85" width="5" height="5"/>
+                                                        <rect className="timeline-vector" x="242.7" y="128.85" width="5" height="5"/>
+                                                        <rect className="timeline-vector" x="242.7" y="138.85" width="5" height="5"/>
+                                                        <rect className="timeline-vector" x="158.7" y="125.85" width="11" height="12"/>
+                                                        <rect className="timeline-vector" x="158.7" y="200.85" width="11" height="12"/>
+                                                        <rect className="timeline-vector" x="470" y="297" width="5" height="5" transform="translate(620.7 505.85) rotate(-180)"/>
+                                                        <rect className="timeline-vector"x="459" y="297" width="5" height="5" transform="translate(598.7 505.85) rotate(-180)"/>
+                                                        <rect className="timeline-vector"x="448" y="297" width="5" height="5" transform="translate(576.7 505.85) rotate(-180)"/>
+                                                        <rect className="timeline-vector"x="437" y="297" width="5" height="5" transform="translate(554.7 505.85) rotate(-180)"/>
+                                                        <rect className="timeline-vector"x="427" y="297" width="5" height="5" transform="translate(534.7 505.85) rotate(-180)"/>
+                                                        <rect className="timeline-vector"x="416" y="297" width="5" height="5" transform="translate(512.7 505.85) rotate(-180)"/>
+                                                        <rect className="timeline-vector"x="405" y="297" width="5" height="5" transform="translate(490.7 505.85) rotate(-180)"/>
+                                                        <rect className="timeline-vector" x="394" y="297" width="5" height="5" transform="translate(468.7 505.85) rotate(-180)"/>
+                                                        <rect className="timeline-vector" x="158.7" y="310.85" width="11" height="12"/>
+                                                        <rect className="timeline-vector" x="568" y="419" width="5" height="5" transform="translate(816.7 749.85) rotate(-180)"/>
+                                                        <rect className="timeline-vector" x="568" y="408" width="5" height="5" transform="translate(816.7 727.85) rotate(-180)"/>
+                                                        <rect className="timeline-vector" x="557" y="408" width="5" height="5" transform="translate(794.7 727.85) rotate(-180)"/>
+                                                        <rect className="timeline-vector" x="546" y="408" width="5" height="5" transform="translate(772.7 727.85) rotate(-180)"/>
+                                                        <rect className="timeline-vector" x="536" y="408" width="5" height="5" transform="translate(752.7 727.85) rotate(-180)"/>
+                                                        <rect className="timeline-vector" x="525" y="408" width="5" height="5" transform="translate(730.7 727.85) rotate(-180)"/>
+                                                        <rect className="timeline-vector" x="514" y="408" width="5" height="5" transform="translate(708.7 727.85) rotate(-180)"/>
+                                                        <rect className="timeline-vector" x="503" y="408" width="5" height="5" transform="translate(686.7 727.85) rotate(-180)"/>
+                                                        <rect className="timeline-vector" x="158.7" y="381.85" width="11" height="12"/>
+                                                        <rect className="timeline-vector" x="469" y="539" width="5" height="5" transform="translate(618.7 929.85) rotate(-180)"/>
+                                                        <rect className="timeline-vector" x="458" y="539" width="5" height="5" transform="translate(596.7 929.85) rotate(-180)"/>
+                                                        <rect className="timeline-vector" x="447" y="539" width="5" height="5" transform="translate(574.7 929.85) rotate(-180)"/>
+                                                        <rect className="timeline-vector" x="436" y="539" width="5" height="5" transform="translate(552.7 929.85) rotate(-180)"/>
+                                                        <rect className="timeline-vector" x="426" y="539" width="5" height="5" transform="translate(532.7 929.85) rotate(-180)"/>
+                                                        <rect className="timeline-vector" x="415" y="539" width="5" height="5" transform="translate(510.7 929.85) rotate(-180)"/>
+                                                        <rect className="timeline-vector" x="404" y="539" width="5" height="5" transform="translate(488.7 929.85) rotate(-180)"/>
+                                                        <rect className="timeline-vector" x="393" y="539" width="5" height="5" transform="translate(466.7 929.85) rotate(-180)"/>
+                                                </svg>
+                                        </div>
                                     </div>
                             </div>
                      </section>

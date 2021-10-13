@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import axios from 'axios'
 
 {  /*  Components */ }
-import { Sidenav, ProjectsPanel } from '../../components';
+import { Sidenav,ProjectsPanel,AccountHeader,NoCollection  } from '../../components';
 
 import { msgSuccess } from '../../../global/Msg';
 import { deleteModal } from '../../../global/Modal';
+import { AccountHeaderObj } from './Data';
 
 class Projects extends Component {
 
@@ -144,12 +145,21 @@ class Projects extends Component {
                         modalIsLoading: isLoading, modalPassword: password, buttonTitle:"Usuń  projekt" }
 
                 return (
-                    <>
-                        { successMessage &&   msgSuccess(getDescryption)  }                                 
-                        <Sidenav />
-                        <ProjectsPanel collection={ collection } getModal={ this.getModal } />
-                        { displayDeleteModal  &&   deleteModal(getFeatures)  }  
-                    </>
+                        <main>
+                                { successMessage &&   msgSuccess(getDescryption)  }                                 
+                                <Sidenav />
+
+                                <AccountHeader  functionTitle={ AccountHeaderObj.title } typeFunction="devices " />
+
+                                {collection.length != 0 ?
+                                        <ProjectsPanel collection={ collection } getModal={ this.getModal } /> 
+                                        :
+                                        <NoCollection type="publication" noCollectionTitle="Brak projektów" noCollectionDesc="Akutalnie nie masz żadnych stworzonych projektów." 
+                                        noCollectionHref="new-project" noCollectionBtnCaption="Stwórz projekt" />
+                                 }
+
+                                { displayDeleteModal  &&   deleteModal(getFeatures)  }  
+                        </main>
                 );
         }
 }

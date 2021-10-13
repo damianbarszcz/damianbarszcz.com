@@ -23,6 +23,7 @@ class CreateReviewsTable extends Migration
             $table->string('pub_tags')->nullable();
             $table->string('pub_url');
             $table->string('pub_category');
+            $table->string('pub_color')->default('#ffffff');
             $table->date('date_of_publication');
             $table->timestamps();
 

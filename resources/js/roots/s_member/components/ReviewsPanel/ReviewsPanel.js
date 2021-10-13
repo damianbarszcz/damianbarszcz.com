@@ -18,17 +18,6 @@ const ReviewsPanel = (props) => {
                         {  /*---------------------------------*/    }   
                         <section className="reviews reviews_theme">
                                 <div className="reviews__block">
-                                        {  /*---  Reviews > Block > Header  ---*/   } 
-                                        <header className="reviews__header reviews__header_modifier">
-                                                <span className="reviews__header-square reviews__header-square_modifier"><i className="material-icons material-icons-outlined">  library_books  </i> </span>
-
-                                                <div className="reviews__header-content">
-                                                        <h1 className="reviews__header-content--title"> Recenzje </h1>
-
-                                                        <p className="reviews__header-content--subtitle"> Pulpit | Recenzje  </p>
-                                                </div>
-                                        </header>
-
                                         {  /*---  Reviews > Block > Inner  ---*/   } 
                                         <div className="reviews__inner">
                                                 {  /*---  Reviews > Block > Inner > Item ---*/   } 

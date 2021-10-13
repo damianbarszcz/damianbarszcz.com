@@ -3,7 +3,7 @@ import axios from 'axios';
 
 {  /*  Components */ }
 import { Footer, Navigation } from '../../../primary/components';
-import { ArticleBody,ArticleRelated } from '../../components';
+import { ProjectBody,ArticleRelated } from '../../components';
 import { relatedDisplay } from '../../../../global/Publications';
 import { ArticleObjOne } from '../ProjectPage/Data';
 
@@ -38,10 +38,10 @@ function Project(props){
         */
         return (
                 <>
-                        <Navigation articleTitle={ project.pub_title}  typeSection={'navigation'}  pub_url = {project.pub_url} />
+                        <Navigation articleTitle={ project.pub_title}  typeSection={'navigation'}  pub_url = {project.pub_url}  projects = { props.projects  }  reviews = { props.reviews } />
                         <main>
-                                <ArticleBody  typeSection={'article'}  typeArticle ={ 'article--project' } pub_title = { project.pub_title } pub_subtitle = { project.pub_subtitle } pub_body = { project.pub_body }  
-                                pub_picture = { project.pub_picture}  date_of_publication ={ project.date_of_publication } pub_tags = {project.pub_tags}  pub_url = {project.pub_url}  /> 
+                                <ProjectBody  typeSection={'article'}  typeArticle ={ 'article--project' } pub_title = { project.pub_title } pub_subtitle = { project.pub_subtitle } pub_body = { project.pub_body }  
+                                pub_picture = { project.pub_picture}  date_of_publication ={ project.date_of_publication } pub_tags = {project.pub_tags}  pub_url = {project.pub_url}  pub_color= { project.pub_color }   /> 
 
                                 <ArticleRelated relatedHeaderTitle={ ArticleObjOne.related_title}  sectionType={'related--project'}randArticles= { relatedDisplay(setRandProjects) } />
                         </main>

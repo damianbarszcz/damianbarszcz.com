@@ -22,6 +22,7 @@ class CreateReviewDraftsTable extends Migration
             $table->string('pub_picture')->nullable();
             $table->string('pub_tags')->nullable();
             $table->string('pub_category')->nullable();
+            $table->string('pub_color')->default('#ffffff');
             $table->string('pub_url');
             $table->timestamps();
 

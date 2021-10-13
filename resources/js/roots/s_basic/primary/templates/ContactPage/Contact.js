@@ -11,7 +11,7 @@ Display all components for
 Contact route
 =======================
 */
-function Contact () {
+export default function Contact (props) {
         useEffect(() => {
                 document.title = "Kontakt | Damian Barszcz";
         }, []);
@@ -66,7 +66,7 @@ function Contact () {
         */
         return (
                 <>
-                        <Navigation typeSection={'navigation'} />
+                        <Navigation typeSection={'navigation'} projects = { props.projects  }  reviews = { props.reviews } />
                         <main>
                                 <ContactBanner  contactObjOne = { contactObjOne } />
                                 <ContactPanel  contactObjTwo={contactObjTwo} contactObjThree = { contactObjThree } handleForm ={ handleForm }  getRecaptcha={ getRecaptcha } setName={ setName } setSurename ={ setSurename } 
@@ -76,5 +76,3 @@ function Contact () {
                 </>
         );
 }
-
-export default  Contact;

@@ -1,7 +1,7 @@
 import React, { useEffect }   from 'react';
 
 {  /*  Components */ }
-import { CalendarPanel, Sidenav } from '../../components';
+import { Sidenav,CalendarPanel,AccountHeader } from '../../components';
 
 function Calendar() {
         useEffect(() => {
@@ -38,12 +38,11 @@ function Calendar() {
         =======================
         */
         return (
-                <>
+                <main>
                         <Sidenav />
-                        <main>
-                                <CalendarPanel weekItems={ weekItems }  monthItems={ monthItems }/>
-                        </main>
-                </>
+                        <AccountHeader  functionTitle="Kalendarz" typeFunction="date_range" />
+                        <CalendarPanel weekItems={ weekItems }  monthItems={ monthItems }/>
+                </main>
         );
 }
 

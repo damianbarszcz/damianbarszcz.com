@@ -1,7 +1,7 @@
 import  React, { useEffect } from 'react';
 
 {  /*  Components */ }
-import { Sidenav, PersonalInfo } from '../../components';
+import { Sidenav, PersonalInfo,AccountHeader } from '../../components';
 import  msgSuccess  from '../../../global/Msg';
 
 function  Personal (props) { 
@@ -59,10 +59,11 @@ function  Personal (props) {
         }
 
         return (
-         <>
-         
+         <main>
                 { successMessage && msgSuccess(getMsg)  }
                 <Sidenav />  
+                <AccountHeader  functionTitle="Dane personalne" typeFunction="account_circle " />
+
                 <PersonalInfo getModal ={ getModal }  user={ props.user} />
 
                 { modal &&
@@ -220,7 +221,7 @@ function  Personal (props) {
                         </div>
                 </div>
                 }
-        </>
+        </main>
         );
 }
 

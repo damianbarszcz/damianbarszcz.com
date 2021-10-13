@@ -1,25 +1,25 @@
 import  React, { useEffect } from 'react';
 
 {  /*  Components */ }
-import { Sidenav, AboutBox } from '../../components';
+import { Sidenav, AboutBox,AccountHeader } from '../../components';
+import { AccountHeaderObj,  AboutBoxObjOne } from './Data';
 
 function AboutApp ()  {
         useEffect(() => {
                 document.title = "Pulpit | O aplikacji";
-            }, []);
+        }, []);
 
         /*
-        =======================
+        =======================  
          Render component
         =======================
         */
         return (
-                <>
+                <main>
                         <Sidenav />
-                        <main>
-                                <AboutBox />
-                        </main>
-                </>
+                        <AccountHeader  functionTitle={ AccountHeaderObj.title } typeFunction="info" />
+                        <AboutBox AboutBoxObjOne={ AboutBoxObjOne }  />
+                </main>
         );
     }
 

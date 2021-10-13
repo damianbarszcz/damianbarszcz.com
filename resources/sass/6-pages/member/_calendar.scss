@@ -1,7 +1,7 @@
-/*-----------------------------------------------------
+/*---------------------------------------------------------------
  * Calendar (https://www.damianbarszcz.com)
- * Copyright 2020 Damian Barszcz
- *-----------------------------------------------------*/
+ * Copyright 2021 Damian Barszcz
+/*---------------------------------------------------------------
 
 /*-----------------------------
 *            Calendar
@@ -13,12 +13,9 @@
                 // Calendar > Block
                 &__block{ @include accountPadding }
 
-                // Calendar > Section Account Header
-                @include sectionAccountHeader;
-            
                 // Calendar > Block > Inner
                 &__block &__inner{
-                        margin:3.5rem auto;
+                        margin:0rem auto;
                         max-width:  1300px;
 
                         // Calendar > Block > Inner > Events

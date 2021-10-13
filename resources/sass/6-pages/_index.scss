@@ -48,9 +48,8 @@
         &__block{ @include blockPadding(1rem, 0, 6rem); }
     
         // New pub  > Block > Article
-        @include articleItems(50%, false, true);
+        @include articleItems(false, true);
     }
-    
     
     /*-----------------------------
     *             Projects
@@ -99,13 +98,12 @@
     
                 &_modifier{ 
                         @include articleImage;   
-                        border:5px dashed $app-color-white;
                  }
     
                 &-link{
                         @include boxInnerLink;  
     
-                        &_effect{  background-color: rgba(0, 0, 0, 0.5); }
+                        &_effect{  background-color: rgba(0, 0, 0, 0.25); }
                 }
     
                 &-header{
@@ -172,7 +170,7 @@
         // Library > Block  > Books
         &-books{
                 margin-bottom:6.5rem;
-                @include articleItems(66.64%,true);
+                @include articleItems(true);
     
                  // Library > Block > Books > Box > Buttons
                 &__buttons{
@@ -229,7 +227,7 @@
     //Desktops, large screens
     @media (max-width: 1200px) {
         .new-pub{
-                @include articleItems(55%, false, true);
+                @include articleItems(false, true);
         }
     
         .projects{
@@ -274,7 +272,7 @@
     //Small screens, laptops
     @media (max-width: 960px) {
         .new-pub{          
-                @include articleItems(60%, false, true);
+                @include articleItems(false, true);
         }
     
         .projects{
@@ -348,7 +346,7 @@
         }
     
         .new-pub{
-                @include articleItems(65%, false, true);
+                @include articleItems(false, true);
     
                 &__block{ @include blockPadding(1rem, 0, 1rem); }
         }
@@ -414,7 +412,7 @@
     //Mobile devices (horizonal)
     @media (max-width: 576px) {
         .new-pub{
-                @include articleItems(70%, false, true);
+                @include articleItems(false, true);
         }
     }
     

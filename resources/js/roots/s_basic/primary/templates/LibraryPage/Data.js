@@ -9,3 +9,9 @@ export const libraryObjOne = {
   export const libraryObjThree = { headerTitle:'Ostatnie recezje' };
 
   export const libraryObjFour ={ headerTitle:'Popularne' };
+
+  export const libraryObjFive = {
+    headerTitle:'Wrrr...',
+    headerCaption:'Aktualnie nie zostały opublikowane żadne recenzje.'
+};
+

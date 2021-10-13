@@ -23,30 +23,34 @@ class NewReviewController extends Controller{
         */
 
         public function createReview(Request $request){
-                $userId = Auth::user()->id;
+                $user_id = Auth::user()->id;
 
-                $pub_title = $request->input('review_title');
+                $pub_title = $request->input('pub_title');
 
-                $pub_subtitle = $request->input('review_subtitle');
+                $pub_subtitle = $request->input('pub_subtitle');
 
-                $pub_body = $request->input('review_body');
+                $pub_body = $request->input('pub_body');
 
-                $pub_tags = $request->input('review_tags');
+                $pub_tags = $request->input('pub_tags');
 
-                $pub_category = $request->input('review_category');
+                $pub_category = $request->input('pub_category');
 
-                $pub_image =  $request->file('review_picture');
+                $pub_image =  $request->file('pub_picture');
+
+                $pub_color =  $request->input('pub_color');
 
                 $date_of_publication = Carbon::now();
 
                 $pub_destination_folder = "/images/reviews/articles/";
 
                 $request->validate([
-                        'review_title' => 'required|string|min:10|max:55',
-                        'review_subtitle' => 'required|string|min:25|max:150',
-                        'review_body' => 'required|string|min:300',
-                        'review_category' => 'required',
-                        'review_picture' =>  'required|mimes:jpeg,bmp,png,gif|max:2048',
+                        'pub_title' => 'required|string|min:10|max:55',
+                        'pub_subtitle' => 'required|string|min:25|max:150',
+                        'pub_body' => 'required|string|min:300',
+                        'pub_category' => 'required',
+                        'pub_picture' =>  'required|mimes:jpeg,bmp,png,gif|max:2048',
+                        'pub_tags' => 'required|string|min:3',
+                        'pub_color' => 'required|string|min:4|min:7',
                 ]);
 
                 $pub_image_name = Str::slug($pub_title, "-") . rand() .  '.' . $pub_image->getClientOriginalExtension();
@@ -55,8 +59,8 @@ class NewReviewController extends Controller{
 
                 $pub_picture = $pub_destination_folder .   $pub_image_name;
 
-                Review::create([  'user_id' => $userId, 'pub_title' => $pub_title, 'pub_subtitle' => $pub_subtitle ,  'pub_body' => $pub_body, 'pub_picture' => $pub_picture,
-                'pub_category' => $pub_category, 'date_of_publication' => $date_of_publication, 'pub_tags' => $pub_tags, 'pub_url' => Str::slug($pub_title, "-") ]);
+                Review::create([  'user_id' => $user_id, 'pub_title' => $pub_title, 'pub_subtitle' => $pub_subtitle ,  'pub_body' => $pub_body, 'pub_picture' => $pub_picture,
+                'pub_category' => $pub_category, 'date_of_publication' => $date_of_publication, 'pub_tags' => $pub_tags, 'pub_url' => Str::slug($pub_title, "-"), 'pub_color' => $pub_color ]);
          }
 
      /*
@@ -66,23 +70,29 @@ class NewReviewController extends Controller{
     */
 
     public function createReviewDraft(Request $request){
-            $userId = Auth::user()->id;
+            $user_id = Auth::user()->id;
 
-            $pub_title = $request->input('review_title');
+            $pub_title = $request->input('pub_title');
 
-            $pub_subtitle = $request->input('review_subtitle');
+            $pub_subtitle = $request->input('pub_subtitle');
 
-            $pub_body = $request->input('review_body');
+            $pub_body = $request->input('pub_body');
 
-            $pub_tags = $request->input('review_tags');
+            $pub_tags = $request->input('pub_tags');
 
-            $pub_category = $request->input('review_category');
+            $pub_category = $request->input('pub_category');
 
-            $pub_image =  $request->file('review_picture');
+            $pub_image =  $request->file('pub_picture');
 
             $pub_destination_folder = "/images/reviews/drafts/";
 
-            $request->validate([ 'review_title' => 'required|string|min:10|max:55', 'review_category' => 'required']);
+            $pub_color =  $request->input('pub_color');
+
+            $request->validate([ 
+                    'pub_title' => 'required|string|min:10|max:55',
+                     'pub_category' => 'required',
+                     'pub_color' => 'required|string|min:4|min:7'
+                ]);
 
             if(!empty($pub_image)){
                     $pub_image_name = Str::slug($pub_title, "-") . rand() .  '.' . $pub_image->getClientOriginalExtension();
@@ -94,7 +104,7 @@ class NewReviewController extends Controller{
 
             else{   $pub_picture = $pub_image;   }
 
-            DraftReview::create([ 'user_id' => $userId, 'pub_title' => $pub_title, 'pub_subtitle' => $pub_subtitle ,  'pub_body' => $pub_body, 'pub_picture' => $pub_picture, 
-            'pub_category' => $pub_category, 'pub_tags' => $pub_tags,  'pub_url' => Str::slug($pub_title, "-") ]);
+            DraftReview::create([ 'user_id' => $user_id, 'pub_title' => $pub_title, 'pub_subtitle' => $pub_subtitle ,  'pub_body' => $pub_body, 'pub_picture' => $pub_picture, 
+            'pub_category' => $pub_category, 'pub_tags' => $pub_tags,  'pub_url' => Str::slug($pub_title, "-"), 'pub_color' => $pub_color  ]);
         }
 }

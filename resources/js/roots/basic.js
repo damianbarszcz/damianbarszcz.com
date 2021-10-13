@@ -11,10 +11,12 @@ import Projects from './s_basic/primary/templates/ProjectsPage/Projects';
 import Library from './s_basic/primary/templates/LibraryPage/Library';
 import Contact from './s_basic/primary/templates/ContactPage/Contact';
 import About from './s_basic/primary/templates/AboutPage/About';
-import SearchPage from  './s_basic/primary/templates/SearchPage/Search';
+import Search from  './s_basic/primary/templates/SearchPage/Search';
 import Project from './s_basic/articles/templates/ProjectPage/Project';
 import Review from './s_basic/articles/templates/ReviewPage/Review';
 import Privacy from './s_basic/primary/templates/PrivacyPage/Privacy';
+import CookieDialog  from './global/CookieDialog';
+import { SiteMessage }  from './global';
 
 class Basic extends Component {
         
@@ -26,7 +28,7 @@ class Basic extends Component {
 
         /*
         =======================
-         Get api data
+         Get data from API
         =======================
         */
         componentDidMount(){
@@ -49,14 +51,20 @@ class Basic extends Component {
         return (
                 <Router>
                         <ScrollToTop>
+                                {  /*  Cookies message */  }
+                                <CookieDialog />
+
+                                {  /*  Site bulding message */ }
+                                <SiteMessage />
+
                                 {  /*  Index */ }
-                                <Route exact  path="/"  render= { () => <Index setCollection= { collection } projects = { projects }  setReviews = { reviews }  /> } />
+                                <Route exact  path="/"  render= { () => <Index collection= { collection } projects = { projects }  reviews = { reviews }  /> } />
 
                                 {  /*  Projects */ }
-                                <Route exact  path="/projects" component={ () => <Projects projects = { projects } /> } />
+                                <Route exact  path="/projects" component={ () => <Projects projects = { projects }  /> } />
 
                                 {  /*  Library */}
-                                <Route exact  path="/library" component={ () => <Library setReviews = { reviews } /> } />
+                                <Route exact  path="/library" component={ () => <Library  reviews = { reviews } /> } />
 
                                 {  /* Contact  */ }
                                 <Route exact  path="/contact" component={ Contact } />
@@ -65,16 +73,16 @@ class Basic extends Component {
                                 <Route exact path="/about" component={ About } />
 
                                 {  /* Privacy policy  */}
-                                <Route exact path="/privacy" component={ Privacy  } />
+                                <Route exact path="/privacy"  component={ Privacy }  />
 
                                 {  /*  Project Article */ }
-                                <Route exact  path="/project/:pub_url" component={ Project } />
+                                <Route exact  path="/project/:pub_url" component={ Project }  />
 
                                 {  /* Review Article */ }
-                                <Route exact path="/review/:pub_url" component={ Review } />
+                                <Route exact path="/review/:pub_url" component={ Review }  />
 
                                 {  /* Search Results */ }
-                                <Route exact path="/help/:slug" component={ SearchPage } />
+                                <Route exact path="/help/:slug" component={ Search }  />
                         </ScrollToTop>
                 </Router>
             );

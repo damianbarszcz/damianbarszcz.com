@@ -2,20 +2,72 @@ import  React from 'react';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 
-const ProjectsSection = (props) => {
-    
-   /*
-    =======================
-     Render component
-    =======================
-    */
-    return (
-            <>
-                    {  /*----------------------------------------*/   }
-                    {  /*--------         Projects           -------*/  }
-                    {  /*----------------------------------------*/   }    
-                    <section className="projects projects_theme">
-                            <div className="projects__block wide-container">
+function ProjectsSection(props){
+        const pubCollection = props.collection.slice(0,1).map(article=> article.pub_category)
+
+        /*
+        ============================
+        Project section articles carousel
+        ============================
+        */
+        const getProjectContent = (startElementNumber,endElementNumber) =>{
+                return  props.projects.slice(startElementNumber, endElementNumber).map(article =>
+                <article key={ article.id } className="projects__article projects__article_modifier" style={{ background:  `url( ${article.pub_picture })` }}> 
+                        <a href={`/project/${article.pub_url}`} className="projects__article-link projects__article-link_effect" target="_self">
+                                <header className="projects__article-header projects__article-header_modifier">
+                                        <h2 className="projects__article-header--title"> { article.pub_title }</h2>
+                
+                                        <span className="projects__article-header--date"><Moment format="DD/MM/YYYY">{article.date_of_publication}</Moment></span>
+                                </header>
+                        </a>
+                </article>
+                 ) 
+        }
+
+        /*
+        ============================
+        Project section content on top
+        ============================
+        */
+        const getProjectContentPart1 = () =>{
+                let startElementNumber = 0;
+                let endElementNumber = 0;
+
+                if(pubCollection[0]){  startElementNumber = 0;  endElementNumber = 2;  }
+
+                else{   startElementNumber = 1; endElementNumber = 3;  }
+
+                return  getProjectContent(startElementNumber,endElementNumber);         
+        }
+
+        /*
+        ============================
+        Project section content on bottom
+        ============================
+        */
+        const getProjectContentPart2 = () =>{
+                let startElementNumber = 0;
+                let endElementNumber = 0;
+
+                if(pubCollection[0]){ startElementNumber =2; endElementNumber = 5;  }
+
+                else{ startElementNumber = 3; endElementNumber = 6;  }
+
+                return  getProjectContent(startElementNumber,endElementNumber);
+        }
+
+        /*
+        =======================
+        Render component
+        =======================
+        */
+        return (
+                <>
+                        {  /*----------------------------------------*/   }
+                        {  /*--------         Projects           -------*/  }
+                        {  /*----------------------------------------*/   }    
+                        <section className="projects projects_theme">
+                                <div className="projects__block wide-container">
                                         {  /*---  Projects > Header ---*/   }
                                         <header className="projects__header projects__header_modifier">
                                                 <h2 className="projects__header--subtitle">{props.indexObjOne.subTitle} </h2>
@@ -26,41 +78,17 @@ const ProjectsSection = (props) => {
 
                                                 <Link to="/projects" type="button" className="btn--normal app__button--white projects__header--button" target="_self"> Zobacz więcej  </Link>
                                         </header>
-                                        
+                                                
                                         {  /*---  Projects > Inner  ---*/   }
                                         <div className="projects__inner projects__inner_modifier">
-                                                <div className="projects__inner--top">
-                                                {  props.projects.slice(1,3).map(article =>
-                                                        <article key={ article.id } className="projects__article projects__article_modifier" style={{ background:  `url( ${article.pub_picture })` }}> 
-                                                                 <a href={`/project/${article.pub_url}`} className="projects__article-link projects__article-link_effect" target="_self">
-                                                                        <header className="projects__article-header projects__article-header_modifier">
-                                                                                <h2 className="projects__article-header--title"> { article.pub_title }</h2>
+                                                <div className="projects__inner--top"> { getProjectContentPart1() }  </div>
 
-                                                                                <span className="projects__article-header--date"><Moment format="DD/MM/YYYY">{article.date_of_publication}</Moment></span>
-                                                                        </header>
-                                                                </a>
-                                                        </article>
-                                                 ) }
-                                                </div>
-
-                                                <div className="projects__inner--bottom">
-                                                {  props.projects.slice(3,6).map(article =>
-                                                        <article  key={ article.id }  className="projects__article projects__article_modifier" style={{ background:  `url( ${article.pub_picture })` }}> 
-                                                                <a href={`/project/${article.pub_url}`} className="projects__article-link projects__article-link_effect" target="_self">
-                                                                        <header className="projects__article-header projects__article-header_modifier">
-                                                                                <h2 className="projects__article-header--title">{ article.pub_title }</h2>
-
-                                                                                <span className="projects__article-header--date"><Moment format="DD/MM/YYYY">{article.date_of_publication}</Moment></span>
-                                                                         </header>
-                                                                </a>
-                                                        </article>   
-                                                ) }
-                                                </div>
+                                                <div className="projects__inner--bottom">  { getProjectContentPart2() }  </div>
                                         </div>
-                             </div>
-                    </section>
-            </>
-    );
+                                </div>
+                        </section>
+                </>
+        );
 }
 
 export default ProjectsSection;

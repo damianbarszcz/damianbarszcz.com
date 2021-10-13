@@ -11,16 +11,16 @@
         $size:40rem, 
         $textColor:$app-color-black,
         $subColor:$app-color-white, 
-        $titleSize:$font-size-extra-big, 
+        $titleSize:$font-size-extra-huge, 
         $descSize:$font-size-extra-normal,
         $subtitleSize:$font-size-small
         ){
         
         @include boxCenter($size);
 
-        &--subtitle{  @include boxHeading($subtitleSize, $ultra-bold-weight, $subColor);   margin-bottom:0.5rem; text-transform: uppercase; }
+        &--subtitle{  @include boxHeading($subtitleSize,$subColor);   font-weight: $ultra-bold-weight; margin-bottom:0.5rem; text-transform: uppercase; }
                         
-        &--title{  @include boxHeading($titleSize, $ultra-bold-weight, $textColor);   margin-bottom:0.5rem; }
+        &--title{  @include boxHeading($titleSize, $textColor);   font-weight: $ultra-bold-weight; margin-bottom:0.5rem; }
 
         &--desc{   @include boxDescContent($descSize, $regular-weight, $textColor);   }
 
@@ -31,16 +31,16 @@
         $size:40rem, 
         $textColor:$app-color-black,
         $subColor:$app-color-white,
-        $titleSize:$font-size-extra-big, 
+        $titleSize:$font-size-extra-huge, 
         $descSize:$font-size-extra-normal,
         $subtitleSize:$font-size-small
          ){
         
         @include boxLeft($size);
 
-        &--subtitle{  @include boxHeading($subtitleSize, $ultra-bold-weight, $subColor);   margin-bottom:0.5rem; text-transform: uppercase; }
+        &--subtitle{  @include boxHeading($subtitleSize, $subColor);    font-weight: $ultra-bold-weight; margin-bottom:0.5rem; text-transform: uppercase; }
                         
-        &--title{  @include boxHeading($titleSize, $ultra-bold-weight, $textColor);   margin-bottom:0.5rem; }
+        &--title{  @include boxHeading($titleSize, $textColor);  font-weight: $ultra-bold-weight; margin-bottom:0.5rem; }
 
         &--desc{   @include boxDescContent($descSize, $regular-weight, $textColor);   }
 
@@ -51,7 +51,7 @@
         
         @include boxLeft($size);
                         
-        &--title{  @include boxHeading($font-size-big, $light-weight, $titleColor); }
+        &--title{  @include boxHeading($font-size-big, $titleColor); }
 
         strong{  color:$titleStrongColor;  }
 }
@@ -60,27 +60,34 @@
         
         @include boxCenter($size);
                         
-        &--title{  @include boxHeading($font-size-big, $light-weight, $titleColor); }
+        &--title{  
+                display: flex;
+                justify-content: center;
+                font-weight: $light-weight; 
 
-        strong{  color:$titleStrongColor;  }
+                @include boxHeading($font-size-huge, $titleColor); 
+
+                strong{  
+                        padding-right: 1rem;  
+                        color:$titleStrongColor;  
+                }
+        }
 }
-
-
 
 @mixin  articleHeaderLeft($size:100%, $color: $app-color-white, $titleSize:$font-size-normal){
         
         @include boxLeft($size);
                         
-        &--title{   @include boxHeading( $titleSize, $ultra-bold-weight, $color);   }
+        &--title{   @include boxHeading( $titleSize, $color);   }
 
         &--subtitle{  
-                @include boxHeading($font-size-normal, $ultra-bold-weight, $color);  
+                @include boxHeading($font-size-normal, $color);  
 
                 margin-top:1.5rem;
         }
 
         &--date{  
-                @include boxHeading($font-size-normal, $ultra-bold-weight, $color);  
+                @include boxHeading($font-size-normal, $color);  
 
                 margin-top: 0.5rem;
         }
@@ -91,9 +98,24 @@
                 width: fit-content;
                 background-color:$app-color-blue;
 
-                @include boxHeading($font-size-small, $ultra-bold-weight, $color);  
+                @include boxHeading($font-size-small, $color);  
         }
 }
+
+@mixin localHeader($color:$app-color-gray){
+
+        &__header{
+                display: inline-block;
+                padding-bottom:0.25rem;
+    
+                &_modifier{ border-bottom: 2px  solid $color; }
+
+                &--title{
+                        @include boxHeading($font-size-normal, $color);
+                        text-transform: uppercase;
+                }
+        }
+ }
 
 /*---------------------------------
 *              Blog brand
@@ -420,7 +442,7 @@
                 &_modifier{ border-bottom: 2px  solid $color; }
 
                 &--title{
-                        @include boxHeading($font-size-normal,$bold-weight, $color);
+                        @include boxHeading($font-size-normal,$color);
                         text-transform: uppercase;
                 }
         }
@@ -440,7 +462,7 @@
                 padding: $top $left $bottom $right;
         }
 
-        @mixin accountPadding($top:6.5rem, $left:2.5rem, $bottom:6.5rem, $right:22.5rem){
+        @mixin accountPadding($top:1rem, $left:2.5rem, $bottom:1rem, $right:22.5rem){
                 padding: $top $left $bottom $right;
         }
 
@@ -549,12 +571,12 @@
         @include boxCenter($size);
                         
         &--title{  
-                @include boxHeading($font-size-extra-big, $ultra-bold-weight, $color);  
+                @include boxHeading($font-size-huge, $color);  
         }
 
         &--subtitle{  
                 margin-top:1.5rem;
-                @include boxHeading($font-size-extra-normal, $light-bold-weight, $color);  
+                @include boxHeading($font-size-extra-normal, $color);  
         }
 }
 
@@ -563,75 +585,42 @@
         @include boxLeft($size);
                         
         &--title{  
-                @include boxHeading($font-size-extra-big, $ultra-bold-weight, $color);  
+                @include boxHeading($font-size-extra-big, $color);  
         }
 
         &--subtitle{  
                 margin-top:1.5rem;
-                @include boxHeading($font-size-extra-normal, $light-bold-weight, $color);  
+                @include boxHeading($font-size-extra-normal, $color);  
         }
 }
-
-@mixin sectionAccountHeader{
-
-        &__header{
-                @include inlineFlexStartElements;
-
-                &-square{
-                        position: relative;
-                        width:4rem;
-                        height:4rem;
-
-                        &_modifier{
-                                background-color:$app-color-blue;
-                                color:$app-color-white;
-                        }
-
-                        .material-icons{
-                                position: absolute;
-                                left:50%;
-                                top:50%;
-                                transform:translate(-50%,-50%);
-                                font-size:$font-size-extra-big;
-                        }
-                }
-
-                &-content{
-                        margin-left:1.5rem;
-                        
-                        &--title{  @include boxHeading($font-size-extra-normal, $bold-weight, $app-color-gray);  }
-
-                        &--subtitle{   @include boxDescContent($font-size-normal, $regular-weight, $app-color-silver);   }
-                }
-        }
-}
-
 
 /*---------------------------------
 *              Box content
 *---------------------------------*/
 
         // Box heading
-        @mixin boxHeading($font-size:$font-size-extra-normal,$style-weight:$bold-weight,$text-color:$app-color-gray){
+        @mixin boxHeading($font-size:$font-size-extra-normal,$text-color:$app-color-gray){
                 $styleHeight:0rem;
 
-                @if $font-size>=$font-size-huge{ $styleHeight: 10rem;  }
 
-                @else if $font-size>=$font-size-extra-big{ $styleHeight: 4.5rem;  }
+                @if $font-size>=$font-size-extra-huge{ $styleHeight: 5rem;  }
 
-                @else if $font-size>=$font-size-big{$styleHeight: 3.25rem; margin-bottom:1.5rem; }
+                @else if $font-size>=$font-size-huge{ $styleHeight: 3rem; }
 
-                @else if $font-size>=$font-size-extra-normal{  $styleHeight: 2.35rem;    }
+                @else if $font-size>=$font-size-extra-big{ $styleHeight: 4.5rem; }
 
-                @else if $font-size>=$font-size-normal{ $styleHeight: 2rem; }
+                @else if $font-size>=$font-size-big{$styleHeight: 2.5rem;  }
+
+                @else if $font-size>=$font-size-extra-normal{  $styleHeight: 2.35rem;  }
+
+                @else if $font-size>=$font-size-normal{ $styleHeight: 2rem;  font-weight: $bold-weight;}
 
                 @else if $font-size>=$font-size-small{ $styleHeight: 1.5rem; }
 
-                @else if $font-size>=$font-size-extra-small{ $styleHeight: 1rem; }
+                @else if $font-size>=$font-size-extra-small{ $styleHeight: 1rem;  }
                 
                 line-height: $styleHeight;
                 font-size:$font-size;
-                font-weight:$style-weight;
                 color:$text-color;
         }
 
@@ -731,8 +720,9 @@
 *---------------------------------*/
 
         @mixin articleImage{
-                background-size: cover !important;
+                background-size:cover !important;
                 background-repeat: no-repeat !important;
+                background-position: 50% 50% !important;
         }
 
         @mixin fullImage{
@@ -741,12 +731,10 @@
                 background-position: center;
         }
 
-        @mixin setItemArtwork($padding: 66.64%){
-                padding-top: $padding;
+        @mixin setItemArtwork($height: 27.5rem){
                 width: 100%;
-                height: 0;
-                background-size: contain;
-                background-repeat: no-repeat;
+                height: $height;
+                object-fit: cover;
         }
 
         @mixin  backgroundBlockArtwork($wth: 26rem, $hgh:26rem){
@@ -762,7 +750,7 @@
 *            Article items
 *---------------------------------*/
 
-@mixin articleItems($padding: 66.64%, $carousel:false, $mainPage:false){
+@mixin articleItems($carousel:false, $mainPage:false){
 
         // Block > Inner
         &__inner{
@@ -803,49 +791,66 @@
 
                         @include transition;
                 } 
+                @if $mainPage{
+                        &-link{                 
+                                display: grid;
+                                grid-template-columns: 1fr;
+                                min-height: 100%;
+                        }     
 
-                &-link{                 
-                        display:flex;
-                        flex-flow: row wrap;
-                        justify-content: space-between;  
-                        align-items: center;
-                        min-height: 100%;
-                }
+                        &-content{
+                                display: flex;
+                                width: 100%;
+                                justify-content: space-between;
+                                align-items: center;
+                        }
 
-                &-artwork{                                  
-                        @include setItemArtwork(60%);  
-                        background-size: cover !important;
-                        background-repeat: no-repeat !important;
-                }
+                        &-media{
+                                min-width: 100%; 
+                                
+                                &--artwork{  @include setItemArtwork(35rem);  min-width: 100%; }
+                        }
+                 }
 
-                &-media--artwork{
-                        background-size: cover !important;
-                        background-repeat: no-repeat !important;
-                }
+                @else{
+                        &-link{                 
+                                display:flex;
+                                flex-flow: row wrap;
+                                justify-content: space-between;  
+                                align-items: center;
+                                min-height: 100%;
+                        }
 
+                        &-media{
+                                @include articleImage;
+                                width:100%;
+                                height: 12.5rem;
+                        }
+                 }
+                 
                 &-header{
                         margin-top:1rem;
                         @if $mainPage{
                         max-width:50rem;
 
-                                &--title{  @include boxHeading($font-size-extra-normal, $bold-weight, $app-color-gray);}
+                                &--title{  @include boxHeading($font-size-extra-normal, $app-color-gray);}
 
                                 &--desc{  @include boxDescContent($font-size-normal, $regular-weight, $app-color-silver); white-space: pre-wrap; line-height: 2.5rem}
                         }
 
                         @else{
-                                &--title{  @include boxHeading($font-size-normal, $bold-weight, $app-color-gray); }
+                                &--title{  @include boxHeading($font-size-normal, $app-color-gray); }
 
                                 &--desc{  @include boxDescContent; white-space: pre-wrap; }                              
                         }
                 }
 
-                &-category{                        
+                &-category{       
                         margin-top:1rem;
                         @include pageButton(90px);
                 }
 
-                $bookCategory: (#{$app-color-red}:"programming", #{$app-color-blue}:"development", #{$app-color-yellow}:"astrophysics", #{$app-color-green}:"business");
+                $bookCategory: (#{$app-color-red}:"programowanie", #{$app-color-blue}:"rozwój", #{$app-color-yellow}:"astrofizyka", #{$app-color-green}:"biznes");
 
                 @each $color, $category in $bookCategory {
                         [data-book-category="#{$category}"]{
@@ -862,6 +867,39 @@
                 [data-article-category="Project"]{
                         border:0.15rem solid $app-color-blue;
                         color:$app-color-blue;
+                }
+        }
+
+        //Small screens, laptops
+        @media (max-width: 960px) {
+                &__inner &__article{
+                        @if $mainPage{
+                                &-media{
+                                        &--artwork{  @include setItemArtwork(30rem);   }
+                                }
+                        }
+                }
+        }
+
+        //Mobile devices (horizonal)
+        @media (max-width: 768px) {
+                &__inner &__article{
+                        @if $mainPage{
+                                &-media{
+                                        &--artwork{  @include setItemArtwork(20rem);   }
+                                }
+                        }
+                }
+        }
+
+        //iPads, Tablets
+        @media (max-width: 576px) {
+                &__inner &__article{
+                        @if $mainPage{
+                                &-media{
+                                        &--artwork{  @include setItemArtwork(15rem);   }
+                                }
+                         }
                 }
         }
 }
@@ -896,7 +934,7 @@
                                 &-header{
                                         margin-bottom:1rem;
                                         
-                                        &--title{  @include boxHeading($font-size-extra-normal, $bold-weight, $app-color-gray); margin-bottom:1rem; }
+                                        &--title{  @include boxHeading($font-size-extra-normal, $app-color-gray); margin-bottom:1rem; }
 
                                         &--desc{  @include boxDescContent; white-space: pre-wrap; }
                                 }
@@ -928,7 +966,7 @@
                                 }
 
                                 &-header{
-                                        &--title{  @include boxHeading($font-size-extra-normal, $bold-weight, $app-color-gray); margin-bottom:1rem;}
+                                        &--title{  @include boxHeading($font-size-extra-normal, $app-color-gray); margin-bottom:1rem;}
 
                                         &--desc{  @include boxDescContent; white-space: pre-wrap; }
                                 }
@@ -938,13 +976,6 @@
                 }
         }
 }
-
-
-
-
-
-
-
 
 /*---------------------------------
 *        Account article item
@@ -959,12 +990,8 @@
                 //  accountArticleItem > Block 
                 &__block{ @include accountPadding }
 
-                //  accountArticleItem > Block > Section header
-                @include sectionAccountHeader;
-
                 // accountArticleItems > Block > Inner
                 &__block &__inner{
-                        margin-top:3.5rem;
                         @include inlineRepeatColElements(4, 1fr, 2rem);
 
                         // accountArticleItem > Block > Inner > Item
@@ -989,7 +1016,7 @@
 
                                         &--desc{ @include boxDescContent; }
 
-                                        $bookCategory: (#{$app-color-red}:"programming", #{$app-color-blue}:"development", #{$app-color-yellow}:"astrophisics", #{app-color-green}:"business");
+                                        $bookCategory: (#{$app-color-red}:"programowanie", #{$app-color-blue}:"rozwój", #{$app-color-yellow}:"astrofizyka", #{$app-color-green}:"biznes");
 
                                         @each $color, $category in $bookCategory {
                                                 [data-book-category="#{$category}"]{
@@ -1056,22 +1083,16 @@
         }
 }
 
-/*------------------------------------
+/*-------------------------------------------
 *   Create & Update Publication
-*-------------------------------------*/
+*-------------------------------------------*/
 
 @mixin pubCreator(){
         @include sectionDefinition;
 
         // pubCreator > Block
         &__block{ @include accountPadding }
-
-        //  pubCreator > Block > Section header
-        @include sectionAccountHeader;
         
-        // pubCreator > Block > Inner
-        &__block &__inner{  margin-top:2rem; }
-            
                 // pubCreator > Block > Inner > Form
                 &__block &__inner &__form{
                         @include  inlineRepeatRowElements($nr_elem:2, $rowSize: 1fr,$space: 2.5rem);
@@ -1084,9 +1105,24 @@
                                 grid-row-start: 1;
                                 grid-row-end: 3;
 
-                                @include smartEdit;
-
                                 &-field{  padding-bottom:2.5rem;   }
+
+                                &-field--inline{  
+                                        display:grid; 
+                                        position: relative;
+                                        grid-template-columns: 1fr 0.7fr;
+                                        grid-column-gap: 2.5rem;
+
+                                        .pub_color-picker{
+                                                display: block;
+                                                position: absolute;
+                                                border:1px solid $app-color-lsilver;
+                                                right:1rem;
+                                                top:1rem;
+                                                width:2rem;
+                                                height: 2rem;
+                                        }
+                                }
                         }
 
                         // pubCreator > Block > Inner > Form > Picture
@@ -1249,8 +1285,8 @@
                                 @include boxStylingDark;
                                 grid-column-start: 3;
                                 grid-column-end: 4;
-                                grid-row-start: 2;
-                                grid-row-end: 2;
+                                position: relative;
+                                max-height: 17.5rem;
 
                                 &-header{
                                         padding: 0.75rem 1.5rem;
@@ -1290,125 +1326,17 @@
                                 }
 
                                 &-run{
-                                        margin:1rem auto 0rem;
-                                        max-width: 90%;
-                                        @include inlineFlexBetweenElements;
+                                        display: flex;
+                                        justify-content: space-between;
+                                        padding:0 1rem;
+                                        margin:1.25rem 0;
                                 }
                         }
                 }
 }
 
 
-/*------------------------------------*/
-/*               SmartEdit
-/*------------------------------------*/
 
-@mixin smartEdit{
-        .smarteditor {
-                position: relative;
-                min-height: 32.5rem;
-                max-height: 32.5rem;
-                max-width: 69.625rem;
-        
-                @include boxStyling;
-                
-                // Smarteditor > Toolbar
-                &__toolbar{
-                        position: relative;
-                        padding:0.25rem 0rem;
-                        
-                        &_modifier{ border-bottom: 1px solid $app-color-lsilver; }
-        
-                        // Smarteditor > Toolbar > Inner
-                        &-inner{    
-                                @include inlineFlexSpecyficElements;
-                                padding: 0 1rem;
-        
-                                &-item{  padding-right:2rem;  }
-                         }
-        
-                        // Smarteditor > Toolbar > Uninner
-                        &-uninner{
-                                @include inlineFlexSpecyficElements;
-                                padding: 0 1rem;
-        
-                                &_modifier{
-                                        transform: translateY(0.5rem);
-                                        background-color:#f5f5f5;
-                                }
-                        }
-        
-                        // Smarteditor > Toolbar > Item
-                        &-item{
-                                display: inline-block;
-                                position: relative;
-                                width:2.5rem;
-                                height: 2.5rem;
-        
-                                &_modifier{
-                                        transition: $FastEaseInOut;
-                                        text-decoration: none;
-                                        border-radius: 0.3125rem;
-                                        cursor: pointer;
-                                }
-        
-                                &:hover{  background-color:$app-color-lsilver;  }
-        
-                                .fr-svg{
-                                        display: block;
-                                        position: absolute;
-                                        left:50%;
-                                        top:50%;
-                                        transform: translate(-50%,-50%);
-                                        width:24px;
-                                        height:24px;
-                                        fill:$app-color-silver;
-                                }
-                        }
-        
-                        .active-tool{  .fr-svg{fill:$app-color-blue !important; } }
-                }
-        
-                // Smarteditor > System
-                &__system{  
-                        display:flex;
-                        flex-direction: column;
-        
-                        &-properties{
-                                position:absolute;
-                                bottom:0;
-                                padding:1rem;
-                                width:100%;
-                                height: 3rem;
-                                border-top:1px solid $app-color-lsilver;
-                                text-align: right;
-                                z-index:10000;
-        
-                                &-counter{
-                                        color:$app-color-gray;
-                                }
-                        }
-                }
-        
-                [data-smarteditor="without-uninner"]{
-                        .DraftEditor-root{
-                                padding:1rem;
-                                height: 26.25rem;
-                                max-height: 26.25rem;
-                                overflow-y: scroll; 
-                        }
-                }
-        
-                [data-smarteditor="with-uninner"]{
-                        .DraftEditor-root{
-                                padding:1rem;
-                                height: 23.25rem;
-                                max-height: 23.25rem;
-                                overflow-y: scroll; 
-                        }
-                }
-            }        
-}
 
 /*---------------------------------
 *            Animations
@@ -1441,9 +1369,5 @@
 
         100%{ transform:translateX(0%);  }
 }
-
-/*-----------------------------
-*          RWD System
-*----------------------------*/
 
 

@@ -76,7 +76,7 @@ class Member extends Component {
                                                 <Route exact  path="/member/reviews/edit/:pub_url" component={ EditReview } />
 
                                                 {  /* Edit Review Draft */  }
-                                                <Route exact path="/member/drafts/review/continue/:pub_url" component={ ReviewDraft } />
+                                                <Route exact path="/member/reviews/draft/:pub_url" component={ ReviewDraft } />
 
                                                 {  /* Projects */  }
                                                 <Route exact path="/member/projects" component={ Projects } />
@@ -88,7 +88,7 @@ class Member extends Component {
                                                 <Route exact  path="/member/projects/edit/:pub_url" component={ EditProject } />
 
                                                 {  /* Edit Project Draft  */  }
-                                                <Route exact path="/member/drafts/project/continue/:pub_url" component={ ProjectDraft } />
+                                                <Route exact path="/member/projects/draft/:pub_url" component={ ProjectDraft } />
                                         </Switch>
                                 </ScrollToTop>
                         </Router>

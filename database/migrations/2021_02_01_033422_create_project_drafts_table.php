@@ -22,6 +22,7 @@ class CreateProjectDraftsTable extends Migration
             $table->string('pub_picture')->nullable();
             $table->string('pub_tags')->nullable();
             $table->string('pub_url');
+            $table->string('pub_color')->default('#ffffff');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

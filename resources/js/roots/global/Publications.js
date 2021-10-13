@@ -2,36 +2,6 @@ import React  from 'react';
 import LinesEllipsis from 'react-lines-ellipsis';
 import Moment from 'react-moment';
 
-/*
-=================================
-Get new publication (Index Component)
-=================================
-*/
-export function getNewPublication(props) {
-        return  (
-                props.newPubCollection.slice(0,1).map( article =>
-                        <article key={ article.id } className="new-pub__article new-pub__article_modifier">
-                        <a href={ `/${article.pub_category ? 'review' :  'project'}/${ article.pub_url }` }  className="new-pub__article-link new-pub__article-link_modifier" target="_self">
-                                <div className="new-pub__article-artwork new-pub__article-artwork_modifier" style={{ background:  `url( ${article.pub_picture })` }}> </div>    
-        
-                                <header className="new-pub__article-header new-pub__article-header_modifier">
-                                        <h1 className="new-pub__article-header--title">{ article.pub_title }</h1> 
-                                                
-                                        <span className="new-pub__article-header--desc">
-                                                <LinesEllipsis text={ article.pub_subtitle } maxLine='2' ellipsis='...' trimRight />
-                                        </span>
-
-                                        <span className="new-pub__article-header--desc">
-                                                <strong><Moment format="DD/MM/YYYY">{ article.date_of_publication }</Moment></strong>
-                                        </span>
-                                </header>
-        
-                                <div className="new-pub__article-category new-pub__article-category_modifier" data-article-category={ article.pub_category ? 'Book' :  'Project' } >{ article.pub_category ? 'Book' :  'Project' }  </div>
-                        </a>
-                </article>
-                 )
-        );   
-}
 
 /*
 ============================
@@ -128,10 +98,10 @@ export function oldProjectsDisplay(props) {
 export function getReviewsCarousel(props){
         return ( 
          <>
-                 { props.reviewsCollection.map(article =>
+                 { props.reviewsCarousel.map(article =>
                  <article key={ article.id } className="library-books__article library-books__article_modifier"  style={{ transform: `translateX(${ props.position }%)`}}>
                          <a href={ `/review/${article.pub_url }`}  className="library-books__article-link library-books__article-link_modifier" target="_self">
-                                 <div className="library-books__article-artwork" style={{ background: `url( ${ article.pub_picture } )` }}></div>
+                                <div className="library-books__article-media" style={{ background:  `url( ${article.pub_picture })` }}> </div>
 
                                  <header className="library-books__article-header library-books__article-header_modifier">
                                          <h3 className="library-books__article-header--title">{ article.pub_title } </h3>
@@ -175,7 +145,7 @@ export function relatedDisplay(props) {
 
         <article key={ article.id } className="related__article related__article_modifier">
                 <a href={`/${ article.pub_category ? 'review' : 'project' }/${article.pub_url}`}  className="related__article-link related__article-link_modifier" target="_self">
-                        <div className="related__article-artwork" style={{ background: `url( ${ article.pub_picture } )` }}></div>
+                        <div className="related__article-media" style={{ background:  `url( ${article.pub_picture })` }}> </div>
 
                         <header className="related__article-header">
                                 <h2 className="related__article-header--title"> { article.pub_title } </h2>
@@ -245,5 +215,5 @@ export function topReviewDisplay(props){
         </article> );
 }
 
-export default { getNewPublication, getLeftSideProjects,   getRightSideProjects, getReviewsCarousel, newProjectDisplay,popularReviews, relatedDisplay,lastReviewsDisplay, topReviewDisplay }
+export default {  getLeftSideProjects,   getRightSideProjects, getReviewsCarousel, newProjectDisplay,popularReviews, relatedDisplay,lastReviewsDisplay, topReviewDisplay }
 

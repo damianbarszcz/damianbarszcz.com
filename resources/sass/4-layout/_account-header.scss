@@ -1,0 +1,42 @@
+/*-----------------------------------------------------------------------
+ * Account header (https://www.damianbarszcz.com)
+ * Copyright 2021 Damian Barszcz
+ *------------------------------------------------------------------------*/
+
+/*-----------------------------
+*      Account header
+*----------------------------*/
+
+.account__header{
+        @include accountPadding;
+        padding-top:6.5rem;
+
+        @include inlineFlexStartElements;
+
+        &-square{
+                position: relative;
+                width:4rem;
+                height:4rem;
+
+                &_modifier{
+                        background-color:$app-color-blue;
+                        color:$app-color-white;
+                }
+
+                .material-icons{
+                        position: absolute;
+                        left:50%;
+                        top:50%;
+                        transform:translate(-50%,-50%);
+                        font-size:$font-size-extra-big;
+                }
+        }
+
+        &-content{
+                margin-left:1.5rem;
+                
+                &--title{  @include boxHeading($font-size-extra-normal, $app-color-gray);  }
+
+                &--subtitle{   @include boxDescContent($font-size-normal, $regular-weight, $app-color-silver);   }
+        }
+}

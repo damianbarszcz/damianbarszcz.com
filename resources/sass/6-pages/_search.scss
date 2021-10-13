@@ -91,7 +91,7 @@
 
                         &_modifier{   text-align:center;   }
 
-                        @include boxHeading($font-size-big,$bold-weight, $app-color-gray);  
+                        @include boxHeading($font-size-big,$app-color-gray);  
 
                         &--desc{margin-top: 2rem;@include boxDescContent; }
                 }

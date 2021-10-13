@@ -1,7 +1,7 @@
 import  React, { useEffect } from 'react';
 
 {  /*  Components */ }
-import { Navigation, Footer,Biography, AboutBanner } from '../../components';
+import { Navigation, Footer, Biography, AboutBanner } from '../../components';
 import { aboutObjOne, aboutObjTwo } from './Data';
 
 /*
@@ -10,7 +10,7 @@ Display all components for
 About me route
 =======================
 */
-function About () {
+function About (props) {
         useEffect(() => {
                 document.title = "O mnie | Damian Barszcz";
         }, []);
@@ -22,7 +22,7 @@ function About () {
         */
         return (
                 <>
-                        <Navigation typeSection={'navigation'} />
+                        <Navigation typeSection={'navigation'} projects = { props.projects  }  reviews = { props.reviews } />
                         <main>
                                 <AboutBanner aboutObjOne = { aboutObjOne }   />
                                 <Biography aboutObjTwo = { aboutObjTwo }  />

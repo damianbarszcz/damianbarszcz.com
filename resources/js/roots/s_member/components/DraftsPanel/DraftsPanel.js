@@ -16,17 +16,6 @@ const DraftsPanel = (props) => {
                 {  /*--------------------------------*/   }    
                 <section className="drafts drafts_theme">
                         <div className="drafts__block">
-                            {  /*---  Drafts > Block > Header  ---*/   } 
-                            <header className="drafts__header drafts__header_modifier">
-                                    <span className="drafts__header-square drafts__header-square_modifier"><i className="material-icons material-icons-outlined">   file_copy   </i> </span>
-
-                                    <div className="drafts__header-content">
-                                            <h1 className="drafts__header-content--title"> Szkice </h1>
-
-                                            <p className="drafts__header-content--subtitle"> Pulpit | Szkice </p>
-                                     </div>
-                            </header>
-
                             {  /*---  Drafts > Block > Inner ---*/   } 
                             <div className="drafts__inner">
                                     {  /*---  Drafts > Block > Inner > Item   ---*/   }
@@ -48,7 +37,7 @@ const DraftsPanel = (props) => {
                                                                  
                                                 <div className="drafts__inner-item-action">
                                                         <div className="drafts__inner-item-action-buttons">
-                                                            <Link to={ `/member/drafts/${article.pub_category ? 'review' :  'project'}/continue/${article.pub_url }`}  className="btn--small app__button--blue" target="_self"> Kontynuuj</Link>
+                                                            <Link to={ `/member/${article.pub_category ? 'reviews' :  'projects'}/draft/${article.pub_url }`}  className="btn--small app__button--blue" target="_self"> Kontynuuj</Link>
                                                             <a href="#" className="btn--small app__button--red" onClick={ (e) => props.getModal(e, article.pub_title, article.pub_url) } target="_self"> Usuń </a>
                                                          </div>
                                                 </div>

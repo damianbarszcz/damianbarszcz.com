@@ -26,11 +26,11 @@
                     margin-bottom: 3rem;
 
                     &--title{
-                        @include boxHeading($font-size-extra-normal, $bold-weight, $app-color-gray);
+                        @include boxHeading($font-size-extra-normal, $app-color-gray);
                     }
 
                     h1{
-                        @include boxHeading($font-size-big * 1.2, $bold-weight, $app-color-gray);
+                        @include boxHeading($font-size-big * 1.2, $app-color-gray);
                     }
 
                     &--desc{
@@ -61,7 +61,7 @@
         .privacy{
                 &__inner{ width:89vw;
                    
-                &-item{ h1{  @include boxHeading($font-size-big, $bold-weight, $app-color-gray);      }   }
+                &-item{ h1{  @include boxHeading($font-size-big, $app-color-gray);      }   }
             }
         }      
 }

@@ -5,8 +5,10 @@
         @section('altPageUrlPL',$altPageUrlPL)
         @section('pageAuthor', $pageAuthor)
         @section('pageTitle', $pageTitle)
-        @section('pageDescryption', $pageDescryption)
-        @section('pageImage', $pageImage)
+        
+        @if ($pageDescryption != null)  @section('pageDescryption',  $pageDescryption) @endif
+        
+        @if ($pageImage != null) @section('pageImage', $pageImage)   @endif
 
     @include('layouts.head')
 @endsection

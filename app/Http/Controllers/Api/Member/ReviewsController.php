@@ -9,7 +9,9 @@ use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\Review;
+use App\Models\DraftReview;
 use App\Models\User;
+use Carbon\Carbon;
 
 class ReviewsController extends Controller{
       /*
@@ -85,26 +87,29 @@ class ReviewsController extends Controller{
         public function  updateReview(Request $request, $review_url){
                 $user = User::where('id', Auth::user()->id)->first();
     
-                $pub_title = $request->input('review_title');
+                $pub_title = $request->input('pub_title');
     
-                $pub_subtitle = $request->input('review_subtitle');
+                $pub_subtitle = $request->input('pub_subtitle');
     
-                $pub_body = $request->input('review_body');
+                $pub_body = $request->input('pub_body');
     
-                $pub_tags = $request->input('review_tags');
+                $pub_tags = $request->input('pub_tags');
     
-                $pub_image =  $request->file('review_picture');
+                $pub_image =  $request->file('pub_picture');
     
-                $pub_category = $request->input('review_category');
+                $pub_category = $request->input('pub_category');
+
+                $pub_color =  $request->input('pub_color');
     
-                $pub_destination_folder = "/images/reviews/drafts/";
+                $pub_destination_folder = "/images/reviews/articles/";
     
                 $request->validate([
-                        'review_title' => 'required|string|min:10|max:55',
-                        'review_subtitle' => 'required|string|min:25|max:150',
-                        'review_body' => 'required|string|min:300',
-                        'review_tags' => 'required|string|min:2',
-                        'review_category' => 'required',
+                        'pub_title' => 'required|string|min:10|max:55',
+                        'pub_subtitle' => 'required|string|min:25|max:150',
+                        'pub_body' => 'required|string|min:300',
+                        'pub_tags' => 'required|string|min:2',
+                        'pub_category' => 'required',
+                        'pub_color' => 'required|string|min:4|min:7'
                 ]);
     
                 $updateData = Review::where('pub_url', $review_url)->firstOrFail();
@@ -120,7 +125,53 @@ class ReviewsController extends Controller{
                 else{  $pub_picture = $updateData->pub_picture; }
     
                 $updateData->update(['id_author' => $user->id,  'pub_title' => $pub_title, 'pub_subtitle' => $pub_subtitle , 'pub_body' => $pub_body, 'pub_picture' => $pub_picture,  
-                'pub_tags' => $pub_tags, 'pub_category' => $pub_category]);
+                'pub_tags' => $pub_tags, 'pub_category' => $pub_category,'pub_color' => $pub_color ]);
+        }
+
+        /*
+        =======================
+        Save review  draft
+        =======================
+        */
+        public function  saveReviewDraft(Request $request, $review_url){
+                $user = User::where('id', Auth::user()->id)->first();
+    
+                $pub_title = $request->input('pub_title');
+    
+                $pub_subtitle = $request->input('pub_subtitle');
+    
+                $pub_body = $request->input('pub_body');
+    
+                $pub_tags = $request->input('pub_tags');
+    
+                $pub_image =  $request->file('pub_picture');
+    
+                $pub_category = $request->input('pub_category');
+
+                $pub_color =  $request->input('pub_color');
+    
+                $pub_destination_folder = "/images/reviews/drafts/";
+    
+                $request->validate([
+                        'pub_title' => 'required|string|min:10|max:55',
+                        'pub_category' => 'required',
+                        'pub_color' => 'required|string|min:4|min:7'
+                ]);
+    
+                $updateData = DraftReview::where('pub_url', $review_url)->firstOrFail();
+    
+                if(!empty($pub_image)){
+                        $pub_image_name = Str::slug($pub_title, "-") . rand() .  '.' . $pub_image->getClientOriginalExtension();
+        
+                        $pub_image->move(public_path($pub_destination_folder), $pub_image_name);
+        
+                        $pub_picture = $pub_destination_folder .   $pub_image_name;
+                }
+    
+                else{  $pub_picture = $updateData->pub_picture; }
+    
+                $updateData->update(['id_author' => $user->id,  'pub_title' => $pub_title, 'pub_subtitle' => $pub_subtitle , 'pub_body' => $pub_body, 'pub_picture' => $pub_picture,  
+                'pub_tags' => $pub_tags, 'pub_category' => $pub_category,'pub_color' => $pub_color ]);
         }
 }
 

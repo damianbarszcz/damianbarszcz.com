@@ -13,7 +13,7 @@
                 &_modifier{ border-bottom: 2px  solid $color; }
 
                 &--title{
-                        @include boxHeading($font-size-normal,$bold-weight, $color);
+                        @include boxHeading($font-size-normal,$color);
                         text-transform: uppercase;
                 }
         }
@@ -58,6 +58,7 @@
                 margin-top:2rem;
         }
 
+        // Top review > Block > Inner > Article
         &__inner &__article{
                 padding:1.25rem 1rem;   
     
@@ -77,21 +78,15 @@
                 }
 
                 &-media{
-    
-                       &--artwork{
-                                @include setItemArtwork(60%);  
-
-                                background-size: cover !important;
-                                background-repeat: no-repeat !important;
-                        }
+                       &--artwork{ @include setItemArtwork;    }
                 }
 
                 &-header{
                         margin-top:1rem;
                        
-                        &--title{  @include boxHeading($font-size-big, $bold-weight, $app-color-gray); }
+                        &--title{  @include boxHeading; }
     
-                        &--desc{  @include boxDescContent; white-space: pre-wrap; }                              
+                        &--desc{  @include boxDescContent; }                              
                 }
     
                 &-category{                        
@@ -99,7 +94,7 @@
                         @include pageButton(90px);
                 }
     
-                $bookCategory: (#{$app-color-red}:"programming", #{$app-color-blue}:"development", #{$app-color-yellow}:"astrophysics", #{$app-color-green}:"business");
+                $bookCategory: (#{$app-color-red}:"programowanie", #{$app-color-blue}:"rozwój", #{$app-color-yellow}:"astrofizyka", #{$app-color-green}:"biznes");
     
                 @each $color, $category in $bookCategory {
                         [data-book-category="#{$category}"]{
@@ -144,11 +139,6 @@
 
          // Library manager > Block > Inner > Article
        @include articleItems;
-
-       &__article-artwork{
-                background-size: cover !important;
-                background-repeat: no-repeat !important;
-        }
 }
 
 /*-----------------------------
@@ -158,13 +148,13 @@
 .popular{
         @include sectionDefinition;
 
-        &_theme{  background-color:$app-color-dark;  }
+        &_theme{  background-color:$app-color-white;  }
 
         // Library manager > Block
         &__block{  @include blockPadding(4rem, 0, 4rem);  }
         
         // Popular > Block > Header
-        @include localLibraryHeader($app-color-white);
+        @include localLibraryHeader;
 
         // Popular > Block > Inner
         &__inner{
@@ -179,16 +169,6 @@
 
                 &_modifier{
                         @include articleImage;
-                }
-
-                $brand-color: (rgba($app-color-red, 0.75), rgba($app-color-blue, 0.75), rgba($app-color-yellow, 0.75), rgba($app-color-green, 0.75));
-
-                @for $i from 1 through length($brand-color) {
-                        &:nth-child(#{$i}) {
-                                .popular__article-link {
-                                        &:hover{  text-decoration: none;  background-color:nth($brand-color,$i) }
-                                }
-                        }
                 }
 
                  // Popular > Block > Inner > Article > Single item
@@ -218,7 +198,7 @@
                         left:1rem;
                         right:1rem;
         
-                        &--title{ @include boxHeading($font-size-extra-normal, $bold-weight, $app-color-white);   }
+                        &--title{ @include boxHeading($font-size-extra-normal, $app-color-white);   }
         
                         &-category{
                                 margin-top:1rem;
@@ -298,13 +278,19 @@
                         }
 
                         &-header{
-                                &--title{  @include boxHeading($font-size-extra-normal, $bold-weight, $app-color-gray); }              
+                                &--title{  @include boxHeading($font-size-extra-normal, $app-color-gray); }              
                         }
                 }
         }
 }
 
 @media (max-width: 576px) {
+        .library-banner{
+                // Projects banner > Block > Header
+                &__block &__header{   
+                        @include sectionHeaderLeftV2(40rem, $app-color-gray, $app-color-red);
+                }
+        }
 
         .library-manager{
                 &_theme{    background-size:auto; }

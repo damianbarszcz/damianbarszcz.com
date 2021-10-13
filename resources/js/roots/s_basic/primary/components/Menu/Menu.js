@@ -1,6 +1,5 @@
 
 import  React, { useState  } from 'react';
-import { Link } from 'react-router-dom';
 import { useDetectClickOutside } from 'react-detect-click-outside';
 import disableScroll from 'disable-scroll';
 import NavBrand from '../NavBrand/NavBrand';
@@ -30,19 +29,17 @@ function Menu(props) {
                 const ref = useDetectClickOutside({ onTriggered: closeToggle });
 
                 return(
-                <>
                 <ul className={`${props.typeSection}__menu-list ${props.typeSection}__menu-list_modifier ${props.typeSection}__menu-list--mobile ${menuAnimate ? `${props.typeSection}__menu-list--open` : `${props.typeSection}__menu-list--close`}` } ref={ref}>
                         <li className={`${props.typeSection}__menu-list-brand`}>
                                 <NavBrand typeSection={props.typeSection} />
                         </li>
-
                         <li className={`${props.typeSection}__menu-list-item`}>
                                 <a href='/projects' className={`${props.typeSection}__menu-list-link ${props.typeSection}__menu-list-link_effect`} target="_self"> Projekty </a>
-                        </li>
+                        </li> 
 
                         <li className={`${props.typeSection}__menu-list-item`}>
                                 <a href="/library" className={`${props.typeSection}__menu-list-link ${props.typeSection}__menu-list-link_effect`} target="_self"> Biblioteka </a>
-                        </li>
+                        </li> 
 
                         <li className={`${props.typeSection}__menu-list-item`}>
                                 <a href="/contact" className={`${props.typeSection}__menu-list-link ${props.typeSection}__menu-list-link_effect`} target="_self"> Kontakt </a>
@@ -52,7 +49,6 @@ function Menu(props) {
                                 <a href="/about" className={`${props.typeSection}__menu-list-link ${props.typeSection}__menu-list-link_effect`} target="_self"> O mnie </a>
                         </li>
                 </ul>
-                </>
                 )
         }
 
@@ -72,11 +68,11 @@ function Menu(props) {
                         <ul className={`${props.typeSection}__menu-list ${props.typeSection}__menu-list--desktop`}>
                                 <li className={`${props.typeSection}__menu-list-item`}>
                                         <a href='/projects' className={`${props.typeSection}__menu-list-link ${props.typeSection}__menu-list-link_effect ${props.typeSection}__menu-list-link--desktop`} target="_self"> Projekty </a>
-                                </li>
+                                </li> 
 
                                 <li className={`${props.typeSection}__menu-list-item`}>
                                         <a href="/library" className={`${props.typeSection}__menu-list-link ${props.typeSection}__menu-list-link_effect ${props.typeSection}__menu-list-link--desktop`} target="_self"> Biblioteka </a>
-                                </li>
+                                </li> 
 
                                 <li className={`${props.typeSection}__menu-list-item`}>
                                         <a href="/contact" className={`${props.typeSection}__menu-list-link ${props.typeSection}__menu-list-link_effect ${props.typeSection}__menu-list-link--desktop`} target="_self"> Kontakt </a>

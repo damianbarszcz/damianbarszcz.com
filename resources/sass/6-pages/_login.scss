@@ -1,7 +1,7 @@
 
 /*-----------------------------------------------------
  * Login (https://www.damianbarszcz.com)
- * Copyright 2020 Damian Barszcz
+ * Copyright 2021 Damian Barszcz
  *-----------------------------------------------------*/
 
 /*-----------------------------
@@ -34,15 +34,11 @@
 
                 // Login > Brand
                &__box &__inner   &__brand{
-                        .author-logo__item--yellow{ fill:$app-color-yellow; }
-                        .author-logo__item--blue{ fill:$app-color-blue; }
-                        .author-logo__item--red{ fill:$app-color-red; }
-                        .author-logo__item--green{ fill:$app-color-green; }
                         .author-logo__item--dark{ fill:$app-color-gray; }
                 }
 
                 // Login > Header
-                &__header{  margin-top:1rem; &--title{@include boxHeading($font-size-normal, $bold-weight, $app-color-gray);  }  }
+                &__header{  margin-top:1rem; &--title{@include boxHeading($font-size-normal, $app-color-gray);  }  }
 
                 //Login > Form 
                  &__box &__inner   &__form{
@@ -77,33 +73,4 @@
                         }
                 }
         }
-
-
-/*-----------------------------
-*               RWD
-*----------------------------*/
-
-@media (max-width: 1366px) {
-        .login{
-                &_theme{ background-color: $app-color-red;  }
-        }
-}
-
-@media (max-width: 1024px) {
-        .login{
-                &_theme{ background-color: $app-color-green;  }
-        }
-}
-    
-@media (max-width: 768px) {
-        .login{
-                &_theme{ background-color: $app-color-blue;  }
-         }      
-}
-    
-@media (max-width: 414px) {
-        .login{
-                &_theme{ background-color: $app-color-yellow;  }
-         }
-}
 

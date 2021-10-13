@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 {  /*  Components */ }
-import { Sidenav,ReviewsPanel  } from '../../components';
+import { Sidenav,ReviewsPanel,AccountHeader,NoCollection  } from '../../components';
 import { msgSuccess } from '../../../global/Msg';
 import { deleteModal } from '../../../global/Modal';
 
@@ -146,12 +146,19 @@ class Reviews extends Component {
                 modalIsLoading: isLoading, modalPassword: password, buttonTitle:"Usuń recenzje" }
 
                 return (
-                        <>
+                        <main>
                                 { successMessage &&   msgSuccess(getDescryption)  }
                                 <Sidenav />
-                                <ReviewsPanel  collection ={ collection } getModal={ this.getModal } />
+                                <AccountHeader  functionTitle="Recenzje" typeFunction="library_books " />
+
+                                { collection.length != 0 ?
+                                        <ReviewsPanel collection={ collection } getModal={ this.getModal } /> 
+                                        :
+                                        <NoCollection type="publication" noCollectionTitle="Brak recenzji" noCollectionDesc="Akutalnie nie masz żadnych stworzonych recenzji." 
+                                        noCollectionHref="new-review" noCollectionBtnCaption="Stwórz recenzje" />
+                                 }
                                 {  displayDeleteModal  &&   deleteModal(getFeatures)  }
-                        </>
+                        </main>
                 );
         }
 }

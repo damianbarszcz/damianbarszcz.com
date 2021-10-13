@@ -51,7 +51,7 @@
                                 @include inlineSpecyficElements;
                                 margin-top:2.5rem;
 
-                                &--title{  @include boxHeading($font-size-big, $bold-weight, $app-color-gray);  }
+                                &--title{  @include boxHeading($font-size-big, $app-color-gray);  }
 
                                 &--desc{  @include boxDescContent($font-size-normal, $regular-weight, $app-color-silver);   }
                         }

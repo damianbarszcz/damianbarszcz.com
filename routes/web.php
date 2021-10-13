@@ -23,7 +23,7 @@ Route::get('/project/{slug}', [BasicController::class, 'singleProjectView']);
 
 Route::get('/review/{slug}', [BasicController::class, 'singleReviewView']);
 
-Route::get('/help/{slug}', [BasicController::class, 'searchView']);
+Route::get('/help/search={slug}', [BasicController::class, 'searchView']);
 
 Auth::routes();
 
@@ -35,9 +35,9 @@ Route::group(['prefix' => '/member'], function(){
 
         Route::get('/reviews/edit/{slug}', [MemberController::class, 'reviewEditView']);
 
-        Route::get('/drafts/project/continue/{slug}', [MemberController::class, 'projectDraftEditView']);
+        Route::get('/projects/draft/{slug}', [MemberController::class, 'projectDraftView']);
 
-        Route::get('/drafts/review/continue/{slug}', [MemberController::class, 'reviewDraftEditView']);
+        Route::get('/reviews/draft/{slug}', [MemberController::class, 'reviewDraftView']);
 });
 
 

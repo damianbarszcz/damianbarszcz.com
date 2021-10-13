@@ -10,7 +10,7 @@ class Project extends Model{
 
         protected $table = "projects";
 
-        protected $fillable = ['user_id','pub_title', 'pub_subtitle', 'pub_body', 'pub_picture', 'date_of_publication', 'pub_url', 'pub_tags'];
+        protected $fillable = ['user_id','pub_title', 'pub_subtitle', 'pub_body', 'pub_picture', 'date_of_publication', 'pub_url', 'pub_tags','pub_color'];
 
         public function user(){
                 return $this->belongsTo(User::class);

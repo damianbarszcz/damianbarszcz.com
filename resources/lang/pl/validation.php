@@ -30,26 +30,27 @@ return [
         
         'password' => [ 'required' => 'Podaj swoje hasło.' ],
 
-        'project_title' => [ 'required' => 'Podaj tytuł projektu.', 'min' => 'Tytuł  artykułu musi składać się z co najmniej 3 znaków'],
+        'pub_title' => [ 
+            'required' => 'Podaj tytuł artykułu.', 
+            'min' => 'Tytuł artykułu musi składać się z co najmniej :min znaków', 
+            'max' => 'Tytuł artykułu może składać się maksymalnie z :max znaków.' 
+        ],
 
-        'project_subtitle' => [ 'required' => 'Podaj podtytuł projektu.','min' => 'Podtytuł artykułu musi składać się z co najmniej 20 znaków' ],
+        'pub_subtitle' => [ 
+            'required' => 'Podaj podtytuł artykułu.',
+            'min' => 'Podtytuł artykułu musi składać się z co najmniej :min znaków',  
+            'max' => 'Podtytuł artykułu może składać się maksymalnie z :max znaków.' 
+        ],
 
-        'project_body' => [ 'required' => 'Podaj treść artykułu projektu.',  'min' => 'Treść artykułu musi składać się z co najmniej 300 znaków' ],
+        'pub_body' => [ 
+            'required' => 'Podaj treść artykułu.',  
+            'min' => 'Treść artykułu musi składać się z co najmniej :min  znaków'
+         ],
 
-        'project_tags' => [ 'required' => 'Podaj tagi projektu.' ],
+        'pub_tags' => [ 'required' => 'Podaj tagi artykułu.' ],
 
-        'project_picture' => [ 'required' => 'Podaj obrazek artykułu projektu.' ],
+        'pub_picture' => [ 'required' => 'Podaj obrazek artykułu.' ],
 
-        'review_title' => [ 'required' => 'Podaj tytuł recenzji.', 'min' => 'Tytuł  artykułu musi składać się z co najmniej 3 znaków'],
-
-        'review_subtitle' => [ 'required' => 'Podaj podtytuł recenzji.','min' => 'Podtytuł artykułu musi składać się z co najmniej 20 znaków' ],
-
-        'review_body' => [ 'required' => 'Podaj treść recenzji.',  'min' => 'Treść artykułu musi składać się z co najmniej 300 znaków' ],
-
-        'review_tags' => [ 'required' => 'Podaj tagi recenzji.' ],
-
-        'review_picture' => [ 'required' => 'Podaj obraz recenzji.' ],
-
-        'review_category' => [ 'required' => 'Podaj kategorie recenzji.' ],
+        'pub_category' => [ 'required' => 'Podaj kategorie artykułu.' ],
     ],
 ];

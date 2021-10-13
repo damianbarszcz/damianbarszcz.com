@@ -12,17 +12,6 @@ const PersonalInfo = (props) => {
             <>
                 <section className="personal-info personal-info_theme">
                         <div className="personal-info__block">
-                                {  /*---  Personal info > Block > Header   ---*/   }
-                                <header className="personal-info__header personal-info__header_modifier">
-                                        <span className="personal-info__header-square personal-info__header-square_modifier"><i className="material-icons material-icons-outlined"> account_circle </i> </span>
-
-                                        <div className="personal-info__header-content">
-                                                <h1 className="personal-info__header-content--title"> Dane personalne </h1>
-
-                                                <p className="personal-info__header-content--subtitle"> Pulpit | Dane personalne </p>
-                                        </div>
-                                </header>
-
                                 {  /*---  Personal info > Block > Inner   ---*/   }
                                 <div className="personal-info__inner">
                                         <div className="personal-info__profile personal-info__profile_modifier">

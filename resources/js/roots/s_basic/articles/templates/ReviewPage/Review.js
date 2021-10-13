@@ -3,7 +3,7 @@ import axios from 'axios';
 
 {  /*  Components */ }
 import { Footer, Navigation } from '../../../primary/components';
-import { ArticleBody, ArticleRelated } from '../../components';
+import { ReviewBody, ArticleRelated } from '../../components';
 import { relatedDisplay } from '../../../../global/Publications';
 import { ArticleObjOne } from './Data';
 
@@ -38,9 +38,9 @@ function Review(props) {
         */
         return(
                 <>
-                        <Navigation articleTitle={ review.pub_title}  typeSection={'navigation'}  pub_url = {review.pub_url}  pub_category= {review.pub_category} />
+                        <Navigation articleTitle={ review.pub_title}  typeSection={'navigation'}  pub_url = {review.pub_url}  pub_category= {review.pub_category} projects = { props.projects  }  reviews = { props.reviews } />
                         <main>
-                                <ArticleBody  typeSection={'article'} typeArticle={ 'article--book' } pub_title = { review.pub_title } pub_subtitle = { review.pub_subtitle } pub_body = { review.pub_body }  
+                                <ReviewBody  typeSection={'article'} typeArticle={ 'article--book' } pub_title = { review.pub_title } pub_subtitle = { review.pub_subtitle } pub_body = { review.pub_body }   pub_color = { review.pub_color  }
                                 pub_picture = { review.pub_picture}  date_of_publication ={ review.date_of_publication } pub_tags = { review.pub_tags} pub_url = {review.pub_url}  pub_category= {review.pub_category}  /> 
 
                                 <ArticleRelated  sectionType={'related--book' } relatedHeaderTitle={ ArticleObjOne.related_title} randArticles = {relatedDisplay(setRandReviews)} />

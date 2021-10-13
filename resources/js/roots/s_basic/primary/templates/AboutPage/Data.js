@@ -1,10 +1,13 @@
+import  React from 'react';
+
 export const aboutObjOne = {
   birth_title:'Data urodzenia:', 
   birth_date:'29.03.1996',
   nat_title:'Narodowość:',
   nat_caption: 'Polska',
   study_title:'Alma Mater:',
-  study_caption: 'Politechnika Śląska',
+  study_caption_one: 'Politechnika Śląska',
+  study_caption_two: 'Uniwersytet Jagielloński',
   occupation_title: 'Zawód',
   occupation_caption:'Programista',
   letter:{
@@ -17,13 +20,10 @@ export const aboutObjOne = {
 
   timeline:{
       born:"Zamość",
-      get_knowledge:'Zdobywanie wiedzy',
-      knowledge_with:'z zasad działania ',
-      knowledge_computer:'komputera.',
-      study_start:'Rozpoczecie nauki na',
-      study_place:'Politechnice Śląskiej.',
-      learn_start:'Start z nauką ',
-      learn_programming:'programowania.'
+      step_2010: <>Zdobywanie wiedzy <tspan x="0" y="25">z zasad działania</tspan><tspan x="0" y="50">komputera.</tspan></>,
+      step_2014:<>Start z nauką <tspan x="0" y="25">programowania.</tspan></>,
+      step_2016:<>Rozpoczecie nauki na<tspan x="0" y="25">Politechnice Śląskiej.</tspan></>,
+      step_2021:<>Rozpoczecie nauki na<tspan x="0" y="25">Uniwersytecie</tspan><tspan x="0" y="50">Jagiellońskim.</tspan></>,
   }
 };
 

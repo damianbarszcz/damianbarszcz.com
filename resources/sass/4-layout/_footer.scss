@@ -37,7 +37,7 @@
                         grid-column-end: 4;
                 }
 
-                &--title{  @include boxHeading($font-size-normal, $bold-weight, $app-color-gray); text-transform: uppercase ; margin-bottom:2rem; }
+                &--title{  @include boxHeading($font-size-normal,  $app-color-gray); text-transform: uppercase ; margin-bottom:2rem; }
 
                 &--desc{   @include boxDescContent($font-size-normal, $regular-weight, $app-color-gray);   }
 

@@ -1,4 +1,5 @@
 import  React from 'react';
+import Typewriter from 'typewriter-effect';
 
 const LibraryBanner = (props) => {
     
@@ -16,7 +17,9 @@ const LibraryBanner = (props) => {
                         <div className="library-banner__block g-container">
                             {  /*---  Library banner > Header ---*/   }
                             <header className="library-banner__header library-banner__header_modifier">
-                                    <h1 className="library-banner__header--title"> <strong>{ props.libraryObjOne.headerStrongTitle } </strong> { props.libraryObjOne.headerTitle } </h1>
+                                    <h1 className="library-banner__header--title"> 
+                                            <strong> { props.libraryObjOne.headerStrongTitle } </strong> <Typewriter options={{  strings: [props.libraryObjOne.headerTitle ], autoStart: true, loop: true}} />
+                                     </h1>
                              </header>
                             </div>
                     </section>

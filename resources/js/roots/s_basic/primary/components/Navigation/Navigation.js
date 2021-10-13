@@ -48,6 +48,7 @@ class Navigation extends Component {
         updateWindowDimensions() {
                 this.setState({ width: window.innerWidth  });
 
+
                 if(this.props.articleTitle){
                         if(this.state.width > 768 && window.pageYOffset > 500){
                                 this.setState({  menu:false, articleRead:true,searchBox:false  });
@@ -139,7 +140,7 @@ class Navigation extends Component {
                                 <div className={`${this.props.typeSection}__block g-container`}>
                                         { !searchBox && <NavBrand typeSection={this.props.typeSection} /> }
                                                 
-                                        { (!searchBox  &&  menu) &&  <Menu typeSection={this.props.typeSection} />  }
+                                        { (!searchBox  &&  menu) &&  <Menu typeSection={this.props.typeSection}  reviews= { this.props.reviews } projects = { this.props.projects } />  }
                                                 
                                         { searchBox  &&   <NavSearch typeSection={this.props.typeSection} search_tag= { search_tag}  searchPublication={this.searchPublication}  handleSearchData ={this.handleSearchData} closeSearchForm={this.closeSearchForm} /> }
 

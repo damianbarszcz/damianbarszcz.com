@@ -18,17 +18,6 @@ const OverviewPanel = (props) => {
                         {  /*-------------------------------*/   }
                         <section className="overview overview_theme">
                                 <div className="overview__block">
-                                        {  /*---  Overview > Block > Header ---*/   }
-                                        <header className="overview__header overview__header_modifier">
-                                                <span className="overview__header-square overview__header-square_modifier"><i className="material-icons material-icons-outlined"> home </i> </span>
-
-                                                <div className="overview__header-content">
-                                                        <h1 className="overview__header-content--title"> Przegląd  </h1>
-                                                        
-                                                        <p className="overview__header-content--subtitle"> Pulpit | Przegląd </p>
-                                                </div>
-                                        </header>
-
                                         <div className="overview__inner">
                                                  {  /*---  Overview > Block > Inner > Pub   ---*/   }
                                                 <div className="overview__inner-pub overview__inner-pub_modifier">

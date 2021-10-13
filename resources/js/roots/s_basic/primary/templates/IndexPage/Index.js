@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 
 {  /*  Components */  }
 import { LibrarySection, ProjectsSection, NewPublication, Footer, Navigation } from '../../components';
-import { getNewPublication,getReviewsCarousel }  from '../../../../global/Publications';
 import { indexObjOne, indexObjTwo  } from './Data';
 
 /*
@@ -22,10 +21,10 @@ function Index(props)  {
         });
 
         /*
-        =======================
-         Change carousel position
+        ===========================
+         Change carousel items position
          (W remoncie)
-        =======================
+        ===========================
         */
         const chooseLeft = () =>{
                 getPosition(position+190);
@@ -49,19 +48,22 @@ function Index(props)  {
          Reder component
         =======================
         */
-        const newPublicationDisplay = { newPubCollection: props.setCollection }
-
-        const getReviews = { reviewsCollection: props.setReviews, position:position }
 
         return(
                 <>
-                        <Navigation typeSection={'navigation'} />  
-                        <Navigation typeSection={'main-header'} />
+                        <Navigation typeSection={ 'navigation' }  projects = {props.projects  }  reviews = { props.reviews } />  
+                        <Navigation typeSection={ 'main-header' } projects = {props.projects  }  reviews = { props.reviews } />
                         <main>
-                                <NewPublication  getNewPublication = {  getNewPublication(newPublicationDisplay) } />
-                                <ProjectsSection projects = { props.projects } indexObjOne = { indexObjOne } />
-                                <LibrarySection  prevButton = { prevButton } nextButton= { nextButton } getReviewsCarousel = {  getReviewsCarousel(getReviews) } 
-                                chooseLeft = { chooseLeft } chooseRight = { chooseRight } indexObjTwo = { indexObjTwo }  />                     
+                                <NewPublication  newPublication = {  props.collection } />
+
+                                { props.projects.length  > 5 &&
+                                        <ProjectsSection collection={ props.collection } projects = { props.projects } indexObjOne = { indexObjOne } />
+                                 }  
+
+                                { props.reviews.length  > 5  &&
+                                        <LibrarySection  collection={ props.collection } reviews = {  props.reviews }  prevButton = { prevButton } nextButton= { nextButton }  chooseLeft = { chooseLeft }
+                                        chooseRight = { chooseRight } indexObjTwo = { indexObjTwo }  />      
+                                 }  
                         </main>
                         <Footer />
                 </>

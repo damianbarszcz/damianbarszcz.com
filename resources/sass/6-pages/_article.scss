@@ -10,115 +10,142 @@
 .article{
         @include sectionDefinition;
 
-        &_theme{   background-color:$app-color-white;  }
-
-        // Article for Reviews
+        // for Reviews
         &--book{
-                // Article > Block 
-                .article__block{ @include blockPadding(2rem, 0, 6rem)  }
+                // Article > Head
+                .article__head{ 
+                        @include blockPadding(5rem, 0, 3rem); 
 
-                .article__phero{
+                        // Article > Head > Artwork
                         &-artwork{  
-                                @include backgroundBlockArtwork(100%, 45rem);                        
-                                margin-bottom:2rem;
+                                background-size:contain !important;
+                                background-repeat: no-repeat !important;
+                                background-position: center !important;
+                                min-width: 100%;
+                                height:35rem;     
                         }
-                }
+
+                        // Article > Head > Header
+                        &-header{
+                                margin:1.5rem auto  0rem auto;
+                                max-width: 1140px;
+                                text-align: center;
+
+                                &--title{  
+                                        margin-top:1rem;
+
+                                        @include boxHeading($font-size-huge);  
+                                }
+                    
+                                &--caption{  
+                                        margin-top:1rem;
+                    
+                                        @include boxDescContent($font-size-extra-normal, $regular-weight);  
+                                }
+
+                                &--category{  @include pageButton(90px);}
+
+                                .dark-style{
+                                        border:0.15rem solid $app-color-dark;
+                                        color:$app-color-dark;
+                                }
+
+                                .light-style{
+                                        border:0.15rem solid $app-color-white;
+                                        color:$app-color-white;
+                                }
+
+                                .text-dark{ color:$app-color-dark; }
+
+                                .text-light{ color:$app-color-white;  }
+                        }
+                } 
         }
 
         // Article for Projects
         &--project{
-                // Article > Block 
-                .article__block{ @include blockPadding; }
+                .article__head{ 
+                        position: relative;
 
-                .article__phero{
-                        @include inlineRepeatColElements(2, $columnSize: 1fr,$space: 8rem);
-                        margin: 4.5rem 0 9rem;
-                        align-items: center;
-            
-                        &-artwork{  @include backgroundBlockArtwork; }
-                }
-        }
+                        &-inner{
+                                display: grid;
+                                grid-template-columns: 1fr 1fr;
+                                grid-column-gap: 2.5rem;
+                                grid-row-gap: 0rem;
+                                align-items: center;
+                                height:75vh;  
+                        }
 
-        //Article > Block > Project hero
-        &__phero{
+                        &-artwork{  
+                                height: 420px;
+                                background-size:contain !important;
+                                background-repeat: no-repeat !important;
+                                background-position: center !important;
+                        }
 
-                //Article > Block > Project Hero > Header
-                &-header{
-                        &--title{  @include boxHeading($font-size-big, $bold-weight, $app-color-gray);  }
-
-                        &--desc{  @include boxDescContent($font-size-extra-normal, $regular-weight, $app-color-silver);   }
-                }
-         }
-
-        //Article > Block > Component
-        &__component{
-                 margin-top:2rem;
-                 width:100%;
-
-                &_modifier{ border-bottom: 1px solid $app-color-lsilver; }
-
-                &-inner{
-                        display: grid;
-                        grid-template-columns: 0.75fr 0.5fr;
-                        align-items: center;
-                        padding-bottom:1rem;
-                 }
-
-                &-info{
-                        transform: translateY(-0.25rem);
-                        &--author{ margin-left:1rem; color:$app-color-gray; line-height:3rem ;}
-            
-                        &--date{  margin-left:1rem; color:$app-color-blue; }
-            
-                        &--image{
-                                display:inline-block;
-                                width:2rem;
-                                height:2rem;
-                                background-image:url('../images/favicons/favicon.png');
-                                transform:translateY(0.5rem);
-                                @include  fullImage;
+                        &-header{
+                                &--title{  
+                                        @include boxHeading($font-size-huge);  
+                                }
+                    
+                                &--caption{  
+                                        margin-top:1rem;
+                    
+                                        @include boxDescContent($font-size-extra-normal, $regular-weight);  
+                                }
+    
+                                .dark-style{
+                                        border:0.15rem solid $app-color-dark;
+                                        color:$app-color-dark;
+                                }
+    
+                                .light-style{
+                                        border:0.15rem solid $app-color-white;
+                                        color:$app-color-white;
+                                }
+    
+    
+                                .text-dark{ color:$app-color-dark; }
+    
+                                .text-light{ color:$app-color-white;  }
                         }
                 }
-
-                &-discussion{ text-align: right;  }
         }
 
-        @include articleShare('article-body');
-
-        // Article > Block > Content
-        &__content{
-                margin:5rem 0 5rem;
-
-                &-inner{ @include boxCenter; text-align: left; }
-
-                &--body{ position:relative;  }
-        }
-
-        // Article > Block > Holders
-        &__holders{
-                @include boxCenter;
-                text-align: left;  
-
-                &-tag { 
-                        padding: 1rem 2.5rem;
-                        margin-right:1rem;
-
-                        &_modifier{
-                                background-color:$app-color-lsilver;
-                                border-radius: 25px;
-                                font-size:$font-size-normal;
-                                font-weight: $bold-weight;
-                                color:$app-color-gray;
+        // Article > Body
+        &__body{
+                margin:auto;
+                padding: 3rem 0 3rem;
+                width:40vw;
+        
+                // Article > Body > Content
+                &-content{ 
+                        @include pubSystem(true);
+        
+                        &_modifier{  text-align: left;  }
+                }
+        
+                // Article > Body > Holders
+                &-holders{ 
+                        margin: 4.5rem auto 0rem;
+                                        
+                        &_modifier{  text-align: left;  }
+        
+                        &-tag { 
+                                padding: 1rem 2.5rem;
+                                margin-right:1rem;
+                            
+                                &_effect{
+                                        background-color:$app-color-lsilver;
+                                        border-radius: 25px;
+                                        font-size:$font-size-normal;
+                                        font-weight: $bold-weight;
+                                        color:$app-color-gray;
+                                }
                         }
                  }
         }
-
-        // Article > Block > Discussion
-        &__discussion{
-                padding-top:6rem;
-                @include boxCenter;
-         }
- }
+}
 
 /*-----------------------------
 *              Related
@@ -126,14 +153,17 @@
 
 .related{
         @include sectionDefinition;
-
-        &_theme{ background-color: $app-color-white; border-top: 1px solid $app-color-lsilver; }
-
+    
+        &_theme{ 
+                background-color: $app-color-white; 
+                border-top: 1px solid $app-color-lsilver; 
+        }
+    
         // Related > Block
         &__block{ @include blockPadding }
-
+    
         &__block &__header{ @include sectionHeaderLeftV2  }
-
+    
         // Related > Block > Articles
         @include articleItems;
 }
@@ -142,118 +172,160 @@
 *        RWD System
 *----------------------------*/
 
+//Very large screen
+@media (max-width: 1366px) {
+        .article{
+                // for Reviews
+                &--book{
+                        // Article > Head 
+                        .article__head{ 
+                                // Article > Head > Artwork
+                                &-artwork{  
+                                        height:32.5rem;
+                                }
+                        }
+                }
+        }
+
+        // Article > Body
+        .article__body{  width:50vw;  }
+}
+
 //Desktops, large screens
 @media (max-width: 1200px) {
-
-         // Article
         .article{
-                 // Article .... article project
-                &--project{
-                        // Article > Block > Phero
-                        .article__phero{
-                                @include inlineRepeatColElements(2, $columnSize: 1fr,$space: 4rem);
+                // for Reviews
+                &--book{
+                        // Article > Head 
+                        .article__head{ 
+                                // Article > Head > Artwork
+                                &-artwork{  
+                                        height:30rem;
+                                }
                         }
-                } 
+                }
         }
 
-        // Related
-        .related{           
-                // Related > Block > Inner
-                &__block &__inner{ @include  inlineRepeatColElements(3, 1fr, 1.5rem);  }
+        // Article > Body
+        .article__body{  width:65vw;  }
+
+       // Related
+       .related{           
+               // Related > Block > Inner
+               &__block &__inner{ @include  inlineRepeatColElements(3, 1fr, 1.5rem);  }
         }
 }
-
+   
 //Small screens, laptops
 @media (max-width: 960px) {
-
-        // Article
         .article{
-                
-                // Article .... article book
+                // for Reviews
                 &--book{
-                        // Article > Block > Phero
-                        .article__phero{
-                                &-artwork{  @include backgroundBlockArtwork(100%, 40rem);   }
+                        // Article > Head 
+                        .article__head{ 
+                                // Article > Head > Artwork
+                                &-artwork{  
+                                        height:25rem;
+                                }
                         }
-                } 
-
-                // Article .... article project
-                &--project{
-                        // Article > Block > Phero
-                        .article__phero{
-                                @include inlineRepeatColElements(2, $columnSize: 1fr,$space: 2rem);
-                        }
-                } 
+                }
         }
 
-        // Related
-        .related{       
-                // Related  > Block > Inner > Articles
-                &__block &__inner{ @include  inlineRepeatColElements(2, 1fr, 1.5rem);  }  
-                // Related  > Block > Article
-                &__article{
-                        &:nth-child(3){ display: none;  }
-                } 
-        }
+        // Article > Body
+        .article__body{ width:75vw;  }
+
+       // Related
+       .related{       
+               // Related  > Block > Inner > Articles
+               &__block &__inner{ @include  inlineRepeatColElements(2, 1fr, 1.5rem);  }  
+               // Related  > Block > Article
+               &__article{
+                       &:nth-child(3){ display: none;  }
+               } 
+       }
 }
-
+   
 //iPads, Tablets
 @media (max-width: 768px) {
-
-        // Article
         .article{
-                 // Article > Block 
-                .article__block{ @include blockPadding(2rem, 0, 6rem)  }
-
-                // Article > Phero
-                .article__phero{
-                        @include inlineRepeatColElements(1, 1fr,1rem);
-                        margin-bottom:1rem;
-                
-                        // Article > Phero > Artwork
-                        &-artwork{  @include backgroundBlockArtwork(100%, 30rem);   }
-
-                        // Article > Phero > Header
-                        &-header{
-                                &--title{  @include boxHeading($font-size-extra-normal, $bold-weight, $app-color-gray);  }
-
-                                &--desc{  @include boxDescContent($font-size-normal, $regular-weight, $app-color-silver);   }
+                // for Reviews
+                &--book{
+                        // Article > Head 
+                        .article__head{ 
+                                // Article > Head > Artwork
+                                &-artwork{  
+                                        height:20rem;
+                                }
                         }
                 }
 
-                &__content{
-                        margin:2.5rem 0 2.5rem;
-                }
-        }
+                // for Projects
+                &--project{
+                        .article__head{ 
+                                padding-top: 3.5rem;
+                                        
+                                &-inner{
+                                        grid-template-columns: 1fr;
+                                        height:60vh;  
+                                }
 
-        // Related
-        .related{    
-              // Related  > Block > Articles
-                &__block  &__inner{    @include  inlineRepeatColElements(2, 1fr, 1rem);   }
-        } 
-}
-
-//Mobile devices (horizonal)
-@media (max-width: 576px) {
-        .article{
-               // Article > Phero
-               .article__phero{
-                       // Article > Phero > Artwork
-                       &-artwork{  @include backgroundBlockArtwork(100%, 25rem);   }
-               }
-
-                &__component{
-                        &-inner{
-                                display: grid;
-                                grid-template-columns: (2,1fr);
-                                grid-row-gap:2rem;
+                                &-artwork{  
+                                        grid-row:1;
+                                        grid-column: 1;
+                                        height: 20rem;
+                                }  
                         }
                 }
         }
+
+        // Article > Body
+        .article__body{ width:85vw; }
 
         // Related
         .related{    
                 // Related  > Block > Articles
-                  &__block  &__inner{    @include  inlineRepeatColElements(1, 1fr, 1.5rem);   }
-          } 
+                &__block  &__inner{    @include  inlineRepeatColElements(2, 1fr, 1rem);   }
+        } 
 }
+   
+   //Mobile devices (horizonal)
+@media (max-width: 576px) {
+        .article{
+                // for Reviews
+                &--book{
+                        // Article > Head 
+                        .article__head{ 
+                                // Article > Head > Artwork
+                                &-artwork{  
+                                        height:15rem;   
+                                }
+                        }
+                }
+
+                // for Projects
+                &--project{
+                        .article__head{ 
+                                padding-top: 3.5rem;
+                                        
+                                &-inner{
+                                        grid-template-columns: 1fr;
+                                        height:60vh;  
+                                }
+
+                                &-artwork{  
+                                        height: 20rem;
+                                }  
+                        }
+                }
+        }
+
+        // Article > Body
+        .article__body{ width:90vw;}
+
+       // Related
+       .related{    
+               // Related  > Block > Articles
+                 &__block  &__inner{    @include  inlineRepeatColElements(1, 1fr, 1.5rem);   }
+         } 
+   }
+
