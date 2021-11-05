@@ -1,6 +1,6 @@
 
 {  /*  React Package */ }
-import React, { Component } from 'react';
+import React, { useState,useEffect,useCallback } from 'react';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 import ScrollToTop from 'react-router-scroll-top';
 import axios from 'axios';
@@ -17,36 +17,42 @@ import Privacy from './s_basic/primary/templates/PrivacyPage/Privacy';
 import CookieDialog  from './global/CookieDialog';
 import { SiteMessage }  from './global';
 
-class Basic extends Component {
-        
-        constructor(props) {  
-                super(props); 
-        
-                this.state = { collection:[], projects: [], reviews:[]  }
-        } 
+function Basic() {
+        const [collection, getCollection] = useState([]);
+        const [projects, getProducts] = useState([]);
+        const [reviews , getReviews]= useState([]);
 
         /*
         =======================
          Get data from API
         =======================
         */
-        componentDidMount(){
-                axios.get('/api/basic/collection').then(response => { this.setState({ collection: response.data });  }).catch(errors => { console.log(errors); })
+        const getCollectionAPI = useCallback(async () => {
+                const result = await axios( '/api/basic/collection');
+                getCollection(result.data);
+        }, [])
 
-                axios.get('/api/basic/reviews').then(response => {  this.setState({ reviews: response.data }); }).catch(errors => { console.log(errors); })
+        const getProjectsAPI = useCallback(async () => {
+                const result = await axios( '/api/basic/projects');
+                getProducts(result.data);
+        }, [])
 
-                axios.get('/api/basic/projects').then(response => { this.setState({ projects: response.data });  }).catch(errors => { console.log(errors); })
-        }
+        const getReviewsAPI = useCallback(async () => {
+                const result = await axios( '/api/basic/reviews');
+                getReviews(result.data);
+        }, [])
+            
+        useEffect(() => {
+                getCollectionAPI();
+                getProjectsAPI();
+                getReviewsAPI();
+        }, [getCollectionAPI,getProjectsAPI,getReviewsAPI])
 
        /*
         =======================
          Render components
         =======================
         */
-        render() {
-
-        const { collection, projects, reviews } = this.state;
-
         return (
                 <Router>
                         <ScrollToTop>
@@ -83,10 +89,9 @@ class Basic extends Component {
                                 {  /* Search Results */ }
                                 <Route exact path="/help/:slug" component={ Search }  />
                         </ScrollToTop>
-
                 </Router>
             );
-       }
+       
 }
 
 export default Basic;
