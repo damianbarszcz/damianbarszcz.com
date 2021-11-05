@@ -1,7 +1,7 @@
 import  React from 'react';
-
 {  /*  Components */ }
 import ReCAPTCHA from "react-google-recaptcha";
+import { GoogleReCaptchaProvider, GoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 function ContactPanel(props) {
         /*
@@ -87,10 +87,10 @@ function ContactPanel(props) {
                                                         </div>
 
                                                         <div className="contact-me__form-inner control-buttons">
-                                                                <ReCAPTCHA name="recaptcha"  sitekey="6Le2FQ8UAAAAAAGC6__oyDjvb5lKK1_uas1hUuoT" onChange={ props.setRecaptcha  } >
+                                                                <ReCAPTCHA name="recaptcha"  sitekey="6LdeqBQdAAAAAIlTqZsm9C8ZxA8UGkPNIxgPCEVA" onChange={ props.setRecaptcha  } >
                                                                         {  props.errors['recaptcha'] && <div className="form__alert-error form__alert-error_effect">{ props.errors['recaptcha'] }</div>  }
                                                                 </ReCAPTCHA>
-
+                                                                <GoogleReCaptcha  />
                                                                 <button type="submit" className="btn--normal app__button--purple" value="submit"> 
                                                                         { props.loader && 
                                                                         <span className="loading__button--spinner" role="status"></span>

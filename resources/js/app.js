@@ -2,7 +2,6 @@
 {  /*  React Package */ }
 import React  from 'react';
 import ReactDOM from 'react-dom';
-
 {  /*  Templates */  }
 import Basic from './roots/Basic';
 import Auth from './roots/Auth';

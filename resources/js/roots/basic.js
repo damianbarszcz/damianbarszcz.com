@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 import ScrollToTop from 'react-router-scroll-top';
 import axios from 'axios';
-
 {  /*  Templates */  }
 import Index from './s_basic/primary/templates/IndexPage/Index';
 import Projects from './s_basic/primary/templates/ProjectsPage/Projects';
@@ -84,6 +83,7 @@ class Basic extends Component {
                                 {  /* Search Results */ }
                                 <Route exact path="/help/:slug" component={ Search }  />
                         </ScrollToTop>
+
                 </Router>
             );
        }
