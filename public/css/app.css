@@ -1,4 +1,6 @@
-@import url(https://fonts.googleapis.com/icon?family=Material+Icons);@import url(https://pro.fontawesome.com/releases/v5.10.0/css/all.css);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+@import url(https://pro.fontawesome.com/releases/v5.10.0/css/all.css);
+@charset "UTF-8";
 /*-----------------------------------------------------
  * App (https://www.damianbarszcz.com)
  * Copyright 2020 Damian Barszcz
@@ -2335,7 +2337,7 @@ select {
 .n-project__smarteditor-fun-button--select:after {
   display: inline-block;
   position: absolute;
-  content: "\25BC";
+  content: "▼";
 }
 .n-project__smarteditor-fun_modifier {
   border-bottom: 1px solid #ebebeb;

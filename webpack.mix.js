@@ -15,9 +15,10 @@
 
    mix.browserSync('http://localhost:8000');
 
-   mix.react('resources/js/app.js', 'public/js').sourceMaps();
+   mix.js('resources/js/app.js', 'public/js');
 
    mix.sass('resources/sass/app.scss',  'public/css')
+
    .options({
          processCssUrls: false
    }).sourceMaps();

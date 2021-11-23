@@ -1,5 +1,6 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { Suspense, useState, useEffect } from 'react';
+import loadable from '@loadable/component';
 
 {  /*  Components */  }
 import { LibrarySection, ProjectsSection, NewPublication, Footer, Navigation } from '../../components';
@@ -66,6 +67,7 @@ function Index(props)  {
                                  }  
                         </main>
                         <Footer />
+                        
                 </>
         );
  }

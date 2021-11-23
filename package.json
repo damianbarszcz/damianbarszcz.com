@@ -2,12 +2,10 @@
     "private": true,
     "scripts": {
         "dev": "npm run development",
-        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "watch": "npm run development -- --watch",
-        "watch-poll": "npm run watch -- --watch-poll",
-        "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --disable-host-check --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "development": "npx mix",
+        "watch": "npx mix watch",
         "prod": "npm run production",
-        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+        "production": "npx mix -p"
     },
     "devDependencies": {
         "@babel/preset-react": "^7.0.0",
@@ -35,6 +33,7 @@
     "dependencies": {
         "@draft-js-plugins/editor": "^4.1.0",
         "@draft-js-plugins/image": "^4.1.2",
+        "@loadable/component": "^5.15.0",
         "@splidejs/react-splide": "^0.4.4",
         "color-thief-react": "^2.0.12",
         "disable-scroll": "^0.6.0",
@@ -59,7 +58,9 @@
         "react-google-recaptcha-v3": "^1.9.7",
         "react-helmet": "^6.1.0",
         "react-hook-reading-time": "^1.0.0",
+        "react-lazy": "^1.1.0",
         "react-lines-ellipsis": "^0.14.1",
+        "react-loadable": "^5.5.0",
         "react-moment": "^1.1.1",
         "react-multi-carousel": "^2.6.3",
         "react-palette": "^1.0.2",
