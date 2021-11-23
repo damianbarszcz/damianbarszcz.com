@@ -1,7 +1,7 @@
 
 <!--  Meta Data  -->
     <meta charset="utf-8">
-    <meta name="google-site-verification" content="EtBkC1k_QgvVRKzpH2VuxkDcVvG6fSG8GiA5Z0J5OlY">
+    <meta name="google-site-verification" content="rtNHSTZf1Z5yGPdhBXhfmTafPqX6mFFH5LAShsQo6Y0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="@yield('pageDescryption')">
