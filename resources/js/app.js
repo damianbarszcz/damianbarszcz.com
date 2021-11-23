@@ -2,12 +2,10 @@
 {  /*  React Package */ }
 import React  from 'react';
 import ReactDOM from 'react-dom';
-import loadable from '@loadable/component';
-
 {  /*  Templates */  }
-const Basic = loadable(() => import('./roots/Basic'));
-const Auth  = loadable(() => import('./roots/Auth'));
-const Member = loadable(() => import('./roots/Member'));
+import Basic from './roots/Basic';
+import Auth from './roots/Auth';
+import Member from './roots/Member';
 
 const result = App();
 

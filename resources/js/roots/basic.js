@@ -1,23 +1,21 @@
 
 {  /*  React Package */ }
 import React, { useState,useEffect,useCallback } from 'react';
-import loadable from '@loadable/component'
 import { BrowserRouter as Router, Route} from 'react-router-dom';
-const ScrollToTop  = loadable.lib(() => import('react-router-scroll-top'))
+import ScrollToTop from 'react-router-scroll-top';
 import axios from 'axios';
-
 {  /*  Templates */  }
-const Index = loadable(() => import('./s_basic/primary/templates/IndexPage/Index'));
-const Projects = loadable(() => import( './s_basic/primary/templates/ProjectsPage/Projects'));
-const Library = loadable(() => import( './s_basic/primary/templates/LibraryPage/Library'));
-const Contact  = loadable(() => import( './s_basic/primary/templates/ContactPage/Contact'));
-const About  = loadable(() => import( './s_basic/primary/templates/AboutPage/About'));
-const Search  = loadable(() => import(  './s_basic/primary/templates/SearchPage/Search'));
-const Project  = loadable(() => import( './s_basic/articles/templates/ProjectPage/Project'));
-const Review  = loadable(() => import( './s_basic/articles/templates/ReviewPage/Review'));
-const Privacy  = loadable(() => import('./s_basic/primary/templates/PrivacyPage/Privacy'));
-const CookieDialog  = loadable(() => import( './global/CookieDialog'));
-const SiteMessage  = loadable(() => import( './global' ));
+import Index from './s_basic/primary/templates/IndexPage/Index';
+import Projects from './s_basic/primary/templates/ProjectsPage/Projects';
+import Library from './s_basic/primary/templates/LibraryPage/Library';
+import Contact from './s_basic/primary/templates/ContactPage/Contact';
+import About from './s_basic/primary/templates/AboutPage/About';
+import Search from  './s_basic/primary/templates/SearchPage/Search';
+import Project from './s_basic/articles/templates/ProjectPage/Project';
+import Review from './s_basic/articles/templates/ReviewPage/Review';
+import Privacy from './s_basic/primary/templates/PrivacyPage/Privacy';
+import CookieDialog  from './global/CookieDialog';
+import { SiteMessage }  from './global';
 
 function Basic() {
         const [collection, getCollection] = useState([]);
