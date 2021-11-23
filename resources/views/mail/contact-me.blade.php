@@ -2,7 +2,7 @@
 @component('mail::message')
         <div class="mail-contact">
                 <div class="mail-contact__artwork">
-                        <img src="https://drive.google.com/file/d/1-8Uonvq89v2GU5IjVPYcaxe0ukmM5G49/view?usp=sharing" alt="Blog brand" />
+                        <img src="https://damianbarszcz.com/images/favicons/favicon.png?id=4f1ef41279f3f5f782ee"  width="128" height="128" alt="Blog brand" />
                 </div>
                 <header class="mail-contact__header"> 
                         <h2 class="mail-contact__header--name">  Imię i nazwisko:  <strong> {{ $first_name }} {{ $last_name }} </strong> </h2>
