@@ -15,7 +15,7 @@
 
    mix.browserSync('http://localhost:8000');
 
-   mix.js('resources/js/app.js', 'public/js').react();
+   mix.js('resources/js/app.js', 'public/js').version();
 
    mix.sass('resources/sass/app.scss',  'public/css')
 
@@ -27,8 +27,6 @@
     mix.copyDirectory('resources/images/contact', 'public/images/contact').version('public/images/contact');
     mix.copyDirectory('resources/images/favicons', 'public/images/favicons').version('public/images/favicons');
     mix.copyDirectory('resources/images/global/', 'public/images/global').version('public/images/global');
-
-    
     mix.copyDirectory('resources/images/member/statistics', 'public/images/member/statistics').version('public/images/member/statistics');
     mix.copyDirectory('resources/images/member/about_app', 'public/images/member/about_app').version('public/images/member/about_app');
 

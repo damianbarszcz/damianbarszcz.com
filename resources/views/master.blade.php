@@ -33,7 +33,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="{{ mix('images/favicons/DB_favicon_180.png') }}">
 
     <!--  Stylesheets  -->
-    {!! Minify::stylesheet(['css/app.css']) !!}
+    <link rel="stylesheet" href="{{ url(mix('css/app.css')) }}">
 
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -41,6 +41,9 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-T4TDZHG');</script>
+
+    <!--  Scripts  -->
+    <script async src="{{ url(mix('js/app.js')) }}"></script>
 </head>
 
 <body>
@@ -49,9 +52,6 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     @yield('basic-root') @yield('auth-root') @yield('member-root') 
-
-    <!--  Scripts  -->
-    {!! Minify::javascript(['js/app.js']) !!}
 </body>
 
 </html>
