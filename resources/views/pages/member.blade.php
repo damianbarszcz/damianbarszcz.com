@@ -9,8 +9,6 @@
         @if ($pageDescryption != null)  @section('pageDescryption',  $pageDescryption) @endif
         
         @if ($pageImage != null) @section('pageImage', $pageImage)   @endif
-
-    @include('layouts.head')
 @endsection
 
 @section('member-root') 

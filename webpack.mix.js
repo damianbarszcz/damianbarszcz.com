@@ -15,7 +15,7 @@
 
    mix.browserSync('http://localhost:8000');
 
-   mix.js('resources/js/app.js', 'public/js');
+   mix.js('resources/js/app.js', 'public/js').react();
 
    mix.sass('resources/sass/app.scss',  'public/css')
 
@@ -23,12 +23,12 @@
          processCssUrls: false
    }).sourceMaps();
 
-    mix.copyDirectory('resources/images/favicons/', 'public/images/favicons').version('public/images/favicons');
-    mix.copyDirectory('resources/images/index/', 'public/images/index').version('public/images/index');
-    mix.copyDirectory('resources/images/books/', 'public/images/books').version('public/images/books');
-    mix.copyDirectory('resources/images/about-me/', 'public/images/about-me').version('public/images/about-me');
-    mix.copyDirectory('resources/images/contact/', 'public/images/contact').version('public/images/contact');
+    mix.copyDirectory('resources/images/about-me', 'public/images/about-me').version('public/images/about-me');
+    mix.copyDirectory('resources/images/contact', 'public/images/contact').version('public/images/contact');
+    mix.copyDirectory('resources/images/favicons', 'public/images/favicons').version('public/images/favicons');
     mix.copyDirectory('resources/images/global/', 'public/images/global').version('public/images/global');
+
+    
     mix.copyDirectory('resources/images/member/statistics', 'public/images/member/statistics').version('public/images/member/statistics');
     mix.copyDirectory('resources/images/member/about_app', 'public/images/member/about_app').version('public/images/member/about_app');
 

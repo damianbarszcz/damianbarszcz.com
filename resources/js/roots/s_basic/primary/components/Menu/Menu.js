@@ -3,6 +3,7 @@ import  React, { useState  } from 'react';
 import { useDetectClickOutside } from 'react-detect-click-outside';
 import disableScroll from 'disable-scroll';
 import NavBrand from '../NavBrand/NavBrand';
+import {Link} from "react-router-dom";
 
 function Menu(props) {
         const [toggleDropdown, setToggleDropdown] = useState(false);
@@ -34,19 +35,19 @@ function Menu(props) {
                                 <NavBrand typeSection={props.typeSection} />
                         </li>
                         <li className={`${props.typeSection}__menu-list-item`}>
-                                <a href='/projects' className={`${props.typeSection}__menu-list-link ${props.typeSection}__menu-list-link_effect`} target="_self"> Projekty </a>
+                                <Link to='/projects' className={`${props.typeSection}__menu-list-link ${props.typeSection}__menu-list-link_effect`} target="_self"> Projekty </Link>
                         </li> 
 
                         <li className={`${props.typeSection}__menu-list-item`}>
-                                <a href="/library" className={`${props.typeSection}__menu-list-link ${props.typeSection}__menu-list-link_effect`} target="_self"> Biblioteka </a>
+                                <Link to="/library" className={`${props.typeSection}__menu-list-link ${props.typeSection}__menu-list-link_effect`} target="_self"> Biblioteka </Link>
                         </li> 
 
                         <li className={`${props.typeSection}__menu-list-item`}>
-                                <a href="/contact" className={`${props.typeSection}__menu-list-link ${props.typeSection}__menu-list-link_effect`} target="_self"> Kontakt </a>
+                                <Link to="/contact" className={`${props.typeSection}__menu-list-link ${props.typeSection}__menu-list-link_effect`} target="_self"> Kontakt </Link>
                         </li>
 
                         <li className={`${props.typeSection}__menu-list-item`}>
-                                <a href="/about" className={`${props.typeSection}__menu-list-link ${props.typeSection}__menu-list-link_effect`} target="_self"> O mnie </a>
+                                <Link to="/about" className={`${props.typeSection}__menu-list-link ${props.typeSection}__menu-list-link_effect`} target="_self"> O mnie </Link>
                         </li>
                 </ul>
                 )
@@ -67,19 +68,19 @@ function Menu(props) {
 
                         <ul className={`${props.typeSection}__menu-list ${props.typeSection}__menu-list--desktop`}>
                                 <li className={`${props.typeSection}__menu-list-item`}>
-                                        <a href='/projects' className={`${props.typeSection}__menu-list-link ${props.typeSection}__menu-list-link_effect ${props.typeSection}__menu-list-link--desktop`} target="_self"> Projekty </a>
+                                        <Link to='/projects' className={`${props.typeSection}__menu-list-link ${props.typeSection}__menu-list-link_effect ${props.typeSection}__menu-list-link--desktop`} target="_self"> Projekty </Link>
                                 </li> 
 
                                 <li className={`${props.typeSection}__menu-list-item`}>
-                                        <a href="/library" className={`${props.typeSection}__menu-list-link ${props.typeSection}__menu-list-link_effect ${props.typeSection}__menu-list-link--desktop`} target="_self"> Biblioteka </a>
+                                        <Link to="/library" className={`${props.typeSection}__menu-list-link ${props.typeSection}__menu-list-link_effect ${props.typeSection}__menu-list-link--desktop`} target="_self"> Biblioteka </Link>
                                 </li> 
 
                                 <li className={`${props.typeSection}__menu-list-item`}>
-                                        <a href="/contact" className={`${props.typeSection}__menu-list-link ${props.typeSection}__menu-list-link_effect ${props.typeSection}__menu-list-link--desktop`} target="_self"> Kontakt </a>
+                                        <Link to="/contact" className={`${props.typeSection}__menu-list-link ${props.typeSection}__menu-list-link_effect ${props.typeSection}__menu-list-link--desktop`} target="_self"> Kontakt </Link>
                                 </li>
 
                                 <li className={`${props.typeSection}__menu-list-item`}>
-                                        <a href="/about" className={`${props.typeSection}__menu-list-link ${props.typeSection}__menu-list-link_effect ${props.typeSection}__menu-list-link--desktop`} target="_self"> O mnie </a>
+                                        <Link to="/about" className={`${props.typeSection}__menu-list-link ${props.typeSection}__menu-list-link_effect ${props.typeSection}__menu-list-link--desktop`} target="_self"> O mnie </Link>
                                 </li>
                         </ul>
                 </div> 
