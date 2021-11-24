@@ -5,7 +5,7 @@ const SiteMessage = () => {
                 <div className="site-message site-message_modifier" role="dialog">
                     <div className="site-message__inner">
                             <div className="site-message__artwork">
-                                    <img src="../../images/global/site-warning.png" alt="Ostrzeżenie o budowie strony." />
+                                    <img src="../../images/global/site-warning.png" alt="Ostrzeżenie o budowie strony." width="64" height="64" />
                             </div>
 
                             <header className="site-message__header site-message__header_modifier">

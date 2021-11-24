@@ -1,19 +1,22 @@
 
 {  /*  React Package */ }
-import React, { useState,useEffect,useCallback } from 'react';
+import React, { useState,useEffect,useCallback,Suspense } from 'react';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
+import { lazy } from '@loadable/component';
 import ScrollToTop from 'react-router-scroll-top';
 import axios from 'axios';
+
 {  /*  Templates */  }
-import Index from './s_basic/primary/templates/IndexPage/Index';
-import Projects from './s_basic/primary/templates/ProjectsPage/Projects';
-import Library from './s_basic/primary/templates/LibraryPage/Library';
-import Contact from './s_basic/primary/templates/ContactPage/Contact';
-import About from './s_basic/primary/templates/AboutPage/About';
-import Search from  './s_basic/primary/templates/SearchPage/Search';
-import Project from './s_basic/articles/templates/ProjectPage/Project';
-import Review from './s_basic/articles/templates/ReviewPage/Review';
-import Privacy from './s_basic/primary/templates/PrivacyPage/Privacy';
+const Index = lazy(() => import('./s_basic/primary/templates/IndexPage/Index'));
+const Projects = lazy(() => import('./s_basic/primary/templates/ProjectsPage/Projects'));
+const Library = lazy(() => import('./s_basic/primary/templates/LibraryPage/Library'));
+const Contact = lazy(() => import('./s_basic/primary/templates/ContactPage/Contact'));
+const About = lazy(() => import('./s_basic/primary/templates/AboutPage/About'));
+const Search = lazy(() => import('./s_basic/primary/templates/SearchPage/Search'));
+const Project = lazy(() => import('./s_basic/articles/templates/ProjectPage/Project'));
+const Review = lazy(() => import('./s_basic/articles/templates/ReviewPage/Review'));
+const Privacy = lazy(() => import('./s_basic/primary/templates/PrivacyPage/Privacy'));
+
 import CookieDialog  from './global/CookieDialog';
 import { SiteMessage }  from './global';
 
@@ -55,40 +58,42 @@ function Basic() {
         */
         return (
                 <Router>
-                        <ScrollToTop>
-                                {  /*  Cookies message */  }
-                                <CookieDialog />
+                        <Suspense fallback={<div>Loading...</div>}>
+                                <ScrollToTop>
+                                        {  /*  Cookies message */  }
+                                        <CookieDialog />
 
-                                {  /*  Site bulding message */ }
-                                <SiteMessage />
+                                        {  /*  Site bulding message */ }
+                                        <SiteMessage />
 
-                                {  /*  Index */ }
-                                <Route exact  path="/"  render= { () => <Index collection= { collection } projects = { projects }  reviews = { reviews }  /> } />
+                                        {  /*  Index */ }
+                                        <Route exact  path="/"  render= { () => <Index collection= { collection } projects = { projects }  reviews = { reviews }  /> } />
 
-                                {  /*  Projects */ }
-                                <Route exact  path="/projects" component={ () => <Projects projects = { projects }  /> } />
+                                        {  /*  Projects */ }
+                                        <Route exact  path="/projects" component={ () => <Projects projects = { projects }  /> } />
 
-                                {  /*  Library */}
-                                <Route exact  path="/library" component={ () => <Library  reviews = { reviews } /> } />
+                                        {  /*  Library */}
+                                        <Route exact  path="/library" component={ () => <Library  reviews = { reviews } /> } />
 
-                                {  /* Contact  */ }
-                                <Route exact  path="/contact" component={ Contact } />
+                                        {  /* Contact  */ }
+                                        <Route exact  path="/contact" component={ Contact } />
 
-                                {  /* About  */}
-                                <Route exact path="/about" component={ About } />
+                                        {  /* About  */}
+                                        <Route exact path="/about" component={ About } />
 
-                                {  /* Privacy policy  */}
-                                <Route exact path="/privacy"  component={ Privacy }  />
+                                        {  /* Privacy policy  */}
+                                        <Route exact path="/privacy"  component={ Privacy }  />
 
-                                {  /*  Project Article */ }
-                                <Route exact  path="/project/:pub_url" component={ Project }  />
+                                        {  /*  Project Article */ }
+                                        <Route exact  path="/project/:pub_url" component={ Project }  />
 
-                                {  /* Review Article */ }
-                                <Route exact path="/review/:pub_url" component={ Review }  />
+                                        {  /* Review Article */ }
+                                        <Route exact path="/review/:pub_url" component={ Review }  />
 
-                                {  /* Search Results */ }
-                                <Route exact path="/help/:slug" component={ Search }  />
-                        </ScrollToTop>
+                                        {  /* Search Results */ }
+                                        <Route exact path="/help/:slug" component={ Search }  />
+                                </ScrollToTop>
+                        </Suspense>
                 </Router>
             );
        

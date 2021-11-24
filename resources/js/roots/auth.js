@@ -3,8 +3,11 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import ScrollToTop from 'react-router-scroll-top';
-import Login from './s_auth/templates/LoginPage/Login';
-import Register from './s_auth/templates/RegisterPage/Register';
+import { lazy } from '@loadable/component';
+
+{  /*  Templates */  }
+const Login  = lazy(() => import('./s_auth/templates/LoginPage/Login'));
+const Register = lazy(() => import('./s_auth/templates/RegisterPage/Register'));
 
 class Auth extends Component {
         render() {
