@@ -1,7 +1,7 @@
 
 /*-----------------------------------------------------
  * App (https://www.damianbarszcz.com)
- * Copyright 2020 Damian Barszcz
+ * Copyright 2021 Damian Barszcz
  *-----------------------------------------------------*/
 
      // This is the single file output by sass. It is intended to ONLY @import other files
@@ -13,8 +13,7 @@
     @import "1-helpers/extends";
 
     // 2 - TOOLS
-    @import "https://fonts.googleapis.com/icon?family=Material+Icons";
-    @import "https://pro.fontawesome.com/releases/v5.10.0/css/all.css";
+    @import "2-tools/material-icons";
 
     // 3 - BASICS
     @import "3-basics/reset"; 

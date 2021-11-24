@@ -52,7 +52,7 @@ const AboutBanner = (props) => {
 
                                         {  /*--- About banner > Block > Inner > Artwork ---*/   }
                                         <div className="about-banner__artwork">
-                                                <img  className="about-banner__artwork--hero" src="../images/about-me/profile.jpg" alt="Zdjęcie profilowe autora blogu" />
+                                                <img  className="about-banner__artwork--hero" src="../images/about-me/profile.webp" alt="Zdjęcie profilowe autora blogu" />
                                         </div>
 
                                         {  /*--- About banner > Block > Inner > Timeline ---*/   }
