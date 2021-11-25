@@ -18,6 +18,7 @@ const Review = lazy(() => import('./s_basic/articles/templates/ReviewPage/Review
 const Privacy = lazy(() => import('./s_basic/primary/templates/PrivacyPage/Privacy'));
 
 import CookieDialog  from './global/CookieDialog';
+import SuspenseLoader  from './global/SuspenseLoader';
 import { SiteMessage }  from './global';
 
 function Basic() {
@@ -58,11 +59,10 @@ function Basic() {
         */
         return (
                 <Router>
-                        <Suspense fallback={<div>Loading...</div>}>
+                        <Suspense fallback={<SuspenseLoader />}>
                                 <ScrollToTop>
                                         {  /*  Cookies message */  }
                                         <CookieDialog />
-
                                         {  /*  Site bulding message */ }
                                         <SiteMessage />
 
