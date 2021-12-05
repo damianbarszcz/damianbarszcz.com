@@ -46,9 +46,16 @@
     
         // New pub  > Block
         &__block{ @include blockPadding(1rem, 0, 6rem); }
-    
-        // New pub  > Block > Article
-        @include articleItems(false, true);
+
+        // New pub  > Block > Pub Inner
+        &__block &__pub-inner{
+                @include  inlineRepeatColElements(1, 1fr, 0rem); 
+        }
+
+        // New pub  > Block > Pub Article
+        &__block &__pub-inner &__pub{
+                @include articleItems(false, true);
+        }
     }
     
     /*-----------------------------
@@ -58,9 +65,7 @@
     .projects{
         @include sectionDefinition;
     
-        &_theme{  
-                background-color:  $app-color-dark; 
-        }
+        &_theme{   background-color:  $app-color-dark;   }
     
         // Projects > Block 
         &__block{ @include blockPadding(4.5rem, 0,4.5rem); }
@@ -167,41 +172,50 @@
         &__block &__header{   @include sectionHeaderLeft(40rem, $app-color-gray,$app-color-red);  }
     
         // Library > Block  > Books
-        &-books{
-                margin-bottom:6.5rem;
+        &__books{
+                // Library > Block  > Books > Inner
+                &-inner{
+                        display:grid;
+                        grid-auto-flow: column;
+                        grid-gap:3.5rem;
+                        margin: 3.5rem 0 6.5rem;
+                }
+
                 @include articleItems(true);
-    
-                 // Library > Block > Books > Box > Buttons
-                &__buttons{
-                        display:block;
-                        margin-top:3rem;
-                        min-width:100%;
-                
+            
+                // Library > Block > Books > Switchers
+                &-switchers{
+                        display:flex;
+                        align-items:center;
+                        margin:3rem auto 0rem;
+                        width:100%;
+                        max-width:1140px;
+                        
                         &-item{
                                 display:block;
                                 position: relative;
                                 width:4rem;
                                 height: 4rem;
-                
-                                &_modifier{
+                        
+                                &_effect{
                                         border-radius:100%;
                                         background-color:$app-color-white;
                                         border: 1px solid $app-color-lsilver;
                                         cursor:pointer;
                                 }
-                            
+                                    
                                 &:focus{  outline: none;  }
-                            
+                                    
                                 .material-icons{
                                         font-size: $font-size-big;
                                         color:$app-color-black;
                                 }
                         }
                 }
-                
-                [data-button="prev-button"]{  margin-right:auto;  }
-                
-                [data-button="next-button"]{ margin-left:auto;  }
+
+                [data-button-type="prev-button"]{  margin-right:auto; }
+
+                [data-button-type="next-button"]{  margin-left:auto; }
         }
     }
     

@@ -68,16 +68,18 @@
         }
 
         // / GL search > Block > Inner
-        &__block &__inner{
+        &__block &__gl-inner{
                 margin-top:2rem;
                 @include  inlineRepeatColElements(3, 1fr, 3rem);
          }
 
         // GL search > Block  > Inner > Article
-        @include articleItems;
+        &__block &__gl-inner &__gl{
+                @include articleItems;
+        }
 
          // GL search > Block > Inner > Noarticle
-        &__inner &__noarticle{
+         &__gl-inner &__gl-noarticle{
                 position: relative;
                 grid-column-start: 1; 
                 grid-column-end: 4;  

@@ -11,7 +11,7 @@
                 @include sectionDefinition;
 
                 &_theme{
-                        background-color: darken($app-color-green,30%);
+                        background-color: $app-color-green;
                         background-image:url('../images/contact/bg-halftone-black-20p.png');
                 }
 

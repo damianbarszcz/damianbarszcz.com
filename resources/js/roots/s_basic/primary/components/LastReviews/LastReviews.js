@@ -22,19 +22,19 @@ const LastReviews = (props) => {
                                     </header>
 
                                     {  /*--- Last reviews > Block > Inner ---*/   }
-                                    <div className="last-reviews__inner">    
+                                    <div className="last-reviews__rev-inner">    
                                         {  props.lastReviews.slice(1,7).map(article =>
-                                                <article key={ article.id } className="last-reviews__article  last-reviews__article_modifier">
-                                                        <a  href={ `/review/${article.pub_url }`}  className="last-reviews__article-link last-reviews__article-link_modifier" target="_self">
-                                                                <div className="last-reviews__article-media" style={{ background: `url( ${ article.pub_picture } )` }}></div>
+                                                <article key={ article.id } className="last-reviews__rev-article  last-reviews__rev-article_modifier">
+                                                        <a  href={ `/review/${article.pub_url }`}  className="last-reviews__rev-article-link last-reviews__rev-article-link_modifier" target="_self">
+                                                                <div className="last-reviews__rev-article-media" style={{ background: `url( ${ article.pub_picture } )` }}></div>
 
-                                                                <header className="last-reviews__article-header last-reviews__article-header_modifier">
-                                                                        <h3 className="last-reviews__article-header--title">{ article.pub_title } </h3>
+                                                                <header className="last-reviews__rev-article-header last-reviews__rev-article-header_modifier">
+                                                                        <h3 className="last-reviews__rev-article-header--title">{ article.pub_title } </h3>
 
-                                                                        <span className="last-reviews__article-header--desc"><LinesEllipsis text={ article.pub_subtitle} maxLine='2' ellipsis='...' trimRight /></span>
+                                                                        <span className="last-reviews__rev-article-header--desc"><LinesEllipsis text={ article.pub_subtitle} maxLine='2' ellipsis='...' trimRight /></span>
                                                                 </header>
 
-                                                                <div className="last-reviews__article-category last-reviews__article-category_modifier" data-book-category={ article.pub_category }>{ article.pub_category }</div>
+                                                                <div className="last-reviews__rev-article-category last-reviews__rev-article-category_modifier" data-book-category={ article.pub_category }>{ article.pub_category }</div>
                                                         </a>
                                                 </article>  ) 
                                         } 

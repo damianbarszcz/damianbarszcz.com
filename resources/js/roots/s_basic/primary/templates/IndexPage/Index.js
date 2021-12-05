@@ -13,34 +13,84 @@ Index route
 */
 function Index(props)  {
         const [position,getPosition] = useState(0);
+        const [counter, setCounter] = useState(0);
+        const [width, getWidth] = useState(window.innerWidth);
         const [prevButton,getPrevButton] = useState(false);
         const [nextButton,getNextButton] = useState(true);
     
         useEffect(() =>{
                 document.title = "Damian Barszcz | Blog Personalny";
+
+                window.addEventListener('resize', updateWindowDimensions);
+                
+                if(width >=1235){
+                        if(counter == props.reviews.length-3){  getNextButton(false);   }
+                }
+
+                if(width >= 850 && width < 1235){
+                        if(counter == props.reviews.length-2){  getNextButton(false);   }
+                }
+
+                else{  if(counter == props.reviews.length-1){  getNextButton(false);   } }
+
+                if(counter == 0){  getPrevButton(false);   }
         });
+
+        const updateWindowDimensions = () => {
+                getWidth(window.innerWidth);
+         }
 
         /*
         ===========================
          Change carousel items position
-         (W remoncie)
         ===========================
         */
         const chooseLeft = () =>{
-                getPosition(position+190);
+                if(width >= 1235){
+                        if(counter != 0){
+                                getPosition(position+(404));
+                                setCounter(counter - 1)
+                        }
+                }
+
+                 if(width >= 850 && width < 1235){
+                        if(counter != 0){
+                                getPosition(position+(404));
+                                setCounter(counter - 1)
+                        }
+                }
+
+                else{
+                        if(counter != 0){
+                                getPosition(position+(404));
+                                setCounter(counter - 1)
+                        }
+                }
                 getNextButton(true);
-                console.log(props.setReviews.length);
         }
 
-        const chooseRight = (old_index, new_index) =>{
-                if (new_index >=props.setReviews.length) {
-                        var k = new_index - props.setReviews.length + 1;
-                        while (k--) {
-                                props.setReviews.push(undefined);
+        const chooseRight = () =>{
+                if(width >= 1235){
+                        if(counter != props.reviews.length-3){
+                                getPosition(position-(404));
+                                setCounter(counter + 1)
                         }
-                    }
-                    props.setReviews.splice(new_index, 0, props.setReviews.splice(old_index, 1)[0]);
-                    return props.setReviews; 
+                }
+
+                if(width >= 850 && width < 1235){
+                        if(counter != props.reviews.length-2){
+                                getPosition(position-(404));
+                                setCounter(counter + 1)
+                        }
+                }
+
+                else{
+                        if(counter != props.reviews.length-1){
+                                getPosition(position-(404));
+                                setCounter(counter + 1)
+                        }
+                }
+                getPrevButton(true);
         }
 
         /*
@@ -61,8 +111,8 @@ function Index(props)  {
                                  }  
 
                                 { props.reviews.length  > 5  &&
-                                        <LibrarySection  collection={ props.collection } reviews = {  props.reviews }  prevButton = { prevButton } nextButton= { nextButton }  chooseLeft = { chooseLeft }
-                                        chooseRight = { chooseRight } indexObjTwo = { indexObjTwo }  />      
+                                        <LibrarySection  reviews = {  props.reviews }  prevButton = { prevButton } nextButton= { nextButton }  chooseLeft = { chooseLeft }
+                                        chooseRight = { chooseRight } indexObjTwo = { indexObjTwo } position = {position} counter = {counter}  />      
                                  }  
                         </main>
                         <Footer />

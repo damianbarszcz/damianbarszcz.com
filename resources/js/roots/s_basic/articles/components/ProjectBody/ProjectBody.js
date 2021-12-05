@@ -1,9 +1,16 @@
 import  React from 'react';
 import Moment from 'react-moment';
+import Disqus from "disqus-react"
 import tinycolor from 'tinycolor2';
 
-const ProjectBody = (props) => {
-    
+function ProjectBody(props) {
+    const disqusShortname = "localhost-gzakevtbxu"
+    const disqusConfig = {
+        url: "https://damianbarszcz.com",
+        identifier: props.id,
+        title: props.pub_title
+    }
+
    /*
     =======================
      Render component
@@ -39,6 +46,10 @@ const ProjectBody = (props) => {
                                 <div className="article__body-holders article__body-holders_modifier">
                                         <a href={`/help/search=${props.pub_tags}`} type="button" className="article__body-holders-tag article__body-holders-tag_effect" target="_self"> { props.pub_tags } </a>
                                 </div> 
+
+                                <div className="article__body-comment">
+                                        <Disqus.DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
+                                </div>
                         </div>
                 </article>
             </>

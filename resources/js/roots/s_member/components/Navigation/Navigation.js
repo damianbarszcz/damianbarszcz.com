@@ -49,11 +49,11 @@ class Navigation extends Component {
         onLogout(e){
                 e.preventDefault();
 
-                axios.post(`/logout`)
+                axios.post(`/api/auth/logout`)
                 .then(response => {
                         if (!response.error) {   
                                 if(window.location.reload(false)){
-                                        this.props.history.push(`/login`)             
+                                        this.props.history.push(`/`)             
                                 }                            
                         }
                  })

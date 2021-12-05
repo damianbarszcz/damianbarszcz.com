@@ -19,8 +19,8 @@ const ArticleRelated = (props) => {
                                         <h2 className="related__header--title"> { props.relatedHeaderTitle } </h2>
                                 </header>
 
-                                {  /*---  Related > Block > Inner ---*/   }
-                                <div className="related__inner">   { props.randArticles }   </div>
+                                {  /*---  Related > Block > Rel-Inner ---*/   }
+                                <div className="related__rel-inner">   { props.randArticles }   </div>
                         </div>
                 </section>
             </>

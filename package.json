@@ -37,6 +37,7 @@
         "@splidejs/react-splide": "^0.4.4",
         "color-thief-react": "^2.0.12",
         "disable-scroll": "^0.6.0",
+        "disqus-react": "^1.1.2",
         "draft-js": "^0.11.7",
         "draft-js-color-picker": "^1.0.2",
         "draft-js-export-html": "^1.4.1",
@@ -49,14 +50,19 @@
         "html-to-draftjs": "^1.5.0",
         "jump.js": "^1.0.2",
         "lighten-darken-color": "^1.0.0",
+        "moment": "^2.29.1",
         "react-calendar": "^3.3.1",
         "react-detect-click-outside": "^1.1.1",
         "react-device-detect": "^1.17.0",
+        "react-google-recaptcha": "^2.1.0",
         "react-lines-ellipsis": "^0.14.1",
+        "react-moment": "^1.1.1",
+        "react-multi-carousel": "^2.6.5",
         "react-redux": "^7.2.6",
         "react-router-dom": "^5.2.0",
         "react-router-scroll-top": "^0.2.1",
         "recaptcha": "^1.2.1",
+        "typewriter-effect": "^2.18.2",
         "universal-cookie": "^4.0.4"
     }
 }

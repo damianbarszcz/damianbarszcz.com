@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\Member\ProjectsController;
 use App\Http\Controllers\Api\Member\ReviewsController;
 use App\Http\Controllers\Api\Member\DraftsController;
 use App\Http\Controllers\Api\Member\OverviewController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +56,17 @@ use App\Http\Controllers\Api\Member\OverviewController;
                 Route::get('/review/{review_url}', [ ReviewsController::class, 'singleReview' ]);
 
                 Route::get('/reviews/random/{pub_url}', [ ReviewsController::class, 'randomReviews' ]);
+        });
+
+        /*
+        =======================
+        Auth  API
+        =======================
+        */
+        Route::group(['prefix' => '/auth'], function(){
+                Route::post('/login',  [LoginController::class, 'login' ])->name('login');
+
+                Route::post('/logout',  [LoginController::class, 'logout' ])->name('logout');
         });
 
         /*

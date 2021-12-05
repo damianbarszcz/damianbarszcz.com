@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BasicController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,8 +26,12 @@ Route::get('/review/{slug}', [BasicController::class, 'singleReviewView']);
 
 Route::get('/help/search={slug}', [BasicController::class, 'searchView']);
 
-Auth::routes();
+//Auth routes group
+Route::group(['prefix' => '/auth'], function(){
+        Route::get('/sign-in', [LoginController::class, 'showLoginForm']);   
+});
 
+//Member routes group
 Route::group(['prefix' => '/member'], function(){
 
         Route::get('/{slug}', [MemberController::class, 'memberView']);

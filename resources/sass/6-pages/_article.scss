@@ -124,6 +124,10 @@
         
                         &_modifier{  text-align: left;  }
                 }
+
+                &-comment{
+                        margin-top:3.5rem;
+                }
         
                 // Article > Body > Holders
                 &-holders{ 
@@ -161,11 +165,20 @@
     
         // Related > Block
         &__block{ @include blockPadding }
-    
+
+         // Related > Block > Header
         &__block &__header{ @include sectionHeaderLeftV2  }
-    
-        // Related > Block > Articles
-        @include articleItems;
+
+        // Related > Block > Rel
+        &__block  &__rel{
+                @include articleItems;
+        }
+
+        // Related > Block > Rel inner 
+        &__block  &__rel-inner{ 
+                margin-top:3.5rem;
+                @include  inlineRepeatColElements(3, 1fr, 3rem); 
+        }
 }
 
 /*-----------------------------

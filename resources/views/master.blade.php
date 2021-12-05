@@ -14,7 +14,7 @@
     <meta name="twitter:description" content="@yield('pageDescryption')">
     <meta name="twitter:image" content="@yield('pageImage')">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@damianbarszcz">
+    <meta name="twitter:site" content="@DamianBarszcz">
     <meta property="fb:app_id" content="2212991682152973">
     <meta property="og:type" content="website">
     <meta property="og:url" content="@yield('canPageUrl')">
@@ -52,6 +52,7 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     @yield('basic-root') @yield('auth-root') @yield('member-root') 
+
 </body>
 
 </html>

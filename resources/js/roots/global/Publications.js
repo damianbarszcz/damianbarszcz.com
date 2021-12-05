@@ -143,18 +143,18 @@ Display related article
 export function relatedDisplay(props) {
         return props.randCollection.slice(0,3).map(article =>
 
-        <article key={ article.id } className="related__article related__article_modifier">
-                <a href={`/${ article.pub_category ? 'review' : 'project' }/${article.pub_url}`}  className="related__article-link related__article-link_modifier" target="_self">
-                        <div className="related__article-media" style={{ background:  `url( ${article.pub_picture })` }}> </div>
+        <article key={ article.id } className="related__rel-article related__rel-article_modifier">
+                <a href={`/${ article.pub_category ? 'review' : 'project' }/${article.pub_url}`}  className="related__rel-article-link related__rel-article-link_modifier" target="_self">
+                        <div className="related__rel-article-media" style={{ background:  `url( ${article.pub_picture })` }}> </div>
 
-                        <header className="related__article-header">
-                                <h2 className="related__article-header--title"> { article.pub_title } </h2>
+                        <header className="related__rel-article-header">
+                                <h2 className="related__rel-article-header--title"> { article.pub_title } </h2>
 
-                                <span className="related__article-header--desc"><LinesEllipsis text={ article.pub_subtitle }  maxLine='2' ellipsis='...' trimRight /></span>
+                                <span className="related__rel-article-header--desc"><LinesEllipsis text={ article.pub_subtitle }  maxLine='2' ellipsis='...' trimRight /></span>
                         </header>
 
                         { article.pub_category &&
-                        <div className="related__article-category related__article-category_modifier" data-book-category={ article.pub_category }>{ article.pub_category }</div> }
+                        <div className="related__rel-article-category related__rel-article-category_modifier" data-book-category={ article.pub_category }>{ article.pub_category }</div> }
                 </a>
         </article>
     )

@@ -132,13 +132,15 @@
         @include localLibraryHeader;
 
         // Library manager > Block > Inner
-        &__block &__inner{
+        &__block &__rev-inner{
                 margin-top:2rem;
                 @include  inlineRepeatColElements(3, 1fr, 3rem);
         }
 
-         // Library manager > Block > Inner > Article
-       @include articleItems;
+         // Library manager > Block > Inner >  Rev Article
+          &__rev{
+                @include articleItems;
+        }
 }
 
 /*-----------------------------
@@ -217,7 +219,7 @@
 @media (max-width: 1200px) {
 
         .last-reviews{
-                &__block &__inner{ @include  inlineRepeatColElements(3, 1fr, 1.5rem);  }
+                &__block &__rev-inner{ @include  inlineRepeatColElements(3, 1fr, 1.5rem);  }
         }
 
         .popular{
@@ -236,7 +238,7 @@
 //Small screens, laptops
 @media (max-width: 960px) {
         .last-reviews{
-                &__block &__inner{ @include  inlineRepeatColElements(2, 1fr, 1.5rem);  }
+                &__block &__rev-inner{ @include  inlineRepeatColElements(2, 1fr, 1.5rem);  }
         }
 
         .popular{
@@ -259,7 +261,7 @@
 //iPads, Tablets
 @media (max-width: 768px) {
         .last-reviews{
-                &__block &__inner{    @include  inlineRepeatColElements(2, 1fr, 1rem);   }
+                &__block &__rev-inner{    @include  inlineRepeatColElements(2, 1fr, 1rem);   }
         }
 
         .top-review{
@@ -299,7 +301,7 @@
         }
         
         .last-reviews{
-                &__block &__inner{    @include  inlineRepeatColElements(1, 1fr, 1.5rem);      }
+                &__block &__rev-inner{    @include  inlineRepeatColElements(1, 1fr, 1.5rem);      }
         }
 
         .popular{

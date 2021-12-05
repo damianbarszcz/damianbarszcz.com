@@ -390,23 +390,31 @@
                         height:2rem;
                         border-radius:100%;
 
-                        &_modifier{ border-radius:100%; }
+                        &_modifier{ 
+                                border-radius:100%; 
+                                background-repeat:no-repeat;
+                                background-size:60% 60%;
+                                background-position:center;
+                        }
 
                         &:nth-child(3){    margin-right:0rem;  }
 
                         // Facebook button
                         &--facebook{
+                                background-image:url('../../images/global/facebook.svg');
                                 border:0.15rem solid $facebook-color;
                                 color:$facebook-color;
                         }
                         // Twitter button
                         &--twitter{
+                                background-image:url('../../images/global/twitter.svg');
                                 border:0.15rem solid $twitter-color;
                                 color:$twitter-color;
                         }
 
                         // Envelope button
                         &--envelope{
+                                background-image:url('../../images/global/mail.svg');
                                 border:0.15rem solid $app-color-purple;
                                 color:$app-color-purple;
                         }
@@ -752,25 +760,8 @@
 
 @mixin articleItems($carousel:false, $mainPage:false){
 
-        // Block > Inner
-        &__inner{
-                @if  $mainPage{ margin-top:0rem;  }
-
-                @else{   margin-top:3.5rem;}
-
-                @if $carousel{
-                        display: grid;
-                        grid-auto-flow: column;
-                        grid-gap: 3em;
-                }
-
-                @else if $mainPage{ @include  inlineRepeatColElements(1, 1fr, 0rem);  }
-
-                @else{    @include  inlineRepeatColElements(3, 1fr, 3rem); }
-        }
-                
         // Block > Inner > Article
-       &__inner &__article{
+       &-article{
                 @if $mainPage{ padding:2rem;}
                 @else{ padding:1.25rem 1rem;   }
 
@@ -872,7 +863,7 @@
 
         //Small screens, laptops
         @media (max-width: 960px) {
-                &__inner &__article{
+                &-article{
                         @if $mainPage{
                                 &-media{
                                         &--artwork{  @include setItemArtwork(30rem);   }
@@ -883,7 +874,7 @@
 
         //Mobile devices (horizonal)
         @media (max-width: 768px) {
-                &__inner &__article{
+                &-article{
                         @if $mainPage{
                                 &-media{
                                         &--artwork{  @include setItemArtwork(20rem);   }
@@ -894,7 +885,7 @@
 
         //iPads, Tablets
         @media (max-width: 576px) {
-                &__inner &__article{
+                &-article{
                         @if $mainPage{
                                 &-media{
                                         &--artwork{  @include setItemArtwork(15rem);   }
