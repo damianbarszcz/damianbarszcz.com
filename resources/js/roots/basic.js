@@ -19,6 +19,7 @@ const Privacy = lazy(() => import('./s_basic/primary/templates/PrivacyPage/Priva
 
 import CookieDialog  from './global/CookieDialog';
 import SuspenseLoader  from './global/SuspenseLoader';
+import SiteMessage  from './global/SiteMessage/SiteMessage';
 
 function Basic() {
         const [collection, getCollection] = useState([]);
@@ -60,6 +61,7 @@ function Basic() {
                 <Router>
                         <Suspense fallback={<SuspenseLoader />}>
                                 <ScrollToTop>
+                                        <SiteMessage />
                                         {  /*  Cookies message */  }
                                         <CookieDialog />
 
