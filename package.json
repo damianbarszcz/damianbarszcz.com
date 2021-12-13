@@ -55,6 +55,7 @@
         "react-detect-click-outside": "^1.1.1",
         "react-device-detect": "^1.17.0",
         "react-google-recaptcha": "^2.1.0",
+        "react-hook-reading-time": "^1.0.0",
         "react-lines-ellipsis": "^0.14.1",
         "react-moment": "^1.1.1",
         "react-multi-carousel": "^2.6.5",

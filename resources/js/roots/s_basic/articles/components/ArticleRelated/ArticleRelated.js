@@ -7,8 +7,8 @@ const ArticleRelated = (props) => {
      Render component
     =======================
     */
-    return (
-            <>
+        return (
+                <>
                 {  /*-----------------------------------*/   }
                 {  /*--------        Related      -------*/   }
                 {  /*-----------------------------------*/   }    
@@ -23,8 +23,8 @@ const ArticleRelated = (props) => {
                                 <div className="related__rel-inner">   { props.randArticles }   </div>
                         </div>
                 </section>
-            </>
-    );
+                </>
+        );
 }
 
 export default ArticleRelated;

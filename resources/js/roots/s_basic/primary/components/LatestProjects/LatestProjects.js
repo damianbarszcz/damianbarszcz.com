@@ -1,5 +1,6 @@
 import  React from 'react';
 import Moment from 'react-moment';
+import LinesEllipsis from 'react-lines-ellipsis';
 
 const LatestProjects = (props) => {
     
@@ -25,10 +26,20 @@ const LatestProjects = (props) => {
                                                 {  props.latestProjects.slice(0,5).map(article =>
                                                 <article key={ article.id } className="latest-projects__article latest-projects__article_modifier" style={{ background:  `url( ${article.pub_picture })` }}>
                                                         <a href={`/project/${article.pub_url}`} className="latest-projects__article-link latest-projects__article-link_effect" target="_self">
-                                                                <header className="latest-projects__article-header">
-                                                                        <h2 className="latest-projects__article-header--title">   { article.pub_title }  </h2>
+                                                                <div className="latest-projects__article-comment">
+                                                                        <span className="latest-projects__article-comment--caption">Skomentuj </span>
+                                                                </div>
 
+                                                                <div className="latest-projects__article-timread"> 
+                                                                        <span className="latest-projects__article-timread--caption"> <i className="material-icons material__icon"> schedule </i> { props.readingTime(article.pub_body) }  </span>
+                                                                </div>
+
+                                                                <header className="latest-projects__article-header latest-projects__article-header_modifier">  
                                                                         <p className="latest-projects__article-header--date"><Moment format="DD/MM/YYYY">{ article.date_of_publication }</Moment></p>
+
+                                                                        <h3 className="latest-projects__article-header--title">   { article.pub_title }  </h3>
+
+                                                                        <span className="latest-projects__article-header--subtitle"> <LinesEllipsis text={ article.pub_subtitle }  maxLine='2' ellipsis='...' trimRight /></span>
                                                                 </header>
                                                         </a>
                                                 </article>  ) }

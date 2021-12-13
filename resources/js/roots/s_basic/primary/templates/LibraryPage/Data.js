@@ -6,7 +6,7 @@ export const libraryObjOne = {
 
   export const libraryObjTwo = { headerTitle:'Polecane' };
 
-  export const libraryObjThree = { headerTitle:'Ostatnie recezje' };
+  export const libraryObjThree = { headerTitle:'Ostatnie recenzje' };
 
   export const libraryObjFour ={ headerTitle:'Popularne' };
 

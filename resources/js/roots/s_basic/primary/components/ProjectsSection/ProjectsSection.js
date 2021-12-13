@@ -1,6 +1,7 @@
 import  React from 'react';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
+import LinesEllipsis from 'react-lines-ellipsis';
 
 function ProjectsSection(props){
         const pubCollection = props.collection.slice(0,1).map(article=> article.pub_category)
@@ -14,10 +15,20 @@ function ProjectsSection(props){
                 return  props.projects.slice(startElementNumber, endElementNumber).map(article =>
                 <article key={ article.id } className="projects__article projects__article_modifier" style={{ background:  `url( ${article.pub_picture })` }}> 
                         <a href={`/project/${article.pub_url}`} className="projects__article-link projects__article-link_effect" target="_self">
+                                <div className="projects__article-comment">
+                                        <span className="projects__article-comment--caption">Skomentuj </span>
+                                </div>
+
+                                <div className="projects__article-timread"> 
+                                        <span className="projects__article-timread--caption"> <i className="material-icons material__icon"> schedule </i> { props.readingTime(article.pub_body) }  </span>
+                                </div>
+
                                 <header className="projects__article-header projects__article-header_modifier">
-                                        <h2 className="projects__article-header--title"> { article.pub_title }</h2>
-                
                                         <span className="projects__article-header--date"><Moment format="DD/MM/YYYY">{article.date_of_publication}</Moment></span>
+
+                                        <h2 className="projects__article-header--title"> { article.pub_title }</h2>
+
+                                        <span  className="projects__article-header--subtitle"> <LinesEllipsis text={ article.pub_subtitle }  maxLine='2' ellipsis='...' trimRight /></span>
                                 </header>
                         </a>
                 </article>
@@ -61,6 +72,7 @@ function ProjectsSection(props){
         Render component
         =======================
         */
+
         return (
                 <>
                         {  /*----------------------------------------*/   }

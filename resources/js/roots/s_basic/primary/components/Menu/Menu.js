@@ -35,19 +35,19 @@ function Menu(props) {
                                 <NavBrand typeSection={props.typeSection} />
                         </li>
                         <li className={`${props.typeSection}__menu-list-item`}>
-                                <Link to='/projects' className={`${props.typeSection}__menu-list-link ${props.typeSection}__menu-list-link_effect`} target="_self"> Projekty </Link>
+                                <a href='/projects' className={`${props.typeSection}__menu-list-link ${props.typeSection}__menu-list-link_effect`} target="_self"> Projekty </a>
                         </li> 
 
                         <li className={`${props.typeSection}__menu-list-item`}>
-                                <Link to="/library" className={`${props.typeSection}__menu-list-link ${props.typeSection}__menu-list-link_effect`} target="_self"> Biblioteka </Link>
+                                <a href="/library" className={`${props.typeSection}__menu-list-link ${props.typeSection}__menu-list-link_effect`} target="_self"> Biblioteka </a>
                         </li> 
 
                         <li className={`${props.typeSection}__menu-list-item`}>
-                                <Link to="/contact" className={`${props.typeSection}__menu-list-link ${props.typeSection}__menu-list-link_effect`} target="_self"> Kontakt </Link>
+                                <a href="/contact" className={`${props.typeSection}__menu-list-link ${props.typeSection}__menu-list-link_effect`} target="_self"> Kontakt </a>
                         </li>
 
                         <li className={`${props.typeSection}__menu-list-item`}>
-                                <Link to="/about" className={`${props.typeSection}__menu-list-link ${props.typeSection}__menu-list-link_effect`} target="_self"> O mnie </Link>
+                                <a href="/about" className={`${props.typeSection}__menu-list-link ${props.typeSection}__menu-list-link_effect`} target="_self"> O mnie </a>
                         </li>
                 </ul>
                 )

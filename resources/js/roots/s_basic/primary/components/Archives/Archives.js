@@ -12,17 +12,20 @@ function Archives(props)  {
     return (
             <>
                     {  /*----------------------------------------*/   }
-                    {  /*--------    Latest projects    -------*/   }
+                    {  /*--------        Archives            -------*/   }
                     {  /*-----------------------------------------*/   }    
                         <section className="archives archives_theme">
-                                <div className="archives__block wide-container">
-                                       {  /*---  Latest projects > Block > Inner  ---*/   }
+                                <div className="archives__block g-container">
+                                       {  /*---  Archives  > Block > Header  ---*/   }
                                         <header className="archives__header archives__header_modifier">
-                                                <h1 className="archives__header--title">{ props.projectsObjFour.headerTitle } </h1>
+                                                <h2 className="archives__header--title">{ props.projectsObjFour.headerTitle } </h2>
+
+                                                <p className="archives__header--desc"> { props.projectsObjFour.headerDesc } </p>
                                         </header>
 
+                                        {  /*---  Archives  > Block > Inner  ---*/   }
                                         <div className="archives__inner">
-                                              { props.latestProjects.slice(10,18).map(article =>
+                                                { props.latestProjects.slice(10,18).map(article =>
                                                <article key={ article.id } className="archives__article archives__article_modifier">
                                                         <a href={`/project/${article.pub_url}`} className="archives__article-link archives__article-link_effect" target="_self">
                                                                 <div className="archives__article-wrapper">
@@ -31,16 +34,16 @@ function Archives(props)  {
                                                                         </div>
 
                                                                         <header className="archives__article-header archives__article-header_modifier">
-                                                                                <p className="archives__article-header--date"><Moment format="DD/MM/YYYY">{ article.date_of_publication }</Moment></p>
-                                                                                                                                
-                                                                                <h2 className="archives__article-header--title">   { article.pub_title }  </h2>
+                                                                                <h3 className="archives__article-header--title">{ article.pub_title }</h3>
                                                                         
-                                                                                <div className="archives__article-header--desc"> <LinesEllipsis text={ article.pub_subtitle } maxLine='2' ellipsis='...' trimRight /> </div>
+                                                                                <div className="archives__article-header--desc"><LinesEllipsis text={ article.pub_subtitle } maxLine='2' ellipsis='...' trimRight /></div>
+
+                                                                                <p className="archives__article-header--date"><Moment format="DD/MM/YYYY">{ article.date_of_publication }</Moment></p>
                                                                         </header>
                                                                 </div>
                                                         </a>
                                                 </article>  )}
-                                         </div>
+                                        </div>
                                 </div>
                         </section>
             </>

@@ -40,6 +40,14 @@ function Index(props)  {
                 getWidth(window.innerWidth);
          }
 
+         const readingTime = (article) => {
+                const text = article;
+                const wpm = 300;
+                const words = text.trim().split(/\s+/).length;
+                const time = Math.ceil(words / wpm);
+                return time + " min. czytania";
+        }
+
         /*
         ===========================
          Change carousel items position
@@ -107,12 +115,12 @@ function Index(props)  {
                                 <NewPublication  newPublication = {  props.collection } />
 
                                 { props.projects.length  > 5 &&
-                                        <ProjectsSection collection={ props.collection } projects = { props.projects } indexObjOne = { indexObjOne } />
+                                        <ProjectsSection readingTime={readingTime} collection={ props.collection } projects = { props.projects } indexObjOne = { indexObjOne } />
                                  }  
 
                                 { props.reviews.length  > 5  &&
                                         <LibrarySection  reviews = {  props.reviews }  prevButton = { prevButton } nextButton= { nextButton }  chooseLeft = { chooseLeft }
-                                        chooseRight = { chooseRight } indexObjTwo = { indexObjTwo } position = {position} counter = {counter}  />      
+                                        chooseRight = { chooseRight } indexObjTwo = { indexObjTwo } position = {position}  />      
                                  }  
                         </main>
                         <Footer />

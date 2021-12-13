@@ -74,48 +74,16 @@
         }
 }
 
-@mixin  articleHeaderLeft($size:100%, $color: $app-color-white, $titleSize:$font-size-normal){
+@mixin  articleHeaderLeft($size:100%, $color: $app-color-white, $titleSize:$font-size-normal, $secColor:$app-color-white){
         
         @include boxLeft($size);
                         
-        &--title{   @include boxHeading( $titleSize, $color);   }
+        &--title{   @include boxHeading( $titleSize, $color); }
 
-        &--subtitle{  
-                @include boxHeading($font-size-normal, $color);  
+        &--subtitle{  @include boxDescContent; color:$secColor;  }
 
-                margin-top:1.5rem;
-        }
-
-        &--date{  
-                @include boxHeading($font-size-normal, $color);  
-
-                margin-top: 0.5rem;
-        }
-
-        &--tags{  
-                margin-bottom: 0.5rem;
-                padding: 0.35rem 0.85rem;
-                width: fit-content;
-                background-color:$app-color-blue;
-
-                @include boxHeading($font-size-small, $color);  
-        }
+        &--date{   @include boxDescContent; color:$secColor;  }
 }
-
-@mixin localHeader($color:$app-color-gray){
-
-        &__header{
-                display: inline-block;
-                padding-bottom:0.25rem;
-    
-                &_modifier{ border-bottom: 2px  solid $color; }
-
-                &--title{
-                        @include boxHeading($font-size-normal, $color);
-                        text-transform: uppercase;
-                }
-        }
- }
 
 /*---------------------------------
 *              Blog brand
@@ -135,7 +103,7 @@
                         &--blue{ fill:$app-color-blue; }
                         &--red{ fill:$app-color-red; }
                         &--green{ fill:$app-color-green; }
-                        &--dark{fill:$app-color-silver;    }
+                        &--gray{fill:$app-color-gray;    }
                 }
         }
 
@@ -571,6 +539,8 @@
                 width:100%;
                 height: 100%;
                 text-decoration: none;    
+
+                @include transition;
         }
 
 

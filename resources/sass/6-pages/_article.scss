@@ -3,6 +3,158 @@
  * Copyright 2021 Damian Barszcz
  *-----------------------------------------------------*/
 
+@mixin header($color,$type){
+        // Article > Header
+        .article__header{
+
+                @if($type=='book'){
+                        padding-top:6rem;
+                        min-width:100%;
+                }
+
+                @else{
+                        padding-top:25rem;
+                        padding-left: 5rem;
+                        padding-right: 5rem;
+                        max-width:50%;
+                }
+
+                &_modifier{  background-color:$color;  }
+
+                &-inner{
+                        margin:auto;
+                        width:40vw;
+                }
+
+                &-data{
+                        display:flex;
+                        justify-content:space-between;
+                        align-items:center;
+                        margin-bottom:1rem;
+                }
+
+                .text-dark{ color:$app-color-dark; }
+
+                .text-light{ color:$app-color-white;  }
+
+                &--category{
+                        @include pageButton(90px);
+                        box-shadow:none;
+                }
+
+                $bookCategory: (#{$app-color-red}:"programowanie", #{$app-color-blue}:"rozwój", #{$app-color-yellow}:"astrofizyka", #{$app-color-green}:"biznes");
+
+                @each $color, $category in $bookCategory {
+                        [data-book-category="#{$category}"]{
+                                border:0.15rem solid $color;
+                                color:$color;
+                        }
+                }
+
+                &--title{
+                        @include boxHeading($font-size-extra-huge);
+                        line-height:6rem;
+                }
+
+                &--subtitle{
+                        @include boxDescContent($font-size-big);
+                        line-height:3rem;
+                }
+
+                &--date{
+                        @include boxDescContent($font-size-extra-normal);  
+                }
+
+                &-timread{
+                        margin-top:2rem;
+
+                        &--caption{
+                                @include boxDescContent($font-size-extra-normal);  
+                        }
+
+                        .material__icon{
+                                margin-right:0.35rem;
+                                transform:translateY(0.25rem);
+                        }
+                }
+        }
+
+        //Very large screen
+        @media (max-width: 1366px) {
+                .article__header{
+                        &-inner{ width:50vw; }
+                 }
+        }
+
+        //Desktops, large screens
+        @media (max-width: 1200px) {
+                .article__header{
+                        &-inner{ width:65vw; }
+                }
+        }
+
+        //Small screens, laptops
+        @media (max-width: 960px) {
+                .article__header{
+                        &-inner{ width:75vw;}
+
+                        @if($type=='book'){
+                                padding-top:6rem;
+                                min-width:100%;
+                        }
+        
+                        @else{
+                                padding-top:25rem;
+                                padding-left: 5rem;
+                                padding-right: 5rem;
+                                min-width:100%;
+                        }
+                }
+        }
+
+        //iPads, Tablets
+        @media (max-width: 768px) {
+                .article__header{
+                        &--title{
+                                @include boxHeading($font-size-huge);
+                                line-height:5rem;
+                        }
+        
+                        &--subtitle{
+                                @include boxDescContent($font-size-extra-normal);
+                                line-height:2rem;
+                        }
+        
+                        &--date{  @include boxDescContent($font-size-normal);    }
+        
+                        &-timread{
+                                margin-top:1.5rem;
+        
+                                &--caption{  @include boxDescContent($font-size-normal);  }
+                        }
+
+                        &-inner{ width:85vw;  }
+                }
+        }
+
+        //Mobile devices (horizonal)
+        @media (max-width: 576px) {
+                .article__header{
+                        &-inner{ width:89.5vw;   }
+
+                        @if($type=='book'){
+                                padding-top:6rem;
+                                min-width:100%;
+                        }
+        
+                        @else{
+                                padding-left: 1rem;
+                                padding-right: 1rem;
+                        }
+                }
+        }
+ }
+
 /*-----------------------------
 *               Article
 *----------------------------*/
@@ -12,142 +164,131 @@
 
         // for Reviews
         &--book{
-                // Article > Head
-                .article__head{ 
-                        @include blockPadding(5rem, 0, 3rem); 
-
-                        // Article > Head > Artwork
-                        &-artwork{  
-                                background-size:contain !important;
-                                background-repeat: no-repeat !important;
-                                background-position: center !important;
-                                min-width: 100%;
-                                height:35rem;     
+                .article__head {
+                        padding-top: 4.35rem;
+        
+                        &-media{
+                                margin:auto;
+                                        
+                                &--artwork{
+                                        display:block;
+                                        width:100%;
+                                        object-fit: cover;
+                                }
                         }
+                }
 
-                        // Article > Head > Header
-                        &-header{
-                                margin:1.5rem auto  0rem auto;
-                                max-width: 1140px;
-                                text-align: center;
-
-                                &--title{  
-                                        margin-top:1rem;
-
-                                        @include boxHeading($font-size-huge);  
-                                }
-                    
-                                &--caption{  
-                                        margin-top:1rem;
-                    
-                                        @include boxDescContent($font-size-extra-normal, $regular-weight);  
-                                }
-
-                                &--category{  @include pageButton(90px);}
-
-                                .dark-style{
-                                        border:0.15rem solid $app-color-dark;
-                                        color:$app-color-dark;
-                                }
-
-                                .light-style{
-                                        border:0.15rem solid $app-color-white;
-                                        color:$app-color-white;
-                                }
-
-                                .text-dark{ color:$app-color-dark; }
-
-                                .text-light{ color:$app-color-white;  }
-                        }
-                } 
+                @include header($app-color-white,'book');
         }
-
-        // Article for Projects
+        
+        // for Projects
         &--project{
-                .article__head{ 
+                .article__head {
+                        display: flex;
                         position: relative;
+        
+                        &-media{  
+                                width: 50%;
+                                height: 100vh; 
+                                margin-left:auto;
 
-                        &-inner{
-                                display: grid;
-                                grid-template-columns: 1fr 1fr;
-                                grid-column-gap: 2.5rem;
-                                grid-row-gap: 0rem;
-                                align-items: center;
-                                height:75vh;  
-                        }
+                                &--artwork{
+                                        display: block;
+                                        height:100%;
+                                }
+                         }
 
-                        &-artwork{  
-                                height: 420px;
-                                background-size:contain !important;
-                                background-repeat: no-repeat !important;
-                                background-position: center !important;
-                        }
-
-                        &-header{
-                                &--title{  
-                                        @include boxHeading($font-size-huge);  
-                                }
-                    
-                                &--caption{  
-                                        margin-top:1rem;
-                    
-                                        @include boxDescContent($font-size-extra-normal, $regular-weight);  
-                                }
-    
-                                .dark-style{
-                                        border:0.15rem solid $app-color-dark;
-                                        color:$app-color-dark;
-                                }
-    
-                                .light-style{
-                                        border:0.15rem solid $app-color-white;
-                                        color:$app-color-white;
-                                }
-    
-    
-                                .text-dark{ color:$app-color-dark; }
-    
-                                .text-light{ color:$app-color-white;  }
-                        }
+                        @include header(transparent,'project');
                 }
         }
 
         // Article > Body
         &__body{
-                margin:auto;
-                padding: 3rem 0 3rem;
-                width:40vw;
-        
-                // Article > Body > Content
-                &-content{ 
+                padding: 6rem 0 6rem;
+                min-width:100%;
+
+                &_modifier{  background-color:$app-color-white;  }
+
+                &-inner{
+                        margin:auto;
+                        width:40vw;
+    
                         @include pubSystem(true);
-        
-                        &_modifier{  text-align: left;  }
+                }
+        }
+
+        // Article > Properties
+        &__properties{
+                min-width:100%;
+
+                &_modifier{  background-color:$app-color-white;  }
+
+                &-inner{
+                        margin:auto;
+                        width:40vw;
                 }
 
-                &-comment{
-                        margin-top:3.5rem;
-                }
-        
-                // Article > Body > Holders
                 &-holders{ 
-                        margin: 4.5rem auto 0rem;
-                                        
-                        &_modifier{  text-align: left;  }
-        
                         &-tag { 
-                                padding: 1rem 2.5rem;
-                                margin-right:1rem;
-                            
+                                display:inline-block;
+                                margin-right: 1rem;
+                                padding: 1rem 2rem;
+                                        
                                 &_effect{
-                                        background-color:$app-color-lsilver;
                                         border-radius: 25px;
+                                        letter-spacing:1px;
                                         font-size:$font-size-normal;
                                         font-weight: $bold-weight;
-                                        color:$app-color-gray;
+                                        color:$app-color-white;
+                                        cursor:pointer;
                                 }
                         }
-                 }
+                }
+
+                &-author{ 
+                        margin-top:3.5rem;
+
+                        &-header{
+                                &--title{  @include boxHeading($font-size-big, $app-color-gray);  }
+                        }
+                        
+                        &-inner { 
+                                display:flex;
+                                align-items:center;
+                                margin-top:2rem;
+                        }
+
+                        &-media{
+                                &--artwork{
+                                        display:block;
+                                        width:5rem;
+                                        height:5rem;
+                                        border-radius:100%;
+                                }
+                        }
+
+                        &-info{
+                                margin-left:1rem;
+
+                                &--name, &--role{
+                                        @include boxDescContent; 
+                                        line-height:1.5rem;
+                                }
+                        }
+                }
+        }
+
+        // Article > Comment
+        &__comment{
+                min-width: 100%;
+
+                &_modifier{ background-color:$app-color-white;  }
+
+                &-inner{
+                        padding: 6rem 0 6rem;
+                        margin:auto;
+                        width:40vw;
+                }
         }
 }
 
@@ -190,18 +331,26 @@
         .article{
                 // for Reviews
                 &--book{
-                        // Article > Head 
-                        .article__head{ 
-                                // Article > Head > Artwork
-                                &-artwork{  
-                                        height:32.5rem;
-                                }
+                        .article__head {
+                                &-media{  &--artwork{  min-height:580px; }}
                         }
                 }
-        }
+                
+                 // Article > Body
+                &__body{
+                        &-inner{  width:50vw; }
+                }
 
-        // Article > Body
-        .article__body{  width:50vw;  }
+                // Article > Properties
+                &__properties{
+                        &-inner{ width:50vw; }
+                }
+
+                // Article > Comment
+                &__comment{
+                        &-inner{  width:50vw;  }
+                }
+        }
 }
 
 //Desktops, large screens
@@ -209,136 +358,172 @@
         .article{
                 // for Reviews
                 &--book{
-                        // Article > Head 
-                        .article__head{ 
-                                // Article > Head > Artwork
-                                &-artwork{  
-                                        height:30rem;
-                                }
+                        .article__head {
+                                &-media{  &--artwork{  min-height:576px; }}
                         }
+                }
+
+                // Article > Body
+                &__body{    
+                        &-inner{ width:65vw; }
+                }
+
+                // Article > Properties
+                &__properties{
+                        &-inner{ width:65vw;  }
+                }
+
+                // Article > Comment
+                &__comment{
+                        &-inner{  width:65vw; }
                 }
         }
 
-        // Article > Body
-        .article__body{  width:65vw;  }
-
-       // Related
-       .related{           
-               // Related > Block > Inner
-               &__block &__inner{ @include  inlineRepeatColElements(3, 1fr, 1.5rem);  }
+        .related{      
+                // Related > Block > Rel inner 
+                &__block  &__rel-inner{ 
+                        @include  inlineRepeatColElements(3, 1fr, 0.5rem); 
+                }
         }
 }
-   
+
 //Small screens, laptops
 @media (max-width: 960px) {
         .article{
                 // for Reviews
                 &--book{
-                        // Article > Head 
-                        .article__head{ 
-                                // Article > Head > Artwork
-                                &-artwork{  
-                                        height:25rem;
+                        .article__head {
+                                &-media{  &--artwork{  min-height:602px; }}
+                        }
+                }
+
+                &--project{
+                        .article__head {
+                                grid-template-columns: 1fr;
+                                height: 85vh;
+
+                                &-media{  
+                                        grid-row-start:1;  
+                                        grid-column-start:1; 
+                                        margin:auto;
+                                        
+                                        &--artwork{  max-height:571px;}   
                                 }
                         }
                 }
+
+                // Article > Body
+                &__body{                       
+                        &-inner{ width:75vw;  }
+                }
+
+                // Article > Properties
+                &__properties{
+                        &-inner{ width:75vw; }
+                }
+               
+                // Article > Comment
+                &__comment{
+                        &-inner{  width:75vw; }
+                }
         }
 
-        // Article > Body
-        .article__body{ width:75vw;  }
+        .related{      
+                // Related > Block > Rel inner 
+                &__block  &__rel-inner{ 
+                        @include  inlineRepeatColElements(2, 1fr, 3rem); 
+                }
 
-       // Related
-       .related{       
-               // Related  > Block > Inner > Articles
-               &__block &__inner{ @include  inlineRepeatColElements(2, 1fr, 1.5rem);  }  
-               // Related  > Block > Article
-               &__article{
-                       &:nth-child(3){ display: none;  }
-               } 
-       }
+                 // Related  > Block > Article
+                &__rel-article{
+                        &:nth-child(3){ display: none;  }
+                } 
+        }
 }
-   
+
 //iPads, Tablets
 @media (max-width: 768px) {
         .article{
                 // for Reviews
                 &--book{
-                        // Article > Head 
-                        .article__head{ 
-                                // Article > Head > Artwork
-                                &-artwork{  
-                                        height:20rem;
+                        .article__head {
+                                &-media{   &--artwork{  min-height:477px; }   }
+                        }
+                }
+
+                &--project{
+                        .article__head {
+                                &-media{                            
+                                        &--artwork{  max-height:693px; border:1px solid red;}   
                                 }
                         }
                 }
 
-                // for Projects
-                &--project{
-                        .article__head{ 
-                                padding-top: 3.5rem;
-                                        
-                                &-inner{
-                                        grid-template-columns: 1fr;
-                                        height:60vh;  
-                                }
+                // Article > Body
+                &__body{                                       
+                        &-inner{ width:85vw;  }
+                }
 
-                                &-artwork{  
-                                        grid-row:1;
-                                        grid-column: 1;
-                                        height: 20rem;
-                                }  
-                        }
+                // Article > Properties
+                &__properties{
+                         &-inner{ width:85vw; }
+                 }
+
+                // Article > Comment
+                &__comment{
+                        &-inner{  width:85vw; }
                 }
         }
 
-        // Article > Body
-        .article__body{ width:85vw; }
-
-        // Related
-        .related{    
-                // Related  > Block > Articles
-                &__block  &__inner{    @include  inlineRepeatColElements(2, 1fr, 1rem);   }
-        } 
+        .related{      
+                // Related > Block > Rel inner 
+                &__block  &__rel-inner{ 
+                        @include  inlineRepeatColElements(2, 1fr, 1rem); 
+                }
+        }
 }
-   
-   //Mobile devices (horizonal)
+
+//Mobile devices (horizonal)
 @media (max-width: 576px) {
         .article{
                 // for Reviews
                 &--book{
-                        // Article > Head 
-                        .article__head{ 
-                                // Article > Head > Artwork
-                                &-artwork{  
-                                        height:15rem;   
+                        .article__head {
+                                &-media{ &--artwork{  min-height:361px; }   }
+                        }
+                }
+
+         // for Projects
+                &--project{
+                        .article__head {
+
+                                &-media{  
+                                        &--artwork{  max-height:437px; border:1px solid red;}   
                                 }
                         }
                 }
 
-                // for Projects
-                &--project{
-                        .article__head{ 
-                                padding-top: 3.5rem;
-                                        
-                                &-inner{
-                                        grid-template-columns: 1fr;
-                                        height:60vh;  
-                                }
+                // Article > Body
+                &__body{                                                            
+                        &-inner{ width:89.5vw;   }
+                }
 
-                                &-artwork{  
-                                        height: 20rem;
-                                }  
-                        }
+                // Article > Properties
+                &__properties{
+                        &-inner{ width:89.5vw; }
+                }
+
+                // Article > Comment
+                &__comment{
+                        &-inner{  width:89.5vw;  }
                 }
         }
 
-        // Article > Body
-        .article__body{ width:90vw;}
-
-       // Related
-       .related{    
-               // Related  > Block > Articles
-                 &__block  &__inner{    @include  inlineRepeatColElements(1, 1fr, 1.5rem);   }
-         } 
-   }
+        .related{      
+                // Related > Block > Rel inner 
+                &__block  &__rel-inner{ 
+                        @include  inlineRepeatColElements(1, 1fr, 3rem); 
+                }
+        }
+}
 

@@ -14,6 +14,7 @@ export const projectsObjThree = {
 
 export const projectsObjFour = {
       headerTitle:'Archiwum',
+      headerDesc:'Stare ale jare! Zobacz publikacje starszej daty.',
 };
 
 export const projectsObjFive = {

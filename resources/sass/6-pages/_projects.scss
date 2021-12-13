@@ -44,14 +44,14 @@
 .projects-banner{
         @include sectionDefinition;
 
-        &_theme{  background-color:$app-color-white; }
+        &_theme{  background-color:  $app-color-dark;   }
         
         // Projects banner > Block
         &__block{  @include blockPadding(8rem, 0, 1rem);  }
 
         // Projects banner > Block > Header
         &__block &__header{   
-                @include sectionHeaderCenterV2(40rem, $app-color-gray, $app-color-blue);
+                @include sectionHeaderCenterV2(40rem, $app-color-white, $app-color-blue);
         }
 }
 
@@ -59,57 +59,116 @@
 *       Latest projects
 *----------------------------*/
 
-        .latest-projects{
-                @include sectionDefinition;
+.latest-projects{
+        @include sectionDefinition;
 
-                &_theme{  background-color:  $app-color-white; }
+        &_theme{  
+                background-color:  $app-color-dark;   
+          }
         
-                // Latest projects > Block 
-                &__block{ @include blockPadding(1rem, 0, 6rem, 0); }
+        // Latest projects > Block 
+        &__block{ @include blockPadding(1rem, 0, 6rem, 0); }
 
-                @include localHeader($app-color-gray);
+        @include localHeader($app-color-white);
 
-                // Latest Projects > Block > Hero
-                &__block  &__inner{
-                        display: grid;
-                        margin-top:2rem;
-                        grid-template-columns: repeat(4,1fr);
-                        grid-template-rows: repeat(2,1fr);
-                        grid-gap:1.5rem;
-                        min-width: 100%;
-               }
+        // Latest Projects > Block > Hero
+        &__block  &__inner{
+                display: grid;
+                margin-top:2rem;
+                grid-template-columns: repeat(4,1fr);
+                grid-template-rows: repeat(2,1fr);
+                grid-gap:1.5rem;
+                min-width: 100%;
+        }
 
-                // Latest Projects > Block > Article
-               &__block  &__article{
-                        position: relative;
-                        min-height: 20rem;
-                        cursor: move;
+        // Latest Projects > Block > Article
+        &__block  &__article{
+                position: relative;
+                min-height: 20rem;
+                cursor: move;
 
-                        &:nth-child(1){
-                                grid-column-start: 1;
-                                grid-column-end: 3;
-                                grid-row-start: 1;
-                                grid-row-end: 3;
+                &:nth-child(1){
+                        grid-column-start: 1;
+                        grid-column-end: 3;
+                        grid-row-start: 1;
+                        grid-row-end: 3;
+                }
+
+                &_modifier{  @include articleImage; }
+
+                &-link{
+                        @include boxInnerLink;  
+    
+                        &_effect{ background-color:rgba(41,41,41,0.85);     }
+
+                        &:hover{  background-color:transparent;  }
+                }
+
+                &-comment{
+                        position:absolute;
+                        top:1.5rem;
+                        left:0;
+
+                        &:before{
+                                display:inline-block;
+                                content:"";
+                                width:3rem;
+                                height:2rem;
+                                background-color:$app-color-blue;
                         }
 
-                        &_modifier{ @include articleImage;   }
-
-                        &-link{
-                                @include boxInnerLink;  
-
-                                &_effect{  background-color: rgba(0, 0, 0, 0.25); }
-                        }
-
-                        &-header{
-                                display: flex;
-                                flex-direction: column;
-                                justify-content: flex-end;
-                                height:100%;
-            
-                                @include articleHeaderLeft(75%);
+                        &--caption{
+                                display:inline-block;
+                                transform:translateY(-0.75rem);
+                                margin-left:1rem;
+                                font-weight:$bold-weight;
+                                font-size:$font-size-normal;
+                                color:$app-color-white;
+                                text-transform:uppercase;
                         }
                 }
+
+                &-timread{
+                        position:absolute;
+                        top:5rem;
+                        left:0;
+
+                        &:before{
+                                display:inline-block;
+                                content:"";
+                                width:1.5rem;
+                                height:2rem;
+                                background-color:$app-color-red;
+                        }
+
+                        &--caption{
+                                display:inline-block;
+                                transform:translateY(-0.7rem);
+                                margin-left:1rem;
+                                font-weight:$bold-weight;
+                                font-size:$font-size-normal;
+                                color:$app-color-white;
+                                text-transform:uppercase;
+                        }
+
+                        .material__icon{
+                                margin-right:0.35rem;
+                                transform:translateY(0.325rem);
+                        }
+                }
+
+                &-header{
+                        display:inline-block;
+                        position:absolute;
+                        bottom:1.5rem;
+                        left:0;
+                        padding: 1rem 1.5rem;
+                        min-width:100%;
+                        
+                        @include articleHeaderLeft(75%, $app-color-white, $font-size-extra-normal,$app-color-lsilver);
+                }
         }
+}
 
 /*-----------------------------
 *      Popular projects
@@ -118,49 +177,68 @@
 .popular-projects{
         @include sectionDefinition;
 
-        &_theme{  background-color:  $app-color-dark;}
+        &_theme{   background-color: $app-color-white; border-bottom: 1px solid $app-color-lsilver;  }
 
         // Popular projects > Block 
         &__block{ @include blockPadding; }
+        
+        @include localHeader($app-color-gray);
 
-        // Popular projects > Block > Header
-        @include localHeader($app-color-white);
+        // Popular projects > Block > Head
+        &__block &__head{
+                display:flex;
+                justify-content:space-between;
+                align-items:center;
+                min-width:100%;
+        }
 
-        // Popular projects > Block > Inner
-        &__block  &__inner{
-                display: grid;
-                margin-top:2rem;
-                grid-auto-flow: column;
-       }
-
-        // Popular projects > Block > Switchers
-        &__block  &__switchers{
-                display: flex;
-                width:100%;
-                justify-content: flex-end;
-
-                &-button{
+        // Popular projects > Block > Head > Switchers
+        &__block  &__head &__switchers{
+                display:flex;
+                &-item{
                         display:block;
                         position: relative;
                         width:4rem;
                         height: 4rem;
 
-                        &:nth-child(1){ margin-right: 1rem;  }
-        
+                        &:nth-child(1){
+                                margin-right:1rem;
+                        }
+                        
                         &_effect{
                                 border-radius:100%;
-                                background-color:$app-color-white;
-                                border: 1px solid $app-color-lsilver;
+                                border: 2px solid $app-color-gray;
                                 cursor:pointer;
                         }
-                }     
+                                    
+                        &:focus{  outline: none;  }
+                                    
+                        .material-icons{
+                                font-size: $font-size-big;
+                                color:$app-color-gray;
+                        }
+                }
+        }
+
+        // Popular projects > Block > Inner
+        &__block  &__inner{
+                display:grid;
+                margin-top:3.5rem;
+                grid-auto-flow: column;
+                grid-column-gap:1.5rem;
         }
 
         // Popular projects > Block > Article
-       &__block  &__article{
+        &__block  &__inner &__article{
+                display: inline-block;
                 position: relative;
-                max-width: 350px !important;
-                height: 568px;
+                min-height:100%;
+                width:348px; 
+
+                &_modifier{
+                        @include transition;
+                        box-shadow: -6px 8px 20px rgba(0, 0, 0, 0.1);
+                }
 
                 &-link{
                         display: grid;
@@ -220,77 +298,56 @@
         // Archives > Block 
         &__block{ @include blockPadding; }
 
-        // Archives > Block > Header
-        // Latest projects > Block > Header
-        @include localHeader($app-color-gray);
+         // Archives > Block > Header
+         &__block &__header{   @include sectionHeaderCenter(40rem, $app-color-gray,$app-color-blue);  }
 
-        // Archives > Block > Inner
-        &__block  &__inner{
-                display: grid;
-                margin-top:2rem;
-                grid-template-columns: repeat(3,1fr);
-                grid-gap:3.5rem;
-       }
+         // Archives > Block > Inner
+         &__block  &__inner{
+                display:grid;
+                margin-top:3.5rem;
+                grid-template-columns: 1fr 1fr;
+                grid-gap: 3.5rem;
+         }
 
         // Archives > Block > Inner > Article
-       &__block  &__article{
-               position: relative;
-               min-height:12rem;
+         &__block &__inner &__article{
+                margin:auto;
+                 padding: 1.5rem 1.5rem;
+                 width:100%;
+                 max-width:600px;
 
-                &_modifier{ 
+                 &_modifier{ 
                         @include boxStyling;
                         @include transition;
                 }
-                
-               &:hover{ box-shadow: 0 1px 6px 0 rgba(0,0,0,0.16); }
 
-                &-link{
-                        display: block;
-                        position: absolute;
-                        margin:0;
-                        width:100%;
-                        height: 100%;
+                &:hover{ box-shadow: 0 1px 6px 0 rgba(0,0,0,0.16); }
 
-                        &_effect{  border-radius: 0.5rem;   }
-                }
+                 &-wrapper{
+                        display:grid;
+                        grid-template-columns: 0.5fr 1fr;
+                        align-items:center;
+                        grid-gap:2rem;
+                 }
 
-                &-wrapper{
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
+                 &-artwork{
                         position: relative;
-                        padding:1rem;
-                        height: 100%;
+    
+                        &--image{
+                                display: block;
+                                width: 8.5rem;
+                                height:8.5rem;
+                        }
                 }
 
                 &-header{
-                        margin: 0rem 1rem;
+                        &--title{  @include boxHeading($font-size-extra-normal, $app-color-gray);}
 
-                        &--title{
-                                margin-top: 0.5rem;
-                                line-height: 1.75rem;
-                                color:$app-color-gray;
-                        }
+                        &--desc{  @include boxDescContent($font-size-normal, $regular-weight, $app-color-silver) ;}
 
-                        &--desc{
-                                margin-top:0.5rem;
-                                line-height: 1.5rem;
-                                color:$app-color-silver;
-                        }
-
-                        &--date{     color:$app-color-silver;  }
+                        &--date{  margin-top: 0.5rem; @include boxDescContent($font-size-normal, $regular-weight, $app-color-silver); }
                 }
-
-                &-artwork{
-                        position: relative;
-
-                        &--image{
-                                display: block;
-                                width: 7.5rem;
-                                height:7.5rem;
-                        }
-                }
-        }
+         }
 }
 
 /*-----------------------------
@@ -334,12 +391,6 @@
                 // Latest Projects > Block > Inner > Article
                 &__block  &__article{   min-height: 18rem;     }
         }
-
-        .archives{
-                &__block  &__inner{
-                        grid-template-columns: repeat(2,1fr);
-               }
-        }
 }
 
 //Desktops, large screens
@@ -347,13 +398,11 @@
         // Latest Projects 
         .latest-projects{
 
-                // Latest Projects > Block > Inner
                 &__block  &__inner{
                         grid-template-columns: repeat(3,1fr);
                         grid-template-rows: repeat(2,1fr);
                 }
 
-                // Latest Projects > Block > Inner > Article
                 &__block &__article{   
         
                         &:nth-child(1){
@@ -370,27 +419,19 @@
 //Small screens, laptops
 @media (max-width: 960px) {
 
-        // Project hero 
-        .project-hero{
-                // Project hero > Block >  Article
-                &__block &__article{   min-height: 35rem; }
-       }
-
         // Latest Projects 
         .latest-projects{
 
-                // Latest Projects > Block > Inner
                 &__block  &__inner{
                         grid-template-columns: repeat(2,1fr);
                 }
 
-                // Latest Projects > Block > Inner > Article
                 &__block &__article{   min-height: 20rem;  }
         }
 
         .archives{
                 &__block  &__inner{
-                        grid-template-columns: repeat(2,1fr);
+                        grid-template-columns: repeat(1,1fr);
                }
         }
 }
@@ -398,67 +439,30 @@
 //iPads, Tablets
 @media (max-width: 768px) {
 
-        // Project hero 
-        .project-hero{
-                // Project hero > Block >  Article
-                &__block &__article{     min-height: 30rem;  }
-       }
-
         // Latest Projects 
         .latest-projects{
 
-                // Latest Projects > Block > Inner
                 &__block  &__inner{
                         grid-template-rows: repeat(1,1fr);
                         grid-template-columns: repeat(1,1fr);
                 }
 
-                // Latest Projects > Block > Inner > Article
                 &__block &__article{    min-height: 25rem;  }
-        }
-
-        .archives{
-                &__block  &__inner{
-                        grid-template-columns: repeat(1,1fr);
-               }
         }
 }
 
 //Mobile devices (horizonal)
 @media (max-width: 576px) {
 
+        // Projects banner 
         .projects-banner{
-                // Projects banner > Block > Header
                 &__block &__header{   
-                        @include sectionHeaderLeftV2(40rem, $app-color-gray, $app-color-blue);
+                        @include sectionHeaderLeftV2(40rem, $app-color-white, $app-color-blue);
                 }
         }
 
-        // Project hero 
-        .project-hero{
-                // Project hero > Block >  Article
-                &__block &__article{     min-height: 25rem;   }
-       }
-
         // Latest Projects 
        .latest-projects{
-                // Latest Projects > Block > Inner > Article
                 &__block &__article{    min-height: 17.5rem;   }
-        }
-
-        // Popular Projects 
-        .popular-projects{
-
-                // Latest Projects > Block > Inner > Article
-                &__block &__article{  
-                        min-height: 665px !important;
-                        max-height: 665px !important;
-                        min-width:100% !important; overflow: hidden;  }
-        }
-
-        .archives{
-                &__block  &__inner{
-                        grid-template-columns: repeat(1,1fr);
-               }
         }
 }

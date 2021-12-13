@@ -19,7 +19,6 @@ const Privacy = lazy(() => import('./s_basic/primary/templates/PrivacyPage/Priva
 
 import CookieDialog  from './global/CookieDialog';
 import SuspenseLoader  from './global/SuspenseLoader';
-import { SiteMessage }  from './global';
 
 function Basic() {
         const [collection, getCollection] = useState([]);
@@ -63,8 +62,6 @@ function Basic() {
                                 <ScrollToTop>
                                         {  /*  Cookies message */  }
                                         <CookieDialog />
-                                        {  /*  Site bulding message */ }
-                                        <SiteMessage />
 
                                         {  /*  Index */ }
                                         <Route exact  path="/"  render= { () => <Index collection= { collection } projects = { projects }  reviews = { reviews }  /> } />
